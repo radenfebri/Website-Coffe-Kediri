@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -33,6 +35,31 @@ class LoginController extends Controller
      *
      * @return void
      */
+
+
+    protected function authenticated(Request $request, $user)
+    {
+        $request->validate([
+            'email' => 'required|email|min:4|max:50',
+            'password' => 'required'
+        ]);
+    
+        $remember_me = $request->has('remember_me') ? true : false;
+    
+        if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], $remember_me)) {
+            if ($user->hasRole(['Super Admin', 'Admin'])) {
+                return redirect()->route('home');
+            } elseif ($user->hasRole('User')) {
+                return redirect()->route('landing');
+            } else {
+                return redirect()->route('landing');
+            }
+        } else {
+            return redirect()->route('login');
+        }
+    }
+
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
