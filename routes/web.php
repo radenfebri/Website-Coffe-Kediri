@@ -10,6 +10,10 @@ use App\Http\Controllers\Backend\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+//frontend
+use App\Http\Controllers\Frontend\HomeController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +25,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('landing');
+// Route::get('/', function () {
+//     return view('welcome');
+// })->name('landing');
 
 // SINGLE SIGN ON GOOGLE
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
@@ -70,3 +74,6 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
     Route::put('user/change-password/{id}/edit', [ManajemenUsersController::class, 'update_password'])->name('update-password');
     Route::get('user/{id}/update', [ManajemenUsersController::class, 'status_akun'])->name('status-akun');
 });
+
+// front end route
+Route::get('/', [HomeController::class, 'index']);
