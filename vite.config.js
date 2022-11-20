@@ -7,7 +7,8 @@ export default defineConfig({
             input: [
                 'resources/sass/app.scss',
                 'resources/js/app.js',
-                'resources/',
+                'resources/views/backend',
+                'resources/views/frontend',
             ],
             refresh: true,
         }),

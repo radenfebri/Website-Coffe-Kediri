@@ -4,6 +4,8 @@
     @include('frontend.layouts.includes.meta')
     <title>@yield('title')</title>
     @include('frontend.layouts.includes.style')
+    @vite([])
+
 </head>
 <body>
     @include('frontend.layouts.header')

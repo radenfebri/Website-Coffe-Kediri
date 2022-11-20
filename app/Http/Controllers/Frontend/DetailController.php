@@ -11,7 +11,7 @@ class DetailController extends Controller
     {
     }
 
-    public function index()
+    public function index($slug)
     {
         return view('frontend.detail.index');
     }
