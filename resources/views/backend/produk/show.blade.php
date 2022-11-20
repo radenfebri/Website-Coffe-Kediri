@@ -104,6 +104,15 @@
                                 
                                 <div class="col-xxl-12 mb-4">
                                     <div class="">
+                                        <label class="switch-label" for="enableComment">Jumlah Produk<span class="text-danger">*</span></label>
+                                        <div>
+                                            {{ $produks->qty }}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xxl-12 mb-4">
+                                    <div class="">
                                         <label class="switch-label" for="enableComment">Harga Asli<span class="text-danger">*</span></label>
                                         <div>
                                             Rp. {{ number_format($produks->original_price) }}

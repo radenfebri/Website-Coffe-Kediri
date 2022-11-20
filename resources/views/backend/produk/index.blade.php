@@ -26,7 +26,7 @@
                                 <div style="text-align: right ">
                                     <a href="{{ route('produk.create') }}" class="text-primary" >
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus-square"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg></a>
-                                </div>
+                                    </div>
                                     <table id="style-3" class="table style-3 dt-table-hover">
                                         <thead>
                                             <tr>
@@ -46,13 +46,19 @@
                                             <tr>
                                                 <td class="checkbox-column text-center"> {{ $no + 1 }} </td>
                                                 <td class="text-center">
-                                                    @if ($item->cover)
-                                                    <span><img src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" class="profile-img" alt="{{ $item->name }}"></span>
-                                                    @else
-                                                    <span><img src="{{ asset('back') }}/src/assets/img/profile-17.jpeg" loading="lazy" class="profile-img" alt="{{ $item->name }}"></span>
-                                                    @endif
+                                                    <a href="{{ route('produk.show', encrypt($item->id)) }}">
+                                                        @if ($item->cover)
+                                                        <span><img src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" class="profile-img" alt="{{ $item->name }}"></span>
+                                                        @else
+                                                        <span><img src="{{ asset('back') }}/src/assets/img/profile-17.jpeg" loading="lazy" class="profile-img" alt="{{ $item->name }}"></span>
+                                                        @endif
+                                                    </a>
                                                 </td>
-                                                <td>{{ $item->name }}</td>
+                                                <td>
+                                                    <a href="{{ route('produk.show', encrypt($item->id)) }}">
+                                                        {{ $item->name }}
+                                                    </a>
+                                                </td>
                                                 @if ($item->kategoriproduk == null)
                                                 <td>Belum ada kategori</td>
                                                 @else
@@ -85,6 +91,8 @@
                                                     </div>
                                                 </td>
                                             </tr>
+                                            
+                                            
                                             
                                             @endforeach
                                         </tbody>

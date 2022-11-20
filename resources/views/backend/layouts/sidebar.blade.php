@@ -71,9 +71,9 @@
                     <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('kategori-produk.index') }}"> Kategori Produk </a>
                     </li>
-                    {{-- <li class="menu {{ request()->is('produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
+                    <li class="menu {{ request()->is('produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
                         <a href="{{ route('produk.index') }}"> Semua Produk </a>
-                    </li> --}}
+                    </li>
                 </ul>
             </li>
             
