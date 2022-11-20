@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 //frontend
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\ShopController;
 
 
 /*
@@ -85,3 +86,4 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
 
 // front end route
 Route::get('/', [HomeController::class, 'index']);
+Route::get('shop', [ShopController::class, 'index']);
