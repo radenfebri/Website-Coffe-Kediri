@@ -95,25 +95,9 @@ use App\Http\Controllers\Frontend\ShopController;
         Route::get('user/{id}/update', [ManajemenUsersController::class, 'status_akun'])->name('status-akun');
     });
     
-<<<<<<< HEAD
-    // ASSIGN ROLE TO USER
-    Route::get('assignrole', [AssignRoleController::class, 'index'])->name('assignrole.index');
-    Route::post('assignrole', [AssignRoleController::class, 'store'])->name('assignrole.store');
-    Route::get('assignrole/{user}/edit', [AssignRoleController::class, 'edit'])->name('assignrole.edit');
-    Route::put('assignrole/{user}/update', [AssignRoleController::class, 'update'])->name('assignrole.update');
-    
-    // ROUTE MANAJEMEN USER
-    Route::get('user', [ManajemenUsersController::class, 'index'])->name('user.index');
-    Route::get('user/change-password/{id}/edit', [ManajemenUsersController::class, 'change_password'])->name('change-password');
-    Route::put('user/change-password/{id}/edit', [ManajemenUsersController::class, 'update_password'])->name('update-password');
-    Route::get('user/{id}/update', [ManajemenUsersController::class, 'status_akun'])->name('status-akun');
-});
+
 
 // front end route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
-=======
-    // front end route
-    Route::get('/', [HomeController::class, 'index']);
-    
->>>>>>> 23e678ce05bf833c091bcd299a838e861d2307a4
+
