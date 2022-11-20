@@ -814,12 +814,11 @@
                         @foreach ($kategoriproduk as $item)
                             <div class="card-1">
                                 <figure class=" img-hover-scale overflow-hidden">
-                                    @if ()
-                                        
+                                    @if ($item->image == null)
+                                        <a href="#"><img src="{{ '/frontend/imgs/shop/category-thumb-1.jpg' }}" loading="lazy" alt="{{ $item->name }}"></a>
                                     @else
-                                        
+                                        <a href="#"><img src="{{ asset('storage/'. $item->image ) }}" loading="lazy" alt="{{ $item->name }}"></a>
                                     @endif
-                                    <a href="#"><img src="{{ asset('storage/'. $item->image ) }}" alt=""></a>
                                 </figure>
                                 <h5><a href="#">{{ $item->name }}</a></h5>
                             </div>
