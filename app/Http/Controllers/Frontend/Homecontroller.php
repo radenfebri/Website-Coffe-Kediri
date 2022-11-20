@@ -19,6 +19,7 @@ class Homecontroller extends Controller
         $produk_populer = Produk::latest()->where('popular', 1)->get();
         $produks = Produk::latest()->where('is_active', 1)->limit(8)->get();
 
+
         return view('frontend.home.index', compact('kategoriproduk', 'produks', 'produk_populer'));
     }
 }
