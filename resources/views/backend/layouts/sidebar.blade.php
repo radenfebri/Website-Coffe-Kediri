@@ -56,7 +56,7 @@
                 </a>
             </li> --}}
             
-            {{-- <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit','produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
+            <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit','produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
                 <a href="#store" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
                         
@@ -71,11 +71,11 @@
                     <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('kategori-produk.index') }}"> Kategori Produk </a>
                     </li>
-                    <li class="menu {{ request()->is('produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
+                    {{-- <li class="menu {{ request()->is('produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
                         <a href="{{ route('produk.index') }}"> Semua Produk </a>
-                    </li>
+                    </li> --}}
                 </ul>
-            </li> --}}
+            </li>
             
             
             {{-- <li class="menu {{ request()->is('slider', 'slider/*/edit') ? 'active' : ''}}">
