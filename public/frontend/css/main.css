@@ -2125,6 +2125,10 @@ label {
   border: 0;
 }
 
+nav ul {
+  text-align: center;
+}
+
 .nav-tabs .nav-link {
   background-color: #eeeeee;
   font-size: 15px;
