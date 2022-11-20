@@ -92,7 +92,6 @@
         </div>
     </section>
     <section class="product-tabs section-padding position-relative wow fadeIn animated">
-        <div class="bg-square"></div>
         <div class="container">
             <div class="tab-header">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
