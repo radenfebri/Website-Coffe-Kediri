@@ -21,3 +21,5 @@
 <!-- Template  JS -->
 <script src="{{ '/frontend/js/main.js?v=3.3' }}"></script>
 <script src="{{ '/frontend/js/shop.js?v=3.3' }}"></script>
+<script src="{{ '/frontend/js/custom.js' }}"></script>
+<script src="{{ '/frontend/js/sweetalert.js' }}"></script>

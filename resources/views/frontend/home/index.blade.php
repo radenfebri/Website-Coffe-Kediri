@@ -50,7 +50,7 @@
         </div>
         <div class="slider-arrow hero-slider-1-arrow"></div>
     </section>
-
+    
     {{-- FEATURE --}}
     <section class="featured section-padding position-relative">
         <div class="container">
@@ -94,7 +94,7 @@
             </div>
         </div>
     </section>
-
+    
     {{-- FILTER PRODUK --}}
     <section class="product-tabs section-padding position-relative wow fadeIn animated">
         <div class="bg-square"></div>
@@ -118,9 +118,10 @@
                         
                         @if ($produks->count() > 0)
                         @foreach ($produks as $item)                            
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
-                            <input type="hidden" value="{{ $item->id }}" class="prod_id" id="">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6 produk_data">
                             <div class="product-cart-wrap mb-30">
+                                <input type="hidden" value="{{ $item->id }}" class="prod_id" id="">
+                                <input type="hidden" class="form-control qty-input" value="1">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <a href="{{ route('detail.produk', $item->slug ) }}">
@@ -162,7 +163,7 @@
                                         @endif
                                     </div>
                                     <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        <a href="{{ route('addcart') }}" aria-label="Add to Cart" class="action-btn hover-up addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -179,7 +180,7 @@
                 <!--En tab one (Featured)-->
                 <div class="tab-pane fade" id="tab-two" role="tabpanel" aria-labelledby="tab-two">
                     <div class="row product-grid-4">
-
+                        
                         @if ($produk_populer->count() > 0)
                         @foreach ($produk_populer as $item)                            
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
@@ -234,7 +235,7 @@
                         @else
                         <div>Data Produk Kosong</div>
                         @endif
-
+                        
                     </div>
                     <!--End product-grid-4-->
                 </div>
@@ -243,7 +244,7 @@
             
         </div>
     </section>
-
+    
     {{-- BANNER 2 --}}
     <section class="banner-2 section-padding pb-0">
         <div class="container">
@@ -323,7 +324,7 @@
             </div>
         </div>
     </section>
-
+    
     {{-- PRODUK TERBARU --}}
     <section class="section-padding">
         <div class="container wow fadeIn animated">
