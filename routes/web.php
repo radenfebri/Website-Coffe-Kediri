@@ -85,5 +85,5 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
 });
 
 // front end route
-Route::get('/', [HomeController::class, 'index']);
-Route::get('shop', [ShopController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('shop', [ShopController::class, 'index'])->name('shop');
