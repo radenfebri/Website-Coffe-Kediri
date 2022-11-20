@@ -30,7 +30,7 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info header-info-right">
                         <ul>                                
-                            <li><i class="fi-rs-key"></i><a href="login.html">Log In </a>  / <a href="register.html">Sign Up</a></li>
+                            <li><i class="fi-rs-key"></i><a href="login">Log In </a>  / <a href="register">Sign Up</a></li>
                         </ul>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="index.html"><img src="{{ '/frontend/imgs/logo/logo.png' }}" alt="logo"></a>
+                    <a href="{{ route('home') }}"><img src="{{ '/frontend/imgs/logo/logo.png' }}" alt="logo"></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-1">
@@ -58,7 +58,7 @@
                                 </a>
                             </div>
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="cart.html">
+                                <a class="mini-cart-icon" href="{{ route('cart') }}">
                                     <img alt="Surfside Media" src="{{ '/frontend/imgs/theme/icons/icon-cart.svg' }}">
                                     <span class="pro-count blue">2</span>
                                 </a>
@@ -110,7 +110,7 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="index.html"><img src="{{ '/frontend/imgs/logo/logo.png' }}" alt="logo"></a>
+                    <a href="{{ route('home') }}"><img src="{{ '/frontend/imgs/logo/logo.png' }}" alt="logo"></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
@@ -297,7 +297,7 @@
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
-                                <li><a class="active" href="index.html">Home </a></li>
+                                <li><a class="active" href="{{ route('home') }}">Home </a></li>
                                 <li><a href="about.html">About</a></li>
                                 <li><a href="{{ route('shop') }}">Shop</a></li>
                                 <li class="position-static"><a href="#">Our Collections <i class="fi-rs-angle-down"></i></a>

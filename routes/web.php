@@ -15,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 //frontend
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ShopController;
+use App\Http\Controllers\Frontend\DetailController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 
 
 /*
@@ -100,4 +103,7 @@ use App\Http\Controllers\Frontend\ShopController;
 // front end route
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
+Route::get('detail', [DetailController::class, 'index'])->name('detail');
+Route::get('cart', [CartController::class, 'index'])->name('cart');
+Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
 
