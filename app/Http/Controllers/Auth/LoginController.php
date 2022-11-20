@@ -48,7 +48,7 @@ class LoginController extends Controller
     
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], $remember_me)) {
             if ($user->hasRole(['Super Admin', 'Admin'])) {
-                return redirect()->route('home');
+                return redirect()->route('dashboard');
             } elseif ($user->hasRole('User')) {
                 return redirect()->route('landing');
             } else {
