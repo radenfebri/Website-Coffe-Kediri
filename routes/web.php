@@ -38,10 +38,8 @@ Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('de
 Route::get('cart', [CartController::class, 'index'])->name('cart');
 Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
 
-Route::middleware(['has.role'])->middleware('auth')->group(function () {
-    // ADD TO CART
-    Route::post('add-to-cart', [CartController::class, 'addProduk'])->name('addcart');
-});
+// ADD TO CART
+Route::post('add-to-cart', [CartController::class, 'addProduk'])->name('addcart');
 
 
 // SINGLE SIGN ON GOOGLE

@@ -10,22 +10,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public function __construct()
-    {
-    }
-
     public function index()
     {
         return view('frontend.cart.index');
     }
 
     public function addProduk(Request $request)
-    {
-        {
+    { {
             $produk_id = $request->input('produk_id');
             $produk_qty = $request->input('produk_qty');
             $produk_check = Produk::where('id', $produk_id)->first();
-    
+
             if (Produk::where('is_active', 1)->where('id', $produk_id)->exists()) {
                 if ($produk_check) {
                     if (Keranjang::where('prod_id', $produk_id)->where('user_id', Auth::id())->exists()) {
@@ -38,7 +33,7 @@ class CartController extends Controller
                                 $keranjang->prod_qty = $produk_qty;
                                 $keranjang->user_id = Auth::id();
                                 $keranjang->save();
-    
+
                                 return response()->json(['status' => 'success', 'message' => "Produk berhasil ditambahkan ke keranjang"]);
                             } else {
                                 return response()->json(['status' => 'error', 'message' => "Produk tidak ditemukan"]);
@@ -53,5 +48,4 @@ class CartController extends Controller
             }
         }
     }
-
 }
