@@ -133,6 +133,18 @@
                                         @enderror
                                     </div>
                                 </div>
+
+                                <div class="col-xxl-12 mb-4">
+                                    <div class="">
+                                        <label class="switch-label" for="enableComment">Jumlah Barang<span class="text-danger">*</span></label>
+                                        <input type="text" name="qty" value="{{ old('qty')  ?? $produks->qty }}" class="form-control @error('qty') is-invalid @enderror" id="post-title" placeholder="Jumlah Produk">
+                                        @error('qty')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 
                                 <div class="col-xxl-12 mb-4">
                                     <div class="">
