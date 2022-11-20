@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Backend\AssignPermissionController;
 use App\Http\Controllers\Backend\AssignRoleController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\KategoriProdukController;
 use App\Http\Controllers\Backend\ManajemenUsersController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\RoleController;
@@ -41,6 +42,13 @@ Auth::routes();
 Route::middleware(['has.role'])->middleware('auth')->group(function () {
     // DASHBOARD
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    
+    // ROUTE KATEGORI PRODUK
+    Route::get('kategori-produk',  [KategoriProdukController::class, 'index'])->name('kategori-produk.index');
+    Route::post('kategori-produk',  [KategoriProdukController::class, 'store'])->name('kategori-produk.store');
+    Route::get('kategori-produk/{id}/edit',  [KategoriProdukController::class, 'edit'])->name('kategori-produk.edit');
+    Route::put('kategori-produk/{id}/update',  [KategoriProdukController::class, 'update'])->name('kategori-produk.update');
+    Route::get('kategori-produk/destroy/{id}',  [KategoriProdukController::class, 'destroy'])->name('kategori-produk.destroy');
     
     // ROUTE ROLE
     Route::get('role',  [RoleController::class, 'index'])->name('role.index');
