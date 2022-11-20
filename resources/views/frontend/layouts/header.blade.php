@@ -3,18 +3,6 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-xl-3 col-lg-4">
-                    <div class="header-info">
-                    <ul>
-                            <li>
-                                <a class="language-dropdown-active" href="#"> <i class="fi-rs-world"></i> English <i class="fi-rs-angle-small-down"></i></a>
-                                <ul class="language-dropdown">
-                                    <li><a href="#"><img src="{{ '/frontend/imgs/theme/flag-fr.png' }}" alt="">Français</a></li>
-                                    <li><a href="#"><img src="{{ '/frontend/imgs/theme/flag-dt.png' }}" alt="">Deutsch</a></li>
-                                    <li><a href="#"><img src="{{ '/frontend/imgs/theme/flag-ru.png' }}" alt="">Pусский</a></li>
-                                </ul>
-                            </li>                                
-                        </ul>
-                    </div>
                 </div>
                 <div class="col-xl-6 col-lg-4">
                     <div class="text-center">
@@ -300,74 +288,14 @@
                                 <li><a class="active" href="{{ route('home') }}">Home </a></li>
                                 <li><a href="about.html">About</a></li>
                                 <li><a href="{{ route('shop') }}">Shop</a></li>
-                                <li class="position-static"><a href="#">Our Collections <i class="fi-rs-angle-down"></i></a>
-                                    <ul class="mega-menu">
-                                        <li class="sub-mega-menu sub-mega-menu-width-22">
-                                            <a class="menu-title" href="#">Women's Fashion</a>
-                                            <ul>
-                                                <li><a href="product-details.html">Dresses</a></li>
-                                                <li><a href="product-details.html">Blouses & Shirts</a></li>
-                                                <li><a href="product-details.html">Hoodies & Sweatshirts</a></li>
-                                                <li><a href="product-details.html">Wedding Dresses</a></li>
-                                                <li><a href="product-details.html">Prom Dresses</a></li>
-                                                <li><a href="product-details.html">Cosplay Costumes</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega-menu sub-mega-menu-width-22">
-                                            <a class="menu-title" href="#">Men's Fashion</a>
-                                            <ul>
-                                                <li><a href="product-details.html">Jackets</a></li>
-                                                <li><a href="product-details.html">Casual Faux Leather</a></li>
-                                                <li><a href="product-details.html">Genuine Leather</a></li>
-                                                <li><a href="product-details.html">Casual Pants</a></li>
-                                                <li><a href="product-details.html">Sweatpants</a></li>
-                                                <li><a href="product-details.html">Harem Pants</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega-menu sub-mega-menu-width-22">
-                                            <a class="menu-title" href="#">Technology</a>
-                                            <ul>
-                                                <li><a href="product-details.html">Gaming Laptops</a></li>
-                                                <li><a href="product-details.html">Ultraslim Laptops</a></li>
-                                                <li><a href="product-details.html">Tablets</a></li>
-                                                <li><a href="product-details.html">Laptop Accessories</a></li>
-                                                <li><a href="product-details.html">Tablet Accessories</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="sub-mega-menu sub-mega-menu-width-34">
-                                            <div class="menu-banner-wrap">
-                                                <a href="product-details.html"><img src="{{ '/frontend/imgs/banner/menu-banner.jpg' }}" alt="Surfside Media"></a>
-                                                <div class="menu-banner-content">
-                                                    <h4>Hot deals</h4>
-                                                    <h3>Don't miss<br> Trending</h3>
-                                                    <div class="menu-banner-price">
-                                                        <span class="new-price text-success">Save to 50%</span>
-                                                    </div>
-                                                    <div class="menu-banner-btn">
-                                                        <a href="product-details.html">Shop now</a>
-                                                    </div>
-                                                </div>
-                                                <div class="menu-banner-discount">
-                                                    <h3>
-                                                        <span>35%</span>
-                                                        off
-                                                    </h3>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </li>
                                 <li><a href="blog.html">Blog </a></li>                                    
                                 <li><a href="contact.html">Contact</a></li>
                                 <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         <li><a href="#">Dashboard</a></li>
-                                        <li><a href="#">Products</a></li>
-                                        <li><a href="#">Categories</a></li>
-                                        <li><a href="#">Coupons</a></li>
-                                        <li><a href="#">Orders</a></li>
-                                        <li><a href="#">Customers</a></li>
-                                        <li><a href="#">Logout</a></li>                                            
+                                        <li><a href="#">Order History</a></li>
+                                        <li><a href="#">Setting</a></li>
+                                        <li><a href="#">Change Password</a> </li>                                            
                                     </ul>
                                 </li>
                             </ul>
@@ -486,41 +414,13 @@
                     <ul class="mobile-menu">
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="index.html">Home</a></li>
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('shop') }}">shop</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Our Collections</a>
-                            <ul class="dropdown">
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Women's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="product-details.html">Dresses</a></li>
-                                        <li><a href="product-details.html">Blouses & Shirts</a></li>
-                                        <li><a href="product-details.html">Hoodies & Sweatshirts</a></li>
-                                        <li><a href="product-details.html">Women's Sets</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Men's Fashion</a>
-                                    <ul class="dropdown">
-                                        <li><a href="product-details.html">Jackets</a></li>
-                                        <li><a href="product-details.html">Casual Faux Leather</a></li>
-                                        <li><a href="product-details.html">Genuine Leather</a></li>
-                                    </ul>
-                                </li>
-                                <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Technology</a>
-                                    <ul class="dropdown">
-                                        <li><a href="product-details.html">Gaming Laptops</a></li>
-                                        <li><a href="product-details.html">Ultraslim Laptops</a></li>
-                                        <li><a href="product-details.html">Tablets</a></li>
-                                        <li><a href="product-details.html">Laptop Accessories</a></li>
-                                        <li><a href="product-details.html">Tablet Accessories</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="blog.html">Blog</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">Language</a>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">My Account</a>
                             <ul class="dropdown">
-                                <li><a href="#">English</a></li>
-                                <li><a href="#">French</a></li>
-                                <li><a href="#">German</a></li>
-                                <li><a href="#">Spanish</a></li>
+                                <li><a href="#">Dashboard</a></li>
+                                <li><a href="#">History Order</a></li>
+                                <li><a href="#">Setting</a></li>
+                                <li><a href="#">Change Password</a></li>
                             </ul>
                         </li>
                     </ul>
