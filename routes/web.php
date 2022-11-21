@@ -45,6 +45,9 @@ Route::post('delete-cart-item', [CartController::class, 'deleteproduk'])->name('
 // CART COUNT
 Route::get('load-cart-data', [CartController::class, 'cartcount'])->name('cartcount');
 
+// UPDATE CART
+Route::post('update-cart', [CartController::class, 'updatecart']);
+
 Route::middleware(['has.role'])->middleware('auth')->group(function () {
     // CART
     Route::get('cart', [CartController::class, 'index'])->name('cart');

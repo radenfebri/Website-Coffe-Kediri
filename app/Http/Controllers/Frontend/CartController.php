@@ -78,4 +78,23 @@ class CartController extends Controller
             return back();
         }
     }
+
+
+    public function updatecart(Request $request)
+    {
+        $prod_id = $request->input('prod_id');
+        $produk_qty = $request->input('prod_qty');
+
+        if(Auth::check())
+        {
+            if(Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists())
+            {
+                $keranjang = Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
+                $keranjang->prod_qty = $produk_qty;
+                $keranjang->update();
+                // return response()->json(['status' => "Quantity Update"]);
+                return back();
+            }
+        }
+    }
 }

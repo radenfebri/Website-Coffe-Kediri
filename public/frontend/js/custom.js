@@ -177,7 +177,7 @@ $(document).ready(function () {
     //     });
     // });
 
-    $(document).on("click", ".deleteCart", function (e) {
+    $(document).on("click", ".delete-cart-item", function (e) {
         e.preventDefault();
 
         var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
@@ -295,4 +295,24 @@ $(document).ready(function () {
     //         },
     //     });
     // });
+
+    $(document).on('click','.changeQuantity', function (e) {
+        e.preventDefault();
+
+        var prod_id = $(this).closest('.produk_data').find('.prod_id').val();
+        var qty = $(this).closest('.produk_data').find('.qty-input').val();
+        data = {
+            'prod_id': prod_id,
+            'prod_qty': qty,
+        }
+        $.ajax({
+            method: "POST",
+            url: "update-cart",
+            data: data,
+            success: function(response) {
+                $('.cartItem').load(location.href + " .cartItem");
+                // swal("", response.status, "info");
+            }
+        });
+    });
 });
