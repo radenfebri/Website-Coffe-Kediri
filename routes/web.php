@@ -47,6 +47,10 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
     Route::get('cart', [CartController::class, 'index'])->name('cart');
     // CHECKOUT
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
+    // UPDATE CART
+    Route::put('update-cart', [CartController::class, 'updatedata'])->name('updatedata.cart');
+    // TAMBAH QTY
+    Route::put('tambah-qty', [CartController::class, 'tambahQty'])->name('tambahQty');
 });
 
 // SINGLE SIGN ON GOOGLE
