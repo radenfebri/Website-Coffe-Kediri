@@ -3742,12 +3742,6 @@ table .product-thumbnail img {
   color: #333;
 }
 
-.product-cart-wrap .product-img-action-wrap .product-img a img{
-  height: 440px;
-  width: 440px;
-  object-fit: cover;
-}
-
 .product-cart-wrap:hover .product-img-action-wrap .product-img a img.hover-img {
   opacity: 1;
   visibility: visible;
@@ -6516,6 +6510,10 @@ h6.post-title {
 }
 
 .main-menu{
+  margin-left: 12rem;
+}
+
+.navbar-login{
   margin-left: 8rem;
 }
 

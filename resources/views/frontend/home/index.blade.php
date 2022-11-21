@@ -588,7 +588,7 @@
                     </div>
                     @endforeach
                     @else
-                    Data Kategoriproduk Populer Kosong
+                    Data Kategori produk Populer Kosong
                     @endif
                 </div>
             </div>

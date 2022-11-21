@@ -58,11 +58,11 @@ $(document).ready(function () {
         e.preventDefault();
 
         var produk_id = $(this).closest(".produk_data").find(".prod_id").val();
+        
         var produk_qty = $(this)
             .closest(".produk_data")
             .find(".qty-input")
             .val();
-
         $.ajax({
             method: "POST",
             url: "/add-to-cart",
