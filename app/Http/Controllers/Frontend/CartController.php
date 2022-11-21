@@ -12,16 +12,18 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('frontend.cart.index');
+        $produk = Keranjang::where('user_id', Auth::id())->get();
+
+        return view('frontend.cart.index', compact('produk'));
     }
-    
+
 
     public function addProduk(Request $request)
     {
         $produk_id = $request->input('produk_id');
         $produk_qty = $request->input('produk_qty');
         $produk_check = Produk::where('id', $produk_id)->first();
-        
+
         if (Produk::where('is_active', 1)->where('id', $produk_id)->exists()) {
             if ($produk_check) {
                 if (Keranjang::where('prod_id', $produk_id)->where('user_id', Auth::id())->exists()) {
@@ -34,7 +36,7 @@ class CartController extends Controller
                             $keranjang->prod_qty = $produk_qty;
                             $keranjang->user_id = Auth::id();
                             $keranjang->save();
-                            
+
                             return response()->json(['status' => 'success', 'message' => "Produk berhasil ditambahkan ke keranjang"]);
                         } else {
                             return response()->json(['status' => 'error', 'message' => "Produk tidak ditemukan"]);
@@ -48,12 +50,39 @@ class CartController extends Controller
             return response()->json(['status' => 'error', 'message' => "Produk tidak ditemukan / sudah tidak aktif"]);
         }
     }
-    
+
 
     public function cartcount()
     {
         $cartcount = Keranjang::where('user_id', Auth::id())->count();
 
         return response()->json(['count' => $cartcount]);
+    }
+
+
+    public function updatedata(Request $request)
+    {
+
+        dd($request);
+        if (Auth::check()) {
+            $prod_id = $request->input('prod_id');
+            if (Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()) {
+                $keranjang = Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
+                $keranjang->update();
+
+                return back();
+                // return response()->json(['status' => 'success', 'message' => "Produk berhasil dihapus dari keranjang"]);
+            }
+        } else {
+            return back();
+            // return response()->json(['status' => 'success', 'message' => "Login terlebih dahulu"]);
+        }
+    }
+
+    public function tambahQty($id)
+    {
+        $keranjang = Keranjang::get($id);
+        $qty = $keranjang->qty + 1;
+        Keranjang::update($id, $qty);
     }
 }
