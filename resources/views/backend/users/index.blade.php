@@ -74,7 +74,7 @@
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                                                         <a class="dropdown-item" href="{{ route('change-password', encrypt($item->id) ) }}">Change Password</a>
                                                         @if ($item->status == 1)
-                                                            <a class="dropdown-item" valuue="0" href="{{ route('status-akun', encrypt($item->id)) }}">Disable User</a>
+                                                            <a class="dropdown-item" value="0" href="{{ route('status-akun', encrypt($item->id)) }}">Disable User</a>
                                                         @else
                                                             <a class="dropdown-item" value="1" href="{{ route('status-akun', encrypt($item->id)) }}">Enable User</a>
                                                         @endif

@@ -58,17 +58,17 @@ $(document).ready(function () {
         e.preventDefault();
 
         var produk_id = $(this).closest(".produk_data").find(".prod_id").val();
-        var produk_qty = $(this)
-            .closest(".produk_data")
-            .find(".qty-input")
-            .val();
+        var produk_qty = $(this).closest(".produk_data").find(".qty-input").val();
+
+        // alert(produk_id)
+        // alert(produk_qty)
 
         $.ajax({
             method: "POST",
             url: "/add-to-cart",
             data: {
-                produk_id: produk_id,
-                produk_qty: produk_qty,
+                'produk_id': produk_id,
+                'produk_qty': produk_qty,
             },
             success: function (response) {
                 if (response.status == "warning") {
@@ -116,6 +116,8 @@ $(document).ready(function () {
             },
         });
     });
+
+
 
     // $(".addToWishlist").click(function (e) {
     //     e.preventDefault();

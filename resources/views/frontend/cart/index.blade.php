@@ -56,17 +56,17 @@
                                                 <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->selling_price) }}</span></td>
                                             @endif
                                             <td class="text-center" data-title="Stock">
-                                                <div class="detail-qty border radius  m-auto">
+                                                {{-- <div class="detail-qty border radius  m-auto">
                                                     <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
                                                     <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                    <span class="qty-val" name="quantity" value="{{ $item->prod_qty }}">
-                                                    @if ($item->prod_qty == 1)
-                                                        1
-                                                    @else
+                                                    <span class="qty-val" name="prod_qty" value="{{ $item->prod_qty }}">
                                                         {{ $item->prod_qty }}
-                                                    @endif
                                                     </span>
-                                                    <a href="{{ route('tambahQty', $item->id ) }}" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                    <a href="{{ route('tambahQty', $item->id ) }}" name="prod_qty" value="{{ $item->prod_qty + 1  }}" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                                </div> --}}
+                                                <div class="product-extra-link2">
+                                                    <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
+                                                    <input type="number" name="quantity" class="qty-input text-center input-number" min="1" max="100" value="{{ $item->prod_qty }}">
                                                 </div>
                                             </td>
                                             <td class="text-right" data-title="Cart">
@@ -88,7 +88,6 @@
                                         <tr>
                                             <td class="text-center">
                                                 Keranjang anda masih Kosong
-
                                             </td>
                                         </tr>
                                     @endif

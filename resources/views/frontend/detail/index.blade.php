@@ -68,12 +68,19 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-12 col-xs-12">
+                            <div class="col-md-6 col-sm-12 col-xs-12 produk_data">
                                 <div class="detail-info">
-                                    <h2 class="title-detail">Colorful Pattern Shirts HD450</h2>
+                                    <h2 class="title-detail">{{ $produk->name }}</h2>
                                     <div class="product-detail-rating">
                                         <div class="pro-details-brand">
-                                            <span> Brands: <a href="shop.html">Bootstrap</a></span>
+                                            <span> Kategroi: 
+                                                @if ($produk->kategoriproduk->name == null)
+                                                    Tidak ada Kategori
+                                                @else
+                                                    <a href="#">{{ $produk->kategoriproduk->name }}</a>
+                                                @endif
+                                                
+                                            </span>
                                         </div>
                                         <div class="product-rate-cover text-end">
                                             <div class="product-rate d-inline-block">
@@ -85,23 +92,26 @@
                                     </div>
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
-                                            <ins><span class="text-brand">$120.00</span></ins>
-                                            <ins><span class="old-price font-md ml-15">$200.00</span></ins>
-                                            <span class="save-price  font-md color3 ml-15">25% Off</span>
+                                            @if ($produk->selling_price == null)
+                                                <ins><span class="text-brand">Rp.{{ number_format($produk->original_price) }}</span></ins>
+                                            @elseif($produk->selling_price != null)
+                                                <ins><span class="text-brand">Rp.{{ number_format($produk->selling_price) }}</span></ins>
+                                                <ins><span class="old-price font-md ml-15">Rp.{{ number_format($produk->original_price) }}</span></ins>
+                                            @endif
                                         </div>
                                     </div>
                                     <div class="bt-1 border-color-1 mt-15 mb-15"></div>
                                     <div class="short-desc mb-30">
-                                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquam rem officia, corrupti reiciendis minima nisi modi, quasi, odio minus dolore impedit fuga eum eligendi? Officia doloremque facere quia. Voluptatum, accusantium!</p>
+                                        <p>{{ $produk->small_description }}</p>
                                     </div>
                                     <div class="product_sort_info font-xs mb-30">
-                                        <ul>
+                                        {{-- <ul>
                                             <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand Warranty</li>
                                             <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy</li>
                                             <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
-                                    <div class="attr-detail attr-color mb-15">
+                                    {{-- <div class="attr-detail attr-color mb-15">
                                         <strong class="mr-10">Color</strong>
                                         <ul class="list-filter color-filter">
                                             <li><a href="#" data-color="Red"><span class="product-color-red"></span></a></li>
@@ -122,24 +132,27 @@
                                             <li><a href="#">XL</a></li>
                                             <li><a href="#">XXL</a></li>
                                         </ul>
-                                    </div>
+                                    </div> --}}
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
+                                    <input type="hidden" value="{{ $produk->id }}" class="prod_id">
                                     <div class="detail-extralink">
-                                        <div class="detail-qty border radius">
-                                            <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                            <span class="qty-val">1</span>
-                                            <a href="#" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                        </div>
+                                        {{-- <div class="detail-qty border radius">
+                                            <a href="" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
+                                            <span class="qty-val" value="1" name="quantity">1</span>
+                                            <a href="" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
+                                        </div> --}}
+                                    
                                         <div class="product-extra-link2">
-                                            <button type="submit" class="button button-add-to-cart">Add to cart</button>
-                                            <a aria-label="Add To Wishlist" class="action-btn hover-up" href="wishlist.php"><i class="fi-rs-heart"></i></a>
-                                            <a aria-label="Compare" class="action-btn hover-up" href="compare.php"><i class="fi-rs-shuffle"></i></a>
+                                            <input type="number" name="quantity" class="qty-input text-center input-number" min="1" max="100" value="1">
+                                        </div>
+
+                                        <div class="product-extra-link2">
+                                            <a href="{{ route('addcart') }}" aria-label="Add to Cart" class="action-btn hover-up addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            <a  href="" aria-label="Add To Wishlist" class="action-btn hover-up"><i class="fi-rs-heart"></i></a>
                                         </div>
                                     </div>
                                     <ul class="product-meta font-xs color-grey mt-50">
-                                        <li class="mb-5">SKU: <a href="#">FWM15VKT</a></li>
-                                        <li class="mb-5">Tags: <a href="#" rel="tag">Cloth</a>, <a href="#" rel="tag">Women</a>, <a href="#" rel="tag">Dress</a> </li>
-                                        <li>Availability:<span class="in-stock text-success ml-5">8 Items In Stock</span></li>
+                                        <li>Produk:<span class="in-stock text-success ml-5">{{ $produk->qty }} Item Stok</span></li>
                                     </ul>
                                 </div>
                                 <!-- Detail Info -->
@@ -148,45 +161,22 @@
                         <div class="tab-style3">
                             <ul class="nav nav-tabs text-uppercase">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Description</a>
+                                    <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Deskripsi</a>
                                 </li>
-                                <li class="nav-item">
+                                {{-- <li class="nav-item">
                                     <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Additional-info">Additional info</a>
-                                </li>
+                                </li> --}}
                                 <li class="nav-item">
-                                    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Reviews (3)</a>
+                                    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Rating (3)</a>
                                 </li>
                             </ul>
                             <div class="tab-content shop_info_tab entry-main-content">
                                 <div class="tab-pane fade show active" id="Description">
                                     <div class="">
-                                        <p>Uninhibited carnally hired played in whimpered dear gorilla koala depending and much yikes off far quetzal goodness and from for grimaced goodness unaccountably and meadowlark near unblushingly crucial scallop
-                                            tightly neurotic hungrily some and dear furiously this apart.</p>
-                                        <p>Spluttered narrowly yikes left moth in yikes bowed this that grizzly much hello on spoon-fed that alas rethought much decently richly and wow against the frequent fluidly at formidable acceptably flapped
-                                            besides and much circa far over the bucolically hey precarious goldfinch mastodon goodness gnashed a jellyfish and one however because.
-                                        </p>
-                                        <ul class="product-more-infor mt-30">
-                                            <li><span>Type Of Packing</span> Bottle</li>
-                                            <li><span>Color</span> Green, Pink, Powder Blue, Purple</li>
-                                            <li><span>Quantity Per Case</span> 100ml</li>
-                                            <li><span>Ethyl Alcohol</span> 70%</li>
-                                            <li><span>Piece In One</span> Carton</li>
-                                        </ul>
-                                        <hr class="wp-block-separator is-style-dots">
-                                        <p>Laconic overheard dear woodchuck wow this outrageously taut beaver hey hello far meadowlark imitatively egregiously hugged that yikes minimally unanimous pouted flirtatiously as beaver beheld above forward
-                                            energetic across this jeepers beneficently cockily less a the raucously that magic upheld far so the this where crud then below after jeez enchanting drunkenly more much wow callously irrespective limpet.</p>
-                                        <h4 class="mt-30">Packaging & Delivery</h4>
-                                        <hr class="wp-block-separator is-style-wide">
-                                        <p>Less lion goodness that euphemistically robin expeditiously bluebird smugly scratched far while thus cackled sheepishly rigid after due one assenting regarding censorious while occasional or this more crane
-                                            went more as this less much amid overhung anathematic because much held one exuberantly sheep goodness so where rat wry well concomitantly.
-                                        </p>
-                                        <p>Scallop or far crud plain remarkably far by thus far iguana lewd precociously and and less rattlesnake contrary caustic wow this near alas and next and pled the yikes articulate about as less cackled dalmatian
-                                            in much less well jeering for the thanks blindly sentimental whimpered less across objectively fanciful grimaced wildly some wow and rose jeepers outgrew lugubrious luridly irrationally attractively
-                                            dachshund.
-                                        </p>
+                                        <p>{!! $produk->description !!}</p>
                                     </div>
                                 </div>
-                                <div class="tab-pane fade" id="Additional-info">
+                                {{-- <div class="tab-pane fade" id="Additional-info">
                                     <table class="font-md">
                                         <tbody>
                                             <tr class="stand-up">
@@ -275,7 +265,7 @@
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
+                                </div> --}}
                                 <div class="tab-pane fade" id="Reviews">
                                     <!--Comments-->
                                     <div class="comments-area">
@@ -668,4 +658,6 @@
         </div>
     </section>
 </main>
+
 @endsection
+

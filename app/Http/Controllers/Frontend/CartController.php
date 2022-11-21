@@ -81,8 +81,7 @@ class CartController extends Controller
 
     public function tambahQty($id)
     {
-        $keranjang = Keranjang::get($id);
-        $qty = $keranjang->qty + 1;
-        Keranjang::update($id, $qty);
+
+
     }
 }

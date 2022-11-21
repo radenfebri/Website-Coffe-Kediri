@@ -50,7 +50,7 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
     // UPDATE CART
     Route::put('update-cart', [CartController::class, 'updatedata'])->name('updatedata.cart');
     // TAMBAH QTY
-    Route::put('tambah-qty', [CartController::class, 'tambahQty'])->name('tambahQty');
+    Route::get('tambah/{id}/update', [CartController::class, 'tambahQty'])->name('tambahQty');
 });
 
 // SINGLE SIGN ON GOOGLE

@@ -119,8 +119,6 @@
                         @foreach ($produks as $item)                            
                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6 produk_data">
                             <div class="product-cart-wrap mb-30">
-                                <input type="hidden" value="{{ $item->id }}" class="prod_id" id="">
-                                <input type="hidden" class="form-control qty-input" value="1">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
                                         <a href="{{ route('detail.produk', $item->slug ) }}">
@@ -144,6 +142,8 @@
                                     </div>
                                 </div>
                                 <div class="product-content-wrap">
+                                    <input type="hidden" value="{{ $item->id }}" class="prod_id">
+                                    <input type="hidden" class="form-control qty-input" value="1">
                                     <div class="product-category">
                                         @if ($item->kategoriproduk == null)
                                         
