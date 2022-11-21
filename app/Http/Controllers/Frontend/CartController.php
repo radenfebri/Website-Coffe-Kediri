@@ -12,7 +12,9 @@ class CartController extends Controller
 {
     public function index()
     {
-        return view('frontend.cart.index');
+        $produk = Keranjang::where('user_id', Auth::id())->get();
+
+        return view('frontend.cart.index', compact('produk'));
     }
     
 

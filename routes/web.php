@@ -35,14 +35,19 @@ use App\Http\Controllers\Frontend\CheckoutController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
 Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('detail.produk');
-Route::get('cart', [CartController::class, 'index'])->name('cart');
-Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
 
 // ADD TO CART
 Route::post('add-to-cart', [CartController::class, 'addProduk'])->name('addcart');
 
 // CART COUNT
 Route::get('load-cart-data', [CartController::class, 'cartcount'])->name('cartcount');
+
+Route::middleware(['has.role'])->middleware('auth')->group(function () {
+    // CART
+    Route::get('cart', [CartController::class, 'index'])->name('cart');
+    // CHECKOUT
+    Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
+});
 
 // SINGLE SIGN ON GOOGLE
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
