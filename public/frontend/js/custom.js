@@ -177,64 +177,64 @@ $(document).ready(function () {
     //     });
     // });
 
-    // $(document).on("click", ".delete-cart-item", function (e) {
-    //     e.preventDefault();
+    $(document).on("click", ".deleteCart", function (e) {
+        e.preventDefault();
 
-    //     var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
-    //     $.ajax({
-    //         method: "POST",
-    //         url: "/delete-cart-item",
-    //         data: {
-    //             prod_id: prod_id,
-    //         },
-    //         success: function (response) {
-    //             $(".produk").load(location.href + " .produk");
-    //             if (response.status == "warning") {
-    //                 Swal.fire({
-    //                     title: "Gagal",
-    //                     text: response.message,
-    //                     icon: "info",
-    //                     timer: 5000,
-    //                     confirmButtonColor: "#f35a38",
-    //                     confirmButtonText: "Login Sekarang",
-    //                     // footer: '<a href="">Why do I have this issue?</a>',
-    //                 }).then(function () {
-    //                     window.location = "/login";
-    //                 });
-    //             } else if (response.status == "success") {
-    //                 Swal.fire({
-    //                     title: "Berhasil",
-    //                     text: response.message,
-    //                     icon: "success",
-    //                     timer: 5000,
-    //                     confirmButtonColor: "#f35a38",
-    //                     confirmButtonText: "Oke",
-    //                 });
-    //             } else if (response.status == "info") {
-    //                 Swal.fire({
-    //                     title: "Berhasil",
-    //                     text: response.message,
-    //                     icon: "info",
-    //                     timer: 5000,
-    //                     confirmButtonColor: "#f35a38",
-    //                     confirmButtonText: "Oke",
-    //                 });
-    //             } else if (response.status == "error") {
-    //                 Swal.fire({
-    //                     title: "Gagal",
-    //                     text: response.message,
-    //                     icon: "error",
-    //                     timer: 5000,
-    //                     confirmButtonColor: "#f35a38",
-    //                     confirmButtonText: "Oke",
-    //                 });
-    //             }
+        var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
+        $.ajax({
+            method: "POST",
+            url: "/delete-cart-item",
+            data: {
+                prod_id: prod_id,
+            },
+            success: function (response) {
+                $(".produk").load(location.href + " .produk");
+                if (response.status == "warning") {
+                    Swal.fire({
+                        title: "Gagal",
+                        text: response.message,
+                        icon: "info",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Login Sekarang",
+                        // footer: '<a href="">Why do I have this issue?</a>',
+                    }).then(function () {
+                        window.location = "/login";
+                    });
+                } else if (response.status == "success") {
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: response.message,
+                        icon: "success",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Oke",
+                    });
+                } else if (response.status == "info") {
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: response.message,
+                        icon: "info",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Oke",
+                    });
+                } else if (response.status == "error") {
+                    Swal.fire({
+                        title: "Gagal",
+                        text: response.message,
+                        icon: "error",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Oke",
+                    });
+                }
 
-    //             // window.location.reload();
-    //             loadcart();
-    //         },
-    //     });
-    // });
+                // window.location.reload();
+                loadcart();
+            },
+        });
+    });
 
     // $(document).on("click", ".delete-favorit-item", function (e) {
     //     e.preventDefault();

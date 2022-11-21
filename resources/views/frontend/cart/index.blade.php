@@ -17,9 +17,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <form action="{{ route('updatedata.cart') }}" method="POST">
-                        @csrf
-                        @method('PUT')
                         <div class="table-responsive">
                             <table class="table shopping-summery text-center clean">
                                 <thead>
@@ -39,6 +36,7 @@
 
                                         @foreach ($produk as $item)
                                         <tr>
+                                            <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
                                             <td class="image product-thumbnail">
                                                 @if ($item->produks->cover == null)
                                                     <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
@@ -55,20 +53,13 @@
                                             @else
                                                 <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->selling_price) }}</span></td>
                                             @endif
+
                                             <td class="text-center" data-title="Stock">
-                                                {{-- <div class="detail-qty border radius  m-auto">
-                                                    <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                                                    <a href="#" class="qty-down"><i class="fi-rs-angle-small-down"></i></a>
-                                                    <span class="qty-val" name="prod_qty" value="{{ $item->prod_qty }}">
-                                                        {{ $item->prod_qty }}
-                                                    </span>
-                                                    <a href="{{ route('tambahQty', $item->id ) }}" name="prod_qty" value="{{ $item->prod_qty + 1  }}" class="qty-up"><i class="fi-rs-angle-small-up"></i></a>
-                                                </div> --}}
                                                 <div class="product-extra-link2">
-                                                    <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
                                                     <input type="number" name="quantity" class="qty-input text-center input-number" min="1" max="100" value="{{ $item->prod_qty }}">
                                                 </div>
                                             </td>
+
                                             <td class="text-right" data-title="Cart">
                                                 @if ($item->produks->selling_price == null)
                                                     <span>Rp. {{ number_format($item->produks->original_price * $item->prod_qty) }}</span>
@@ -76,7 +67,9 @@
                                                     <span>Rp. {{ number_format($item->produks->selling_price * $item->prod_qty) }}</span>
                                                 @endif
                                             </td>
-                                            <td class="action" data-title="Remove"><a href="#" class="text-muted"><i class="fi-rs-trash"></i></a></td>
+                                            <td>
+                                                <a href="{{ route('deletecart') }}" class="deleteCart"><i class="fi-rs-trash"></i></a>
+                                            </td>
                                         </tr>
                                             @if ($item->produks->selling_price == null)
                                                 @php $total += $item->produks->original_price * $item->prod_qty; @endphp
@@ -102,7 +95,6 @@
                         <div class="cart-action text-end">
                             <button type="submit" class="btn  mr-10 mb-sm-15"><i class="fi-rs-shuffle mr-10"></i>Update Cart</button>
                         </div>
-                    </form>
 
                     <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                     <div class="row mb-50">
