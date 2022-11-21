@@ -131,7 +131,7 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn hover-up" ><i class="fi-rs-eye"></i></a>
-                                        <a href="#" aria-label="Tambah ke Favorit" class="action-btn hover-up"><i class="fi-rs-heart"></i></a>
+                                        <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn hover-up addToWishlist"><i class="fi-rs-heart"></i></a>
                                     </div>
                                     <div class="product-badges product-badges-position product-badges-mrg">
                                         @if ($item->popular == null)

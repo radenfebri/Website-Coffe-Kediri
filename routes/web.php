@@ -4,6 +4,7 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Backend\AssignPermissionController;
 use App\Http\Controllers\Backend\AssignRoleController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\FavoritController;
 use App\Http\Controllers\Backend\KategoriProdukController;
 use App\Http\Controllers\Backend\ManajemenUsersController;
 use App\Http\Controllers\Backend\PermissionController;
@@ -48,9 +49,18 @@ Route::get('load-cart-data', [CartController::class, 'cartcount'])->name('cartco
 // UPDATE CART
 Route::post('update-cart', [CartController::class, 'updatecart']);
 
+// ADD TO FAVORIT
+Route::post('add-to-wishlist', [FavoritController::class, 'addFavorit'])->name('addfavorit');
+
+// CART FAVORIT
+Route::get('load-wishlist-data', [FavoritController::class, 'favoritcount'])->name('favoritcount');
+
 Route::middleware(['has.role'])->middleware('auth')->group(function () {
     // CART
     Route::get('cart', [CartController::class, 'index'])->name('cart');
+    
+    // ROUTE FAVORIT LIST
+    Route::get('favorit', [FavoritController::class, 'favoritview'])->name('favorit.view');
     
     // CHECKOUT
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
