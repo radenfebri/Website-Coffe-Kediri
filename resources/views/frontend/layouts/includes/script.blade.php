@@ -1,6 +1,6 @@
 <script src="{{ '/frontend/js/vendor/jquery-3.6.0.min.js' }}"></script>
 <script src="{{ '/frontend/js/vendor/modernizr-3.6.0.min.js' }}"></script>
-<script src="{{ '/frontend/js/vendor/jquery-migrate-3.3.0.min.js' }}"></script>
+{{-- <script src="{{ '/frontend/js/vendor/jquery-migrate-3.3.0.min.js' }}"></script> --}}
 <script src="{{ '/frontend/js/vendor/bootstrap.bundle.min.js' }}"></script>
 <script src="{{ '/frontend/js/plugins/slick.js' }}"></script>
 <script src="{{ '/frontend/js/plugins/jquery.syotimer.min.js' }}"></script>

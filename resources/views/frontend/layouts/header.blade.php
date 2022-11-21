@@ -18,7 +18,21 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-info header-info-right">
                         <ul>                                
-                            <li><i class="fi-rs-key"></i><a href="login">Log In </a>  / <a href="register">Sign Up</a></li>
+                            <li>
+                                    @guest
+                                        <i class="fi-rs-key"></i>
+                                        @if (Route::has('login'))
+                                            <a href="{{ route('login') }}">Log In </a>  
+                                        @endif
+                                        / 
+                                        @if (Route::has('register'))
+                                            <a href="{{ route('register') }}">Sign Up</a>
+                                        @endif
+                                    @else
+                                       {{ Auth::user()->name }}
+                                    @endguest
+
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -48,7 +62,7 @@
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="{{ route('cart') }}">
                                     <img alt="Surfside Media" src="{{ '/frontend/imgs/theme/icons/icon-cart.svg' }}">
-                                    <span class="pro-count blue">2</span>
+                                    <span class="pro-count blue cart-count">0</span>
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2">
                                     <ul>
@@ -290,14 +304,30 @@
                                 <li><a href="{{ route('shop') }}">Shop</a></li>
                                 <li><a href="blog.html">Blog </a></li>                                    
                                 <li><a href="contact.html">Contact</a></li>
-                                <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
-                                    <ul class="sub-menu">
-                                        <li><a href="#">Dashboard</a></li>
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Setting</a></li>
-                                        <li><a href="#">Change Password</a> </li>                                            
-                                    </ul>
-                                </li>
+                                @guest
+                                
+                                @else
+                                    <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            @guest
+
+                                            @else
+                                                @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                                @else
+                                                    
+                                                @endif
+                                            @endguest
+                                            <li><a href="#">Order History</a></li>
+                                            <li><a href="#">Setting</a></li>
+                                            <li><a href="#">Change Password</a> </li>   
+                                            <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>    
+                                        </ul>
+                                    </li>
+                                @endguest
                             </ul>
                         </nav>
                     </div>

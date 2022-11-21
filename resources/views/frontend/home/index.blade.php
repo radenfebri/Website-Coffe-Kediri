@@ -182,7 +182,9 @@
                         
                         @if ($produk_populer->count() > 0)
                         @foreach ($produk_populer as $item)                            
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6 produk_data">
+                            <input type="hidden" value="{{ $item->id }}" class="prod_id" id="">
+                            <input type="hidden" class="form-control qty-input" value="1">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -225,7 +227,7 @@
                                         @endif
                                     </div>
                                     <div class="product-action-1 show">
-                                        <a aria-label="Add To Cart" class="action-btn hover-up" href="cart.html"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        <a href="{{ route('addcart') }}" aria-label="Add To Cart" class="action-btn hover-up addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
                                     </div>
                                 </div>
                             </div>

@@ -1,19 +1,19 @@
 $(document).ready(function () {
-    // loadcart();
+    loadcart();
     // loadorder();
     // loadwishlist();
     // loadpesanan();
 
-    // function loadcart() {
-    //     $.ajax({
-    //         method: "GET",
-    //         url: "/load-cart-data",
-    //         success: function (response) {
-    //             $(".cart-count").html("");
-    //             $(".cart-count").html(response.count);
-    //         },
-    //     });
-    // }
+    function loadcart() {
+        $.ajax({
+            method: "GET",
+            url: "/load-cart-data",
+            success: function (response) {
+                $(".cart-count").html("");
+                $(".cart-count").html(response.count);
+            },
+        });
+    }
 
     // function loadwishlist() {
     //     $.ajax({
@@ -112,7 +112,7 @@ $(document).ready(function () {
                     });
                 }
 
-                // loadcart();
+                loadcart();
             },
         });
     });
