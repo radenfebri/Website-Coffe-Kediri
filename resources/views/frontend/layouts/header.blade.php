@@ -272,7 +272,7 @@
                             <ul>
                                 <li><a class="{{ request()->is('/', '/*') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
                                 <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="about.html">About</a></li>
-                                <li><a class="{{ request()->is('shop', 'shop/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
+                                <li><a class="{{ request()->is('shop', 'shop/*', 'cart', 'favorit', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
                                 <li><a class="{{ request()->is('blog', 'blog/*') ? 'active' : ''}}" href="blog.html">Blog </a></li>                                    
                                 <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="contact.html">Contact</a></li>
                                 @guest

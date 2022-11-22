@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <section class="mt-50 mb-50 produk cartItem">
+    <section class="mt-50 mb-50 produk favorit">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -52,7 +52,7 @@
                                     @endif
                                     
                                     <td>
-                                        <a href="{{ route('deletecart') }}" class="delete-cart-item"><i class="fi-rs-trash"></i></a>
+                                        <a href="{{ route('deletefavorit') }}" class="delete-favorit-item"><i class="fi-rs-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

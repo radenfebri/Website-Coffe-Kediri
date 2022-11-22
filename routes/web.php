@@ -55,6 +55,9 @@ Route::post('add-to-wishlist', [FavoritController::class, 'addFavorit'])->name('
 // CART FAVORIT
 Route::get('load-wishlist-data', [FavoritController::class, 'favoritcount'])->name('favoritcount');
 
+// REMOVE FAVORIT LIST
+Route::post('delete-favorit-item', [FavoritController::class, 'deleteproduk'])->name('deletefavorit');
+
 Route::middleware(['has.role'])->middleware('auth')->group(function () {
     // CART
     Route::get('cart', [CartController::class, 'index'])->name('cart');
