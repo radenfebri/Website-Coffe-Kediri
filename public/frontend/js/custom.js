@@ -1,8 +1,8 @@
 $(document).ready(function () {
     loadcart();
-    loadorder();
+    // loadorder();
     loadwishlist();
-    loadpesanan();
+    // loadpesanan();
 
     function loadcart() {
         $.ajax({
@@ -26,27 +26,27 @@ $(document).ready(function () {
         });
     }
 
-    function loadorder() {
-        $.ajax({
-            method: "GET",
-            url: "/load-order-data",
-            success: function (response) {
-                $(".order-count").html("");
-                $(".order-count").html(response.count);
-            },
-        });
-    }
+    // function loadorder() {
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "/load-order-data",
+    //         success: function (response) {
+    //             $(".order-count").html("");
+    //             $(".order-count").html(response.count);
+    //         },
+    //     });
+    // }
 
-    function loadpesanan() {
-        $.ajax({
-            method: "GET",
-            url: "/load-pesanan-data",
-            success: function (response) {
-                $(".pesanan-count").html("");
-                $(".pesanan-count").html(response.count);
-            },
-        });
-    }
+    // function loadpesanan() {
+    //     $.ajax({
+    //         method: "GET",
+    //         url: "/load-pesanan-data",
+    //         success: function (response) {
+    //             $(".pesanan-count").html("");
+    //             $(".pesanan-count").html(response.count);
+    //         },
+    //     });
+    // }
 
     $.ajaxSetup({
         headers: {

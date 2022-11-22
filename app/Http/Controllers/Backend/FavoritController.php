@@ -9,8 +9,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class FavoritController extends Controller
-{
+{    
+    public function favoritview()
+    {
+        $favorit = Favorit::where('user_id', Auth::id())->latest()->paginate(10);
+        return view('frontend.favorit.index', compact('favorit'));
+    }
+ 
     
+        
     public function addFavorit(Request $request)
     {
         $produk_id = $request->input('produk_id');
@@ -37,14 +44,6 @@ class FavoritController extends Controller
             }
         }
     }
-    
-    
-    public function favoritview()
-    {
-        $favorit = Favorit::where('user_id', Auth::id())->latest()->paginate(10);
-        return view('frontend.favorit.index', compact('favorit'));
-    }
-    
     
     public function favoritcount()
     {
