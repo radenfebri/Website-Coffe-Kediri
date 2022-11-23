@@ -66,7 +66,7 @@
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
-                                        <a href="{{ route('detail') }}">
+                                        <a href="#">
                                             <img class="default-img" src="{{ '/frontend/imgs/shop/product-2-1.jpg' }}" alt="">
                                             <img class="hover-img" src="{{ '/frontend/imgs/shop/product-2-2.jpg' }}" alt="">
                                         </a>
