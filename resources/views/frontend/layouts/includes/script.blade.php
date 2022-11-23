@@ -22,6 +22,10 @@
 <script src="{{ asset("frontend")}}/js/main.js?v=3.3"></script>
 <script src="{{ asset("frontend")}}/js/shop.js?v=3.3"></script>
 <script src="{{ asset("frontend")}}/js/custom.js"></script>
+<<<<<<< HEAD
 <script src="{{ asset("frontend/")}}js/sweetalert.js"></script>
 
 
+=======
+<script src="{{ asset("frontend")}}/js/sweetalert.js"></script>
+>>>>>>> b0aaf2acae7da1e9f66c9c207bef21acf8c0956e
