@@ -1,13 +1,9 @@
-//header
-.rata-kiri{
-  text-align: left !important;
+.main-menu{
+  margin-left: 200px;
 }
 
-//product
-.product-cart-wrap .product-img-action-wrap .product-img a img{
-  height: 440px;
-  width: 440px;
-  object-fit: cover;
+.navbar-login{
+  margin-left: 130px;
 }
 
 @media (max-width:420px)
@@ -16,4 +12,3 @@
     width:50% !important;
   }
 }
-

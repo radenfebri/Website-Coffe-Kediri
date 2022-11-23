@@ -574,22 +574,16 @@
             <div class="carausel-6-columns-cover position-relative">
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-arrows"></div>
                 <div class="carausel-6-columns" id="carausel-6-columns">
-                    @if ($kategoriproduk->count() > 0)
+
                     @foreach ($kategoriproduk as $item)
-                    <div class="card-1">
-                        <figure class=" img-hover-scale overflow-hidden">
-                            @if ($item->image == null)
-                            <a href="#"><img src="{{ '/frontend/imgs/shop/category-thumb-1.jpg' }}" loading="lazy" alt="{{ $item->name }}"></a>
-                            @else
-                            <a href="#"><img src="{{ asset('storage/'. $item->image ) }}" loading="lazy" alt="{{ $item->name }}"></a>
-                            @endif
-                        </figure>
-                        <h5><a href="#">{{ $item->name }}</a></h5>
-                    </div>
+                        <div class="card-1">
+                            <figure class=" img-hover-scale overflow-hidden">
+                                <a href=""> <img src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
+                            </figure>
+                            <h5><a href="">{{ $item->name }}</a></h5>
+                        </div>
                     @endforeach
-                    @else
-                    Data Kategori produk Populer Kosong
-                    @endif
+
                 </div>
             </div>
         </div>

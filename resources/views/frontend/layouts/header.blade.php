@@ -43,7 +43,7 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="{{ route('home') }}"><img src="{{ '/frontend/imgs/logo/logo.png' }}" alt="logo"></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset("frontend")}}/imgs/logo/logo.png" alt="logo"></a>
                 </div>
                 <div class="header-right">
                     <div class="search-style-1">
@@ -55,7 +55,7 @@
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
                                 <a href="{{ route('favorit.view') }}">
-                                    <img class="svgInject" alt="Surfside Media" src="{{ '/frontend/imgs/theme/icons/icon-heart.svg' }}">
+                                    <img class="svgInject" alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-heart.svg">
                                     @guest
                                     
                                     @else
@@ -65,7 +65,7 @@
                             </div>
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="{{ route('cart') }}">
-                                    <img alt="Surfside Media" src="{{ '/frontend/imgs/theme/icons/icon-cart.svg' }}">
+                                    <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-cart.svg">
                                     @guest
                                     
                                     @else
@@ -83,7 +83,7 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="{{ route('home') }}"><img src="{{ '/frontend/imgs/logo/logo.png' }}" alt="logo"></a>
+                    <a href="{{ route('home') }}"><img src="{{ asset("frontend")}}/imgs/logo/logo.png" alt="logo"></a>
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
@@ -128,7 +128,7 @@
                                             </li>
                                             <li class="mega-menu-col col-lg-5">
                                                 <div class="header-banner2">
-                                                    <img src="{{ '/frontend/imgs/banner/menu-banner-2.jpg' }}" alt="menu_banner1">
+                                                    <img src="{{ asset("frontend")}}/imgs/banner/menu-banner-2.jpg" alt="menu_banner1">
                                                     <div class="banne_info">
                                                         <h6>10% Off</h6>
                                                         <h4>New Arrival</h4>
@@ -136,7 +136,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="header-banner2">
-                                                    <img src="{{ '/frontend/imgs/banner/menu-banner-3.jpg' }}" alt="menu_banner2">
+                                                    <img src="{{ asset("frontend")}}/imgs/banner/menu-banner-3.jpg" alt="menu_banner2">
                                                     <div class="banne_info">
                                                         <h6>15% Off</h6>
                                                         <h4>Hot Deals</h4>
@@ -182,7 +182,7 @@
                                             </li>
                                             <li class="mega-menu-col col-lg-5">
                                                 <div class="header-banner2">
-                                                    <img src="{{ '/frontend/imgs/banner/menu-banner-4.jpg' }}" alt="menu_banner1">
+                                                    <img src="{{ asset("frontend")}}/imgs/banner/menu-banner-4.jpg" alt="menu_banner1">
                                                     <div class="banne_info">
                                                         <h6>10% Off</h6>
                                                         <h4>New Arrival</h4>
@@ -229,7 +229,7 @@
                                             </li>
                                             <li class="mega-menu-col col-lg-5">
                                                 <div class="header-banner2">
-                                                    <img src="{{ '/frontend/imgs/banner/menu-banner-5.jpg' }}" alt="menu_banner1">
+                                                    <img src="{{ asset("frontend")}}/imgs/banner/menu-banner-5.jpg" alt="menu_banner1">
                                                     <div class="banne_info">
                                                         <h6>10% Off</h6>
                                                         <h4>New Arrival</h4>
@@ -237,7 +237,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="header-banner2">
-                                                    <img src="{{ '/frontend/imgs/banner/menu-banner-6.jpg' }}" alt="menu_banner2">
+                                                    <img src="{{ asset("frontend")}}/imgs/banner/menu-banner-6.jpg" alt="menu_banner2">
                                                     <div class="banne_info">
                                                         <h6>15% Off</h6>
                                                         <h4>Hot Deals</h4>
@@ -346,15 +346,22 @@
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
                             <a href="shop-wishlist.php">
-                                <img alt="Surfside Media" src="{{ '/frontend/imgs/theme/icons/icon-heart.svg' }}">
+                                <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-heart.svg">
                                 <span class="pro-count white">4</span>
                             </a>
                         </div>
                         <div class="header-action-icon-2">
                             <a class="mini-cart-icon" href="cart.html">
-                                <img alt="Surfside Media" src="{{ '/frontend/imgs/theme/icons/icon-cart.svg' }}">
+                                <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-cart.svg">
                                 <span class="pro-count white">0</span>
                             </a>
+                        </div>
+                        <div class="header-action-icon-2 d-block d-lg-none">
+                            <div class="burger-icon burger-icon-white">
+                                <span class="burger-icon-top"></span>
+                                <span class="burger-icon-mid"></span>
+                                <span class="burger-icon-bottom"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -366,7 +373,7 @@
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                <a href="index.html"><img src="{{ '/frontend/imgs/logo/logo.png' }}" alt="logo"></a>
+                <a href="index.html"><img src="{{ asset("frontend")}}/imgs/logo/logo.png" alt="logo"></a>
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
@@ -435,11 +442,11 @@
             </div>
             <div class="mobile-social-icon">
                 <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                <a href="#"><img src="{{ '/frontend/imgs/theme/icons/icon-facebook.svg' }}" alt=""></a>
-                <a href="#"><img src="{{ '/frontend/imgs/theme/icons/icon-twitter.svg' }}" alt=""></a>
-                <a href="#"><img src="{{ '/frontend/imgs/theme/icons/icon-instagram.svg' }}" alt=""></a>
-                <a href="#"><img src="{{ '/frontend/imgs/theme/icons/icon-pinterest.svg' }}" alt=""></a>
-                <a href="#"><img src="{{ '/frontend/imgs/theme/icons/icon-youtube.svg' }}" alt=""></a>
+                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt=""></a>
+                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-twitter.svg" alt=""></a>
+                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt=""></a>
+                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
+                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-youtube.svg" alt=""></a>
             </div>
         </div>
     </div>
