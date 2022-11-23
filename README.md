@@ -10,6 +10,7 @@
 ## About Project
 Projek ini membuat sebuah E-Commerce untuk memenuhi kebutuhan Client, yakni PT.GMDP cabang Kediri. yang di dalam website berisi jualan Coffe dll.
 
-Backend = Raden Febri
-Frontend = Alifian
+<p>Frontend = Alifian</p>
+<p>Backend = Raden Febri</p>
+
 
