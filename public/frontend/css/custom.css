@@ -1,4 +1,7 @@
-
+//header
+.rata-kiri{
+  text-align: left !important;
+}
 
 //product
 .product-cart-wrap .product-img-action-wrap .product-img a img{

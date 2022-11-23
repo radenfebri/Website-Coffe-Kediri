@@ -19,19 +19,19 @@
                     <div class="header-info header-info-right">
                         <ul>                                
                             <li>
-                                    @guest
-                                        <i class="fi-rs-key"></i>
-                                        @if (Route::has('login'))
-                                            <a href="{{ route('login') }}">Log In </a>  
-                                        @endif
-                                        / 
-                                        @if (Route::has('register'))
-                                            <a href="{{ route('register') }}">Sign Up</a>
-                                        @endif
-                                    @else
-                                        {{ Auth::user()->name }}
-                                    @endguest
-
+                                @guest
+                                <i class="fi-rs-key"></i>
+                                @if (Route::has('login'))
+                                <a href="{{ route('login') }}">Log In </a>  
+                                @endif
+                                / 
+                                @if (Route::has('register'))
+                                <a href="{{ route('register') }}">Sign Up</a>
+                                @endif
+                                @else
+                                {{ Auth::user()->name }}
+                                @endguest
+                                
                             </li>
                         </ul>
                     </div>
@@ -54,12 +54,12 @@
                     <div class="header-action-right">
                         <div class="header-action-2">
                             <div class="header-action-icon-2">
-                                <a href="shop-wishlist.php">
+                                <a href="{{ route('favorit.view') }}">
                                     <img class="svgInject" alt="Surfside Media" src="{{ '/frontend/imgs/theme/icons/icon-heart.svg' }}">
                                     @guest
-
+                                    
                                     @else
-                                        <span class="pro-count blue">0</span>
+                                        <span class="pro-count blue wish-count">0</span>
                                     @endguest
                                 </a>
                             </div>
@@ -67,9 +67,9 @@
                                 <a class="mini-cart-icon" href="{{ route('cart') }}">
                                     <img alt="Surfside Media" src="{{ '/frontend/imgs/theme/icons/icon-cart.svg' }}">
                                     @guest
-
+                                    
                                     @else
-                                        <span class="pro-count blue cart-count">0</span>
+                                    <span class="pro-count blue cart-count">0</span>
                                     @endguest
                                 </a>
                             </div>
@@ -256,7 +256,7 @@
                                 <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a></li>
                                 <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
                                 <li>
-                                 <ul class="more_slie_open" style="display: none;">
+                                    <ul class="more_slie_open" style="display: none;">
                                         <li><a href="{{route('shop') }}"><i class="surfsidemedia-font-desktop"></i>Beauty, Health</a></li>
                                         <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-cpu"></i>Bags and Shoes</a></li>
                                         <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-diamond"></i>Consumer Electronics</a></li>
@@ -273,9 +273,33 @@
                             <ul>
                                 <li><a class="{{ request()->is('/', '/*') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
                                 <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="about.html">About</a></li>
-                                <li><a class="{{ request()->is('shop', 'shop/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
+                                <li><a class="{{ request()->is('shop', 'shop/*', 'cart', 'favorit', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
                                 <li><a class="{{ request()->is('blog', 'blog/*') ? 'active' : ''}}" href="blog.html">Blog </a></li>                                    
                                 <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="contact.html">Contact</a></li>
+                                @guest
+                                
+                                @else
+                                <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        @guest
+                                        
+                                        @else
+                                        @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        @else
+                                        
+                                        @endif
+                                        @endguest
+                                        <li><a class="" href="#">Order History</a></li>
+                                        <li><a class="" href="#">Setting</a></li>
+                                        <li><a class="" href="#">Change Password</a> </li>   
+                                        <li><a class="" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>    
+                                    </ul>
+                                </li>
+                                @endguest
                             </ul>
                         </nav>
                     </div>
