@@ -23,3 +23,5 @@
 <script src="{{ asset("frontend")}}/js/shop.js?v=3.3"></script>
 <script src="{{ asset("frontend")}}/js/custom.js"></script>
 <script src="{{ asset("frontend/")}}js/sweetalert.js"></script>
+
+

@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Route;
 //frontend
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\ShopController;
+use App\Http\Controllers\Frontend\SettingController;
 use App\Http\Controllers\Frontend\DetailController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\ChangePasswordController;
+use App\Http\Controllers\Frontend\OrderHistoryController;
 
 
 /*
@@ -34,8 +37,12 @@ use App\Http\Controllers\Frontend\CheckoutController;
 
 // ROUTE FRONTEND
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
-Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('detail.produk');
+Route::get('setting', [SettingController::class, 'index'])->name('setting');
+Route::get('change-password', [ChangePasswordController::class, 'index'])->name('changePassword');
+Route::get('order-history', [OrderHistoryController::class, 'index'])->name('orderHistory');
+Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('detail');
 
 // ADD TO CART
 Route::post('add-to-cart', [CartController::class, 'addProduk'])->name('addcart');

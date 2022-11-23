@@ -1,6 +1,6 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Keranjang')
+@section('title', 'Favorit')
 
 @section('content')
 <main class="main">
@@ -9,7 +9,7 @@
             <div class="breadcrumb">
                 <a href="index.html" rel="nofollow">Home</a>
                 <span></span> Shop
-                <span></span> Your Cart
+                <span></span> Favorit
             </div>
         </div>
     </div>
@@ -69,11 +69,7 @@
                             </tr>
                         </tbody>
                     </table>
-                </div>
-
-                <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
-
-                
+                </div>                
             </div>
         </div>
     </div>
