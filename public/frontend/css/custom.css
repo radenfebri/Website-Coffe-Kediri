@@ -1,0 +1,19 @@
+//header
+.rata-kiri{
+  text-align: left !important;
+}
+
+//product
+.product-cart-wrap .product-img-action-wrap .product-img a img{
+  height: 440px;
+  width: 440px;
+  object-fit: cover;
+}
+
+@media (max-width:420px)
+{
+	.product-grid-4 .col-12{
+    width:50% !important;
+  }
+}
+
