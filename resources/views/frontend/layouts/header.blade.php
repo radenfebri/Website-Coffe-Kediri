@@ -107,14 +107,14 @@
                             </ul>
                         </div>
                     </div>
-                    @guest
+                    @guest                    
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
-                                <li><a class="{{ request()->is('/', '/*') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
-                                <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="about.html">About</a></li>
+                                <li><a class="{{ request()->is('/', 'home') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
+                                <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
                                 <li><a class="{{ request()->is('shop', 'shop/*', 'cart', 'favorit', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
-                                <li><a class="{{ request()->is('blog', 'blog/*') ? 'active' : ''}}" href="blog.html">Blog </a></li>                                    
+                                <li><a class="{{ request()->is('blog', 'blog/*') ? 'active' : ''}}" href="{{ route('blog') }}">Blog </a></li>                                    
                                 <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="contact.html">Contact</a></li>
                                 @guest
                                 
@@ -130,9 +130,9 @@
                                         
                                         @endif
                                         @endguest
-                                        <li><a class="" href="#">Order History</a></li>
-                                        <li><a class="" href="#">Setting</a></li>
-                                        <li><a class="" href="#">Change Password</a> </li>   
+                                        <li><a class="" href="{{ route('orderHistory') }}">Order History</a></li>
+                                        <li><a class="" href="{{ route('setting') }}">Setting</a></li>
+                                        <li><a class="" href="{{ route('changePassword') }}">Change Password</a> </li>   
                                         <li><a class="" href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
@@ -144,15 +144,15 @@
                         </nav>
                     </div>
                     
-                    @else
+                @else
                     <div class="main-menu navbar-login main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
-                                <li><a class="{{ request()->is('/', '/*') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
-                                <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="about.html">About</a></li>
+                                <li><a class="{{ request()->is('/', 'home') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
+                                <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
                                 <li><a class="{{ request()->is('shop', 'shop/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
-                                <li><a class="{{ request()->is('blog', 'blog/*') ? 'active' : ''}}" href="blog.html">Blog </a></li>                                    
-                                <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="contact.html">Contact</a></li>
+                                <li><a class="{{ request()->is('blog', 'blog/*') ? 'active' : ''}}" href="{{ route('blog') }}">Blog </a></li>                                    
+                                <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="{{ route('contact') }}">Contact</a></li>
                                 <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         @guest
@@ -164,9 +164,9 @@
                                                 
                                             @endif
                                         @endguest
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Setting</a></li>
-                                        <li><a href="#">Change Password</a> </li>   
+                                        <li><a href="{{ route('orderHistory') }}">Order History</a></li>
+                                        <li><a href="{{ route('setting') }}">Setting</a></li>
+                                        <li><a href="{{ route('changePassword') }}">Change Password</a> </li>   
                                         <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                             @csrf
@@ -185,13 +185,13 @@
                 <div class="header-action-right d-block d-lg-none">
                     <div class="header-action-2">
                         <div class="header-action-icon-2">
-                            <a href="shop-wishlist.php">
+                            <a href="{{ route('favorit.view') }}">
                                 <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-heart.svg">
                                 <span class="pro-count white">4</span>
                             </a>
                         </div>
                         <div class="header-action-icon-2">
-                            <a class="mini-cart-icon" href="cart.html">
+                            <a class="mini-cart-icon" href="{{ route('cart') }}">
                                 <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-cart.svg">
                                 <span class="pro-count white">0</span>
                             </a>
@@ -236,11 +236,6 @@
                     </a>
                     <div class="categori-dropdown-wrap categori-dropdown-active-small">
                         <ul>
-                            <li><a href="{{ route('shop') }}l"><i class="surfsidemedia-font-tshirt"></i>Men's Clothing</a></li>
-                            <li><a href="{{ route('shop') }}l"><i class="surfsidemedia-font-dress"></i>Women's Clothing</a></li>
-                            <li> <a href="{{ route('shop') }}"><i class="surfsidemedia-font-smartphone"></i> Cellphones</a></li>
-                            <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-desktop"></i>Computer & Office</a></li>
-                            <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-cpu"></i>Consumer Electronics</a></li>
                             <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
                             <li><a href="{{ route('shop') }}l"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
                             <li><a href="{{ route('shop') }}l"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a></li>
@@ -251,17 +246,30 @@
                 <!-- mobile menu start -->
                 <nav>
                     <ul class="mobile-menu">
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="index.html">Home</a></li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('home') }}">Home</a></li>
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('shop') }}">shop</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="blog.html">Blog</a></li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('blog') }}">Blog</a></li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('contact') }}">Contact</a></li>
+                        @guest
+                        @else
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">My Account</a>
                             <ul class="dropdown">
+                                @guest
+                                @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
                                 <li><a href="#">Dashboard</a></li>
-                                <li><a href="#">History Order</a></li>
-                                <li><a href="#">Setting</a></li>
-                                <li><a href="#">Change Password</a></li>
+                                @else
+                                @endif
+                                @endguest
+                                <li><a href="{{ route('orderHistory') }}">History Order</a></li>
+                                <li><a href="{{ route('setting') }}">Setting</a></li>
+                                <li><a href="{{ route('changePassword') }}">Change Password</a></li>
+                                <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>   
                             </ul>
                         </li>
+                        @endguest
                     </ul>
                 </nav>
                 <!-- mobile menu end -->
@@ -270,12 +278,18 @@
                 <div class="single-mobile-header-info mt-30">
                     <a href="contact.html"> Our location </a>
                 </div>
+                @guest
                 <div class="single-mobile-header-info">
-                    <a href="login.html">Log In </a>                        
+                    @if (Route::has('login'))
+                    <a href="{{ route('login') }}">Log In </a>    
+                    @endif                    
                 </div>
-                <div class="single-mobile-header-info">                        
-                    <a href="register.html">Sign Up</a>
+                <div class="single-mobile-header-info">
+                    @if (Route::has('register'))                        
+                    <a href="{{ route('register') }}">Sign Up</a>
+                    @endif
                 </div>
+                @endguest
                 <div class="single-mobile-header-info">
                     <a href="#">(+1) 0000-000-000 </a>
                 </div>
