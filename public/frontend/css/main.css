@@ -2125,10 +2125,6 @@ label {
   border: 0;
 }
 
-nav ul {
-  text-align: center;
-}
-
 .nav-tabs .nav-link {
   background-color: #eeeeee;
   font-size: 15px;
@@ -6190,7 +6186,6 @@ h6.post-title {
   position: relative;
   padding: 10px 0;
   border-bottom: 1px solid #f2f2f2;
-  text-align: left;
 }
 
 .mobile-header-wrapper-style .mobile-header-wrapper-inner .mobile-header-content-area .mobile-menu-wrap nav .mobile-menu li:last-child {
@@ -6507,14 +6502,6 @@ h6.post-title {
 
 .header-style-3 .main-categori-wrap > a {
   color: #494949;
-}
-
-.main-menu{
-  margin-left: 12rem;
-}
-
-.navbar-login{
-  margin-left: 8rem;
 }
 
 .header-style-3 .main-menu.main-menu-light-white > nav > ul > li > a {
