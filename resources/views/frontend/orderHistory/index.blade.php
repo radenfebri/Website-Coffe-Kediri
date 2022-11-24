@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <section class="mt-50 mb-50">
+    <section class="mt-50 mb-50 order-history-desktop">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -56,7 +56,10 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-    @endsection
+    </section>
+    <section class="order-history-mobile">
+        asdasd
+    </section>
+</main>
+@endsection
     

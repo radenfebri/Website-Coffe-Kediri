@@ -21,6 +21,11 @@
     width: 100% !important;
   }
 
+  /* order history */
+  .order-history-desktop{
+    display: none;
+  }
+
 }
 
 @media (max-width:420px)
@@ -30,5 +35,10 @@
   }
   .form-setting input{
     width: 100% !important;
+  }
+
+  /* order history */
+  .order-history-desktop{
+    display: none;
   }
 }
