@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
     @include('frontend.layouts.includes.meta')
+    
     <title>@yield('title')</title>
+    
     @include('frontend.layouts.includes.style')
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    @vite([])
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+    @vite([])
 </head>
 <body>
     @include('frontend.layouts.header')

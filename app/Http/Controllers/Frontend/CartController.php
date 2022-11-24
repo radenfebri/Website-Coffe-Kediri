@@ -63,19 +63,16 @@ class CartController extends Controller
     public function deleteproduk(Request $request)
     {
 
-        // dd($request);
         if (Auth::check()) {
             $prod_id = $request->input('prod_id');
             if (Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()) {
                 $keranjang = Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $keranjang->delete();
 
-                // return response()->json(['status' => 'success', 'message' => "Produk berhasil dihapus dari keranjang"]);
-                return back();
+                return response()->json(['status' => 'success', 'message' => "Produk berhasil dihapus dari keranjang"]);
             }
         } else {
-            // return response()->json(['status' => 'success', 'message' => "Login terlebih dahulu"]);
-            return back();
+            return response()->json(['status' => 'success', 'message' => "Login terlebih dahulu"]);
         }
     }
 
@@ -92,8 +89,8 @@ class CartController extends Controller
                 $keranjang = Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $keranjang->prod_qty = $produk_qty;
                 $keranjang->update();
-                // return response()->json(['status' => "Quantity Update"]);
-                return back();
+                return response()->json(['status' => "Quantity Update"]);
+                // return back();
             }
         }
     }

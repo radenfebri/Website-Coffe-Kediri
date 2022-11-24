@@ -1,6 +1,6 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Keranjang')
+@section('title', 'Favorit')
 
 @section('content')
 <main class="main">
@@ -9,7 +9,7 @@
             <div class="breadcrumb">
                 <a href="index.html" rel="nofollow">Home</a>
                 <span></span> Shop
-                <span></span> Your Cart
+                <span></span> Favorit
             </div>
         </div>
     </div>
@@ -35,7 +35,7 @@
                                 @foreach ($favorit as $item)
                                 <tr class="produk_data">
                                     <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                                    
+                                    <input type="hidden" class="form-control qty-input" value="1">
                                     <td class="image product-thumbnail">
                                         @if ($item->produks->cover == null)
                                             <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
@@ -81,6 +81,7 @@
                 <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                 
                 
+                </div>                
             </div>
         </div>
     </div>

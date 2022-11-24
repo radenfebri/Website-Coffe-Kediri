@@ -15,10 +15,16 @@ use Illuminate\Support\Facades\Route;
 
 //frontend
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\AboutController;
+use App\Http\Controllers\Frontend\BlogController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\ShopController;
+use App\Http\Controllers\Frontend\SettingController;
 use App\Http\Controllers\Frontend\DetailController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Frontend\ChangePasswordController;
+use App\Http\Controllers\Frontend\OrderHistoryController;
 
 
 /*
@@ -35,6 +41,9 @@ use App\Http\Controllers\Frontend\CheckoutController;
 // ROUTE FRONTEND
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
+Route::get('about', [AboutController::class, 'index'])->name('about');
+Route::get('blog', [BlogController::class, 'index'])->name('blog');
+Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('detail.produk');
 
 // ADD TO CART
@@ -67,6 +76,17 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
     
     // CHECKOUT
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
+    
+    // CHANGE PASSWORD
+    Route::get('change-password', [ChangePasswordController::class, 'index'])->name('changePassword');
+    Route::post('update-password', [ChangePasswordController::class, 'updatepassword'])->name('updatepassword');
+
+    // SETTING DATA
+    Route::get('setting', [SettingController::class, 'index'])->name('setting');
+    Route::post('update-data', [SettingController::class, 'updatedata'])->name('updatedata');
+
+    // ORDER HISTORY
+    Route::get('order-history', [OrderHistoryController::class, 'index'])->name('orderHistory');
 });
 
 // SINGLE SIGN ON GOOGLE
