@@ -14,22 +14,35 @@
     </div>
     <div class="form-setting">
         <div class="container">
-            <form class="form-setting">
+            <form class="form-setting" action="{{ route('updatepassword') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label class="form-label">Password Lama</label>
-                    <input type="password" class="form-control" id="password_lama">
+                    <label class="form-label">Password Lama <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control @error('current_password') is-invalid @enderror" name="current_password" placeholder="Password Lama">
+                    @error('current_password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
+
                 <div class="mb-3">
-                    <label class="form-label">Password Baru</label>
-                    <input type="password" class="form-control" id="password_baru">
+                    <label class="form-label">Password Baru <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password Baru">
+                    @error('password')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
                 </div>
+
                 <div class="mb-3">
-                    <label class="form-label">Confirm Password</label>
-                    <input type="password" class="form-control" id="password_confirm">
+                    <label class="form-label">Confirm Password <span class="text-danger">*</span></label>
+                    <input type="password" class="form-control @error('password_cofirmation') is-invalid @enderror"  name="password_confirmation" placeholder="Password Konfirmasi">
                 </div>
+
                 <button type="submit" class="btn-default">Apply</button>
-              </form>
+            </form>
         </div>
     </div>
 </main>

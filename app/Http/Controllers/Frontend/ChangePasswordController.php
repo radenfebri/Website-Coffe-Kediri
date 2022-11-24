@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class ChangePasswordController extends Controller
@@ -28,6 +29,9 @@ class ChangePasswordController extends Controller
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->password)
         ]);
+
+        Auth::logout();
+        return redirect('/login');
 
         return back()->with('status', 'Password berhasil diubah');
     }

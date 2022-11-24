@@ -19,5 +19,29 @@
     @include('frontend.layouts.footer')
     
     @include('frontend.layouts.includes.script')
+
+    @if (session('status'))
+    <script>
+        Swal.fire({
+            title: "Berhasil",
+            icon: "success",
+            timer: 5000,
+            confirmButtonColor: "#f35a38",
+            confirmButtonText: "Oke",
+            text: '{{ session('status') }}',
+        })
+    </script>
+    @elseif (session('error'))
+    <script>
+        Swal.fire({
+            title: "Gagal",
+            icon: "error",
+            timer: 5000,
+            confirmButtonColor: "#f35a38",
+            confirmButtonText: "Oke",
+            text: '{{ session('error') }}',
+        })
+    </script>
+    @endif
 </body>
 </html>

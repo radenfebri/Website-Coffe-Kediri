@@ -77,14 +77,17 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
     // CHECKOUT
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
     
+    // ROUTE PLACE ORDER
+    Route::post('place-order', [CheckoutController::class, 'placeorder'])->name('placeorder');
+    
     // CHANGE PASSWORD
     Route::get('change-password', [ChangePasswordController::class, 'index'])->name('changePassword');
     Route::post('update-password', [ChangePasswordController::class, 'updatepassword'])->name('updatepassword');
-
+    
     // SETTING DATA
     Route::get('setting', [SettingController::class, 'index'])->name('setting');
     Route::post('update-data', [SettingController::class, 'updatedata'])->name('updatedata');
-
+    
     // ORDER HISTORY
     Route::get('order-history', [OrderHistoryController::class, 'index'])->name('orderHistory');
 });
