@@ -42,7 +42,6 @@ use App\Http\Controllers\Frontend\OrderHistoryController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
 Route::get('about', [AboutController::class, 'index'])->name('about');
-Route::get('blog', [BlogController::class, 'index'])->name('blog');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('detail.produk');
 

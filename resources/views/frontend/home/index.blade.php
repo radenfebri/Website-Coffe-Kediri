@@ -198,7 +198,7 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn hover-up" ><i class="fi-rs-eye"></i></a>
-                                        <a href="#" aria-label="Tambah ke Favorit" class="action-btn hover-up"><i class="fi-rs-heart"></i></a>
+                                        <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn hover-up addToWishlist"><i class="fi-rs-heart"></i></a>
                                     </div>
                                     <div class="product-badges product-badges-position product-badges-mrg">
                                         @if ($item->popular == null)
@@ -574,16 +574,16 @@
             <div class="carausel-6-columns-cover position-relative">
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-arrows"></div>
                 <div class="carausel-6-columns" id="carausel-6-columns">
-
+                    
                     @foreach ($kategoriproduk as $item)
-                        <div class="card-1">
-                            <figure class=" img-hover-scale overflow-hidden">
-                                <a href=""> <img src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
-                            </figure>
-                            <h5><a href="">{{ $item->name }}</a></h5>
-                        </div>
+                    <div class="card-1">
+                        <figure class=" img-hover-scale overflow-hidden">
+                            <a href=""> <img src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
+                        </figure>
+                        <h5><a href="">{{ $item->name }}</a></h5>
+                    </div>
                     @endforeach
-
+                    
                 </div>
             </div>
         </div>
@@ -639,8 +639,8 @@
                     Data Produk Masih Kosong
                     @else
                     @foreach ($produks as $item)
-                    <div class="product-cart-wrap small hover-up">
-                        <input type="hidden" value="{{ $item->id }}" class="prod_id" id="">
+                    <div class="product-cart-wrap small hover-up produk_data">
+                        <input type="hidden" value="{{ $item->id }}" class="prod_id">
                         <div class="product-img-action-wrap">
                             <div class="product-img product-img-zoom">
                                 <a href="{{ route('detail.produk', $item->slug) }}">
@@ -653,7 +653,7 @@
                             </div>
                             <div class="product-action-1">
                                 <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn hover-up" ><i class="fi-rs-eye"></i></a>
-                                <a href="#" aria-label="Tambah ke Favorit" class="action-btn hover-up"><i class="fi-rs-heart"></i></a>
+                                <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn hover-up addToWishlist"><i class="fi-rs-heart"></i></a>
                             </div>
                             <div class="product-badges product-badges-position product-badges-mrg">
                                 @if ($item->popular == null)
@@ -688,7 +688,7 @@
     </section>
     
     {{-- BRAND --}}
-    {{-- <section class="section-padding">
+    <section class="section-padding">
         <div class="container">
             <h3 class="section-title mb-20 wow fadeIn animated"><span>Featured</span> Brands</h3>
             <div class="carausel-6-columns-cover position-relative wow fadeIn animated">
@@ -718,7 +718,7 @@
                 </div>
             </div>
         </div>
-    </section> --}}
+    </section>
     
 </main>
 @endsection
