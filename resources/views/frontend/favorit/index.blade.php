@@ -24,6 +24,7 @@
                                     <th scope="col">Gambar</th>
                                     <th scope="col">Nama</th>
                                     <th scope="col">Harga</th>
+                                    <th scope="col">Keranjang</th>
                                     <th scope="col">Hapus</th>
                                 </tr>
                             </thead>
@@ -34,23 +35,29 @@
                                 @foreach ($favorit as $item)
                                 <tr class="produk_data">
                                     <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
+                                    
                                     <td class="image product-thumbnail">
                                         @if ($item->produks->cover == null)
-                                        <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
+                                            <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
                                         @else
-                                        <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
+                                            <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
                                         @endif
                                     </td>
+
                                     <td class="product-des product-name">
                                         <h5 class="product-name"><a href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a></h5>
                                         <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 5, '...') }}</p>
                                     </td>
+
                                     @if ($item->produks->selling_price == null)
-                                    <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->original_price) }}</span></td>
+                                        <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->original_price) }}</span></td>
                                     @else
-                                    <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->selling_price) }}</span></td>
+                                        <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->selling_price) }}</span></td>
                                     @endif
                                     
+                                    <td>
+                                        <a href="{{ route('addcart') }}" class="addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
+                                    </td>
                                     <td>
                                         <a href="{{ route('deletefavorit') }}" class="delete-favorit-item"><i class="fi-rs-trash"></i></a>
                                     </td>
@@ -70,9 +77,9 @@
                         </tbody>
                     </table>
                 </div>
-
+                
                 <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
-
+                
                 
             </div>
         </div>
