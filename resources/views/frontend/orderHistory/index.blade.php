@@ -30,14 +30,14 @@
                             <tbody>
                                 @foreach ($orders as $item)
                                 <tr>
-                                    <td class="image product-thumbnail"><span>#{{ $item->tracking_no }}</span></td>
+                                    <td class="image product-thumbnail"><a href="#" class="order-history-link"><span>#{{ $item->tracking_no }}</span></a></td>
                                     <td class="product-des product-name">
-                                        <span>{{ $item->metode }}</span>
+                                        <a href="" class="order-history-link"><span>{{ $item->metode }}</span></a>
                                     </td>
                                     <td class="text-right" data-title="Cart">
-                                        <span>{{ date('d F Y',strtotime($item->created_at)) }}</span>
+                                        <a href="" class="order-history-link"><span>{{ date('d F Y',strtotime($item->created_at)) }}</span></a>
                                     </td>
-                                    <td class="price" data-title="Price"><span>Rp. {{ number_format($item->total_price) }}</span></td>
+                                    <td class="price" data-title="Price"><a href="" class="order-history-link"><span>Rp. {{ number_format($item->total_price) }}</span></a></td>
                                     <td class="text-right" data-title="Cart">
                                         @if ($item->status == 0)
                                         <span style="color: rgb(255, 0, 0)">Belum Bayar</span>
@@ -58,7 +58,44 @@
             </div>
     </section>
     <section class="order-history-mobile">
-        asdasd
+        <div class="container">
+        @foreach ($orders as $item)
+        <div class="layer2">
+            <div class="order-history">
+                <div class="text-order-history">
+                    <p>Kode Order</p>
+                    <a href="#" class="order-history-link"><span>#{{ $item->tracking_no }}</span></a>
+                </div>
+                <div class="text-order-history">
+                    <p>Metode Bayar</p>
+                    <a href="" class="order-history-link"><span>{{ $item->metode }}</span></a>
+                </div>
+                <div class="text-order-history">
+                    <p>Tanggal Pesanan</p>
+                    <a href="" class="order-history-link"><span>{{ date('d F Y',strtotime($item->created_at)) }}</span></a>
+                </div>
+                <div class="text-order-history">
+                    <p>Total Bayar</p>
+                    <a href="" class="order-history-link"><span>Rp. {{ number_format($item->total_price) }}</span></a>
+                </div>
+                <div class="text-order-history">
+                    <p>Status</p>
+                    <p>
+                        @if ($item->status == 0)
+                        <span style="color: rgb(255, 0, 0)">Belum Bayar</span>
+                        @elseif($item->status == 1)
+                        <span style="color: rgb(8, 3, 249)">Proses Packing</span>
+                        @elseif($item->status == 2)
+                        <span style="color: rgb(8, 3, 249)">Proses Kirim</span>
+                        @elseif($item->status == 3)
+                        <span style="color: green">Selesai</span>
+                        @endif
+                    </p>
+                </div>
+            </div>
+        </div>
+        @endforeach
+    </div>
     </section>
 </main>
 @endsection

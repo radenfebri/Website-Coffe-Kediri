@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <section class="mt-50 mb-50 produk favorit">
+    <section class="mt-50 mb-50 produk favorit favorit-desktop">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -71,20 +71,52 @@
                                     </td>
                                 </tr>
                                 @endif
-                                
-                                
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                
                 <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
-                
-                
                 </div>                
             </div>
         </div>
-    </div>
-</section>
+        </div>
+    </section>
+    <section class="favorit-mobile">
+        <div class="container">
+        @if ($favorit->count() > 0)
+        @foreach ($favorit as $item)
+            <div class="layer-favorit">
+                <div class="favorit-fill">
+                    <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
+                    <input type="hidden" class="form-control qty-input" value="1">
+                    <div class="favorit-img"> 
+                        @if ($item->produks->cover == null)
+                            <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
+                        @else
+                            <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
+                        @endif
+                    </div>
+                    <div class="text-favorit">
+                        <a href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a>
+                        <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 5, '...') }}</p>
+                        <p>Rp. {{ number_format($item->produks->selling_price) }}</p>
+                    </div>
+                    <div class="icon-favorit-cart">
+                        <a href="{{ route('addcart') }}" class="addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
+                        <a href="{{ route('deletefavorit') }}" class="delete-favorit-item"><i class="fi-rs-trash"></i></a>
+                    </div>
+                    <div class="icon-favorit-delete">
+                        
+                    </div>
+                </div>
+            </div>
+            @endforeach
+            @else
+                <h3 class="text-center">
+                    Favorit anda masih Kosong
+                </h3>
+            @endif
+        </div>
+    </section>
 </main>
 @endsection

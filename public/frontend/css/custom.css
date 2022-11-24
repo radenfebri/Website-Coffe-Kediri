@@ -1,9 +1,9 @@
 .main-menu{
-  margin-left: 200px;
+  margin-left: 250px;
 }
 
 .navbar-login{
-  margin-left: 130px;
+  margin-left: 180px;
 }
 
 /* setting page */
@@ -16,19 +16,84 @@
   width: 50%;
 }
 
+.form-setting textarea{
+  width: 50%;
+}
+
+/* order history */
+.order-history-link{
+  text-decoration:none !important;
+  color: black !important;
+}
+
+.order-history-mobile{
+  display: none;
+}
+
+/* favorit */
+.favorit-mobile{
+  display:none;
+}
+
 @media (max-width: 980px) {
   .form-setting input{
     width: 100% !important;
   }
 
+  .form-setting textarea{
+    width: 100% !important;
+  }
+
   /* order history */
   .order-history-desktop{
+    display: none !important;
+  }
+
+  .order-history-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+  }
+
+  .layer2 {
+    margin: 10px 0;
+    background-color: #f4f5f9;
+    width: 95%;
+    border-radius: 20px;
+
+  }
+  .order-history,
+  .detail-pembayaran {
+    padding: 20px;
+  }
+  .text-order-history {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .detail-pembayaran h3 {
+    margin-bottom: 30px;
+  }
+  
+  .garis {
+    padding: 1px;
+    background-color: black;
+    display: flex;
+  }
+
+  /* favorit */
+  .favorit-desktop{
+    display: flex;
+  }
+
+  .favorit-mobile{
     display: none;
   }
 
 }
 
-@media (max-width:420px)
+@media (max-width:450px)
 {
 	.product-grid-4 .col-12{
     width:50% !important;
@@ -37,8 +102,89 @@
     width: 100% !important;
   }
 
+  .form-setting textarea{
+    width: 100% !important;
+  }
+
   /* order history */
   .order-history-desktop{
+    display: none !important;
+  }
+
+  .layer2 {
+    margin : 10px;
+    background-color: #f4f5f9;
+    width: 95%;
+    border-radius: 20px;
+
+  }
+  .order-history,
+  .detail-pembayaran {
+    padding: 20px;
+  }
+  .text-order-history {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .detail-pembayaran h3 {
+    margin-bottom: 30px;
+  } */
+  
+  .garis {
+    padding: 1px;
+    background-color: black;
+    display: flex;
+  }
+
+  /* favorit */
+  .favorit-desktop{
     display: none;
   }
+
+  .favorit-mobile{
+    display: flex;
+  }
+
+  .layer-favorit{
+    margin : 10px;
+    background-color: #f4f5f9;
+    width: 95%;
+    height: 140px;
+    border-radius: 20px;
+  }
+
+  .favorit-fill{
+    padding: 5px 5px;
+    display: flex;
+  }
+
+  .favorit-img{
+    margin: 10px;
+  }
+
+  .favorit-img img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  .text-favorit{
+    margin-top: 20px;
+    width: 130px;
+  }
+
+  .text-favorit a{
+    font-size: 20px !important;
+  }
+
+  .icon-favorit-cart{
+    font-size: 20px;
+    margin-top: 100px;
+    padding-left: 0px;
+    background-color: red;
+  }
+
+
 }
