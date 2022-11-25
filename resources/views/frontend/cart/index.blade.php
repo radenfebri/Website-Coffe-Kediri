@@ -150,7 +150,7 @@
             <div class="container">            
                 @if ($produk->count() > 0)
                     @foreach ($produk as $item)
-                    <div class="layer-favorit produk_data">
+                    <div class="layer-cart produk_data">
                         <div class="favorit-fill">
                             <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
                             <div class="favorit-img"> 
@@ -172,7 +172,7 @@
                                     @endif
                                 </p>
                             </div>
-                            <div class="icon-favorit-cart">
+                            <div class="icon-cart-delete">
                                 <a href="{{ route('deletecart') }}" class="delete-cart-item"><i class="fi-rs-trash"></i></a> 
                             </div>
                         </div>

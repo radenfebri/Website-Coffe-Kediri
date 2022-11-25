@@ -7,7 +7,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow">Home</a>
+                <a href="{{ route('home') }}" rel="nofollow">Home</a>
                 <span></span> Shop
                 <span></span> Favorit
             </div>
@@ -106,19 +106,22 @@
                         <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a>
                         <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 5, '...') }}</p>
                         <p>Rp. {{ number_format($item->produks->selling_price) }}</p>
-                        
+                        <div>
+                            <div>
+                                <a href="{{ route('deletefavorit') }}" class="delete-favorit-item">Hapus</i></a>
+                            </div>
+
+                        </div>
                     </div>
                     <div class="icon-favorit-cart">
-                        <a href="{{ route('addcart') }}" class="addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
-                    </div>
-                    <div class="icon-favorit-delete">
-                        <a href="{{ route('deletefavorit') }}" class="delete-favorit-item"><i class="fi-rs-trash"></i></a>
+                        <div>
+                            <a href="{{ route('addcart') }}" class="addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
             @endforeach
             @else
-            <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
             
             <h3 class="text-center mt-50 mb-50">
                 Favorit anda masih Kosong

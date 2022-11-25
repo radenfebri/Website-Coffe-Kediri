@@ -123,9 +123,9 @@
                                     <div class="product-img product-img-zoom">
                                         <a href="{{ route('detail.produk', $item->slug ) }}">
                                             @if ($item->cover == null)
-                                            <img class="default-img" src="{{ '/frontend/imgs/shop/product-1-1.jpg' }}" loading="lazy" alt="{{ $item->name }}">                                                
+                                            <img class="default-img produk-img" src="{{ '/frontend/imgs/shop/product-1-1.jpg' }}" loading="lazy" alt="{{ $item->name }}">                                                
                                             @else
-                                            <img class="default-img" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                            <img class="default-img produk-img" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
                                             @endif
                                         </a>
                                     </div>
@@ -645,9 +645,9 @@
                             <div class="product-img product-img-zoom">
                                 <a href="{{ route('detail.produk', $item->slug) }}">
                                     @if ($item->cover == null)
-                                    <img class="default-img" src="{{ '/frontend/imgs/shop/product-2-1.jpg' }}" alt="{{ $item->name }}">
+                                    <img class="default-img produk-img" src="{{ '/frontend/imgs/shop/product-2-1.jpg' }}" alt="{{ $item->name }}">
                                     @else
-                                    <img class="default-img" src="{{ asset('storage/'. $item->cover ) }}" alt="{{ $item->name }}">
+                                    <img class="default-img produk-img" src="{{ asset('storage/'. $item->cover ) }}" alt="{{ $item->name }}">
                                     @endif
                                 </a>
                             </div>
