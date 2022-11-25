@@ -22,6 +22,7 @@ use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\KategoriController;
 use App\Http\Controllers\Frontend\SettingController;
 use App\Http\Controllers\Frontend\DetailController;
+use App\Http\Controllers\Frontend\PembayaranController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ChangePasswordController;
@@ -44,6 +45,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
 Route::get('kategori', [KategoriController::class, 'index'])->name('kategori');
 Route::get('about', [AboutController::class, 'index'])->name('about');
+Route::get('pembayaran', [PembayaranController::class, 'index'])->name('pembayaran');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('detail.produk');
 
