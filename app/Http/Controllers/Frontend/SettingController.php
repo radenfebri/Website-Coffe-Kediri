@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\KategoriProduk;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -10,7 +11,9 @@ class SettingController extends Controller
 {
     public function index()
     {
-        return view('frontend.setting.index');
+        $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
+
+        return view('frontend.setting.index', compact('kategoriproduk_nav'));
     }
 
     public function updatedata(Request $request)

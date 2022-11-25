@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\KategoriProduk;
 use App\Models\Keranjang;
 use App\Models\Produk;
 use Illuminate\Http\Request;
@@ -13,8 +14,9 @@ class CartController extends Controller
     public function index()
     {
         $produk = Keranjang::where('user_id', Auth::id())->get();
+        $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
 
-        return view('frontend.cart.index', compact('produk'));
+        return view('frontend.cart.index', compact('produk', 'kategoriproduk_nav'));
     }
 
 

@@ -1,10 +1,10 @@
 <?php
 
+// BACKEND
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Backend\AssignPermissionController;
 use App\Http\Controllers\Backend\AssignRoleController;
 use App\Http\Controllers\Backend\DashboardController;
-use App\Http\Controllers\Backend\FavoritController;
 use App\Http\Controllers\Backend\KategoriProdukController;
 use App\Http\Controllers\Backend\ManajemenUsersController;
 use App\Http\Controllers\Backend\PermissionController;
@@ -13,10 +13,9 @@ use App\Http\Controllers\Backend\RoleController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-//frontend
+//FRONTEND
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\AboutController;
-use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\KategoriController;
@@ -26,19 +25,10 @@ use App\Http\Controllers\Frontend\PembayaranController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ChangePasswordController;
+use App\Http\Controllers\Frontend\FavoritController;
 use App\Http\Controllers\Frontend\OrderHistoryController;
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 // ROUTE FRONTEND
 Route::get('/', [HomeController::class, 'index'])->name('home');

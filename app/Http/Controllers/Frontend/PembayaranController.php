@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 class PembayaranController extends Controller
 {
-    public function __construct()
-    {
-    }
-
     public function index()
     {
         return view('frontend.pembayaran.index');

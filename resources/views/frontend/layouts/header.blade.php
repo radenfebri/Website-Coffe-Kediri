@@ -88,22 +88,13 @@
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
                         <a class="categori-button-active" href="#">
-                            <span class="fi-rs-apps"></span> Browse Categories
+                            <span class="fi-rs-apps"></span> Kategori Produk
                         </a>
                         <div class="categori-dropdown-wrap categori-dropdown-active-large">
                             <ul>
-                                <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
-                                <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
-                                <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a></li>
-                                <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
-                                <li>
-                                    <ul class="more_slie_open" style="display: none;">
-                                        <li><a href="{{route('shop') }}"><i class="surfsidemedia-font-desktop"></i>Beauty, Health</a></li>
-                                        <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-cpu"></i>Bags and Shoes</a></li>
-                                        <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-diamond"></i>Consumer Electronics</a></li>
-                                        <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-home"></i>Automobiles & Motorcycles</a></li>
-                                    </ul>
-                                </li>
+                                @foreach ($kategoriproduk_nav as $item)
+                                    <li><a href="#"><i class="surfsidemedia-font-home"></i>{{ $item->name }}</a></li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -149,7 +140,7 @@
                             <ul>
                                 <li><a class="{{ request()->is('/', '') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
                                 <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
-                                <li><a class="{{ request()->is('shop', 'shop/*', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
+                                <li><a class="{{ request()->is('shop', 'shop/*', 'detail-produk/*', 'checkout', 'favorit', 'cart') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
                                 <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="{{ route('contact') }}">Contact</a></li>
                                 <li><a class="{{ request()->is('order-history', 'setting', 'change-password') ? 'active' : ''}}" href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
@@ -238,14 +229,13 @@
             <div class="mobile-menu-wrap mobile-header-border">
                 <div class="main-categori-wrap mobile-header-border">
                     <a class="categori-button-active-2" href="#">
-                        <span class="fi-rs-apps"></span> Browse Categories
+                        <span class="fi-rs-apps"></span> Kategori Produk
                     </a>
                     <div class="categori-dropdown-wrap categori-dropdown-active-small">
                         <ul>
-                            <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-home"></i>Home & Garden</a></li>
-                            <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-high-heels"></i>Shoes</a></li>
-                            <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-teddy-bear"></i>Mother & Kids</a></li>
-                            <li><a href="{{ route('shop') }}"><i class="surfsidemedia-font-kite"></i>Outdoor fun</a></li>
+                            @foreach ($kategoriproduk_nav as $item)
+                                <li><a href="#"><i class="surfsidemedia-font-home"></i>{{ $item->name }}</a></li>
+                            @endforeach
                         </ul>
                     </div>
                 </div>
