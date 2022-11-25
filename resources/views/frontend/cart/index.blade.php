@@ -13,7 +13,7 @@
             </div>
         </div>
     </div>
-    <section class="mt-50 mb-50 produk cartItem">
+    <section class="mt-50 mb-50 produk cartItem cart-desktop">
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -137,7 +137,77 @@
                 </div>
             </div>
         </div>
-    </div>
-</section>
+        </div>
+    </section>
+    <section class="favorit-mobile">
+        <div class="container">            
+            <div class="layer-favorit">
+                <div class="favorit-fill">
+                    <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
+                    <input type="hidden" class="form-control qty-input" value="1">
+                    <div class="favorit-img"> 
+                        @if ($item->produks->cover == null)
+                            <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
+                        @else
+                            <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
+                        @endif
+                    </div>
+                    <div class="text-favorit">
+                        <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a>
+                        <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity" min="1" max="100" value="{{ $item->prod_qty }}">
+                        <p class="text-harga">
+                            @if ($item->produks->selling_price == null)
+                            <span>Rp. {{ number_format($item->produks->original_price * $item->prod_qty) }}</span>
+                            @else
+                            <span>Rp. {{ number_format($item->produks->selling_price * $item->prod_qty) }}</span>
+                            @endif
+                        </p>
+                    </div>
+                    <div class="icon-favorit-cart">
+                        <a href="{{ route('deletecart') }}" class="delete-cart-item"><i class="fi-rs-trash"></i></a> 
+                    </div>
+                </div>
+            </div>
+            <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+                <div class="row mb-50">
+                    
+
+                        @if ($produk->count() > 0)
+                            <div class="col-lg-6 col-md-12">
+                                <div class="border p-md-4 p-30 border-radius cart-totals">
+                                    <div class="heading_s1 mb-3">
+                                        <h4>Cart Totals</h4>
+                                    </div>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="cart_total_label">Cart Subtotal</td>
+                                                    <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">Rp. {{ number_format($total) }}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="cart_total_label">Shipping</td>
+                                                    <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="cart_total_label">Total</td>
+                                                    <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">Rp. {{ number_format($total) }}</span></strong></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                        <a href="{{ route('checkout') }}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>       
+                                </div>
+                            </div>
+                        @else
+                                    
+                        @endif
+                        
+                </div>
+                {{-- <h3 class="text-center">
+                    Favorit anda masih Kosong
+                </h3> --}}
+        </div>
+    </section>
 </main>
 @endsection

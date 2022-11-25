@@ -1,6 +1,6 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Shop')
+@section('title', 'Kategori')
 
 @section('content')
 <main class="main">
@@ -9,6 +9,7 @@
             <div class="breadcrumb">
                 <a href="}}" rel="nofollow">Home</a>
                 <span></span> Shop
+                <span></span> Kategori
             </div>
         </div>
     </div>

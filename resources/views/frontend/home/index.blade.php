@@ -578,7 +578,7 @@
                     @foreach ($kategoriproduk as $item)
                     <div class="card-1">
                         <figure class=" img-hover-scale overflow-hidden">
-                            <a href=""> <img src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
+                            <a href=""> <img class="kategori-img" src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
                         </figure>
                         <h5><a href="">{{ $item->name }}</a></h5>
                     </div>

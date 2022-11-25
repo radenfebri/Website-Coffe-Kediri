@@ -1,9 +1,9 @@
 .main-menu{
-  margin-left: 200px;
+  margin-left: 250px;
 }
 
 .navbar-login{
-  margin-left: 130px;
+  margin-left: 180px;
 }
 
 /* setting page */
@@ -16,14 +16,135 @@
   width: 50%;
 }
 
+.form-setting textarea{
+  width: 50%;
+}
+
+/* order history */
+.order-history-link{
+  text-decoration:none !important;
+  color: black !important;
+}
+
+.order-history-mobile{
+  display: none;
+}
+
+/* favorit */
+.favorit-mobile{
+  display:none;
+}
+
+/* kategori */
+.kategori-img{
+  height: 144px !important;
+  object-fit: contain;
+}
+
+/* pembayaran */
+.layer1 {
+  background-color: #f4f5f9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+.layer1 .title {
+  text-align: center;
+  padding-top: 30px;
+}
+.layer2 {
+  background-color: white;
+  width: 95%;
+  border-radius: 20px;
+  margin: 20px 20px;
+  border: 2px solid black;
+}
+.text-pembayaran,
+.detail-pembayaran {
+  padding: 20px;
+}
+.pembayaran-text {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.detail-pembayaran h3 {
+  margin-bottom: 30px;
+}
+
+.layer button{
+  display: inline-block;
+  align-items: center;
+}
+
+
 @media (max-width: 980px) {
   .form-setting input{
     width: 100% !important;
   }
 
+  .form-setting textarea{
+    width: 100% !important;
+  }
+
+  /* order history */
+  .order-history-desktop{
+    display: none !important;
+  }
+
+  .order-history-mobile{
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+  }
+
+  .layer2 {
+    margin: 10px 0;
+    background-color: #f4f5f9;
+    width: 95%;
+    border-radius: 20px;
+
+  }
+  .order-history,
+  .detail-pembayaran {
+    padding: 20px;
+  }
+  .text-order-history {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .detail-pembayaran h3 {
+    margin-bottom: 30px;
+  }
+  
+  .garis {
+    padding: 1px;
+    background-color: black;
+    display: flex;
+  }
+
+  /* favorit */
+  .favorit-desktop{
+    display: flex;
+  }
+
+  .favorit-mobile{
+    display: none;
+  }
+
+  /* pembayaran */
+  .layer2 {
+    background-color: white;
+  }
+
 }
 
-@media (max-width:420px)
+@media (max-width:450px)
 {
 	.product-grid-4 .col-12{
     width:50% !important;
@@ -31,4 +152,122 @@
   .form-setting input{
     width: 100% !important;
   }
+
+  .form-setting textarea{
+    width: 100% !important;
+  }
+
+  /* order history */
+  .order-history-desktop{
+    display: none !important;
+  }
+
+  .layer2 {
+    margin : 10px;
+    background-color: #f4f5f9;
+    width: 95%;
+    border-radius: 20px;
+
+  }
+  .order-history,
+  .detail-pembayaran {
+    padding: 20px;
+  }
+  .text-order-history {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+  }
+  
+  .detail-pembayaran h3 {
+    margin-bottom: 30px;
+  } */
+  
+  .garis {
+    padding: 1px;
+    background-color: black;
+    display: flex;
+  }
+
+  /* favorit */
+  .favorit-desktop{
+    display: none;
+  }
+
+  .favorit-mobile{
+    display: flex;
+  }
+
+  .layer-favorit{
+    margin : 10px;
+    background-color: #f4f5f9;
+    width: 95%;
+    height: 140px;
+    border-radius: 20px;
+  }
+
+  .favorit-fill{
+    padding: 5px 5px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .favorit-img{
+    margin: 10px;
+  }
+
+  .favorit-img img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  .text-favorit{
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    width: 130px;
+  }
+
+  .text-favorit .judul-favorit{
+    font-size: 20px !important;
+  }
+
+  .icon-favorit-cart{
+    font-size: 30px;
+    margin-top: 100px;
+    width: 20%;
+    text-align: center;
+  }
+
+  /* cart */
+  .cart-desktop{
+    display: none;
+  }
+
+  .text-favorit input{
+    width: 70px;
+  }
+
+  .text-favorit .text-harga{
+    position: relative;
+    top: 8px;
+  }
+
+  .favorit-fill .icon-cart-delete{
+    display: flex;
+    position: relative;
+    height: cover;
+    width: cover;
+    font-size: 30px;
+    margin-top: 50%;
+    align-items: center;
+    bottom: 130px;
+  }
+
+  /* pembayaran */
+  .layer2 {
+    background-color: white;
+  }
+
 }
