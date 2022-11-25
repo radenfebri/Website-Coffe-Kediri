@@ -13,21 +13,26 @@
             </div>
         </div>
     </div>
+    {{-- TAMPILAN DESKTOP --}}
     <section class="mt-50 mb-50 produk favorit favorit-desktop">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="table-responsive">
                         <table class="table shopping-summery text-center clean">
-                            <thead>
-                                <tr class="main-heading">
-                                    <th scope="col">Gambar</th>
-                                    <th scope="col">Nama</th>
-                                    <th scope="col">Harga</th>
-                                    <th scope="col">Keranjang</th>
-                                    <th scope="col">Hapus</th>
-                                </tr>
-                            </thead>
+                            @if ($favorit->count() > 0)
+                                <thead>
+                                    <tr class="main-heading">
+                                        <th scope="col">Gambar</th>
+                                        <th scope="col">Nama</th>
+                                        <th scope="col">Harga</th>
+                                        <th scope="col">Keranjang</th>
+                                        <th scope="col">Hapus</th>
+                                    </tr>
+                                </thead>
+                            @else
+                                
+                            @endif
                             
                             @if ($favorit->count() > 0)
                             
@@ -38,21 +43,21 @@
                                     <input type="hidden" class="form-control qty-input" value="1">
                                     <td class="image product-thumbnail">
                                         @if ($item->produks->cover == null)
-                                            <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
+                                        <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
                                         @else
-                                            <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
+                                        <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
                                         @endif
                                     </td>
-
+                                    
                                     <td class="product-des product-name">
                                         <h5 class="product-name"><a href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a></h5>
                                         <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 5, '...') }}</p>
                                     </td>
-
+                                    
                                     @if ($item->produks->selling_price == null)
-                                        <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->original_price) }}</span></td>
+                                    <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->original_price) }}</span></td>
                                     @else
-                                        <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->selling_price) }}</span></td>
+                                    <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->selling_price) }}</span></td>
                                     @endif
                                     
                                     <td>
@@ -65,59 +70,62 @@
                                 @endforeach
                                 
                                 @else
-                                <tr>
-                                    <td class="text-center">
+                                    <h3 class="text-center mb-50">
                                         Favorit anda masih Kosong
-                                    </td>
-                                </tr>
+                                    </h3>
                                 @endif
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
-                </div>                
-            </div>
+                <div class="divider center_icon mb-50"><i class="fi-rs-fingerprint"></i></div>
+            </div>                
         </div>
-        </div>
-    </section>
+    </div>
+</div>
+</section>
+
+{{-- TAMPILAN MOBILE --}}
+<span class="produk favorit">
     <section class="favorit-mobile">
         <div class="container">
-        @if ($favorit->count() > 0)
-        @foreach ($favorit as $item)
-            <div class="layer-favorit">
+            @if ($favorit->count() > 0)
+            @foreach ($favorit as $item)
+            <div class="layer-favorit produk_data">
                 <div class="favorit-fill">
                     <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
                     <input type="hidden" class="form-control qty-input" value="1">
                     <div class="favorit-img"> 
                         @if ($item->produks->cover == null)
-                            <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
+                        <img src="{{ asset('frontend') }}/imgs/shop/product-1-2.jpg }} alt="{{ $item->produks->name }}">
                         @else
-                            <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
+                        <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
                         @endif
                     </div>
                     <div class="text-favorit">
                         <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a>
                         <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 5, '...') }}</p>
                         <p>Rp. {{ number_format($item->produks->selling_price) }}</p>
-                        <a href="{{ route('deletefavorit') }}" class="delete-favorit-item">Hapus</a>
+                        
                     </div>
                     <div class="icon-favorit-cart">
                         <a href="{{ route('addcart') }}" class="addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
-                        
                     </div>
                     <div class="icon-favorit-delete">
-                        
+                        <a href="{{ route('deletefavorit') }}" class="delete-favorit-item"><i class="fi-rs-trash"></i></a>
                     </div>
                 </div>
             </div>
             @endforeach
             @else
-                <h3 class="text-center">
-                    Favorit anda masih Kosong
-                </h3>
+            <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+            
+            <h3 class="text-center mt-50 mb-50">
+                Favorit anda masih Kosong
+            </h3>
             @endif
         </div>
     </section>
+</span>
 </main>
 @endsection

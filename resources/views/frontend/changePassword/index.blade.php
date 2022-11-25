@@ -41,7 +41,7 @@
                     <input type="password" class="form-control @error('password_cofirmation') is-invalid @enderror"  name="password_confirmation" placeholder="Password Konfirmasi">
                 </div>
 
-                <button type="submit" class="btn-default">Apply</button>
+                <button type="submit" class="btn-default">Update</button>
             </form>
         </div>
     </div>
