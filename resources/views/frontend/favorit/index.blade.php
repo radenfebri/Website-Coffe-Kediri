@@ -97,14 +97,14 @@
                     <input type="hidden" class="form-control qty-input" value="1">
                     <div class="favorit-img"> 
                         @if ($item->produks->cover == null)
-                        <img src="{{ asset('frontend') }}/imgs/shop/product-1-2.jpg }} alt="{{ $item->produks->name }}">
+                        <img src="{{ asset('frontend') }}/imgs/shop/product-1-2.jpg" alt="{{ $item->produks->name }}">
                         @else
                         <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
                         @endif
                     </div>
                     <div class="text-favorit">
-                        <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a>
-                        <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 5, '...') }}</p>
+                        <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
+                        <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 1, '...') }}</p>
                         <p>Rp. {{ number_format($item->produks->selling_price) }}</p>
                         <div>
                             <div>

@@ -30,9 +30,26 @@
   display: none;
 }
 
+
+
 /* favorit */
 .favorit-mobile{
   display:none;
+}
+
+.favorit-desktop td,
+.cart-table td,
+.order-history-desktop td{
+  height: 200px;
+}
+
+.favorit-desktop a,
+.favorit-desktop span,
+.cart-table a,
+.cart-table span,
+.cart-table input,
+.order-history-desktop span{
+  font-size: 15px;
 }
 
 /* produk */
@@ -54,22 +71,26 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px 0;
+  margin: 20px 20%;
 }
 .layer1 .title {
   text-align: center;
   padding-top: 30px;
 }
 .layer2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background-color: white;
   width: 95%;
   border-radius: 20px;
   margin: 20px 20px;
-  border: 2px solid black;
+  
 }
 .text-pembayaran,
 .detail-pembayaran {
   padding: 20px;
+  width: 100%;
 }
 .pembayaran-text {
   display: flex;
@@ -85,6 +106,58 @@
   display: inline-block;
   align-items: center;
 }
+
+.btn-pembayaran {
+    margin-bottom: 10px;
+    width: 50%;
+  }
+
+  .metode-pembayaran{ 
+    display: flex;
+    flex-direction: column;
+    margin: 5% 0;
+  }
+
+  .kirim-pembayaran{
+    border: 3px solid #f4f6f9;
+    padding: 5% 20px;
+  }
+
+  .kirim-pembayaran-qris{
+    border: 3px solid #f4f6f9;
+    padding: 5% 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .kirim-pembayaran-qris h3{
+    text-align: center;
+  }
+
+  .kirim-pembayaran-qris img{
+    margin-top: 30px;
+    height: 400px;
+    width: 400px;
+  }
+
+  .kirim-pembayaran-qris a{
+    margin-top: 20px;
+  }
+
+  .kirim-pembayaran input{
+    width: 100%;
+  }
+
+  .copy-text{
+    display: flex;
+  }
+
+  .copy-text input{
+    width: 90%;
+  }
+
+
 
 
 @media (max-width: 980px) {
@@ -144,8 +217,17 @@
   }
 
   /* pembayaran */
+  .layer1{
+    margin: 20px 10%;
+  }
   .layer2 {
     background-color: white;
+  }
+
+  .btn-pembayaran {
+    width: 70%;
+    margin-bottom: 10px;
+    border-radius: 10px;
   }
 
 }
@@ -168,16 +250,19 @@
     display: none !important;
   }
 
-  .layer2 {
+  .layer-order {
     margin : 10px;
     background-color: #f4f5f9;
     width: 95%;
     border-radius: 20px;
+    align-items: center;
 
   }
   .order-history,
-  .detail-pembayaran {
+  .detail-pembayaran,
+  .text-pembayaran {
     padding: 20px;
+    width: 100%;
   }
   .text-order-history {
     display: flex;
@@ -233,6 +318,7 @@
     flex-direction: column;
     margin-top: 20px;
     width: 130px;
+    justify-content: center;
   }
 
   .text-favorit .judul-favorit{
@@ -240,11 +326,10 @@
   }
 
   .icon-favorit-cart{
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     font-size: 40px;
-    margin-top: 100px;
-    bottom: 60px;
-    left: 10px;
   }
 
   /* produk */
@@ -264,10 +349,13 @@
     width: 95%;
     height: 170px;
     border-radius: 20px;
+    display: flex;
+    flex-direction: column;
   }
 
   .text-favorit input{
-    width: 70px;
+    width: 60px;
+    height: 40px;
   }
 
   .text-favorit .text-harga{
@@ -277,18 +365,53 @@
 
   .favorit-fill .icon-cart-delete{
     display: flex;
-    position: relative;
-    height: cover;
-    width: cover;
-    font-size: 30px;
-    margin-top: 50%;
-    align-items: center;
-    bottom: 110px;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 40px;
+  }
+
+  .cart-totals{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   /* pembayaran */
+  .layer1{
+    margin: 20px 0;
+  }
   .layer2 {
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .btn-pembayaran {
+    width: 80%;
+    border-radius: 10px;
+  }
+
+  .kirim-pembayaran-qris img{
+    margin-top: 30px;
+    height: 300px;
+    width: 300px;
+  }
+
+  .metode-pembayaran{
+    margin-top: 40px;
+  }
+
+  .kirim-pembayaran{
+    display: flex !important;
+    flex-direction: column !important;
+
+  }
+
+  .kirim-pembayaran input{
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
   }
 
 }

@@ -7,7 +7,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow">Home</a>
+                <a href="{{ route('home') }}" rel="nofollow">Home</a>
                 <span></span> Order History
             </div>
         </div>
@@ -40,13 +40,13 @@
                                     <td class="price" data-title="Price"><a href="" class="order-history-link"><span>Rp. {{ number_format($item->total_price) }}</span></a></td>
                                     <td class="text-right" data-title="Cart">
                                         @if ($item->status == 0)
-                                        <span style="color: rgb(255, 0, 0)">Belum Bayar</span>
+                                        <a href="" class="order-history-link"><span style="color: rgb(255, 0, 0)">Belum Bayar</span></a>
                                         @elseif($item->status == 1)
-                                        <span style="color: rgb(8, 3, 249)">Proses Packing</span>
+                                        <a href="" class="order-history-link"><span style="color: rgb(8, 3, 249)">Proses Packing</span></a>
                                         @elseif($item->status == 2)
-                                        <span style="color: rgb(8, 3, 249)">Proses Kirim</span>
+                                        <a href="" class="order-history-link"><span style="color: rgb(8, 3, 249)">Proses Kirim</span></a>
                                         @elseif($item->status == 3)
-                                        <span style="color: green">Selesai</span>
+                                        <a href="" class="order-history-link"><span style="color: green">Selesai</span></a>
                                         @endif
                                     </td>
                                 </tr>
@@ -60,23 +60,23 @@
     <section class="order-history-mobile">
         <div class="container">
         @foreach ($orders as $item)
-        <div class="layer2">
+        <div class="layer-order" onclick="window.location.href='{{ route('pembayaran') }}'">
             <div class="order-history">
                 <div class="text-order-history">
                     <p>Kode Order</p>
-                    <a href="#" class="order-history-link"><span>#{{ $item->tracking_no }}</span></a>
+                    <a href="{{ route('pembayaran') }}" class="order-history-link"><span>#{{ $item->tracking_no }}</span></a>
                 </div>
                 <div class="text-order-history">
                     <p>Metode Bayar</p>
-                    <a href="" class="order-history-link"><span>{{ $item->metode }}</span></a>
+                    <a href="{{ route('pembayaran') }}" class="order-history-link"><span>{{ $item->metode }}</span></a>
                 </div>
                 <div class="text-order-history">
                     <p>Tanggal Pesanan</p>
-                    <a href="" class="order-history-link"><span>{{ date('d F Y',strtotime($item->created_at)) }}</span></a>
+                    <a href="{{ route('pembayaran') }}" class="order-history-link"><span>{{ date('d F Y',strtotime($item->created_at)) }}</span></a>
                 </div>
                 <div class="text-order-history">
                     <p>Total Bayar</p>
-                    <a href="" class="order-history-link"><span>Rp. {{ number_format($item->total_price) }}</span></a>
+                    <a href="{{ route('pembayaran') }}" class="order-history-link"><span>Rp. {{ number_format($item->total_price) }}</span></a>
                 </div>
                 <div class="text-order-history">
                     <p>Status</p>

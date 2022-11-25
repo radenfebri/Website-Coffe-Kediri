@@ -7,7 +7,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow">Home</a>
+                <a href="{{ route('home') }}" rel="nofollow">Home</a>
                 <span></span> Shop
                 <span></span> Your Cart
             </div>
@@ -18,7 +18,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="table-responsive">
+                    <div class="table-responsive  cart-table">
                         <table class="table shopping-summery text-center clean">
                             @if ($produk->count() > 0)
                             <thead>
@@ -38,7 +38,7 @@
                             
                             @if ($produk->count() > 0)
                             
-                            <tbody>
+                            <tbody class="">
                                 @foreach ($produk as $item)
                                 <tr class="produk_data">
                                     <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
@@ -161,8 +161,8 @@
                                 @endif
                             </div>
                             <div class="text-favorit">
-                                <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a>
-                                <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 5, '...') }}</p>
+                                <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
+                                <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 1, '...') }}</p>
                                 <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity" min="1" max="100" value="{{ $item->prod_qty }}">
                                 <p class="text-harga">
                                     @if ($item->produks->selling_price == null)
@@ -209,7 +209,8 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="{{ route('checkout') }}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>       
+                            <a href="{{ route('checkout') }}" class="btn btn-cart"> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                            </div>       
                         </div>
                     </div>
                     @else

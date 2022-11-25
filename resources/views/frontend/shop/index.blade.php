@@ -21,25 +21,6 @@
                             <p> We found <strong class="text-brand">688</strong> items for you!</p>
                         </div>
                         <div class="sort-by-product-area">
-                            <div class="sort-by-cover mr-10">
-                                <div class="sort-by-product-wrap">
-                                    <div class="sort-by">
-                                        <span><i class="fi-rs-apps"></i>Show:</span>
-                                    </div>
-                                    <div class="sort-by-dropdown-wrap">
-                                        <span> 50 <i class="fi-rs-angle-small-down"></i></span>
-                                    </div>
-                                </div>
-                                <div class="sort-by-dropdown">
-                                    <ul>
-                                        <li><a class="active" href="#">50</a></li>
-                                        <li><a href="#">100</a></li>
-                                        <li><a href="#">150</a></li>
-                                        <li><a href="#">200</a></li>
-                                        <li><a href="#">All</a></li>
-                                    </ul>
-                                </div>
-                            </div>
                             <div class="sort-by-cover">
                                 <div class="sort-by-product-wrap">
                                     <div class="sort-by">
@@ -59,8 +40,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row product-grid-3">
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                    <div class="row product-grid-4">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -99,7 +80,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -138,7 +119,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -177,7 +158,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -216,7 +197,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -255,7 +236,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -294,7 +275,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -332,7 +313,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -368,7 +349,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -404,7 +385,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -443,7 +424,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
@@ -482,7 +463,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6">
                             <div class="product-cart-wrap mb-30">
                                 <div class="product-img-action-wrap">
                                     <div class="product-img product-img-zoom">
