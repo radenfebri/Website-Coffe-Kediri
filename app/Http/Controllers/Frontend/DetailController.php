@@ -19,9 +19,11 @@ class DetailController extends Controller
         if (Produk::where('slug', $slug)->where('is_active', 1)->exists()) {
             $produk = Produk::where('slug', $slug)->first();
             $images = MultiImage::where('prod_id', $produk->id)->get();
-            $kategoriproduk = KategoriProduk::all();
+            $kategori = KategoriProduk::where('is_active', 1)->limit(8)->get();
+            $kategoriproduk = Produk::where('kategori_id', $produk->id)->latest()->limit(4)->get();
+            $newproduk = Produk::where('is_active', 1)->latest()->limit(3)->get();
 
-            return view('frontend.detail-produk.index', compact('produk', 'images'));
+            return view('frontend.detail-produk.index', compact('produk', 'images', 'kategoriproduk', 'kategori', 'newproduk'));
         } else {
         }
     }

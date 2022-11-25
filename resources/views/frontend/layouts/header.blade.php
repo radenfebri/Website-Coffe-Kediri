@@ -149,7 +149,7 @@
                             <ul>
                                 <li><a class="{{ request()->is('/', '') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
                                 <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
-                                <li><a class="{{ request()->is('shop', 'shop/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
+                                <li><a class="{{ request()->is('shop', 'shop/*', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
                                 <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="{{ route('contact') }}">Contact</a></li>
                                 <li><a class="{{ request()->is('order-history', 'setting', 'change-password') ? 'active' : ''}}" href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
