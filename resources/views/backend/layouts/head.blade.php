@@ -38,8 +38,6 @@
     <link href="{{ asset('backend') }}/layouts/collapsible-menu/css/dark/plugins.css" rel="stylesheet" type="text/css" />
     <!-- END GLOBAL MANDATORY STYLES -->
     
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     <link rel="stylesheet" href="{{ asset('backend') }}/src/plugins/src/filepond/filepond.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/src/plugins/src/filepond/FilePondPluginImagePreview.min.css">
@@ -52,8 +50,6 @@
     
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/src/assets/css/dark/forms/switches.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/src/plugins/css/dark/editors/quill/quill.snow.css">
-    {{-- <link rel="stylesheet" type="text/css" href="{{ asset('backend') }}/src/plugins/css/dark/tagify/custom-tagify.css"> --}}
-    {{-- <link href="{{ asset('backend') }}/src/plugins/css/dark/filepond/custom-filepond.css" rel="stylesheet" type="text/css" /> --}}
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
     
     <!--  BEGIN CUSTOM STYLE FILE  -->
@@ -64,16 +60,17 @@
     <link href="{{ asset('backend') }}/src/plugins/src/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="{{ asset('backend') }}/src/plugins/src/filepond/filepond.min.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/src/plugins/src/filepond/FilePondPluginImagePreview.min.css">
-
+    
     <link href="{{ asset('backend') }}/src/plugins/css/light/filepond/custom-filepond.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend') }}/src/plugins/css/light/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend') }}/src/assets/css/light/apps/invoice-add.css" rel="stylesheet" type="text/css" />
-
+    
     <link href="{{ asset('backend') }}/src/plugins/css/dark/filepond/custom-filepond.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend') }}/src/plugins/css/dark/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend') }}/src/assets/css/dark/apps/invoice-add.css" rel="stylesheet" type="text/css" />
-
     
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <!--  BEGIN CUSTOM STYLE FILE  -->
     @vite([])
     
     

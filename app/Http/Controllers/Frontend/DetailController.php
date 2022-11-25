@@ -21,7 +21,7 @@ class DetailController extends Controller
             $images = MultiImage::where('prod_id', $produk->id)->get();
             $kategoriproduk = KategoriProduk::all();
 
-            return view('frontend.detail.index', compact('produk', 'images'));
+            return view('frontend.detail-produk.index', compact('produk', 'images'));
         } else {
         }
     }

@@ -15,6 +15,7 @@
 <script src="{{ asset('backend') }}/src/plugins/src/table/datatable/datatables.js"></script>
 <script src="{{ asset('backend') }}/src/plugins/src/tagify/tagify.min.js"></script>
 {{-- <script src="{{ asset('front') }}/js/custom.js"></script> --}}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 
 
@@ -105,9 +106,6 @@
 </script>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 
 
 <script>
@@ -129,6 +127,12 @@
             placeholder: "--Pilih Roles--"
             
         });
+        
+    });
+
+    $(document).ready(function() {
+
+        $('#selectEmail').select2();
         
     });
     
