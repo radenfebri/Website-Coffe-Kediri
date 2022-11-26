@@ -11,13 +11,13 @@ class DashboardController extends Controller
 {
     public function __construct()
     {
-        // $this->middleware(['role_or_permission:Super Admin|Admin']);
+        $this->middleware(['role_or_permission:Super Admin|Admin']);
     }
 
 
     public function index()
     {
-        // abort_if(Gate::denies('dashboard'), Response::HTTP_FORBIDDEN, 'Forbidden');
+        abort_if(Gate::denies('dashboard'), Response::HTTP_FORBIDDEN, 'Forbidden');
 
         return view('backend.dashboard');
     }

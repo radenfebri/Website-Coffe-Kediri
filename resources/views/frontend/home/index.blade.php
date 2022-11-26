@@ -645,7 +645,7 @@
                             <div class="product-img product-img-zoom">
                                 <a href="{{ route('detail.produk', $item->slug) }}">
                                     @if ($item->cover == null)
-                                    <img class="default-img produk-img" src="{{ '/frontend/imgs/shop/product-2-1.jpg' }}" alt="{{ $item->name }}">
+                                    <img class="default-img produk-img" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" alt="{{ $item->name }}">
                                     @else
                                     <img class="default-img produk-img" src="{{ asset('storage/'. $item->cover ) }}" alt="{{ $item->name }}">
                                     @endif

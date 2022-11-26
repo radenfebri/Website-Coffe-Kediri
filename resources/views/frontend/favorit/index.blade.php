@@ -8,7 +8,8 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="{{ route('home') }}" rel="nofollow">Home</a>
-                <span></span> Shop
+                <span></span> 
+                <a href="{{ route('shop') }}" rel="nofollow">Shop</a>
                 <span></span> Favorit
             </div>
         </div>
