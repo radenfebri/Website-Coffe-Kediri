@@ -243,6 +243,7 @@
                 <nav>
                     <ul class="mobile-menu">
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('home') }}">Home</a></li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('about') }}">About</a></li>
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('shop') }}">shop</a></li>
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('contact') }}">Contact</a></li>
                         @guest
