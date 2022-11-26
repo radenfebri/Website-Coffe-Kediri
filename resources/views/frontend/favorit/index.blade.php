@@ -107,16 +107,13 @@
                         <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
                         <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 1, '...') }}</p>
                         <p>Rp. {{ number_format($item->produks->selling_price) }}</p>
-                        <div>
-                            <div>
-                                <a href="{{ route('deletefavorit') }}" class="delete-favorit-item">Hapus</i></a>
-                            </div>
-
-                        </div>
                     </div>
                     <div class="icon-favorit-cart">
-                        <div>
+                        <div class="cart-favorit">
                             <a href="{{ route('addcart') }}" class="addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
+                        </div>
+                        <div>
+                            <a href="{{ route('deletefavorit') }}" class="delete-favorit-item"><i class="fi-rs-trash"></i></i></a>
                         </div>
                     </div>
                 </div>

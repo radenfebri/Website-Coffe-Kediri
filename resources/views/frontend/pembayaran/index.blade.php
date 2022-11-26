@@ -23,6 +23,14 @@
                             <p>#{{ $orders->tracking_no }}</p>
                         </div>
                         <div class="pembayaran-text">
+                            <p>Nama Produk</p>
+                            <p>Coffe</p>
+                        </div>
+                        <div class="pembayaran-text">
+                            <p>Jumlah Produk</p>
+                            <p>10</p>
+                        </div>
+                        <div class="pembayaran-text">
                             <p>Metode Bayar</p>
                             <p>{{ $orders->metode }}</p>
                         </div>
@@ -55,7 +63,7 @@
                             <p>{{ date('d F Y',strtotime($orders->created_at)) }}</p>
                         </div>
                     </div>
-                    <a class="btn btn-pembayaran">Konfirmasi Pembayaran</a>    
+                    <a class="btn btn-pembayaran">Konfirmasi Pembayaran</a>
                 </div>
             </div>
 
