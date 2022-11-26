@@ -35,7 +35,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
 Route::get('kategori', [KategoriController::class, 'index'])->name('kategori');
 Route::get('about', [AboutController::class, 'index'])->name('about');
-Route::get('pembayaran', [PembayaranController::class, 'index'])->name('pembayaran');
 Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('detail.produk');
 
@@ -83,6 +82,13 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
     
     // ORDER HISTORY
     Route::get('order-history', [OrderHistoryController::class, 'index'])->name('orderHistory');
+    
+    // PEMBAYARAN
+    Route::get('pembayaran/{id}', [PembayaranController::class, 'index'])->name('pembayaran');
+    Route::get('packing/{id}', [PembayaranController::class, 'packing'])->name('packing');
+    Route::get('kirim/{id}', [PembayaranController::class, 'kirim'])->name('kirim');
+    Route::get('selesai/{id}', [PembayaranController::class, 'selesai'])->name('selesai');
+    
 });
 
 // SINGLE SIGN ON GOOGLE
