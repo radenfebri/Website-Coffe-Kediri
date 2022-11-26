@@ -64,8 +64,8 @@
                         </div>
                     </div>
                     <div class="detail-pembayaran-tombol">
-                        <a class="btn btn-pembayaran">Konfirmasi Pembayaran</a>
-                        <a class="btn btn-pembayaran">Penilaian Produk<a>
+                        <a class="btn btn-pembayaran-selesai">Konfirmasi Pembayaran</a>
+                        <a class="btn btn-pembayaran-selesai">Penilaian Produk<a>
                     </div>    
                 </div>
             </div>
