@@ -40,7 +40,7 @@
 .favorit-desktop td,
 .cart-table td,
 .order-history-desktop td{
-  height: 200px;
+  height: 140px;
 }
 
 .favorit-desktop a,
@@ -107,10 +107,16 @@
   align-items: center;
 }
 
-.btn-pembayaran {
+.detail-pembayaran-tombol {
+    display: flex;
+    flex-direction: row;
     margin-bottom: 10px;
-    width: 50%;
-  }
+}
+
+.btn-pembayaran{
+  width: 300px;
+  margin-right: 10px
+}
 
   .metode-pembayaran{ 
     display: flex;
@@ -318,7 +324,6 @@
     flex-direction: column;
     margin-top: 20px;
     width: 130px;
-    justify-content: center;
   }
 
   .text-favorit .judul-favorit{
@@ -327,9 +332,15 @@
 
   .icon-favorit-cart{
     display: flex;
+    width: 20%;
     flex-direction: column;
     justify-content: center;
-    font-size: 40px;
+    align-items: center;
+    font-size: 30px;
+  }
+
+  .cart-favorit{
+    margin-bottom: 15px;
   }
 
   /* produk */
@@ -387,6 +398,14 @@
     justify-content: center;
   }
 
+  .detail-pembayaran-tombol {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
   .btn-pembayaran {
     width: 80%;
     border-radius: 10px;
@@ -413,5 +432,6 @@
     flex-direction: column !important;
     width: 100% !important;
   }
+
 
 }
