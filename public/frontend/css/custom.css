@@ -115,6 +115,11 @@
 
 .btn-pembayaran{
   width: 300px;
+  margin-bottom: 10px
+}
+
+.btn-pembayaran-selesai{
+  width: 300px;
   margin-right: 10px
 }
 
@@ -163,6 +168,82 @@
     width: 90%;
   }
 
+  .detail-produk-pembayaran{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .judul-produk-pembayaran{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: 3px solid #f4f6f9;
+    height: 40px;
+  }
+
+  .produk-pembayaran{
+    display: flex;
+    width: 60%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px solid #f4f6f9;
+  }
+
+  .total-produk-pembayaran{
+    display: flex;
+    width: 40%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .isi-produk-pembayaran{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border: 3px solid #f4f6f9;
+    border-top: 0px;
+    height: 150px;
+  }
+
+  .img-produk-pembayaran{
+    display: flex;
+    width: 30%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px solid #f4f6f9;
+  }
+
+  .img-produk-pembayaran img{
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+  }
+
+  .desc-produk-pembayaran{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    border-right: 3px solid #f4f6f9;
+  }
+
+  .desc-produk-pembayaran a{
+    font-size: 15px;
+    white-space: normal;
+  }
+
+  .desc-produk-pembayaran p{
+    font-size: 13px;
+    white-space: normal;
+  }
 
 
 
@@ -409,6 +490,7 @@
   .btn-pembayaran {
     width: 80%;
     border-radius: 10px;
+    margin-bottom: 10px;
   }
 
   .kirim-pembayaran-qris img{
@@ -431,6 +513,19 @@
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
+  }
+
+  .img-produk-pembayaran img{
+    width: 70px;
+    height: 70px;
+  }
+
+  .desc-produk-pembayaran a{
+    font-size: 12px;
+  }
+
+  .total-produk-pembayaran p{
+    font-size: 13px;
   }
 
 

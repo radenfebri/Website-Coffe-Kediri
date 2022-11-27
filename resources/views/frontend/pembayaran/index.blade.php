@@ -23,14 +23,6 @@
                             <p>#{{ $orders->tracking_no }}</p>
                         </div>
                         <div class="pembayaran-text">
-                            <p>Nama Produk</p>
-                            <p>Coffe</p>
-                        </div>
-                        <div class="pembayaran-text">
-                            <p>Jumlah Produk</p>
-                            <p>10</p>
-                        </div>
-                        <div class="pembayaran-text">
                             <p>Metode Bayar</p>
                             <p>{{ $orders->metode }}</p>
                         </div>
@@ -50,6 +42,40 @@
                             <p style="color: green">Selesai</p>
                             @endif
                             
+                        </div>
+                    </div>
+                    <div class="detail-produk-pembayaran">
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h4>Produk</h4>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h4>Total</h4>
+                            </div>
+                        </div>
+                        <div class="isi-produk-pembayaran">     
+                            <div class="img-produk-pembayaran">
+                                <img src="{{ asset('frontend') }}/imgs/shop/product-3-1.jpg" alt="">
+                            </div>
+                            <div class="desc-produk-pembayaran">
+                                <a href="" class="judul">Judul 1</a>
+                                <p>asdaaaaaaaaa</p>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <p>Rp. 100.000</p>
+                            </div>
+                        </div>
+                        <div class="isi-produk-pembayaran">     
+                            <div class="img-produk-pembayaran">
+                                <img src="{{ asset('frontend') }}/imgs/shop/product-3-1.jpg" alt="">
+                            </div>
+                            <div class="desc-produk-pembayaran">
+                                <a href="" class="judul">Judul 1</a>
+                                <p>asdaaaaaaa</p>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <p>Rp. 100.000</p>
+                            </div>
                         </div>
                     </div>
                     <span></span>
