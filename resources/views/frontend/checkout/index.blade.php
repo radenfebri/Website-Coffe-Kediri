@@ -57,52 +57,50 @@
                             <div class="mb-20">
                                 <h4>Detail Order</h4>
                             </div>
-                            <div class="table-responsive order_table text-center">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="2">Produk</th>
-                                            <th>Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @php $total = 0; @endphp
+                            <div class="detail-produk-pembayaran">
+                                <div class="judul-produk-pembayaran">
+                                    <div class="produk-pembayaran">
+                                        <h4>Produk</h4>
+                                    </div>
+                                    <div class="total-produk-pembayaran">
+                                        <h4>Total</h4>
+                                    </div>
+                                </div>
+                                @php $total = 0; @endphp
                                         
-                                        @foreach ($produk as $item)
-                                        <tr>
-                                            <td class="image product-thumbnail"><img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}"></td>
-                                            <td>
-                                                <h5><a href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a></h5> <span class="product-qty">x {{ $item->prod_qty }}</span>
-                                            </td>
-                                            <td>
-                                                @if ($item->produks->selling_price == null)
-                                                <span>Rp. {{ number_format($item->produks->original_price * $item->prod_qty) }}</span>
-                                                @else
-                                                <span>Rp. {{ number_format($item->produks->selling_price * $item->prod_qty) }}</span>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        @if ($item->produks->selling_price == null)
+                                @foreach ($produk as $item)
+                                <div class="isi-produk-pembayaran">     
+                                    <div class="img-produk-pembayaran">
+                                        <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
+                                    </div>
+                                    <div class="desc-produk-pembayaran">
+                                        <a href="{{ route('detail.produk', $item->produks->slug ) }}" class="judul">{{ \Illuminate\Support\Str::words($item->produks->name, 5, '...') }}</a>
+                                        <p>x {{ $item->prod_qty }}</p>
+                                    </div>
+                                    <div class="total-produk-pembayaran">
+                                        <p>
+                                            @if ($item->produks->selling_price == null)
+                                            <span>Rp. {{ number_format($item->produks->original_price * $item->prod_qty) }}</span>
+                                            @else
+                                            <span>Rp. {{ number_format($item->produks->selling_price * $item->prod_qty) }}</span>
+                                            @endif
+                                        </p>
+                                    </div>
+                                </div>
+                                @if ($item->produks->selling_price == null)
                                         @php $total += $item->produks->original_price * $item->prod_qty; @endphp
                                         @else
                                         @php $total += $item->produks->selling_price * $item->prod_qty; @endphp
                                         @endif
                                         @endforeach
-                                        
-                                        <tr>
-                                            <th>SubTotal</th>
-                                            <td class="product-subtotal" colspan="2">Rp. {{ number_format($total) }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Shipping</th>
-                                            <td colspan="2"><em>Free Shipping</em></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Total</th>
-                                            <td colspan="2" class="product-subtotal"><span class="font-xl text-brand fw-900">Rp. {{ number_format($total) }}</span></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <div class="judul-produk-pembayaran">
+                                    <div class="produk-pembayaran">
+                                        <h5>Total Order</h5>
+                                    </div>
+                                    <div class="total-produk-pembayaran">
+                                        <h5>Rp. {{ number_format($total) }}</h5>
+                                    </div>
+                                </div>
                             </div>
                             <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                             <div class="payment_method">
