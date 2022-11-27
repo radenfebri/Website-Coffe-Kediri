@@ -118,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <p>Setelah Melakukan Pemmbayaran Di Harapkan Screenshot/foto dan kirim kan pada konfirmasi pembayaran </p>
+                    <p>Setelah Melakukan Pemmbayaran Di Harapkan Screenshot/foto dan kirim kan pada konfirmasi pembayaran</p>
                 </div>
                 {{-- metode pembayaran qris --}}
                 {{-- <div class="kirim-pembayaran-qris">
