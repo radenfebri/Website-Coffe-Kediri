@@ -78,7 +78,8 @@
                             </div>
                         </div>
                     </div>
-                    <span></span>
+                </div>
+                <div class="layer2">
                     <div class="detail-pembayaran">
                         <h3>Detail Pembayaran</h3>
                         <div class="pembayaran-text">
@@ -113,6 +114,7 @@
                             </div>
                         </div>
                     </div>
+                    <p>Setelah Melakukan Pemmbayaran Di Harapkan Screenshot/foto dan kirim kan pada konfirmasi pembayaran </p>
                 </div>
                 {{-- metode pembayaran qris --}}
                 {{-- <div class="kirim-pembayaran-qris">
