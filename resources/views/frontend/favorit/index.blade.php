@@ -87,7 +87,7 @@
 </section>
 
 {{-- TAMPILAN MOBILE --}}
-<span class="produk favorit">
+<span class="produk favorit_mobile">
     <section class="favorit-mobile">
         <div class="container">
             @if ($favorit->count() > 0)
@@ -118,7 +118,7 @@
                             <a href="{{ route('addcart') }}" class="addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
                         </div>
                         <div>
-                            <a href="{{ route('deletefavorit') }}" class="delete-favorit-item"><i class="fi-rs-trash"></i></i></a>
+                            <a href="{{ route('deletefavorit') }}" class="delete-favorit-item-mobile"><i class="fi-rs-trash"></i></i></a>
                         </div>
                     </div>
                 </div>

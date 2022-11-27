@@ -381,7 +381,7 @@
                                     
                                 @else
                                     @foreach ($kategori as $item)
-                                        <li><a href="#">{{ $item->name }}</a></li>
+                                        <li><a href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></li>
                                     @endforeach
                                 @endif
                             </ul>

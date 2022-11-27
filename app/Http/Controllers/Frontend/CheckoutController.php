@@ -7,6 +7,7 @@ use App\Models\KategoriProduk;
 use App\Models\Keranjang;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\Payment;
 use App\Models\Produk;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,13 +19,13 @@ class CheckoutController extends Controller
         $produk = Keranjang::where('user_id', Auth::id())->get();
         $cart_check = Keranjang::where('user_id', Auth::id())->count();
         $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
-        // $payment = Payment::all();
+        $payment = Payment::all();
         
         if (Auth::user()->no_hp == null) {
             return redirect()->route('setting')->with('error', 'Silahkan lengkapi data diri anda terlebih dahulu');
         } else {
             if ($cart_check > 0) {
-                return view('frontend.checkout.index', compact('produk', 'kategoriproduk_nav'));
+                return view('frontend.checkout.index', compact('produk', 'kategoriproduk_nav', 'payment'));
             } else {
                 return redirect()->route('cart')->with('error', 'Keranjang masih kosong');
             }

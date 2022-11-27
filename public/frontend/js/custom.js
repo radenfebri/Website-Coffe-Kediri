@@ -114,8 +114,6 @@ $(document).ready(function () {
         });
     });
 
-
-
     $(".addToWishlist").click(function (e) {
         e.preventDefault();
 
@@ -174,7 +172,7 @@ $(document).ready(function () {
         });
     });
 
-
+    // KONDISI UNTUK DESKTOP
     $(document).on("click", ".delete-cart-item", function (e) {
         e.preventDefault();
 
@@ -234,6 +232,7 @@ $(document).ready(function () {
         });
     });
 
+    // KONDISI UNTUK DESKTOP
     $(document).on("click", ".delete-favorit-item", function (e) {
         e.preventDefault();
 
@@ -294,6 +293,7 @@ $(document).ready(function () {
         });
     });
 
+    // KONDISI UNTUK DESKTOP
     $(document).on('click','.changeQuantity', function (e) {
         e.preventDefault();
 
@@ -309,6 +309,149 @@ $(document).ready(function () {
             data: data,
             success: function(response) {
                 $('.cartItem').load(location.href + " .cartItem");
+                // swal("", response.status, "info");
+            }
+        });
+    });
+
+
+    // KONDISI UNTUK MOBILE
+    $(document).on("click", ".delete-cart-item-mobile", function (e) {
+        e.preventDefault();
+
+        var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
+        $.ajax({
+            method: "POST",
+            url: "/delete-cart-item",
+            data: {
+                prod_id: prod_id,
+            },
+            success: function (response) {
+                $(".produk_mobile").load(location.href + " .produk_mobile");
+                if (response.status == "warning") {
+                    Swal.fire({
+                        title: "Gagal",
+                        text: response.message,
+                        icon: "info",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Login Sekarang",
+                        // footer: '<a href="">Why do I have this issue?</a>',
+                    }).then(function () {
+                        window.location = "/login";
+                    });
+                } else if (response.status == "success") {
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: response.message,
+                        icon: "success",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Oke",
+                    });
+                } else if (response.status == "info") {
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: response.message,
+                        icon: "info",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Oke",
+                    });
+                } else if (response.status == "error") {
+                    Swal.fire({
+                        title: "Gagal",
+                        text: response.message,
+                        icon: "error",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Oke",
+                    });
+                }
+
+                // window.location.reload();
+                loadcart();
+            },
+        });
+    });
+
+    // KONDISI UNTUK MOBILE
+    $(document).on("click", ".delete-favorit-item-mobile", function (e) {
+        e.preventDefault();
+
+        var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
+
+        $.ajax({
+            method: "POST",
+            url: "/delete-favorit-item",
+            data: {
+                prod_id: prod_id,
+            },
+            success: function (response) {
+                $(".favorit_mobile").load(location.href + " .favorit_mobile");
+                if (response.status == "warning") {
+                    Swal.fire({
+                        title: "Gagal",
+                        text: response.message,
+                        icon: "info",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Login Sekarang",
+                        // footer: '<a href="">Why do I have this issue?</a>',
+                    }).then(function () {
+                        window.location = "/login";
+                    });
+                } else if (response.status == "success") {
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: response.message,
+                        icon: "success",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Oke",
+                    });
+                } else if (response.status == "info") {
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: response.message,
+                        icon: "info",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Oke",
+                    });
+                } else if (response.status == "error") {
+                    Swal.fire({
+                        title: "Gagal",
+                        text: response.message,
+                        icon: "error",
+                        timer: 5000,
+                        confirmButtonColor: "#f35a38",
+                        confirmButtonText: "Oke",
+                    });
+                }
+
+                // window.location.reload();
+                loadwishlist();
+            },
+        });
+    });
+
+    // KONDISI UNTUK MOBILE
+    $(document).on('click','.changeQuantity-mobile', function (e) {
+        e.preventDefault();
+
+        var prod_id = $(this).closest('.produk_data').find('.prod_id').val();
+        var qty = $(this).closest('.produk_data').find('.qty-input').val();
+        data = {
+            'prod_id': prod_id,
+            'prod_qty': qty,
+        }
+        $.ajax({
+            method: "POST",
+            url: "update-cart",
+            data: data,
+            success: function(response) {
+                $('.cartItem_mobile').load(location.href + " .cartItem_mobile");
                 // swal("", response.status, "info");
             }
         });

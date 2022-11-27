@@ -32,8 +32,9 @@
                                 </div>
                                 <div class="sort-by-dropdown">
                                     <ul>
-                                        @foreach ($kategoriproduk_nav as $item)
-                                        <li><a class="" href="#">{{ $item->name }}</a></li>
+                                        @foreach ($kategoriproduk_nav as $key => $item)
+                                        {{-- {{ $key }} --}}
+                                        <li><a class="{{ $key == $key++ ? 'active':'' }}" href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -72,7 +73,7 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="#">{{ $item->kategoriproduk->name }}</a>
+                                            <a href="{{ route('kategori', $item->kategoriproduk->slug) }}">{{ $item->kategoriproduk->name }}</a>
                                         </div>
                                         <h2><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h2>
                                         <div class="rating-result" title="90%">

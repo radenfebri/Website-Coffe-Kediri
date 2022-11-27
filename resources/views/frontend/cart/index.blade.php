@@ -146,7 +146,7 @@
 
 
     {{-- SECTION TAMPILAN MOBILE --}}
-    <span class="cartItem produk">
+    <span class="cartItem_mobile produk_mobile">
         <section class="favorit-mobile">
             <div class="container">            
                 @if ($produk->count() > 0)
@@ -164,7 +164,7 @@
                             <div class="text-favorit">
                                 <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
                                 <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 3, '...') }}</p>
-                                <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity" min="1" max="100" value="{{ $item->prod_qty }}">
+                                <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity-mobile" min="1" max="100" value="{{ $item->prod_qty }}">
                                 <p class="text-harga">
                                     @if ($item->produks->selling_price == null)
                                     <span>Rp. {{ number_format($item->produks->original_price * $item->prod_qty) }}</span>
@@ -174,17 +174,16 @@
                                 </p>
                             </div>
                             <div class="icon-cart-delete">
-                                <a href="{{ route('deletecart') }}" class="delete-cart-item"><i class="fi-rs-trash"></i></a> 
+                                <a href="{{ route('deletecart') }}" class="delete-cart-item-mobile"><i class="fi-rs-trash"></i></a> 
                             </div>
                         </div>
                     </div>
                     @endforeach
                     @else
                 @endif
-                <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+                {{-- <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div> --}}
 
-                <div class="row mb-50">
-                    
+                <div class="row">
                     @if ($produk->count() > 0)
                     <div class="col-lg-6 col-md-12">
                         <div class="border p-md-4 p-30 border-radius cart-totals">
