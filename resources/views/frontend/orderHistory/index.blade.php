@@ -366,6 +366,10 @@
                                 </div>
                             </div>
                         </div>
+                        @else
+                        <h3 class="text-center page-kosong">
+                            Keranjang anda masih Kosong
+                        </h3>
                     @endif
                 @endforeach
             </div>

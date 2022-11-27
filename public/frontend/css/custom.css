@@ -286,6 +286,11 @@
     margin-top: 10px;
   }
 
+  .page-kosong{
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+
 
 
 @media (max-width: 980px) {
