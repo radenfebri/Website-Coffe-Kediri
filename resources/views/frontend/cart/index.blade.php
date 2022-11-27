@@ -111,7 +111,7 @@
                     <div class="col-lg-6 col-md-12">
                         <div class="border p-md-4 p-30 border-radius cart-totals">
                             <div class="heading_s1 mb-3">
-                                <h4>Cart Totals</h4>
+                                <h4>Keranjang Total</h4>
                             </div>
                             <div class="table-responsive">
                                 <table class="table">
@@ -131,7 +131,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="{{ route('checkout') }}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>       
+                            <a href="{{ route('checkout') }}" class="btn "> <i class="fi-rs-box-alt mr-10"></i> Proses Order Sekarang</a>       
                         </div>
                     </div>
                     @else
@@ -163,7 +163,7 @@
                             </div>
                             <div class="text-favorit">
                                 <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
-                                <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 1, '...') }}</p>
+                                <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 3, '...') }}</p>
                                 <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity" min="1" max="100" value="{{ $item->prod_qty }}">
                                 <p class="text-harga">
                                     @if ($item->produks->selling_price == null)
@@ -185,12 +185,11 @@
 
                 <div class="row mb-50">
                     
-                    
                     @if ($produk->count() > 0)
                     <div class="col-lg-6 col-md-12">
                         <div class="border p-md-4 p-30 border-radius cart-totals">
                             <div class="heading_s1 mb-3">
-                                <h4>Cart Totals</h4>
+                                <h4>Keranjang Total</h4>
                             </div>
                             <div class="table-responsive">
                                 <table class="table">
@@ -210,7 +209,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <a href="{{ route('checkout') }}" class="btn btn-cart"> <i class="fi-rs-box-alt mr-10"></i> Proceed To CheckOut</a>
+                            <a href="{{ route('checkout') }}" class="btn btn-cart"> <i class="fi-rs-box-alt mr-10"></i> Proses Order Sekarang</a>
                             </div>       
                         </div>
                     </div>

@@ -106,7 +106,12 @@
                     <div class="text-favorit">
                         <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
                         <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 1, '...') }}</p>
-                        <p>Rp. {{ number_format($item->produks->selling_price) }}</p>
+                        @if ($item->produks->selling_price == null)
+                            <p>Rp. {{ number_format($item->produks->original_price) }}</p>
+                        @else
+                            <p>Rp. {{ number_format($item->produks->selling_price) }}</p>
+                        @endif
+                        
                     </div>
                     <div class="icon-favorit-cart">
                         <div class="cart-favorit">
