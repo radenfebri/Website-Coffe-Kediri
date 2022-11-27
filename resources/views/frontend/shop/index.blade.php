@@ -115,5 +115,5 @@
                 </div>
             </div>
         </section>
-    </main>
-    @endsection
+</main>
+@endsection

@@ -23,14 +23,6 @@
                             <p>#{{ $orders->tracking_no }}</p>
                         </div>
                         <div class="pembayaran-text">
-                            <p>Nama Produk</p>
-                            <p>Coffe</p>
-                        </div>
-                        <div class="pembayaran-text">
-                            <p>Jumlah Produk</p>
-                            <p>10</p>
-                        </div>
-                        <div class="pembayaran-text">
                             <p>Metode Bayar</p>
                             <p>{{ $orders->metode }}</p>
                         </div>
@@ -52,7 +44,42 @@
                             
                         </div>
                     </div>
-                    <span></span>
+                    <div class="detail-produk-pembayaran">
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h4>Produk</h4>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h4>Total</h4>
+                            </div>
+                        </div>
+                        <div class="isi-produk-pembayaran">     
+                            <div class="img-produk-pembayaran">
+                                <img src="{{ asset('frontend') }}/imgs/shop/product-3-1.jpg" alt="">
+                            </div>
+                            <div class="desc-produk-pembayaran">
+                                <a href="" class="judul">Judul 1</a>
+                                <p>asdaaaaaaaaa</p>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <p>Rp. 100.000</p>
+                            </div>
+                        </div>
+                        <div class="isi-produk-pembayaran">     
+                            <div class="img-produk-pembayaran">
+                                <img src="{{ asset('frontend') }}/imgs/shop/product-3-1.jpg" alt="">
+                            </div>
+                            <div class="desc-produk-pembayaran">
+                                <a href="" class="judul">Judul 1</a>
+                                <p>asdaaaaaaa</p>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <p>Rp. 100.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="layer2">
                     <div class="detail-pembayaran">
                         <h3>Detail Pembayaran</h3>
                         <div class="pembayaran-text">
@@ -63,37 +90,8 @@
                             <p>{{ date('d F Y',strtotime($orders->created_at)) }}</p>
                         </div>
                     </div>
-                    <a class="btn btn-pembayaran">Konfirmasi Pembayaran</a>    
+                    <a class="btn btn-pembayaran">Bukti Pembayaran</a>
                 </div>
-            </div>
-
-            {{-- metode pembayaran --}}
-            <div class="metode-pembayaran">
-                <div class="pilihan-pembayaran">
-                    <h4>Metode Pembayaran : <span>BRI</span></h4>
-                </div>
-                {{-- metode pembayaran rekening --}}
-                <div class="kirim-pembayaran">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label class="form-label">Atas Nama</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="form-label">No Rekening</label>
-                            <div class="copy-text">
-                                <input type="text" class="form-control">
-                                <button class="btn"><i class="fa fa-clone"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                {{-- metode pembayaran qris --}}
-                {{-- <div class="kirim-pembayaran-qris">
-                    <h3>Kalian bisa scan barcode di bawah ini</h3>
-                    <img src="{{ asset('frontend')}}/imgs/shop/product-1-1.jpg" alt="" loading="lazy">
-                    <a href="#" class="btn">Download</a>
-                </div> --}}
             </div>
         </div>
     </section>
