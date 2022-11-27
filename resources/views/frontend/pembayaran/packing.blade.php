@@ -27,10 +27,6 @@
                             <p>{{ $orders->metode }}</p>
                         </div>
                         <div class="pembayaran-text">
-                            <p>Total Order</p>
-                            <p>Rp. {{ number_format($orders->total_price) }}</p>
-                        </div>
-                        <div class="pembayaran-text">
                             <p>Status</p>
                             @if ($orders->status == 0)
                             <p style="color: rgb(255, 0, 0)">Belum Bayar</p>
@@ -75,6 +71,14 @@
                             </div>
                             <div class="total-produk-pembayaran">
                                 <p>Rp. 100.000</p>
+                            </div>
+                        </div>
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Total Order</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Rp. {{ number_format($orders->total_price) }}</h5>
                             </div>
                         </div>
                     </div>
