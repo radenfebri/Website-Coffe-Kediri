@@ -64,7 +64,14 @@
                                                 @else
                                                 <td>{{ $item->kategoriproduk->name }}</td>
                                                 @endif
-                                                <td>{{ number_format($item->original_price) }}</td>
+
+                                                @if ($item->selling_price == null)
+                                                    <td>{{ number_format($item->original_price) }}</td>
+                                                @else
+                                                    <td>{{ number_format($item->selling_price) }}</td>
+                                                @endif
+
+
                                                 @if ($item->is_active == 1)
                                                 <td class="text-center"><span class="shadow-none badge badge-success">Active</span></td>
                                                 @else

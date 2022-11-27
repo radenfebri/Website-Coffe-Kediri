@@ -7,7 +7,9 @@ use App\Http\Controllers\Backend\AssignRoleController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\KategoriProdukController;
 use App\Http\Controllers\Backend\ManajemenUsersController;
+use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\PermissionController;
+use App\Http\Controllers\Backend\PesananController;
 use App\Http\Controllers\Backend\ProdukController;
 use App\Http\Controllers\Backend\RoleController;
 use Illuminate\Support\Facades\Auth;
@@ -120,6 +122,21 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
     Route::put('produk/{id}/update',  [ProdukController::class, 'update'])->name('produk.update');
     Route::get('produk/{id}/delete-image', [ProdukController::class, 'deleteimage'])->name('images.delete');
     Route::get('produk/{id}/destroy',  [ProdukController::class, 'destroy'])->name('produk.destroy');
+    
+    // ROUTE PESANAN
+    Route::get('pesanan', [PesananController::class, 'index'])->name('pesanan.index');
+    Route::get('pesanan/packing', [PesananController::class, 'packing'])->name('pesanan.packing');
+    Route::get('pesanan/kirim', [PesananController::class, 'kirim'])->name('pesanan.kirim');
+    Route::get('pesanan/success', [PesananController::class, 'success'])->name('pesanan.success');
+    Route::get('pesanan/{id}/edit', [PesananController::class, 'edit'])->name('pesanan.edit');
+    Route::put('pesanan/{id}/update', [PesananController::class, 'update'])->name('pesanan.update');
+    
+    // ROUTE PAYMENT
+    Route::get('payment', [PaymentController::class, 'index'])->name('payment.index');
+    Route::post('payment/store', [PaymentController::class, 'store'])->name('payment.store');
+    Route::get('payment/{id}/edit', [PaymentController::class, 'edit'])->name('payment.edit');
+    Route::put('payment/{id}/update', [PaymentController::class, 'update'])->name('payment.update');
+    Route::get('payment/destroy/{id}', [PaymentController::class, 'destroy'])->name('payment.destroy');
     
     // ROUTE ROLE
     Route::get('role',  [RoleController::class, 'index'])->name('role.index');
