@@ -22,19 +22,23 @@
                 <div class="col-lg-12">
                     <div class="statbox widget box box-shadow">
                         <div class="widget-content widget-content-area">
-                            <div>
+                            <div class="manajemen-pesanan-layout">
+                                <div>
                                 <a href="{{ route('pesanan.index') }}" class="text-primary mr-2 mb-2" >
-                                    <button class="btn btn-danger btn-sm">Pesanan Unpaid</button>
+                                    <button class="btn btn-danger btn-sm button-manajemen-pesanan">Pesanan Unpaid</button>
                                 </a>
                                 <a href="{{ route('pesanan.packing') }}" class="text-info mr-2 mb-2" >
-                                    <button class="btn btn-info btn-sm">Pesanan Packing</button>
+                                    <button class="btn btn-info btn-sm button-manajemen-pesanan">Pesanan Packing</button>
                                 </a>
+                                </div>
+                                <div>
                                 <a href="{{ route('pesanan.kirim') }}" class="text-warning mr-2 mb-2" >
-                                    <button class="btn btn-warning btn-sm">Pesanan Kirim</button>
+                                    <button class="btn btn-warning btn-sm button-manajemen-pesanan">Pesanan Kirim</button>
                                 </a>
                                 <a href="{{ route('pesanan.success') }}" class="text-success mr-2 mb-2" >
-                                    <button class="btn btn-success btn-sm">Pesanan Selesai</button>
+                                    <button class="btn btn-success btn-sm button-manajemen-pesanan">Pesanan Selesai</button>
                                 </a>
+                                </div>
                             </div>
                             <table id="style-3" class="table style-3 dt-table-hover">
                                 <thead>

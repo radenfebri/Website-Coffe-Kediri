@@ -68,6 +68,10 @@
     <link href="{{ asset('backend') }}/src/plugins/css/dark/filepond/custom-filepond.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend') }}/src/plugins/css/dark/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
     <link href="{{ asset('backend') }}/src/assets/css/dark/apps/invoice-add.css" rel="stylesheet" type="text/css" />
+
+    {{-- custom css sendiri --}}
+
+    <link rel="stylesheet" href="{{ asset('backend') }}/src/assets/css/dark/custom1.css">
     
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!--  BEGIN CUSTOM STYLE FILE  -->
