@@ -22,6 +22,7 @@ class DetailController extends Controller
 
             return view('frontend.detail-produk.index', compact('produk', 'images', 'kategoriproduk', 'kategori', 'newproduk', 'kategoriproduk_nav'));
         } else {
+            return redirect()->route('shop')->with('error', 'Produk tidak ditemukan / sudah tidak aktif');
         }
     }
 }

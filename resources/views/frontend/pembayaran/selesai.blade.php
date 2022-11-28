@@ -49,39 +49,44 @@
                                 <h4>Total</h4>
                             </div>
                             <div class="nilai-produk-pembayaran">
-                                <h4>Nilai</h4>
+                                <h4>Rating</h4>
                             </div>
                         </div>
+
+                        @php $total = 0; @endphp
+                        
+                        @foreach ($orders->orderitem as $item)
                         <div class="isi-produk-pembayaran">     
                             <div class="img-produk-pembayaran">
+                                @if ($item->produks->cover == null)
                                 <img src="{{ asset('frontend') }}/imgs/shop/product-3-1.jpg" alt="">
+                                @else
+                                <img src="{{ asset('storage/'. $item->produks->cover) }}" alt="">
+                                @endif
                             </div>
                             <div class="desc-produk-pembayaran">
-                                <a href="" class="judul">Judul 1</a>
-                                <p>asdaaaaaaaaa</p>
+                                <a href="{{ route('detail.produk', $item->produks->slug ) }}" class="judul">{{ $item->produks->name }}</a>
+                                <p>{{ \Illuminate\Support\Str::words($item->produks->small_description, 2, '...') }}</p>
+                                <p>x {{ $item->qty }}</p>
                             </div>
                             <div class="total-produk-pembayaran-selesai">
-                                <p>Rp. 10.000.000</p>
+                                @if ($item->produks->selling_price == null)
+                                <p>Rp. {{ number_format($item->produks->original_price * $item->qty) }}</p>
+                                @else
+                                <p>Rp. {{ number_format($item->produks->selling_price * $item->qty) }}</p>
+                                @endif
                             </div>
                             <div class="nilai-produk-pembayaran">
-                                <a href="">Nilai</a>
+                                <a href="{{ route('detail.produk', $item->produks->slug ) }}">Rating</a>
                             </div>
                         </div>
-                        <div class="isi-produk-pembayaran">     
-                            <div class="img-produk-pembayaran">
-                                <img src="{{ asset('frontend') }}/imgs/shop/product-3-1.jpg" alt="">
-                            </div>
-                            <div class="desc-produk-pembayaran">
-                                <a href="" class="judul">Judul 1</a>
-                                <p>asdaaaaaaaaa</p>
-                            </div>
-                            <div class="total-produk-pembayaran-selesai">
-                                <p>Rp. 10.000.000</p>
-                            </div>
-                            <div class="nilai-produk-pembayaran">
-                                <a href="">Nilai</a>
-                            </div>
-                        </div>
+                        @if ($item->produks->selling_price == null)
+                        @php $total += $item->produks->original_price * $item->qty; @endphp
+                        @else
+                        @php $total += $item->produks->selling_price * $item->qty; @endphp
+                        @endif
+                        @endforeach
+
                         <div class="judul-produk-pembayaran-total">
                             <div class="produk-pembayaran-total">
                                 <h5>Total Order</h4>

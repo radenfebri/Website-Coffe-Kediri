@@ -110,10 +110,9 @@
                                 <div class="payment_option">
                                     <div class="custome-radio">
                                         <select class="form-control @error('metode') is-invalid @enderror" name="metode">
-                                            <option value="TRANFER BANK BRI">TRANFER BANK BRI</option>
-                                            <option value="TRANFER BANK BCA">TRANFER BANK BCA</option>
-                                            <option value="TRANFER BANK BNI">TRANFER BANK BNI</option>
-                                            <option value="QRIS / E-WALLET">QRIS / E-WALLET</option>
+                                            @foreach ($payment as $item)
+                                                <option value="{{ $item->nama_bank }}">{{ $item->nama_bank }}</option>
+                                            @endforeach
                                         </select>
                                         @error('metode')
                                         <span class="invalid-feedback" role="alert">

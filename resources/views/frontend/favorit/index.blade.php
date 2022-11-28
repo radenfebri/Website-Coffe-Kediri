@@ -22,17 +22,17 @@
                     <div class="table-responsive">
                         <table class="table shopping-summery text-center clean">
                             @if ($favorit->count() > 0)
-                                <thead>
-                                    <tr class="main-heading">
-                                        <th scope="col">Gambar</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Harga</th>
-                                        <th scope="col">Keranjang</th>
-                                        <th scope="col">Hapus</th>
-                                    </tr>
-                                </thead>
+                            <thead>
+                                <tr class="main-heading">
+                                    <th scope="col">Gambar</th>
+                                    <th scope="col">Nama</th>
+                                    <th scope="col">Harga</th>
+                                    <th scope="col">Keranjang</th>
+                                    <th scope="col">Hapus</th>
+                                </tr>
+                            </thead>
                             @else
-                                
+                            
                             @endif
                             
                             @if ($favorit->count() > 0)
@@ -61,9 +61,16 @@
                                     <td class="price" data-title="Price"><span>Rp. {{ number_format($item->produks->selling_price) }}</span></td>
                                     @endif
                                     
+                                    @if ($item->produks->qty == 0)
+                                    <td>
+                                        Produk Habis
+                                    </td>
+                                    @else
                                     <td>
                                         <a href="{{ route('addcart') }}" class="addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
                                     </td>
+                                    @endif
+                                    
                                     <td>
                                         <a href="{{ route('deletefavorit') }}" class="delete-favorit-item"><i class="fi-rs-trash"></i></a>
                                     </td>
@@ -71,9 +78,9 @@
                                 @endforeach
                                 
                                 @else
-                                    <h3 class="text-center mb-50">
-                                        Favorit anda masih Kosong
-                                    </h3>
+                                <h3 class="text-center mb-50">
+                                    Favorit anda masih Kosong
+                                </h3>
                                 @endif
                             </tr>
                         </tbody>
@@ -87,7 +94,7 @@
 </section>
 
 {{-- TAMPILAN MOBILE --}}
-<span class="produk favorit">
+<span class="produk favorit_mobile">
     <section class="favorit-mobile">
         <div class="container">
             @if ($favorit->count() > 0)
@@ -107,18 +114,25 @@
                         <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
                         <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 1, '...') }}</p>
                         @if ($item->produks->selling_price == null)
-                            <p>Rp. {{ number_format($item->produks->original_price) }}</p>
+                        <p>Rp. {{ number_format($item->produks->original_price) }}</p>
                         @else
-                            <p>Rp. {{ number_format($item->produks->selling_price) }}</p>
+                        <p>Rp. {{ number_format($item->produks->selling_price) }}</p>
                         @endif
                         
                     </div>
                     <div class="icon-favorit-cart">
+                        @if ($item->produks->qty == 0)
+                        <p>
+                            Stok 0
+                        </p>
+                        @else
                         <div class="cart-favorit">
                             <a href="{{ route('addcart') }}" class="addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
                         </div>
+                        @endif
+                        
                         <div>
-                            <a href="{{ route('deletefavorit') }}" class="delete-favorit-item"><i class="fi-rs-trash"></i></i></a>
+                            <a href="{{ route('deletefavorit') }}" class="delete-favorit-item-mobile"><i class="fi-rs-trash"></i></i></a>
                         </div>
                     </div>
                 </div>

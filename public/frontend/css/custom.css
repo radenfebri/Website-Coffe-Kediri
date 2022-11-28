@@ -344,6 +344,12 @@
     margin-bottom: 100px;
   }
 
+  .pagination-style{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+  }
+
 
 
 @media (max-width: 980px) {

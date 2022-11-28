@@ -9,12 +9,16 @@ use Illuminate\Http\Request;
 
 class KategoriController extends Controller
 {
-    public function index()
+    public function index($slug)
     {
-        $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
-        $produks = Produk::latest()->where('is_active', 1)->paginate(12);
+        if (KategoriProduk::where('slug', $slug)->where('is_active', 1)->exists()) {
+            $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
+            $kategoriproduk = KategoriProduk::where('slug', $slug)->first();
+            $produks = Produk::where('kategori_id', $kategoriproduk->id)->where('is_active', 1)->latest()->paginate(12);
 
-        return view('frontend.kategori.index', compact('kategoriproduk_nav', 'produks'));
-        
+            return view('frontend.kategori.index', compact('kategoriproduk_nav', 'produks', 'kategoriproduk'));
+        } else {
+            return redirect()->route('shop')->with('error', 'Kategori tidak ditemukan / sudah tidak aktif');
+        }
     }
 }

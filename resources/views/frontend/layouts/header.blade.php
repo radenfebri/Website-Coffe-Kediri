@@ -47,8 +47,10 @@
                 </div>
                 <div class="header-right">
                     <div class="search-style-1">
-                        <form action="#">                                
-                            <input type="text" placeholder="Search for items...">
+                        <form action="{{ route('searchproduk') }}" method="POST">
+                            @csrf                                
+                            <input type="text" name="produk_name" id="search_produk" placeholder="Cari item Produk . . .">
+                            <button type="submit" hidden></button>
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -93,7 +95,7 @@
                         <div class="categori-dropdown-wrap categori-dropdown-active-large">
                             <ul>
                                 @foreach ($kategoriproduk_nav as $item)
-                                    <li><a href="#"><i class="surfsidemedia-font-home"></i>{{ $item->name }}</a></li>
+                                    <li><a href="{{ route('kategori', $item->slug ) }}"><i class="surfsidemedia-font-home"></i>{{ $item->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
@@ -105,7 +107,7 @@
                                 <li><a class="{{ request()->is('/', 'home') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
                                 <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
                                 <li><a class="{{ request()->is('shop', 'shop/*', 'cart', 'favorit', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
-                                <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="contact.html">Contact</a></li>
+                                <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="{{ route('contact') }}">Contact</a></li>
                                 @guest
                                 
                                 @else
@@ -221,8 +223,10 @@
         </div>
         <div class="mobile-header-content-area">
             <div class="mobile-search search-style-3 mobile-header-border">
-                <form action="#">
-                    <input type="text" placeholder="Search for items…">
+                <form action="{{ route('searchproduk') }}" method="POST">
+                    @csrf
+                    <input type="text"  name="produk_name" id="search_produk" placeholder="Cari item Produk . . .">
+                    <button type="submit" hidden></button>
                     <button type="submit"><i class="fi-rs-search"></i></button>
                 </form>
             </div>

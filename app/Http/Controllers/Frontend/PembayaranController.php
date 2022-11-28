@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\KategoriProduk;
 use App\Models\Order;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,12 +16,13 @@ class PembayaranController extends Controller
         if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
-            // $payment = Payment::all();
-            // $metode = Payment::where('kategori', $orders->metode)->first();
+            $metode = Payment::where('nama_bank', $orders->metode)->first();
+
+            // dd($metode);
             
             // BELUM BAYAR
             if ($orders->status == 0) {
-                return view('frontend.pembayaran.index', compact('orders', 'kategoriproduk_nav'));
+                return view('frontend.pembayaran.index', compact('orders', 'kategoriproduk_nav', 'metode'));
             } else {
                 return redirect()->route('orderHistory');
             }
@@ -35,7 +37,6 @@ class PembayaranController extends Controller
         if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
-            // $payment = Payment::all();
             // $metode = Payment::where('kategori', $orders->metode)->first();
             
             // BELUM BAYAR
@@ -55,7 +56,6 @@ class PembayaranController extends Controller
         if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
-            // $payment = Payment::all();
             // $metode = Payment::where('kategori', $orders->metode)->first();
             
             // BELUM BAYAR
@@ -75,7 +75,6 @@ class PembayaranController extends Controller
         if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
-            // $payment = Payment::all();
             // $metode = Payment::where('kategori', $orders->metode)->first();
             
             // BELUM BAYAR

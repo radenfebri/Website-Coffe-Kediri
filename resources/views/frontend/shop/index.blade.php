@@ -33,7 +33,7 @@
                                 <div class="sort-by-dropdown">
                                     <ul>
                                         @foreach ($kategoriproduk_nav as $item)
-                                        <li><a class="" href="#">{{ $item->name }}</a></li>
+                                        <li><a href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="product-content-wrap">
                                         <div class="product-category">
-                                            <a href="#">{{ $item->kategoriproduk->name }}</a>
+                                            <a href="{{ route('kategori', $item->kategoriproduk->slug) }}">{{ $item->kategoriproduk->name }}</a>
                                         </div>
                                         <h2><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h2>
                                         <div class="rating-result" title="90%">
@@ -98,19 +98,8 @@
                             @endif
                             
                         </div>
-                        <!--pagination-->
-                        <div class="pagination-area mt-15 mb-sm-5 mb-lg-0">
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination justify-content-start">
-                                    <li class="page-item active"><a class="page-link" href="#">01</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">02</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">03</a></li>
-                                    <li class="page-item"><a class="page-link dot" href="#">...</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">16</a></li>
-                                    <li class="page-item"><a class="page-link" href="#"><i class="fi-rs-angle-double-small-right"></i></a></li>
-                                </ul>
-                            </nav>
-                        </div>
+                            <!--pagination-->
+                        {{ $produks->links('frontend.layouts.includes.pagination') }}
                     </div>
                 </div>
             </div>

@@ -148,7 +148,7 @@
                                         @if ($item->kategoriproduk == null)
                                         
                                         @else
-                                        <a href="#">{{ $item->kategoriproduk->name }}</a>
+                                        <a href="{{ route('kategori', $item->kategoriproduk->slug) }}">{{ $item->kategoriproduk->name }}</a>
                                         @endif
                                     </div>
                                     <h2><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h2>
@@ -213,7 +213,7 @@
                                         @if ($item->kategoriproduk == null)
                                         
                                         @else
-                                        <a href="#">{{ $item->kategoriproduk->name }}</a>
+                                        <a href="{{ route('kategori', $item->kategoriproduk->slug) }}">{{ $item->kategoriproduk->name }}</a>
                                         @endif
                                     </div>
                                     <h2><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h2>
@@ -578,9 +578,9 @@
                     @foreach ($kategoriproduk as $item)
                     <div class="card-1">
                         <figure class=" img-hover-scale overflow-hidden">
-                            <a href=""> <img class="kategori-img" src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
+                            <a href="{{ route('kategori', $item->slug) }}"> <img class="kategori-img" src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
                         </figure>
-                        <h5><a href="">{{ $item->name }}</a></h5>
+                        <h5><a href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></h5>
                     </div>
                     @endforeach
                     

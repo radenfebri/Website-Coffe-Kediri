@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">No Telepon <span style="color: red">*</span></label>
+                    <label class="form-label">No WhatsApp <span style="color: red">*</span></label>
                     <input type="number" placeholder="No Hp" class="form-control  @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') ?? Auth::user()->no_hp }}">
                     @error('no_hp')
                     <span class="invalid-feedback" role="alert">
