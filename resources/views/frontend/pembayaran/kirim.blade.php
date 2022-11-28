@@ -37,7 +37,6 @@
                             @elseif($orders->status == 3)
                             <p style="color: green">Selesai</p>
                             @endif
-                            
                         </div>
                     </div>
                     <div class="detail-produk-pembayaran">
@@ -49,36 +48,43 @@
                                 <h4>Total</h4>
                             </div>
                         </div>
+                        @php $total = 0; @endphp
+                        
+                        @foreach ($orders->orderitem as $item)
                         <div class="isi-produk-pembayaran">     
                             <div class="img-produk-pembayaran">
+                                @if ($item->produks->cover == null)
                                 <img src="{{ asset('frontend') }}/imgs/shop/product-3-1.jpg" alt="">
+                                @else
+                                <img src="{{ asset('storage/'. $item->produks->cover) }}" alt="">
+                                @endif
                             </div>
                             <div class="desc-produk-pembayaran">
-                                <a href="" class="judul">Judul 1</a>
-                                <p>asdaaaaaaaaa</p>
+                                <a href="{{ route('detail.produk', $item->produks->slug ) }}" class="judul">{{ $item->produks->name }}</a>
+                                <p>{{ \Illuminate\Support\Str::words($item->produks->small_description, 2, '...') }}</p>
+                                <p>x {{ $item->qty }}</p>
                             </div>
                             <div class="total-produk-pembayaran">
-                                <p>Rp. 100.000</p>
+                                @if ($item->produks->selling_price == null)
+                                <p>Rp. {{ number_format($item->produks->original_price * $item->qty) }}</p>
+                                @else
+                                <p>Rp. {{ number_format($item->produks->selling_price * $item->qty) }}</p>
+                                @endif
                             </div>
                         </div>
-                        <div class="isi-produk-pembayaran">     
-                            <div class="img-produk-pembayaran">
-                                <img src="{{ asset('frontend') }}/imgs/shop/product-3-1.jpg" alt="">
-                            </div>
-                            <div class="desc-produk-pembayaran">
-                                <a href="" class="judul">Judul 1</a>
-                                <p>asdaaaaaaa</p>
-                            </div>
-                            <div class="total-produk-pembayaran">
-                                <p>Rp. 100.000</p>
-                            </div>
-                        </div>
+                        @if ($item->produks->selling_price == null)
+                        @php $total += $item->produks->original_price * $item->qty; @endphp
+                        @else
+                        @php $total += $item->produks->selling_price * $item->qty; @endphp
+                        @endif
+                        @endforeach
+                        
                         <div class="judul-produk-pembayaran">
                             <div class="produk-pembayaran">
                                 <h5>Total Order</h5>
                             </div>
                             <div class="total-produk-pembayaran">
-                                <h5>Rp. {{ number_format($orders->total_price) }}</h5>
+                                <h5>Rp. {{ number_format($total) }}</h5>
                             </div>
                         </div>
                     </div>
@@ -93,8 +99,9 @@
                         <div class="pembayaran-text">
                             <p>{{ date('d F Y',strtotime($orders->created_at)) }}</p>
                         </div>
+                        <p><h5>Total yang dibayarkan harus sesuai dengan kode unik, 3 digit angka di belakang koma adalah kode unik transaksi anda.</h5></p>
                     </div>
-                    <a class="btn btn-pembayaran">Bukti Pembayaran</a>
+                    <a href="#" class="btn btn-pembayaran">Konfirmasi Pembayaran</a>
                 </div>
             </div>
         </div>

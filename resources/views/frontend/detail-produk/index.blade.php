@@ -98,7 +98,7 @@
                                                 @if ($produk->kategoriproduk->name == null)
                                                 Tidak ada Kategori
                                                 @else
-                                                <a href="#">{{ $produk->kategoriproduk->name }}</a>
+                                                <a href="{{ route('kategori', $produk->kategoriproduk->slug ) }}">{{ $produk->kategoriproduk->name }}</a>
                                                 @endif
                                                 
                                             </span>
@@ -135,17 +135,24 @@
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
                                     <input type="hidden" value="{{ $produk->id }}" class="prod_id">
                                     <div class="detail-extralink">
+                                        @if ($produk->qty == 0)
+                                        
+                                        @else
                                         <div class="product-extra-link2">
                                             <input type="number" name="quantity" class="qty-input text-center input-number" min="1" max="100" value="1">
                                         </div>
-                                        
                                         <div class="product-extra-link2">
                                             <a href="{{ route('addcart') }}" aria-label="Add to Cart" class="action-btn hover-up addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
-                                            <a  href="" aria-label="Add To Wishlist" class="action-btn hover-up"><i class="fi-rs-heart"></i></a>
+                                            <a  href="{{ route('addfavorit') }}" aria-label="Add To Wishlist" class="action-btn hover-up addToWishlist"><i class="fi-rs-heart"></i></a>
                                         </div>
+                                        @endif
                                     </div>
                                     <ul class="product-meta font-xs color-grey mt-50">
-                                        <li>Produk:<span class="in-stock text-success ml-5">{{ $produk->qty }} Item Stok</span></li>
+                                        @if ($produk->qty == 0)
+                                            <li>Produk:<span class="in-stock text-danger ml-5">{{ $produk->qty }} Item Stok</span></li>
+                                        @else
+                                            <li>Produk:<span class="in-stock text-success ml-5">{{ $produk->qty }} Item Stok</span></li>
+                                        @endif
                                     </ul>
                                 </div>
                                 <!-- Detail Info -->
@@ -321,9 +328,10 @@
                                 <div class="col-12">
                                     <h3 class="section-title style-1 mb-30">Produk terkait</h3>
                                 </div>
-                                <div class="col-12">
+                                <div class="col-12 produk_data">
                                     <div class="row related-products">
                                         @foreach ($kategoriproduk as $item)
+                                        <input type="hidden" value="{{ $produk->id }}" class="prod_id">
                                         <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                             <div class="product-cart-wrap small hover-up">
                                                 <div class="product-img-action-wrap">
@@ -340,7 +348,7 @@
                                                     </div>
                                                     <div class="product-action-1">
                                                         <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn small hover-up"><i class="fi-rs-eye"></i></a>
-                                                        <a href="wishlist.php" aria-label="Tambah ke Favorit" class="action-btn small hover-up" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                        <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn small hover-up addToWishlist" tabindex="0"><i class="fi-rs-heart"></i></a>
                                                     </div>
                                                     <div class="product-badges product-badges-position product-badges-mrg">
                                                         @if ($item->popular == 1)
@@ -378,11 +386,11 @@
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated">Kategori</h5>
                             <ul class="categories">
                                 @if ($kategori == null)
-                                    
+                                
                                 @else
-                                    @foreach ($kategori as $item)
-                                        <li><a href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></li>
-                                    @endforeach
+                                @foreach ($kategori as $item)
+                                <li><a href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></li>
+                                @endforeach
                                 @endif
                             </ul>
                         </div>
@@ -394,26 +402,26 @@
                                 <div class="bt-1 border-color-1"></div>
                             </div>
                             @foreach ($newproduk as $item)
-                                <div class="single-post clearfix">
-                                    <div class="image">
-                                        @if ($item->cover == null)
-                                            <img src="{{ asset('frontend') }}/imgs/shop/thumbnail-3.jpg" loading="lazy" alt="{{ $item->name }}">
-                                        @else
-                                            <img src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
-                                        @endif
-                                    </div>
-                                    <div class="content pt-10">
-                                        <h5><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h5>
-                                        @if ($item->selling_price == null)
-                                            <p class="price mb-0 mt-5">Rp. {{ number_format($item->original_price) }}</p>
-                                        @else
-                                            <p class="price mb-0 mt-5">Rp. {{ number_format($item->selling_price) }}</p>
-                                        @endif
-                                        <div class="product-rate">
-                                            <div class="product-rating" style="width:90%"></div>
-                                        </div>
+                            <div class="single-post clearfix">
+                                <div class="image">
+                                    @if ($item->cover == null)
+                                    <img src="{{ asset('frontend') }}/imgs/shop/thumbnail-3.jpg" loading="lazy" alt="{{ $item->name }}">
+                                    @else
+                                    <img src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                    @endif
+                                </div>
+                                <div class="content pt-10">
+                                    <h5><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h5>
+                                    @if ($item->selling_price == null)
+                                    <p class="price mb-0 mt-5">Rp. {{ number_format($item->original_price) }}</p>
+                                    @else
+                                    <p class="price mb-0 mt-5">Rp. {{ number_format($item->selling_price) }}</p>
+                                    @endif
+                                    <div class="product-rate">
+                                        <div class="product-rating" style="width:90%"></div>
                                     </div>
                                 </div>
+                            </div>
                             @endforeach
                         </div>                        
                     </div>

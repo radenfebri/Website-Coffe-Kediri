@@ -16,7 +16,7 @@ class KategoriController extends Controller
             $kategoriproduk = KategoriProduk::where('slug', $slug)->first();
             $produks = Produk::where('kategori_id', $kategoriproduk->id)->where('is_active', 1)->latest()->paginate(12);
 
-            return view('frontend.kategori.index', compact('kategoriproduk_nav', 'produks'));
+            return view('frontend.kategori.index', compact('kategoriproduk_nav', 'produks', 'kategoriproduk'));
         } else {
             return redirect()->route('shop')->with('error', 'Kategori tidak ditemukan / sudah tidak aktif');
         }

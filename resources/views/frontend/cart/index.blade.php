@@ -61,9 +61,14 @@
                                     @endif
                                     
                                     <td class="text-center" data-title="Stock">
-                                        <div class="product-extra-link2">
-                                            <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity" min="1" max="100" value="{{ $item->prod_qty }}">
-                                        </div>
+                                        @if ($item->produks->qty == 0)
+                                            <span class="product-name">Produk Habis</span>
+                                        @else
+                                            <div class="product-extra-link2">
+                                                <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity" min="1" max="100" value="{{ $item->prod_qty }}">
+                                            </div>
+                                        @endif
+                                        
                                     </td>
                                     
                                     <td class="text-right" data-title="Cart">
@@ -164,7 +169,11 @@
                             <div class="text-favorit">
                                 <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
                                 <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 3, '...') }}</p>
-                                <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity-mobile" min="1" max="100" value="{{ $item->prod_qty }}">
+                                @if ($item->produks->qty == 0)
+                                    Stok 0
+                                @else
+                                    <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity-mobile" min="1" max="100" value="{{ $item->prod_qty }}">
+                                @endif
                                 <p class="text-harga">
                                     @if ($item->produks->selling_price == null)
                                     <span>Rp. {{ number_format($item->produks->original_price * $item->prod_qty) }}</span>

@@ -16,6 +16,15 @@ class CheckoutController extends Controller
 {
     public function index()
     {
+        // REMOVE DATA JIKA OUT OF STOK
+        $stok_kosong = Keranjang::where('user_id', Auth::id())->get();
+        foreach ($stok_kosong as $item) {
+            if (!Produk::where('id', $item->prod_id)->where('qty', '>=', $item->prod_qty)->exists()) {
+                $removeItem = Keranjang::where('user_id', Auth::id())->where('prod_id', $item->prod_id)->first();
+                $removeItem->delete();
+            }
+        }
+        
         $produk = Keranjang::where('user_id', Auth::id())->get();
         $cart_check = Keranjang::where('user_id', Auth::id())->count();
         $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
@@ -34,7 +43,7 @@ class CheckoutController extends Controller
     
     
     public function placeorder(Request $request)
-    {
+    {   
         $cart_check = Keranjang::where('user_id', Auth::id())->count();
         if ($cart_check > 0) {
             $request->validate([
@@ -102,57 +111,58 @@ class CheckoutController extends Controller
     
     // public function myorder()
     // {
-    //     $orders = Order::orderBy('created_at', 'desc')->where('user_id', Auth::id())->paginate(10);
-    //     return view('frontend.order.myorder', compact('orders'));
-    // }
-    
-    
-    // public function orderbayar($id)
-    // {
-    //     if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
-    //         $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
-    //         $payment = Payment::all();
-    //         $metode = Payment::where('kategori', $orders->metode)->first();
-            
-    //         // dd($orders->metode);
-    //         // dd($metode);
-            
-    //         if ($orders->status == 0) {
-    //             return view('frontend.order.view', compact('orders', 'metode', 'payment'));
-    //         } else {
-    //             return redirect()->route('myorder.index');
-    //         }
-    //     } else {
-            
-    //         // toast('Link Tidak dapat Ditemukan','error');
-    //         return back();
-    //     }
-    // }
-    
-    
-    // public function historyorder($id)
-    // {
-    //     if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
-    //         $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
-            
-    //         if ($orders->status == 1) {
-    //             return view('frontend.order.history-order', compact('orders'));
-    //         } else {
-    //             return redirect()->route('myorder.index');
-    //         }
-    //     } else {
-            
-    //         // toast('Link Tidak dapat Ditemukan','error');
-    //         return redirect()->route('myorder.index');
-    //     }
-    // }
-    
-    
-    // public function ordercount()
-    // {
-    //     $ordercount = Order::where('user_id', Auth::id())->count();
+        //     $orders = Order::orderBy('created_at', 'desc')->where('user_id', Auth::id())->paginate(10);
+        //     return view('frontend.order.myorder', compact('orders'));
+        // }
         
-    //     return response()->json(['count' => $ordercount]);
-    // }
-    
-}
+        
+        // public function orderbayar($id)
+        // {
+            //     if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
+                //         $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
+                //         $payment = Payment::all();
+                //         $metode = Payment::where('kategori', $orders->metode)->first();
+                
+                //         // dd($orders->metode);
+                //         // dd($metode);
+                
+                //         if ($orders->status == 0) {
+                    //             return view('frontend.order.view', compact('orders', 'metode', 'payment'));
+                    //         } else {
+                        //             return redirect()->route('myorder.index');
+                        //         }
+                        //     } else {
+                            
+                            //         // toast('Link Tidak dapat Ditemukan','error');
+                            //         return back();
+                            //     }
+                            // }
+                            
+                            
+                            // public function historyorder($id)
+                            // {
+                                //     if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
+                                    //         $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
+                                    
+                                    //         if ($orders->status == 1) {
+                                        //             return view('frontend.order.history-order', compact('orders'));
+                                        //         } else {
+                                            //             return redirect()->route('myorder.index');
+                                            //         }
+                                            //     } else {
+                                                
+                                                //         // toast('Link Tidak dapat Ditemukan','error');
+                                                //         return redirect()->route('myorder.index');
+                                                //     }
+                                                // }
+                                                
+                                                
+                                                // public function ordercount()
+                                                // {
+                                                    //     $ordercount = Order::where('user_id', Auth::id())->count();
+                                                    
+                                                    //     return response()->json(['count' => $ordercount]);
+                                                    // }
+                                                    
+                                                }
+                                                

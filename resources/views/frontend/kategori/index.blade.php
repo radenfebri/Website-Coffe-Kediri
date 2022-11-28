@@ -18,7 +18,7 @@
                 <div class="col-lg-12">
                     <div class="shop-product-fillter">
                         <div class="totall-product">
-                            <p> Kami menemukan <strong class="text-brand">{{ $produks->count() }}</strong> item untuk Anda!</p>
+                            <p> Kami menemukan <strong class="text-brand">{{ $produks->count() }}</strong> item, Dalam kategori <strong class="text-brand">{{ $kategoriproduk->name }}.</strong></p>
                         </div>
                         <div class="sort-by-product-area">
                             <div class="sort-by-cover">
@@ -33,8 +33,7 @@
                                 <div class="sort-by-dropdown">
                                     <ul>
                                         @foreach ($kategoriproduk_nav as $key => $item)
-                                        {{-- {{ $key }} --}}
-                                        <li><a class="{{ $key == $key++ ? 'active':'' }}" href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></li>
+                                        <li><a class="" href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></li>
                                         @endforeach
                                     </ul>
                                 </div>
