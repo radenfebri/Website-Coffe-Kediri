@@ -19,4 +19,35 @@ class Homecontroller extends Controller
 
         return view('frontend.home.index', compact('kategoriproduk_nav', 'produks', 'produk_populer', 'kategoriproduk'));
     }
+
+
+    public function search()
+    {
+        $produk = Produk::select('name')->where('is_active', 1)->get();
+        $data = [];
+
+        foreach ($produk as $item) {
+            $data[] = $item['name'];
+        }
+
+        return $data;
+    }
+
+
+
+    public function searchproduk(Request $request)
+    {
+        $search_produk = $request->produk_name;
+
+        if ($search_produk != "") {
+            $produk = Produk::where("name", "LIKE", "%$search_produk%")->where('is_active', 1)->first();
+            if ($produk) {
+                return redirect('detail-produk/' . $produk->slug);
+            } else {
+                return back()->with('error', 'Produk Tidak dapat Ditemukan');
+            }
+        } else {
+            return back()->with('error', 'Produk Tidak dapat Ditemukan');
+        }
+    }
 }

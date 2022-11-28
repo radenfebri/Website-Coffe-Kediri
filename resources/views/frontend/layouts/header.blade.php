@@ -47,8 +47,10 @@
                 </div>
                 <div class="header-right">
                     <div class="search-style-1">
-                        <form action="#">                                
-                            <input type="text" placeholder="Search for items...">
+                        <form action="{{ route('searchproduk') }}" method="POST">
+                            @csrf                                
+                            <input type="text" name="produk_name" id="search_produk" placeholder="Cari item Produk . . .">
+                            <button type="submit" hidden></button>
                         </form>
                     </div>
                     <div class="header-action-right">
@@ -221,8 +223,10 @@
         </div>
         <div class="mobile-header-content-area">
             <div class="mobile-search search-style-3 mobile-header-border">
-                <form action="#">
-                    <input type="text" placeholder="Search for items…">
+                <form action="{{ route('searchproduk') }}" method="POST">
+                    @csrf
+                    <input type="text"  name="produk_name" id="search_produk" placeholder="Cari item Produk . . .">
+                    <button type="submit" hidden></button>
                     <button type="submit"><i class="fi-rs-search"></i></button>
                 </form>
             </div>

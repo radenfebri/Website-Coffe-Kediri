@@ -29,8 +29,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ChangePasswordController;
 use App\Http\Controllers\Frontend\FavoritController;
 use App\Http\Controllers\Frontend\OrderHistoryController;
-
-
+use Illuminate\Support\Facades\Artisan;
 
 // ROUTE FRONTEND
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -60,6 +59,10 @@ Route::get('load-wishlist-data', [FavoritController::class, 'favoritcount'])->na
 
 // REMOVE FAVORIT LIST
 Route::post('delete-favorit-item', [FavoritController::class, 'deleteproduk'])->name('deletefavorit');
+
+// SEARCH PRODUK HEADER 
+Route::get('produk-list', [HomeController::class, 'search'])->name('search');
+Route::post('searchproduk', [HomeController::class, 'searchproduk'])->name('searchproduk');
 
 Route::middleware(['has.role'])->middleware('auth')->group(function () {
     // CART
@@ -169,4 +172,13 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
     Route::get('user/change-password/{id}/edit', [ManajemenUsersController::class, 'change_password'])->name('change-password');
     Route::put('user/change-password/{id}/edit', [ManajemenUsersController::class, 'update_password'])->name('update-password');
     Route::get('user/{id}/update', [ManajemenUsersController::class, 'status_akun'])->name('status-akun');
+});
+
+
+Route::get('/website-up', function () {
+    return Artisan::call('up');
+});
+
+Route::get('/website-down', function () {
+    return Artisan::call("down --secret=putrabagus");
 });
