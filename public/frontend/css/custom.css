@@ -350,6 +350,23 @@
     justify-content: center;
   }
 
+  .pagination-margin{
+    margin-bottom: 50px;
+  }
+
+  .custom-login{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .custom-login-button{
+    margin-right: 10px;
+  }
+
+
+
+
 
 
 @media (max-width: 980px) {
@@ -651,6 +668,21 @@
 
   .nilai-produk-pembayaran{
     font-size: 12px;
+  }
+
+  /* login */
+  .custom-login{
+    width: 100%;
+    
+  }
+
+  .custom-button-google{
+    size: 5px;
+    font-size: 12px;
+  }
+
+  .custom-login-button{
+    height: 62px;
   }
 
 
