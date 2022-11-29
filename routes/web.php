@@ -29,6 +29,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ChangePasswordController;
 use App\Http\Controllers\Frontend\FavoritController;
 use App\Http\Controllers\Frontend\OrderHistoryController;
+use App\Http\Controllers\Frontend\RatingController;
 use Illuminate\Support\Facades\Artisan;
 
 // ROUTE FRONTEND
@@ -67,27 +68,30 @@ Route::post('searchproduk', [HomeController::class, 'searchproduk'])->name('sear
 Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function () {
     // CART
     Route::get('cart', [CartController::class, 'index'])->name('cart');
-
+    
     // ROUTE FAVORIT LIST
     Route::get('favorit', [FavoritController::class, 'favoritview'])->name('favorit.view');
-
+    
     // CHECKOUT
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
-
+    
     // ROUTE PLACE ORDER
     Route::post('place-order', [CheckoutController::class, 'placeorder'])->name('placeorder');
-
+    
     // CHANGE PASSWORD
     Route::get('change-password', [ChangePasswordController::class, 'index'])->name('changePassword');
     Route::post('update-password', [ChangePasswordController::class, 'updatepassword'])->name('updatepassword');
-
+    
     // SETTING DATA
     Route::get('setting', [SettingController::class, 'index'])->name('setting');
     Route::post('update-data', [SettingController::class, 'updatedata'])->name('updatedata');
-
+    
     // ORDER HISTORY
     Route::get('order-history', [OrderHistoryController::class, 'index'])->name('orderHistory');
-
+    
+    // ROUTE ADD RATING
+    Route::post('add-rating', [RatingController::class, 'addrating'])->name('rating');
+    
     // PEMBAYARAN
     Route::get('pembayaran/{id}', [PembayaranController::class, 'index'])->name('pembayaran');
     Route::get('packing/{id}', [PembayaranController::class, 'packing'])->name('packing');
@@ -107,14 +111,14 @@ Auth::routes(['verify' => true]);
 Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function () {
     // DASHBOARD
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
+    
     // ROUTE KATEGORI PRODUK
     Route::get('kategori-produk',  [KategoriProdukController::class, 'index'])->name('kategori-produk.index');
     Route::post('kategori-produk',  [KategoriProdukController::class, 'store'])->name('kategori-produk.store');
     Route::get('kategori-produk/{id}/edit',  [KategoriProdukController::class, 'edit'])->name('kategori-produk.edit');
     Route::put('kategori-produk/{id}/update',  [KategoriProdukController::class, 'update'])->name('kategori-produk.update');
     Route::get('kategori-produk/destroy/{id}',  [KategoriProdukController::class, 'destroy'])->name('kategori-produk.destroy');
-
+    
     // ROUTE PRODUK
     Route::get('produk', [ProdukController::class, 'index'])->name('produk.index');
     Route::get('produk/create', [ProdukController::class, 'create'])->name('produk.create');
@@ -124,7 +128,7 @@ Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function 
     Route::put('produk/{id}/update',  [ProdukController::class, 'update'])->name('produk.update');
     Route::get('produk/{id}/delete-image', [ProdukController::class, 'deleteimage'])->name('images.delete');
     Route::get('produk/{id}/destroy',  [ProdukController::class, 'destroy'])->name('produk.destroy');
-
+    
     // ROUTE PESANAN
     Route::get('pesanan', [PesananController::class, 'index'])->name('pesanan.index');
     Route::get('pesanan/packing', [PesananController::class, 'packing'])->name('pesanan.packing');
@@ -132,40 +136,40 @@ Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function 
     Route::get('pesanan/success', [PesananController::class, 'success'])->name('pesanan.success');
     Route::get('pesanan/{id}/edit', [PesananController::class, 'edit'])->name('pesanan.edit');
     Route::put('pesanan/{id}/update', [PesananController::class, 'update'])->name('pesanan.update');
-
+    
     // ROUTE PAYMENT
     Route::get('payment', [PaymentController::class, 'index'])->name('payment.index');
     Route::post('payment/store', [PaymentController::class, 'store'])->name('payment.store');
     Route::get('payment/{id}/edit', [PaymentController::class, 'edit'])->name('payment.edit');
     Route::put('payment/{id}/update', [PaymentController::class, 'update'])->name('payment.update');
     Route::get('payment/destroy/{id}', [PaymentController::class, 'destroy'])->name('payment.destroy');
-
+    
     // ROUTE ROLE
     Route::get('role',  [RoleController::class, 'index'])->name('role.index');
     Route::post('role',  [RoleController::class, 'store'])->name('role.store');
     Route::get('role/{role}/edit',  [RoleController::class, 'edit'])->name('role.edit');
     Route::put('role/{role}/update',  [RoleController::class, 'update'])->name('role.update');
     Route::get('role/destroy/{id}',  [RoleController::class, 'destroy'])->name('role.destroy');
-
+    
     // ROUTE PERMISSION
     Route::get('permission',  [PermissionController::class, 'index'])->name('permission.index');
     Route::post('permission',  [PermissionController::class, 'store'])->name('permission.store');
     Route::get('permission/{permission}/edit',  [PermissionController::class, 'edit'])->name('permission.edit');
     Route::put('permission/{permission}/update',  [PermissionController::class, 'update'])->name('permission.update');
     Route::get('permission/destroy/{id}',  [PermissionController::class, 'destroy'])->name('permission.destroy');
-
+    
     // ASSIGN PERMISSION TO ROLE
     Route::get('assignpermission', [AssignPermissionController::class, 'index'])->name('assignpermission.index');
     Route::post('assignpermission', [AssignPermissionController::class, 'store'])->name('assignpermission.store');
     Route::get('assignpermission/{role}/edit', [AssignPermissionController::class, 'edit'])->name('assignpermission.edit');
     Route::put('assignpermission/{role}/update', [AssignPermissionController::class, 'update'])->name('assignpermission.update');
-
+    
     // ASSIGN ROLE TO USER
     Route::get('assignrole', [AssignRoleController::class, 'index'])->name('assignrole.index');
     Route::post('assignrole', [AssignRoleController::class, 'store'])->name('assignrole.store');
     Route::get('assignrole/{user}/edit', [AssignRoleController::class, 'edit'])->name('assignrole.edit');
     Route::put('assignrole/{user}/update', [AssignRoleController::class, 'update'])->name('assignrole.update');
-
+    
     // ROUTE MANAJEMEN USER
     Route::get('user', [ManajemenUsersController::class, 'index'])->name('user.index');
     Route::get('user/change-password/{id}/edit', [ManajemenUsersController::class, 'change_password'])->name('change-password');
