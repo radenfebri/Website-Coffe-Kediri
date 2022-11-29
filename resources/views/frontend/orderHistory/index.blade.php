@@ -377,7 +377,6 @@
 
         </section>
         {{ $orders->links('frontend.layouts.includes.pagination') }}
-
     </main>
 
     @endsection

@@ -127,7 +127,11 @@
                             </div>
                         </div>
                     </div>
+<<<<<<< HEAD
+                    <p>Setelah Melakukan Pemmbayaran Di Harapkan Screenshot/foto dan kirim kan pada konfirmasi pembayaran</p>
+=======
                     <p>Setelah melakukan pemmbayaran diharapkan Screenshot/foto dan kirim kan pada konfirmasi pembayaran </p>
+>>>>>>> 4dff8a879c77e34519e68a4ed023f964652f001e
                 </div>
                 @elseif($metode->image == null)
                 {{-- metode pembayaran E-Wallet --}}

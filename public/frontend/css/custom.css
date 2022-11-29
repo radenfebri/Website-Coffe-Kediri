@@ -129,6 +129,24 @@
     margin: 5% 0;
   }
 
+  .metode-pembayaran-selesai{ 
+    display: flex;
+    flex-direction: column;
+    margin: 5% 0;
+  }
+
+  .kirim-produk{
+
+  }
+
+  .pesan-produk{
+    width: 100%;
+    border: 3px solid #f4f6f9;
+    height: 150px;
+    padding: 10px;
+    margin-top:10px;
+  }
+
   .kirim-pembayaran{
     border: 3px solid #f4f6f9;
     padding: 5% 20px;
@@ -313,9 +331,23 @@
     margin-top: 10px;
   }
 
+  .penilaian-produk{
+    display: flex;
+    width: 100%;
+    margin-top: 20px;
+    justify-content: center;
+
+  }
+
   .page-kosong{
     margin-top: 100px;
     margin-bottom: 100px;
+  }
+
+  .pagination-style{
+    width: 100%;
+    display:flex;
+    justify-content: center;
   }
 
 
@@ -579,7 +611,11 @@
   .kirim-pembayaran{
     display: flex !important;
     flex-direction: column !important;
+  }
 
+  .kirim-pembayaran-selesai{
+    display: flex !important;
+    flex-direction: column !important;
   }
 
   .kirim-pembayaran input{

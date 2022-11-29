@@ -113,6 +113,18 @@
                     <a class="btn btn-pembayaran">Bukti Pembayaran</a>
                 </div>
             </div>
+            {{-- metode pembayaran --}}
+           <div class="metode-pembayaran">
+                {{-- metode pembayaran rekening --}}
+                <div class="kirim-pembayaran">
+                    <div class="informasi-produk">
+                        <h4>Informasi Produk</h4>
+                        <div class="pesan-produk">
+                            <p>Setelah Melakukan Pemmbayaran Di Harapkan Screenshot/foto dan kirim kan pada konfirmasi pan</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
            </div>
         </div>
     </section>

@@ -1,0 +1,34 @@
+.manajemen-pesanan-layout{
+    width:100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.manajemen-pesanan-layout div{
+    margin-right: 5px;
+}
+
+.button-manajemen-pesanan{
+    width: 150px !important;
+    margin-bottom: 10px;
+}
+
+@media (max-width:450px){
+    .manajemen-pesanan-layout{
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    
+    .manajemen-pesanan-layout div{
+        width: 50%;
+    }
+    
+    .button-manajemen-pesanan{
+        width: 150px !important;
+        margin-bottom: 10px;
+    }
+}
