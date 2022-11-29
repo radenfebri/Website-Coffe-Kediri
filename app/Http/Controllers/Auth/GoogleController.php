@@ -42,7 +42,8 @@ class GoogleController extends Controller
 
                 Auth::login($newUser);
 
-                return redirect()->route('google.update-password');
+                // return redirect()->route('google.update-password');
+                return redirect()->route('home');
             }
         } catch (Exception $e) {
             return redirect()->route('login')->with('error', 'Akun anda login tidak menggunakan gmail');
