@@ -61,7 +61,7 @@
                                     @guest
                                     
                                     @else
-                                        <span class="pro-count blue wish-count">0</span>
+                                    <span class="pro-count blue wish-count">0</span>
                                     @endguest
                                 </a>
                             </div>
@@ -92,13 +92,15 @@
                         <a class="categori-button-active" href="#">
                             <span class="fi-rs-apps"></span> Kategori Produk
                         </a>
+                        
                         <div class="categori-dropdown-wrap categori-dropdown-active-large">
                             <ul>
                                 @foreach ($kategoriproduk_nav as $item)
-                                    <li><a href="{{ route('kategori', $item->slug ) }}"><i class="surfsidemedia-font-home"></i>{{ $item->name }}</a></li>
+                                <li><a href="{{ route('kategori', $item->slug ) }}"><i class="surfsidemedia-font-home"></i>{{ $item->name }}</a></li>
                                 @endforeach
                             </ul>
                         </div>
+                        
                     </div>
                     @guest                    
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
@@ -136,7 +138,7 @@
                         </nav>
                     </div>
                     
-                @else
+                    @else
                     <div class="main-menu navbar-login main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
@@ -147,13 +149,13 @@
                                 <li><a class="{{ request()->is('order-history', 'setting', 'change-password') ? 'active' : ''}}" href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         @guest
-        
+                                        
                                         @else
-                                            @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
-                                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                            @else
-                                                
-                                            @endif
+                                        @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        @else
+                                        
+                                        @endif
                                         @endguest
                                         <li><a href="{{ route('orderHistory') }}">Order History</a></li>
                                         <li><a href="{{ route('setting') }}">Setting</a></li>
@@ -181,7 +183,7 @@
                                 @guest
                                 
                                 @else
-                                    <span class="pro-count white wish-count">0</span>
+                                <span class="pro-count white wish-count">0</span>
                                 @endguest
                             </a>
                         </div>
@@ -189,9 +191,9 @@
                             <a class="mini-cart-icon" href="{{ route('cart') }}">
                                 <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-cart.svg">
                                 @guest
-
+                                
                                 @else
-                                    <span class="pro-count white cart-count">0</span>
+                                <span class="pro-count white cart-count">0</span>
                                 @endguest
                             </a>
                         </div>
@@ -238,7 +240,7 @@
                     <div class="categori-dropdown-wrap categori-dropdown-active-small">
                         <ul>
                             @foreach ($kategoriproduk_nav as $item)
-                                <li><a href="#"><i class="surfsidemedia-font-home"></i>{{ $item->name }}</a></li>
+                            <li><a href="{{ route('kategori', $item->slug ) }}"><i class="surfsidemedia-font-home"></i>{{ $item->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>

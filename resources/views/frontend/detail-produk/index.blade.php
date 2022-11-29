@@ -3,6 +3,7 @@
 @section('title', 'Detail Produk')
 
 @section('content')
+
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
@@ -19,6 +20,7 @@
             <div class="row">
                 <div class="col-lg-9">
                     <div class="product-detail accordion-detail">
+                        {{-- BAGIAN PRODUK --}}
                         <div class="row mb-50">
                             <div class="col-md-6 col-sm-12 col-xs-12">
                                 <div class="detail-gallery">
@@ -149,15 +151,17 @@
                                     </div>
                                     <ul class="product-meta font-xs color-grey mt-50">
                                         @if ($produk->qty == 0)
-                                            <li>Produk:<span class="in-stock text-danger ml-5">{{ $produk->qty }} Item Stok</span></li>
+                                        <li>Produk:<span class="in-stock text-danger ml-5">{{ $produk->qty }} Item Stok</span></li>
                                         @else
-                                            <li>Produk:<span class="in-stock text-success ml-5">{{ $produk->qty }} Item Stok</span></li>
+                                        <li>Produk:<span class="in-stock text-success ml-5">{{ $produk->qty }} Item Stok</span></li>
                                         @endif
                                     </ul>
                                 </div>
                                 <!-- Detail Info -->
                             </div>
                         </div>
+                        
+                        {{-- BAGIAN RATING DAN DESKRIPSI --}}
                         <div class="tab-style3">
                             <ul class="nav nav-tabs text-uppercase">
                                 <li class="nav-item">
@@ -165,7 +169,7 @@
                                 </li>
                                 
                                 <li class="nav-item">
-                                    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Rating (3)</a>
+                                    <a class="nav-link" id="Reviews-tab" data-bs-toggle="tab" href="#Reviews">Rating ({{ $ratings->count() }})</a>
                                 </li>
                             </ul>
                             <div class="tab-content shop_info_tab entry-main-content">
@@ -180,76 +184,40 @@
                                     <div class="comments-area">
                                         <div class="row">
                                             <div class="col-lg-8">
-                                                <h4 class="mb-30">Customer questions & answers</h4>
+                                                <h4 class="mb-30">Customer Ratings Produk</h4>
+                                                
                                                 <div class="comment-list">
+                                                    @forelse ($ratings as $item) 
                                                     <div class="single-comment justify-content-between d-flex">
                                                         <div class="user justify-content-between d-flex">
                                                             <div class="thumb text-center">
                                                                 <img src="{{ asset('frontend') }}/imgs/page/avatar-6.jpg" loading="lazy" alt="{{ $produk->name }}">
-                                                                <h6><a href="#">Jacky Chan</a></h6>
-                                                                <p class="font-xxs">Since 2012</p>
+                                                                <h6><a href="#">{{ $item->user->name }}</a></h6>
                                                             </div>
                                                             <div class="desc">
                                                                 <div class="product-rate d-inline-block">
                                                                     <div class="product-rating" style="width:90%">
                                                                     </div>
                                                                 </div>
-                                                                <p>Thank you very fast shipping from Poland only 3days.</p>
+                                                                <p>{{ $item->user_review }}.</p>
                                                                 <div class="d-flex justify-content-between">
                                                                     <div class="d-flex align-items-center">
-                                                                        <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
+                                                                        <p class="font-xs mr-30">{{ date('d F Y H:i:s', strtotime($item->created_at)) }}</p>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!--single-comment -->
+                                                    @empty
                                                     <div class="single-comment justify-content-between d-flex">
                                                         <div class="user justify-content-between d-flex">
-                                                            <div class="thumb text-center">
-                                                                <img src="{{ asset('frontend') }}/imgs/page/avatar-7.jpg" loading="lazy" alt="{{ $produk->name }}">
-                                                                <h6><a href="#">Ana Rosie</a></h6>
-                                                                <p class="font-xxs">Since 2008</p>
-                                                            </div>
-                                                            <div class="desc">
-                                                                <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width:90%">
-                                                                    </div>
-                                                                </div>
-                                                                <p>Great low price and works well.</p>
-                                                                <div class="d-flex justify-content-between">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                            <p>Rating masih Kosong</p>
                                                         </div>
                                                     </div>
-                                                    <!--single-comment -->
-                                                    <div class="single-comment justify-content-between d-flex">
-                                                        <div class="user justify-content-between d-flex">
-                                                            <div class="thumb text-center">
-                                                                <img src="{{ asset('frontend') }}/imgs/page/avatar-8.jpg" loading="lazy" alt="{{ $produk->name }}">
-                                                                <h6><a href="#">Steven Keny</a></h6>
-                                                                <p class="font-xxs">Since 2010</p>
-                                                            </div>
-                                                            <div class="desc">
-                                                                <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width:90%">
-                                                                    </div>
-                                                                </div>
-                                                                <p>Authentic and Beautiful, Love these way more than ever expected They are Great earphones</p>
-                                                                <div class="d-flex justify-content-between">
-                                                                    <div class="d-flex align-items-center">
-                                                                        <p class="font-xs mr-30">December 4, 2020 at 3:12 pm </p>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <!--single-comment -->
+                                                    @endforelse
                                                 </div>
                                             </div>
+                                            
                                             <div class="col-lg-4">
                                                 <h4 class="mb-30">Customer reviews</h4>
                                                 <div class="d-flex mb-30">
@@ -279,10 +247,11 @@
                                                     <span>1 star</span>
                                                     <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
                                                 </div>
-                                                <a href="#" class="font-xs text-muted">How are ratings calculated?</a>
                                             </div>
+                                            
                                         </div>
                                     </div>
+                                    
                                     <!--comment form-->
                                     <div class="comment-form">
                                         <h4 class="mb-15">Add a review</h4>
@@ -322,6 +291,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    
                                 </div>
                             </div>
                             <div class="row mt-60">
@@ -381,6 +351,7 @@
                             </div>                            
                         </div>
                     </div>
+                    
                     <div class="col-lg-3 primary-sidebar sticky-sidebar">
                         <div class="widget-category mb-30">
                             <h5 class="section-title style-1 mb-30 wow fadeIn animated">Kategori</h5>
@@ -427,9 +398,9 @@
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-    
-    @endsection
-    
-    
+        </div>
+    </section>
+</main>
+
+@endsection
+

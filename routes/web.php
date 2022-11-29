@@ -29,6 +29,7 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\ChangePasswordController;
 use App\Http\Controllers\Frontend\FavoritController;
 use App\Http\Controllers\Frontend\OrderHistoryController;
+use App\Http\Controllers\Frontend\RatingController;
 use Illuminate\Support\Facades\Artisan;
 
 // ROUTE FRONTEND
@@ -64,7 +65,7 @@ Route::post('delete-favorit-item', [FavoritController::class, 'deleteproduk'])->
 Route::get('produk-list', [HomeController::class, 'search'])->name('search');
 Route::post('searchproduk', [HomeController::class, 'searchproduk'])->name('searchproduk');
 
-Route::middleware(['has.role'])->middleware('auth')->group(function () {
+Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function () {
     // CART
     Route::get('cart', [CartController::class, 'index'])->name('cart');
     
@@ -88,12 +89,14 @@ Route::middleware(['has.role'])->middleware('auth')->group(function () {
     // ORDER HISTORY
     Route::get('order-history', [OrderHistoryController::class, 'index'])->name('orderHistory');
     
+    // ROUTE ADD RATING
+    Route::post('add-rating', [RatingController::class, 'addrating'])->name('rating');
+    
     // PEMBAYARAN
     Route::get('pembayaran/{id}', [PembayaranController::class, 'index'])->name('pembayaran');
     Route::get('packing/{id}', [PembayaranController::class, 'packing'])->name('packing');
     Route::get('kirim/{id}', [PembayaranController::class, 'kirim'])->name('kirim');
     Route::get('selesai/{id}', [PembayaranController::class, 'selesai'])->name('selesai');
-    
 });
 
 // SINGLE SIGN ON GOOGLE
@@ -103,9 +106,9 @@ Route::get('auth/google/update-password', [GoogleController::class, 'update_pass
 Route::post('auth/google/update-password', [GoogleController::class, 'update_data_password_google'])->name('update_data_password_google');
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::middleware(['has.role'])->middleware('auth')->group(function () {
+Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function () {
     // DASHBOARD
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
