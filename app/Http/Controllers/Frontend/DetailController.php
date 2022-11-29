@@ -45,7 +45,8 @@ class DetailController extends Controller
                 'ratings',
                 'rating_sum',
                 'user_rating',
-                'cek_user'
+                'cek_user',
+                'rating_avg'
             ));
         } else {
             return redirect()->route('shop')->with('error', 'Produk tidak ditemukan / sudah tidak aktif');

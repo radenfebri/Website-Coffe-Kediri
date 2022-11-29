@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\KategoriProduk;
 use App\Models\Produk;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -15,8 +16,9 @@ class KategoriController extends Controller
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $kategoriproduk = KategoriProduk::where('slug', $slug)->first();
             $produks = Produk::where('kategori_id', $kategoriproduk->id)->where('is_active', 1)->latest()->paginate(12);
+            $ratings = Rating::all();
 
-            return view('frontend.kategori.index', compact('kategoriproduk_nav', 'produks', 'kategoriproduk'));
+            return view('frontend.kategori.index', compact('kategoriproduk_nav', 'produks', 'kategoriproduk', 'ratings'));
         } else {
             return redirect()->route('shop')->with('error', 'Kategori tidak ditemukan / sudah tidak aktif');
         }

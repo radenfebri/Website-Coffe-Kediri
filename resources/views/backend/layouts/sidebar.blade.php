@@ -46,7 +46,7 @@
                 </a>
             </li>
             
-            {{-- <li class="menu {{ request()->is('rating', 'rating/*') ? 'active' : ''}}">
+            <li class="menu {{ request()->is('rating', 'rating/*') ? 'active' : ''}}">
                 <a href="{{ route('rating.index') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         
@@ -54,7 +54,7 @@
                         <span>Manajemen Rating</span>
                     </div>
                 </a>
-            </li> --}}
+            </li>
             
             <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit','produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
                 <a href="#store" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">

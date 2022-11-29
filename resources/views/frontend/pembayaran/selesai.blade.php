@@ -52,7 +52,7 @@
                                 <h4>Rating</h4>
                             </div>
                         </div>
-
+                        
                         @php $total = 0; @endphp
                         
                         @foreach ($orders->orderitem as $item)
@@ -86,50 +86,51 @@
                         @php $total += $item->produks->selling_price * $item->qty; @endphp
                         @endif
                         @endforeach
-
+                        
                         <div class="judul-produk-pembayaran-total">
                             <div class="produk-pembayaran-total">
                                 <h5>Total Order</h4>
+                                </div>
+                                <div class="total-produk-pembayaran-total">
+                                    <h5>Rp. {{ number_format($orders->total_price) }}</h4>
+                                    </div>
+                                    <div class="nilai-produk-pembayaran">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="total-produk-pembayaran-total">
-                                <h5>Rp. {{ number_format($orders->total_price) }}</h4>
+                        </div>
+                        <div class="layer2">
+                            <div class="detail-pembayaran">
+                                <h3>Detail Pembayaran</h3>
+                                <div class="pembayaran-text">
+                                    <p>Total Pembayaran</p>
+                                    <p>Rp. {{ number_format($orders->total_price) }}</p>
+                                </div>
+                                <div class="pembayaran-text">
+                                    <p>{{ date('d F Y',strtotime($orders->created_at)) }}</p>
+                                </div>
                             </div>
-                            <div class="nilai-produk-pembayaran">
+                            <a class="btn btn-pembayaran">Bukti Pembayaran</a>
+                        </div>
+                    </div>
+                    {{-- metode pembayaran --}}
+                    <div class="metode-pembayaran">
+                        {{-- metode pembayaran rekening --}}
+                        <div class="kirim-pembayaran">
+                            <div class="informasi-produk">
+                                <h4>Informasi Produk</h4>
+                                <div class="pesan-produk">
+                                    <p>Setelah Melakukan Pemmbayaran Di Harapkan Screenshot/foto dan kirim kan pada konfirmasi pan</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="layer2">
-                    <div class="detail-pembayaran">
-                        <h3>Detail Pembayaran</h3>
-                        <div class="pembayaran-text">
-                            <p>Total Pembayaran</p>
-                            <p>Rp. {{ number_format($orders->total_price) }}</p>
-                        </div>
-                        <div class="pembayaran-text">
-                            <p>{{ date('d F Y',strtotime($orders->created_at)) }}</p>
-                        </div>
-                    </div>
-                    <a class="btn btn-pembayaran">Bukti Pembayaran</a>
                 </div>
             </div>
-            {{-- metode pembayaran --}}
-           <div class="metode-pembayaran">
-                {{-- metode pembayaran rekening --}}
-                <div class="kirim-pembayaran">
-                    <div class="informasi-produk">
-                        <h4>Informasi Produk</h4>
-                        <div class="pesan-produk">
-                            <p>Setelah Melakukan Pemmbayaran Di Harapkan Screenshot/foto dan kirim kan pada konfirmasi pan</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-           </div>
-        </div>
-    </section>
-   
-</main>
-
-@include('frontend.layouts.includes.copy')
-@endsection
+        </section>
+        
+    </main>
+    
+    @include('frontend.layouts.includes.copy')
+    @endsection
+    

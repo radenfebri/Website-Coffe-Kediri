@@ -106,11 +106,22 @@
                                             </span>
                                         </div>
                                         <div class="product-rate-cover text-end">
-                                            <div class="product-rate d-inline-block">
-                                                <div class="product-rating" style="width:90%">
-                                                </div>
-                                            </div>
-                                            <span class="font-small ml-5 text-muted"> (25 reviews)</span>
+                                            @php $rate_num = number_format($rating_avg) @endphp
+                                            <span class="rating">
+                                                @for($i = 1; $i <= $rate_num; $i++)
+                                                <i class="fas fa-star" style="color: #ffb300"></i>
+                                                @endfor
+                                                @for($j = $rate_num+1; $j <= 5; $j++)
+                                                <i class="fas fa-star" style="color: #b4afaf"></i>
+                                                @endfor
+                                            </span>
+                                            <span class="font-small ml-5 text-muted">
+                                                @if($ratings->count() > 0)
+                                                ({{ $ratings->count() }} Rating)
+                                                @else
+                                                No Rating
+                                                @endif
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="clearfix product-price-cover">
@@ -195,22 +206,20 @@
                                                                 <h6><a href="#">{{ $item->user->name }}</a></h6>
                                                             </div>
                                                             <div class="desc">
-                                                                <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width:90%"></div>
-                                                                    {{-- @php
-                                                                    $rating = App\Models\Rating::where('prod_id', $produk->id)->where('user_id', $item->user->id)->first();
-                                                                    
-                                                                    @endphp
-                                                                    @if ($rating)
-                                                                    @php $user_rated = $rating->stars_rated @endphp
-                                                                    @for($i = 1; $i <= $user_rated; $i++)
-                                                                    <i class="fas fa-star"></i>
-                                                                    @endfor
-                                                                    @for($j = $user_rated+1; $j <= 5; $j++)
-                                                                    <i class="fas fa-star" style="color: #b4afaf"></i>
-                                                                    @endfor
-                                                                    @endif --}}
-                                                                </div>
+                                                                @php
+                                                                $rating = App\Models\Rating::where('prod_id', $produk->id)->where('user_id', $item->user->id)->first();
+                                                                
+                                                                @endphp
+                                                                @if ($rating)
+                                                                @php $user_rated = $rating->stars_rated @endphp
+                                                                @for($i = 1; $i <= $user_rated; $i++)
+                                                                <i class="fas fa-star" style="color: #ffb300"></i>
+                                                                @endfor
+                                                                @for($j = $user_rated+1; $j <= 5; $j++)
+                                                                <i class="fas fa-star" style="color: #b4afaf"></i>
+                                                                @endfor
+                                                                @endif
+                                                                
                                                                 <p>{{ $item->user_review }}.</p>
                                                                 <div class="d-flex justify-content-between">
                                                                     <div class="d-flex align-items-center">
@@ -229,131 +238,99 @@
                                                     @endforelse
                                                 </div>
                                             </div>
-                                            
-                                            <div class="col-lg-4">
-                                                <h4 class="mb-30">Customer reviews</h4>
-                                                <div class="d-flex mb-30">
-                                                    <div class="product-rate d-inline-block mr-15">
-                                                        <div class="product-rating" style="width:90%">
-                                                        </div>
-                                                    </div>
-                                                    <h6>4.8 out of 5</h6>
-                                                </div>
-                                                <div class="progress">
-                                                    <span>5 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">50%</div>
-                                                </div>
-                                                <div class="progress">
-                                                    <span>4 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                                                </div>
-                                                <div class="progress">
-                                                    <span>3 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100">45%</div>
-                                                </div>
-                                                <div class="progress">
-                                                    <span>2 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100">65%</div>
-                                                </div>
-                                                <div class="progress mb-30">
-                                                    <span>1 star</span>
-                                                    <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
-                                                </div>
-                                            </div>
-                                            
                                         </div>
                                     </div>
                                     
                                     <!--comment form-->
                                     @guest
-                            
+                                    
                                     @else
                                     
-                                        @if ($cek_user->count() > 0)
-                                            <div class="comment-form">
-                                                <h4 class="mb-15">Berikan penilaian anda</h4>
-                                                <form action="{{ route('rating') }}" method="POST">
-                                                    @csrf 
-                                                    <input type="hidden" name="produk_id" value="{{ $produk->id }}">
-                                                    <div class="rating-css">
-                                                        <div class="container">
-                                                            <div class="row">
-                                                                <div class="col-lg-8 offset-lg-2">
-                                                                    <div class="star-icon">
-                                                                        @if($user_rating)
-                                                                        
-                                                                        @for($i = 1; $i <= $user_rating->stars_rated; $i++)
-                                                                        <input type="radio" value="{{ $i }}" name="produk_rating" checked id="rating{{ $i }}">
-                                                                        <label for="rating{{ $i }}" class="fa fa-star"></label>
-                                                                        @endfor
-                                                                        
-                                                                        @for($j = $user_rating->stars_rated+1; $j <= 5; $j++)
-                                                                        <input type="radio" value="{{ $j }}" name="produk_rating" id="rating{{ $j }}">
-                                                                        <label for="rating{{ $j }}" class="fa fa-star"></label>
-                                                                        @endfor
-                                                                        
-                                                                        @else
-                                                                        
-                                                                        <input type="radio" value="1" name="produk_rating" checked id="rating1">
-                                                                        <label for="rating1" class="fa fa-star"></label>
-                                                                        <input type="radio" value="2" name="produk_rating" id="rating2">
-                                                                        <label for="rating2" class="fa fa-star"></label>
-                                                                        <input type="radio" value="3" name="produk_rating" id="rating3">
-                                                                        <label for="rating3" class="fa fa-star"></label>
-                                                                        <input type="radio" value="4" name="produk_rating" id="rating4">
-                                                                        <label for="rating4" class="fa fa-star"></label>
-                                                                        <input type="radio" value="5" name="produk_rating" id="rating5">
-                                                                        <label for="rating5" class="fa fa-star"></label>
-                                                                        
-                                                                        @endif
-                                                                    </div>
-                                                                </div>
+                                    @if ($cek_user->count() > 0)
+                                    <div class="comment-form">
+                                        <h4 class="mb-15">Berikan penilaian anda</h4>
+                                        <form action="{{ route('rating') }}" method="POST">
+                                            @csrf 
+                                            <input type="hidden" name="produk_id" value="{{ $produk->id }}">
+                                            <div class="rating-css">
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-lg-8 offset-lg-2">
+                                                            <div class="star-icon">
+                                                                @if($user_rating)
+                                                                
+                                                                @for($i = 1; $i <= $user_rating->stars_rated; $i++)
+                                                                <input type="radio" value="{{ $i }}" name="produk_rating" checked id="rating{{ $i }}">
+                                                                <label for="rating{{ $i }}" class="fa fa-star"></label>
+                                                                @endfor
+                                                                
+                                                                @for($j = $user_rating->stars_rated+1; $j <= 5; $j++)
+                                                                <input type="radio" value="{{ $j }}" name="produk_rating" id="rating{{ $j }}">
+                                                                <label for="rating{{ $j }}" class="fa fa-star"></label>
+                                                                @endfor
+                                                                
+                                                                @else
+                                                                
+                                                                <input type="radio" value="1" name="produk_rating" checked id="rating1">
+                                                                <label for="rating1" class="fa fa-star"></label>
+                                                                <input type="radio" value="2" name="produk_rating" id="rating2">
+                                                                <label for="rating2" class="fa fa-star"></label>
+                                                                <input type="radio" value="3" name="produk_rating" id="rating3">
+                                                                <label for="rating3" class="fa fa-star"></label>
+                                                                <input type="radio" value="4" name="produk_rating" id="rating4">
+                                                                <label for="rating4" class="fa fa-star"></label>
+                                                                <input type="radio" value="5" name="produk_rating" id="rating5">
+                                                                <label for="rating5" class="fa fa-star"></label>
+                                                                
+                                                                @endif
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    
-                                                    @if ($user_rating == null)
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-12">
-                                                            <form class="form-contact comment_form" action="#" id="commentForm">
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <div class="form-group">
-                                                                            <textarea class="form-control w-100" name="user_review" cols="30" rows="9" placeholder="Berikan Penilaian anda mengenai produk ini"></textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <button type="submit" class="button button-contactForm">Submit Review</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                    @else
-                                                    <div class="row">
-                                                        <div class="col-lg-8 col-md-12">
-                                                            <form class="form-contact comment_form" action="#" id="commentForm">
-                                                                <div class="row">
-                                                                    <div class="col-12">
-                                                                        <div class="form-group">
-                                                                            <textarea class="form-control w-100" name="user_review" cols="30" rows="9" placeholder="Berikan Penilaian anda mengenai produk ini">{{ $user_rating->user_review }}</textarea>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="form-group">
-                                                                    <button type="submit" class="button button-contactForm">Update Review</button>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                    @endif
-                                                </form>
-                                                
-                                                
+                                                </div>
                                             </div>
-                                        @else
-                                
-                                        @endif
+                                            
+                                            @if ($user_rating == null)
+                                            <div class="row">
+                                                <div class="col-lg-8 col-md-12">
+                                                    <form class="form-contact comment_form" action="#" id="commentForm">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control w-100" name="user_review" cols="30" rows="9" placeholder="Berikan Penilaian anda mengenai produk ini"></textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="button button-contactForm">Submit Review</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            @else
+                                            <div class="row">
+                                                <div class="col-lg-8 col-md-12">
+                                                    <form class="form-contact comment_form" action="#" id="commentForm">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <textarea class="form-control w-100" name="user_review" cols="30" rows="9" placeholder="Berikan Penilaian anda mengenai produk ini">{{ $user_rating->user_review }}</textarea>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <button type="submit" class="button button-contactForm">Update Review</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            @endif
+                                        </form>
+                                        
+                                        
+                                    </div>
+                                    @else
+                                    
+                                    @endif
                                     
                                     @endguest
                                 </div>

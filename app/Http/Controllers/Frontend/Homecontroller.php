@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\KategoriProduk;
 use App\Models\Produk;
+use App\Models\Rating;
 use Illuminate\Http\Request;
 
 class Homecontroller extends Controller
@@ -15,9 +16,10 @@ class Homecontroller extends Controller
         $kategoriproduk = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
         $produk_populer = Produk::latest()->where('popular', 1)->get();
         $produks = Produk::latest()->where('is_active', 1)->limit(8)->get();
+        $ratings = Rating::all();
 
 
-        return view('frontend.home.index', compact('kategoriproduk_nav', 'produks', 'produk_populer', 'kategoriproduk'));
+        return view('frontend.home.index', compact('kategoriproduk_nav', 'produks', 'produk_populer', 'kategoriproduk', 'ratings'));
     }
 
 
