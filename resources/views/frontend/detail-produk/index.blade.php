@@ -196,8 +196,20 @@
                                                             </div>
                                                             <div class="desc">
                                                                 <div class="product-rate d-inline-block">
-                                                                    <div class="product-rating" style="width:90%">
-                                                                    </div>
+                                                                    <div class="product-rating" style="width:90%"></div>
+                                                                    {{-- @php
+                                                                    $rating = App\Models\Rating::where('prod_id', $produk->id)->where('user_id', $item->user->id)->first();
+                                                                    
+                                                                    @endphp
+                                                                    @if ($rating)
+                                                                    @php $user_rated = $rating->stars_rated @endphp
+                                                                    @for($i = 1; $i <= $user_rated; $i++)
+                                                                    <i class="fas fa-star"></i>
+                                                                    @endfor
+                                                                    @for($j = $user_rated+1; $j <= 5; $j++)
+                                                                    <i class="fas fa-star" style="color: #b4afaf"></i>
+                                                                    @endfor
+                                                                    @endif --}}
                                                                 </div>
                                                                 <p>{{ $item->user_review }}.</p>
                                                                 <div class="d-flex justify-content-between">
@@ -253,153 +265,207 @@
                                     </div>
                                     
                                     <!--comment form-->
-                                    <div class="comment-form">
-                                        <h4 class="mb-15">Add a review</h4>
-                                        <div class="product-rate d-inline-block mb-30">
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-8 col-md-12">
-                                                <form class="form-contact comment_form" action="#" id="commentForm">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <textarea class="form-control w-100" name="comment" id="comment" cols="30" rows="9" placeholder="Write Comment"></textarea>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <input class="form-control" name="name" id="name" type="text" placeholder="Name">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <div class="form-group">
-                                                                <input class="form-control" name="email" id="email" type="email" placeholder="Email">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <input class="form-control" name="website" id="website" type="text" placeholder="Website">
+                                    @guest
+                            
+                                    @else
+                                    
+                                        @if ($cek_user->count() > 0)
+                                            <div class="comment-form">
+                                                <h4 class="mb-15">Berikan penilaian anda</h4>
+                                                <form action="{{ route('rating') }}" method="POST">
+                                                    @csrf 
+                                                    <input type="hidden" name="produk_id" value="{{ $produk->id }}">
+                                                    <div class="rating-css">
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <div class="col-lg-8 offset-lg-2">
+                                                                    <div class="star-icon">
+                                                                        @if($user_rating)
+                                                                        
+                                                                        @for($i = 1; $i <= $user_rating->stars_rated; $i++)
+                                                                        <input type="radio" value="{{ $i }}" name="produk_rating" checked id="rating{{ $i }}">
+                                                                        <label for="rating{{ $i }}" class="fa fa-star"></label>
+                                                                        @endfor
+                                                                        
+                                                                        @for($j = $user_rating->stars_rated+1; $j <= 5; $j++)
+                                                                        <input type="radio" value="{{ $j }}" name="produk_rating" id="rating{{ $j }}">
+                                                                        <label for="rating{{ $j }}" class="fa fa-star"></label>
+                                                                        @endfor
+                                                                        
+                                                                        @else
+                                                                        
+                                                                        <input type="radio" value="1" name="produk_rating" checked id="rating1">
+                                                                        <label for="rating1" class="fa fa-star"></label>
+                                                                        <input type="radio" value="2" name="produk_rating" id="rating2">
+                                                                        <label for="rating2" class="fa fa-star"></label>
+                                                                        <input type="radio" value="3" name="produk_rating" id="rating3">
+                                                                        <label for="rating3" class="fa fa-star"></label>
+                                                                        <input type="radio" value="4" name="produk_rating" id="rating4">
+                                                                        <label for="rating4" class="fa fa-star"></label>
+                                                                        <input type="radio" value="5" name="produk_rating" id="rating5">
+                                                                        <label for="rating5" class="fa fa-star"></label>
+                                                                        
+                                                                        @endif
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <button type="submit" class="button button-contactForm">Submit
-                                                            Review</button>
+                                                    
+                                                    @if ($user_rating == null)
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-12">
+                                                            <form class="form-contact comment_form" action="#" id="commentForm">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <div class="form-group">
+                                                                            <textarea class="form-control w-100" name="user_review" cols="30" rows="9" placeholder="Berikan Penilaian anda mengenai produk ini"></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <button type="submit" class="button button-contactForm">Submit Review</button>
+                                                                </div>
+                                                            </form>
                                                         </div>
-                                                    </form>
+                                                    </div>
+                                                    @else
+                                                    <div class="row">
+                                                        <div class="col-lg-8 col-md-12">
+                                                            <form class="form-contact comment_form" action="#" id="commentForm">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <div class="form-group">
+                                                                            <textarea class="form-control w-100" name="user_review" cols="30" rows="9" placeholder="Berikan Penilaian anda mengenai produk ini">{{ $user_rating->user_review }}</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <button type="submit" class="button button-contactForm">Update Review</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    @endif
+                                                </form>
+                                                
+                                                
+                                            </div>
+                                        @else
+                                
+                                        @endif
+                                    
+                                    @endguest
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <div class="row mt-60">
+                            <div class="col-12">
+                                <h3 class="section-title style-1 mb-30">Produk terkait</h3>
+                            </div>
+                            <div class="col-12 produk_data">
+                                <div class="row related-products">
+                                    @foreach ($kategoriproduk as $item)
+                                    <input type="hidden" value="{{ $produk->id }}" class="prod_id">
+                                    <div class="col-lg-3 col-md-4 col-12 col-sm-6">
+                                        <div class="product-cart-wrap small hover-up">
+                                            <div class="product-img-action-wrap">
+                                                <div class="product-img product-img-zoom">
+                                                    <a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">
+                                                        @if ($item->cover == null)
+                                                        <img class="default-img" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                                        <img class="hover-img" src="{{ asset('frontend') }}/imgs/shop/product-2-2.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                                        @else
+                                                        <img class="default-img" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                                        @endif
+                                                        
+                                                    </a>
+                                                </div>
+                                                <div class="product-action-1">
+                                                    <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn small hover-up"><i class="fi-rs-eye"></i></a>
+                                                    <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn small hover-up addToWishlist" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                </div>
+                                                <div class="product-badges product-badges-position product-badges-mrg">
+                                                    @if ($item->popular == 1)
+                                                    <span class="hot">Popular</span>
+                                                    @else
+                                                    
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            <div class="product-content-wrap">
+                                                <h2><a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">{{ $item->name }}</a></h2>
+                                                <div class="rating-result" title="90%">
+                                                    <span>
+                                                    </span>
+                                                </div>
+                                                <div class="product-price">
+                                                    @if ($item->selling_price == null)
+                                                    <span>Rp.{{ number_format($item->original_price) }}</span>
+                                                    @elseif($item->selling_price != null)
+                                                    <span>Rp.{{ number_format($item->selling_price) }}</span>
+                                                    <span class="old-price">Rp.{{ number_format($item->original_price) }}</span>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    
+                                    @endforeach
                                 </div>
                             </div>
-                            <div class="row mt-60">
-                                <div class="col-12">
-                                    <h3 class="section-title style-1 mb-30">Produk terkait</h3>
-                                </div>
-                                <div class="col-12 produk_data">
-                                    <div class="row related-products">
-                                        @foreach ($kategoriproduk as $item)
-                                        <input type="hidden" value="{{ $produk->id }}" class="prod_id">
-                                        <div class="col-lg-3 col-md-4 col-12 col-sm-6">
-                                            <div class="product-cart-wrap small hover-up">
-                                                <div class="product-img-action-wrap">
-                                                    <div class="product-img product-img-zoom">
-                                                        <a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">
-                                                            @if ($item->cover == null)
-                                                            <img class="default-img" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" loading="lazy" alt="{{ $produk->name }}">
-                                                            <img class="hover-img" src="{{ asset('frontend') }}/imgs/shop/product-2-2.jpg" loading="lazy" alt="{{ $produk->name }}">
-                                                            @else
-                                                            <img class="default-img" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
-                                                            @endif
-                                                            
-                                                        </a>
-                                                    </div>
-                                                    <div class="product-action-1">
-                                                        <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn small hover-up"><i class="fi-rs-eye"></i></a>
-                                                        <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn small hover-up addToWishlist" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                    </div>
-                                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                                        @if ($item->popular == 1)
-                                                        <span class="hot">Popular</span>
-                                                        @else
-                                                        
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                                <div class="product-content-wrap">
-                                                    <h2><a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">{{ $item->name }}</a></h2>
-                                                    <div class="rating-result" title="90%">
-                                                        <span>
-                                                        </span>
-                                                    </div>
-                                                    <div class="product-price">
-                                                        @if ($item->selling_price == null)
-                                                        <span>Rp.{{ number_format($item->original_price) }}</span>
-                                                        @elseif($item->selling_price != null)
-                                                        <span>Rp.{{ number_format($item->selling_price) }}</span>
-                                                        <span class="old-price">Rp.{{ number_format($item->original_price) }}</span>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>                            
-                        </div>
+                        </div>                            
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 primary-sidebar sticky-sidebar">
+                    <div class="widget-category mb-30">
+                        <h5 class="section-title style-1 mb-30 wow fadeIn animated">Kategori</h5>
+                        <ul class="categories">
+                            @if ($kategori == null)
+                            
+                            @else
+                            @foreach ($kategori as $item)
+                            <li><a href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></li>
+                            @endforeach
+                            @endif
+                        </ul>
                     </div>
                     
-                    <div class="col-lg-3 primary-sidebar sticky-sidebar">
-                        <div class="widget-category mb-30">
-                            <h5 class="section-title style-1 mb-30 wow fadeIn animated">Kategori</h5>
-                            <ul class="categories">
-                                @if ($kategori == null)
-                                
-                                @else
-                                @foreach ($kategori as $item)
-                                <li><a href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></li>
-                                @endforeach
-                                @endif
-                            </ul>
+                    <!-- Product sidebar Widget -->
+                    <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
+                        <div class="widget-header position-relative mb-20 pb-10">
+                            <h5 class="widget-title mb-10">Produk Baru</h5>
+                            <div class="bt-1 border-color-1"></div>
                         </div>
-                        
-                        <!-- Product sidebar Widget -->
-                        <div class="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
-                            <div class="widget-header position-relative mb-20 pb-10">
-                                <h5 class="widget-title mb-10">Produk Baru</h5>
-                                <div class="bt-1 border-color-1"></div>
+                        @foreach ($newproduk as $item)
+                        <div class="single-post clearfix">
+                            <div class="image">
+                                @if ($item->cover == null)
+                                <img src="{{ asset('frontend') }}/imgs/shop/thumbnail-3.jpg" loading="lazy" alt="{{ $item->name }}">
+                                @else
+                                <img src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                @endif
                             </div>
-                            @foreach ($newproduk as $item)
-                            <div class="single-post clearfix">
-                                <div class="image">
-                                    @if ($item->cover == null)
-                                    <img src="{{ asset('frontend') }}/imgs/shop/thumbnail-3.jpg" loading="lazy" alt="{{ $item->name }}">
-                                    @else
-                                    <img src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
-                                    @endif
-                                </div>
-                                <div class="content pt-10">
-                                    <h5><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h5>
-                                    @if ($item->selling_price == null)
-                                    <p class="price mb-0 mt-5">Rp. {{ number_format($item->original_price) }}</p>
-                                    @else
-                                    <p class="price mb-0 mt-5">Rp. {{ number_format($item->selling_price) }}</p>
-                                    @endif
-                                    <div class="product-rate">
-                                        <div class="product-rating" style="width:90%"></div>
-                                    </div>
+                            <div class="content pt-10">
+                                <h5><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h5>
+                                @if ($item->selling_price == null)
+                                <p class="price mb-0 mt-5">Rp. {{ number_format($item->original_price) }}</p>
+                                @else
+                                <p class="price mb-0 mt-5">Rp. {{ number_format($item->selling_price) }}</p>
+                                @endif
+                                <div class="product-rate">
+                                    <div class="product-rating" style="width:90%"></div>
                                 </div>
                             </div>
-                            @endforeach
-                        </div>                        
-                    </div>
+                        </div>
+                        @endforeach
+                    </div>                        
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 </main>
 
 @endsection

@@ -25,7 +25,7 @@ class DetailController extends Controller
             $ratings = Rating::where('prod_id', $produk->id)->where('status', 1)->get();
             $rating_sum = Rating::where('prod_id', $produk->id)->sum('stars_rated');
             $user_rating = Rating::where('prod_id', $produk->id)->where('user_id', Auth::id())->first();
-            $cek_user = Order::where('orders.user_id', Auth::id())->where('orders.status', '1')
+            $cek_user = Order::where('orders.user_id', Auth::id())->where('orders.status', '3')
                 ->join('order_items', 'orders.id', 'order_items.order_id')
                 ->where('order_items.prod_id', $produk->id)->get();
 
