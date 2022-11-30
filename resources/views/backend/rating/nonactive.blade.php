@@ -11,7 +11,7 @@
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Semua Produk</li>
+                        <li class="breadcrumb-item active" aria-current="page">Manajemen Rating</li>
                     </ol>
                 </nav>
             </div>
@@ -23,12 +23,17 @@
                     <div class="statbox widget box box-shadow">
                         <div class="widget-content widget-content-area">
                             <div>
-                                <a href="{{ route('rating.index') }}" class="text-primary" >
-                                    <button class="btn btn-success btn-sm">Rating Active</button>
+                                @can ('halaman-rating')
+                                <a href="{{ route('rating.index') }}" class="text-primary mr-2 mb-2" >
+                                    <button class="btn btn-success btn-sm button-manajemen-pesanan">Rating Active</button>
                                 </a>
-                                <a href="{{ route('pesanan.success') }}" class="text-primary" >
-                                    <button class="btn btn-danger btn-sm">Rating Non-Active</button>
+                                @endcan
+                                
+                                @can ('rating-nonactive')
+                                <a href="{{ route('rating.nonactive') }}" class="text-info mr-2 mb-2" >
+                                    <button class="btn btn-danger btn-sm button-manajemen-pesanan">Rating Non-Active</button>
                                 </a>
+                                @endcan
                             </div>
                             <table id="style-3" class="table style-3 dt-table-hover">
                                 <thead>
@@ -53,11 +58,13 @@
                                         <td class="text-center">{{ $item->produk->name }}</td>
                                         <td class="text-center">{{ \Illuminate\Support\Str::words($item->user_review, 5, '...') }}</td>
                                         
+                                        @can ('rating-edit')
                                         <td class="text-center">
                                             <a href="{{ route('rating.edit', encrypt($item->id) ) }}"  class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                                             </a>
                                         </td>
+                                        @endcan
                                     </tr>
                                     
                                     @endforeach

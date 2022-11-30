@@ -43,7 +43,7 @@ class ManajemenUsersController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // toast('Password berhasil diubah', 'success');
+        toast('Password berhasil diubah', 'success');
         return redirect()->route('user.index');
     }
 
@@ -55,7 +55,7 @@ class ManajemenUsersController extends Controller
             'status' => $user->status == 1 ? 0 : 1,
         ]);
 
-        // toast('Status akun berhasil diubah', 'success');
+        toast('Status akun berhasil diubah', 'success');
         return redirect()->route('user.index');
     }
 }

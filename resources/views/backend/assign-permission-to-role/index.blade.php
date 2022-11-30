@@ -75,9 +75,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                @can ('assignpermission-create')
                                 <div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
+                                @endcan
                             </form>
                             
                         </div>
@@ -110,6 +112,7 @@
                                             <ul class="table-controls">
                                                 @if ($item->name == 'Super Admin')
                                                 @else
+                                                @can ('assignpermission-edit')
                                                 <li>
                                                     <a href="{{ route('assignpermission.edit', encrypt($item->id) ) }}"  class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 p-1 br-8 mb-1">
@@ -117,6 +120,7 @@
                                                         </svg>
                                                     </a>
                                                 </li>
+                                                @endcan
                                                 @endif
                                             </ul>
                                         </td>
