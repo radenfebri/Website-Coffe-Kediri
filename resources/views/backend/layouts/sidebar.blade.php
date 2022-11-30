@@ -74,7 +74,7 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="store" data-bs-parent="#accordionExample">
-                    @can('halaman-kategroi')
+                    @can('halaman-kategori')
                         <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit') ? 'active' : ''}}">
                             <a href="{{ route('kategori-produk.index') }}"> Kategori Produk </a>
                         </li>
