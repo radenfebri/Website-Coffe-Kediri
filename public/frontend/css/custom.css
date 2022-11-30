@@ -736,8 +736,8 @@
   display: none;
 }
 .rating-css input + label {
-  font-size: 60px;
-  text-shadow: 1px 1px 0 #ffb300;
+  font-size: 40px;
+  text-shadow: 1px 1px 0 #b4afaf;
   cursor: pointer;
 }
 .rating-css input:checked + label ~ label {
