@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Gate;
 use App\Models\Role;
 
 
@@ -13,14 +11,12 @@ class RoleController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role_or_permission:Super Admin|Admin']);    
+        $this->middleware(['role_or_permission:Super Admin|Admin']);
     }
 
 
     public function index()
     {
-        abort_if(Gate::denies('role-index'), Response::HTTP_FORBIDDEN, 'Forbidden');
-
         $roles =  Role::orderBy('created_at', 'desc')->get();
         $role = new Role;
         $no_action = Role::where('name', 'Super Admin')->get();
@@ -34,24 +30,21 @@ class RoleController extends Controller
     {
         request()->validate([
             'name' => 'required|string|unique:roles,name|min:2',
-            'guard_name' => 'required|string|min:3',
         ]);
 
-        if (Role::create(request()->all())) {
-            // toast('Role berhasil ditambahkan', 'success');
-            return back();
-        } else {
-            // toast('Role gagal ditambahkan', 'error');
-            return back();
-        }
+        Role::create([
+            'name' => request('name'),
+            'guard_name' => request('guard_name') ?? 'web',
+        ]);
+
+        toast('Role berhasil ditambahkan', 'success');
+        return back();
     }
 
 
 
     public function edit($id)
     {
-        abort_if(Gate::denies('role-edit'), Response::HTTP_FORBIDDEN, 'Forbidden');
-
         $role = Role::findOrFail(decrypt($id));
         $roles = Role::orderBy('created_at', 'desc')->get();
         $no_action = Role::where('name', 'Super Admin')->get();
@@ -64,15 +57,15 @@ class RoleController extends Controller
     public function update(Role $role)
     {
         request()->validate([
-            'name' => 'required|string|min:2',
-            'guard_name' => 'required|string|min:3',
+            'name' => 'required|string|unique:roles,name|min:2',
+            'guard_name' => 'string|min:3',
         ]);
 
         if ($role->update(request()->all())) {
-            // toast('Role berhasil diupdate', 'success');
+            toast('Role berhasil diupdate', 'success');
             return redirect()->route('role.index');
         } else {
-            // toast('Role gagal diupdate', 'error');
+            toast('Role gagal diupdate', 'error');
             return back();
         }
     }
@@ -81,11 +74,9 @@ class RoleController extends Controller
 
     public function destroy($id)
     {
-        abort_if(Gate::denies('role-destroy'), Response::HTTP_FORBIDDEN, 'Forbidden');
-
         Role::destroy(decrypt($id));
 
-        // toast('Data Berhasil Dihapus', 'success');
+        toast('Data Berhasil Dihapus', 'success');
 
         return redirect()->route('role.index');
     }
@@ -93,8 +84,6 @@ class RoleController extends Controller
 
     public function trash()
     {
-        abort_if(Gate::denies('role-trash'), Response::HTTP_FORBIDDEN, 'Forbidden');
-
         $roles = Role::onlyTrashed()->get();
         return view('admin.roles.trash', compact('roles'));
     }
@@ -102,30 +91,26 @@ class RoleController extends Controller
 
     public function restore($id = null)
     {
-        abort_if(Gate::denies('role-restore'), Response::HTTP_FORBIDDEN, 'Forbidden');
-
         if ($id != null) {
             $id = Role::onlyTrashed()->where('id', $id)->restore();
         } else {
             $id = Role::onlyTrashed()->restore();
         }
 
-        // toast('Data Berhasil Direstore Semua', 'success');
+        toast('Data Berhasil Direstore Semua', 'success');
         return back();
     }
 
 
     public function delete($id = null)
     {
-        abort_if(Gate::denies('role-delete'), Response::HTTP_FORBIDDEN, 'Forbidden');
-
         if ($id != null) {
             $id = Role::onlyTrashed()->where('id', $id)->forceDelete();
         } else {
             $id = Role::onlyTrashed()->forceDelete();
         }
 
-        // toast('Data Berhasil Dihapus Permanen', 'success');
+        toast('Data Berhasil Dihapus Permanen', 'success');
         return back();
     }
 }

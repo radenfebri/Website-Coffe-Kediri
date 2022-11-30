@@ -34,7 +34,7 @@ class AssignPermissionController extends Controller
         $role = Role::find(request('role'));
         $role->givePermissionTo(request('permissions'));
 
-        // toast('Data Berhasil Ditambahkan','success');
+        toast('Data Berhasil Ditambahkan', 'success');
 
         return back();
     }
@@ -48,7 +48,7 @@ class AssignPermissionController extends Controller
 
         return view('backend.assign-permission-to-role.edit', compact('role', 'roles', 'permissions'));
     }
-    
+
 
     public function update(Role $role)
     {
@@ -59,9 +59,7 @@ class AssignPermissionController extends Controller
 
         $role->syncPermissions(request('permissions'));
 
-        // toast('Data Berhasil Diupdate','info');
-
+        toast('Data Berhasil Diupdate', 'info');
         return redirect()->route('assignpermission.index');
-
     }
 }

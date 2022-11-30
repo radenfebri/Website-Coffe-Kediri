@@ -53,18 +53,23 @@
                                         <td>  
                                             @if ($item->email == 'febriye12@gmail.com')
                                             
+                                            @elseif($item->email == '')
+
                                             @else
-                                            @env('local')
-                                            <span class="shadow-none badge badge-primary">
-                                                <x-login-link :user-attributes="['role' => '{{ implode(', ', $item->getRoleNames()->toArray() ) }}']" email="{{ $item->email }}" target="_blank" label="Login as {{ $item->name }}"/>
-                                            </span>
+                                            @can ('user-login-akun')
+                                                @env('local')
+                                                <span class="shadow-none badge badge-primary">
+                                                    <x-login-link :user-attributes="['role' => '{{ implode(', ', $item->getRoleNames()->toArray() ) }}']" email="{{ $item->email }}" target="_blank" label="Login as {{ $item->name }}"/>
+                                                </span>
                                                 @endenv
-                                                @endif
+                                            @endcan
+                                            @endif
                                                 
                                             </td>
                                             <td class="text-center">
                                                 @if ($item->email == 'febriye12@gmail.com')
                                                 
+                                                @elseif($item->email == '')
                                                 @else
                                                 <div class="dropdown">
                                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -72,12 +77,17 @@
                                                     </a>
                                                     
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                                        @can ('user-edit-password')
                                                         <a class="dropdown-item" href="{{ route('change-password', encrypt($item->id) ) }}">Change Password</a>
+                                                        @endcan
+
+                                                        @can ('user-edit-status')
                                                         @if ($item->status == 1)
                                                             <a class="dropdown-item" value="0" href="{{ route('status-akun', encrypt($item->id)) }}">Disable User</a>
                                                         @else
                                                             <a class="dropdown-item" value="1" href="{{ route('status-akun', encrypt($item->id)) }}">Enable User</a>
                                                         @endif
+                                                        @endcan
                                                     </div>
                                                 </div>
                                                 @endif

@@ -72,7 +72,7 @@ class CheckoutController extends Controller
             
             $order->total_price = $total + rand(100, 900);
             
-            $order->tracking_no = 'PUBA' . rand(111111, 999999);
+            $order->tracking_no = 'PUTEKDR' . rand(111111, 999999);
             
             $order->save();
             
@@ -108,9 +108,7 @@ class CheckoutController extends Controller
         }
     }
     
-    
-    // public function myorder()
-    // {
+
         //     $orders = Order::orderBy('created_at', 'desc')->where('user_id', Auth::id())->paginate(10);
         //     return view('frontend.order.myorder', compact('orders'));
         // }

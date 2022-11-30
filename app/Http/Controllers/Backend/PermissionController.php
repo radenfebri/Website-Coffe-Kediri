@@ -28,7 +28,6 @@ class PermissionController extends Controller
     {
         request()->validate([
             'name' => 'required|string|unique:permissions,name|min:3',
-            'guard_name' => 'required|string|min:3',
         ]);
 
 
@@ -37,7 +36,7 @@ class PermissionController extends Controller
             'guard_name' => request('guard_name') ?? 'web',
         ]);
 
-        // toast('Data Berhasil Ditambahkan', 'success');
+        toast('Data Berhasil Ditambahkan', 'success');
 
         return back();
     }
@@ -57,15 +56,15 @@ class PermissionController extends Controller
     public function update(Permission $permission)
     {
         request()->validate([
-            'name' => 'required|string|min:2',
+            'name' => 'required|string|unique:permissions,name|min:3',
             'guard_name' => 'required|string|min:3',
         ]);
 
         if ($permission->update(request()->all())) {
-            // toast('Data Berhasil Diupdate', 'success');
+            toast('Data Berhasil Diupdate', 'success');
             return redirect()->route('permission.index');
         } else {
-            // toast('Data Gagal Diupdate', 'error');
+            toast('Data Gagal Diupdate', 'error');
             return back();
         }
     }
@@ -77,8 +76,7 @@ class PermissionController extends Controller
         $permission = Permission::find(decrypt($id));
         $permission->delete();
 
-        // toast('Data Berhasil Dihapus', 'success');
-
+        toast('Data Berhasil Dihapus', 'success');
         return redirect()->route('permission.index');
     }
 
@@ -98,7 +96,7 @@ class PermissionController extends Controller
             $id = Permission::onlyTrashed()->restore();
         }
 
-        // toast('Data Berhasil Direstore Semua', 'success');
+        toast('Data Berhasil Direstore Semua', 'success');
         return back();
     }
 
@@ -111,7 +109,7 @@ class PermissionController extends Controller
             $id = Permission::onlyTrashed()->forceDelete();
         }
 
-        // toast('Data Berhasil Dihapus Permanen', 'success');
+        toast('Data Berhasil Dihapus Permanen', 'success');
         return back();
     }
 }

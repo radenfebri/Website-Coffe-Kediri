@@ -11,7 +11,7 @@
                 <nav class="breadcrumb-style-one" aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Semua Produk</li>
+                        <li class="breadcrumb-item active" aria-current="page">Manajemen Pesanan</li>
                     </ol>
                 </nav>
             </div>
@@ -24,20 +24,31 @@
                         <div class="widget-content widget-content-area">
                             <div class="manajemen-pesanan-layout">
                                 <div>
-                                <a href="{{ route('pesanan.index') }}" class="text-primary mr-2 mb-2" >
-                                    <button class="btn btn-danger btn-sm button-manajemen-pesanan">Pesanan Unpaid</button>
-                                </a>
-                                <a href="{{ route('pesanan.packing') }}" class="text-info mr-2 mb-2" >
-                                    <button class="btn btn-info btn-sm button-manajemen-pesanan">Pesanan Packing</button>
-                                </a>
+                                    @can ('halaman-pesanan')
+                                    <a href="{{ route('pesanan.index') }}" class="text-primary mr-2 mb-2" >
+                                        <button class="btn btn-danger btn-sm button-manajemen-pesanan">Pesanan Unpaid</button>
+                                    </a>
+                                    @endcan
+                                    
+                                    @can ('pesanan-packing')
+                                    <a href="{{ route('pesanan.packing') }}" class="text-info mr-2 mb-2" >
+                                        <button class="btn btn-info btn-sm button-manajemen-pesanan">Pesanan Packing</button>
+                                    </a>
+                                    @endcan
                                 </div>
+                                
                                 <div>
-                                <a href="{{ route('pesanan.kirim') }}" class="text-warning mr-2 mb-2" >
-                                    <button class="btn btn-warning btn-sm button-manajemen-pesanan">Pesanan Kirim</button>
-                                </a>
-                                <a href="{{ route('pesanan.success') }}" class="text-success mr-2 mb-2" >
-                                    <button class="btn btn-success btn-sm button-manajemen-pesanan">Pesanan Selesai</button>
-                                </a>
+                                    @can ('pesanan-kirim')
+                                    <a href="{{ route('pesanan.kirim') }}" class="text-warning mr-2 mb-2" >
+                                        <button class="btn btn-warning btn-sm button-manajemen-pesanan">Pesanan Kirim</button>
+                                    </a>
+                                    @endcan
+                                    
+                                    @can ('pesanan-success')
+                                    <a href="{{ route('pesanan.success') }}" class="text-success mr-2 mb-2" >
+                                        <button class="btn btn-success btn-sm button-manajemen-pesanan">Pesanan Selesai</button>
+                                    </a>
+                                    @endcan
                                 </div>
                             </div>
                             <table id="style-3" class="table style-3 dt-table-hover">
@@ -62,20 +73,22 @@
                                         <td class="text-center">{{ number_format($item->total_price) }}</td>
                                         <td class="text-center">{{ $item->metode }}</td>
                                         @if ($item->status == 0)
-                                            <td class="text-center"><span class="shadow-none badge badge-danger">Unpaid</span></td>
+                                        <td class="text-center"><span class="shadow-none badge badge-danger">Unpaid</span></td>
                                         @elseif ($item->status == 1)
-                                            <td class="text-center"><span class="shadow-none badge badge-info">Packing</span></td>
+                                        <td class="text-center"><span class="shadow-none badge badge-info">Packing</span></td>
                                         @elseif ($item->status == 2)
-                                            <td class="text-center"><span class="shadow-none badge badge-warning">Kirim</span></td>
+                                        <td class="text-center"><span class="shadow-none badge badge-warning">Kirim</span></td>
                                         @elseif ($item->status == 3)
-                                            <td class="text-center"><span class="shadow-none badge badge-success">Selesai</span></td>
+                                        <td class="text-center"><span class="shadow-none badge badge-success">Selesai</span></td>
                                         @endif
                                         
+                                        @can ('pesanan-edit')
                                         <td class="text-center">
                                             <a href="{{ route('pesanan.edit', encrypt($item->id) ) }}"  class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
                                             </a>
                                         </td>
+                                        @endcan
                                     </tr>
                                     
                                     @endforeach

@@ -31,7 +31,7 @@ class AssignRoleController extends Controller
         $user = User::where('email', request('email'))->first();
         $user->assignRole(request('roles'));
 
-        // toast('Data Berhasil Ditambahkan', 'success');
+        toast('Data Berhasil Ditambahkan', 'success');
 
         return back();
     }
@@ -54,7 +54,7 @@ class AssignRoleController extends Controller
     {
         $user->syncRoles(request('roles'));
 
-        // toast('Data Berhasil Diupdate', 'info');
+        toast('Data Berhasil Diupdate', 'info');
 
         return redirect()->route('assignrole.index');
     }

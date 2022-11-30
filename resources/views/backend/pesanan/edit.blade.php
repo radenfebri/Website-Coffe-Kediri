@@ -4,6 +4,7 @@
 
 <!--  BEGIN CONTENT AREA  -->
 <div id="content" class="main-content">
+    
     <div class="layout-px-spacing">
 
         <form action="{{ route('pesanan.update', encrypt($order->id) ) }}" method="POST">
@@ -124,6 +125,7 @@
                                                             <tr>
                                                                 <th class="">No</th>
                                                                 <th>Produk Name</th>
+                                                                <th>Qty</th>
                                                                 <th class="">Harga</th>
                                                             </tr>
                                                             <tr aria-hidden="true" class="mt-3 d-block table-row-hidden"></tr>
@@ -138,6 +140,11 @@
                                                                 </td>
                                                                 <td class="description">
                                                                     <input type="text" class="form-control form-control-sm" value="{{ $item->produks->name }}" placeholder="Item Description"> 
+                                                                </td>
+                                                                <td class="delete-item-row">
+                                                                    <ul class="table-controls">
+                                                                        {{ $item->qty }}
+                                                                    </ul>
                                                                 </td>
                                                                 <td class="text-right amount"><span class="editable-amount"><span class="currency">Rp.</span> <span class="amount">{{ number_format($item->price) }}</span></span></td>
                                                             </tr>
