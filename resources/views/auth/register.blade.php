@@ -70,22 +70,23 @@
                                             </div>
                                             <a href="privacy-policy.html"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
                                         </div>
-
-                                        <div class="form-group">
+                                        <div class="custom-register">
+                                        <div class="form-group custom-register-button">
                                             <button type="submit" class="btn btn-fill-out btn-block hover-up" name="login">Submit &amp; Register</button>
+                                        </form> 
                                         </div>
-                                    </form> 
                                     <div class="form-group">
                                         <a href="{{ route('google.login') }}">
-                                            <button class="btn btn-fill-out btn-block hover-up" name="login">Register in with Google</button>
+                                            <button class="btn btn-fill-out btn-block hover-up custom-register-google" name="login">Register in with Google</button>
                                         </a>
-                                    </div>                                       
+                                    </div>                        
+                                </div>               
                                     <div class="text-muted text-center">Already have an account? <a href="{{ route('login') }}">Sign in now</a></div>
                                 </div>
                             </div>
                         </div>                            
                         <div class="col-lg-6">
-                            <img src="{{ asset('frontend') }}/imgs/login.png" loading="lazy">
+                            <img src="{{ asset('frontend') }}/imgs/login.png" loading="lazy" class="image-register">
                         </div>
                     </div>
                 </div>

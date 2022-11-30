@@ -74,7 +74,7 @@
 
                         <div class="col-lg-1"></div>
                         <div class="col-lg-6">
-                            <img src="{{ asset('frontend') }}/imgs/login.png">
+                            <img src="{{ asset('frontend') }}/imgs/login.png" loading="lazy" class="image-register">
                         </div>
                     </div>
                 </div>

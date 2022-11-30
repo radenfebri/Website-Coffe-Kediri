@@ -354,6 +354,7 @@
     margin-bottom: 50px;
   }
 
+  /* login */
   .custom-login{
     display: flex;
     flex-direction: row;
@@ -364,6 +365,20 @@
     margin-right: 10px;
   }
 
+  /* custom register */
+  .custom-register{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  .custom-register-button{
+    margin-right: 10px;
+  }
+
+  .custom-register-google{
+    height: 49px;
+  }
 
 
 
@@ -683,6 +698,25 @@
 
   .custom-login-button{
     height: 62px;
+  }
+
+   /* custom register */
+   .custom-register{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .custom-register-button{
+    margin-right: 10px;
+  }
+
+  .custom-register-google{
+    height: 49px;
+  }
+
+  .image-register{
+    display:none;
   }
 
 
