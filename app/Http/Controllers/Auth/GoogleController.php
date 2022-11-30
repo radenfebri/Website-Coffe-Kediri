@@ -53,7 +53,7 @@ class GoogleController extends Controller
 
     public function update_password_google()
     {
-        return view('frontend.google.update-password');
+        return view('auth.passwords.update-password');
     }
 
 

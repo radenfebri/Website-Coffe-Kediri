@@ -57,22 +57,24 @@
                                             @endif
                                             
                                         </div>
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-fill-out btn-block hover-up" name="login">Log in</button>
+                                        <div class="custom-login">
+                                            <div class="form-group custom-login-btn">
+                                                <button type="submit" class="btn btn-fill-out btn-block hover-up custom-login-button" name="login">Login</button>
+                                            </div>
+                                        </form>
+                                            <div class="form-group custom-login-google">
+                                                <a href="{{ route('google.login') }}">
+                                                    <button class="btn btn-fill-out btn-block hover-up custom-button-google" name="login">Login with Google</button>
+                                                </a>
+                                            </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="form-group">
-                                    <a href="{{ route('google.login') }}">
-                                        <button class="btn btn-fill-out btn-block hover-up" name="login">Log in with Google</button>
-                                    </a>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-1"></div>
                         <div class="col-lg-6">
-                            <img src="{{ asset('frontend') }}/imgs/login.png">
+                            <img src="{{ asset('frontend') }}/imgs/login.png" loading="lazy" class="image-register">
                         </div>
                     </div>
                 </div>

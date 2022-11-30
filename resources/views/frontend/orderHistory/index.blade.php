@@ -376,7 +376,9 @@
             </div>
 
         </section>
+        <div class="pagination-margin">
         {{ $orders->links('frontend.layouts.includes.pagination') }}
+        </div>
     </main>
 
     @endsection
