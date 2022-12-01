@@ -70,17 +70,22 @@
                                             </div>
                                             <a href="{{ route('privacy-policy') }}"><i class="fi-rs-book-alt mr-5 text-muted"></i>Lean more</a>
                                         </div>
-                                        <div class="custom-register">
-                                            <div class="form-group custom-register-button">
-                                                <button type="submit" class="btn btn-fill-out btn-block hover-up" name="login">Submit &amp; Register</button>
+                                        <div class="">
+                                            <div class="form-group  custom-register">
+                                                <button type="submit" class="btn btn-fill-out btn-block hover-up custom-register-button" name="login">Submit &amp; Register</button>
                                             </div>
-                                        </form> 
-                                    </div>     
-                                    <div class="form-group">
-                                        <a href="{{ route('google.login') }}">
-                                            <button class="btn btn-fill-out btn-block hover-up custom-register-google" name="login">Register in with Google</button>
-                                        </a>
-                                    </div>            
+                                        </div>     
+                                    </form> 
+                                    <div class="form-group custom-login-google btn btn-fill-out btn-block hover-up">
+                                        <div class="img-custom-google-logo">
+                                            <img src="{{ asset('frontend') }}/imgs/logo/logo-google.png" alt="">
+                                        </div>
+                                        <div>
+                                            <a href="{{ route('google.login') }}" class="text-login-google" name="login">
+                                                Register with Google
+                                            </a>
+                                        </div>
+                                    </div>          
                                     <div class="text-muted text-center">Already have an account? <a href="{{ route('login') }}">Sign in now</a></div>
                                 </div>
                             </div>

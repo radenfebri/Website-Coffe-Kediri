@@ -369,23 +369,65 @@
     width: 100%;
   }
 
+  .custom-login-btn{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
   .custom-login-button{
+    width: 100%;
+  }
+
+  .custom-login-google{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .img-custom-google-logo{
     margin-right: 10px;
+  }
+
+  .custom-login-google img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+  }
+
+  .custom-button-google{
+    width: 100%;
+    border-radius: 5px;
+  }
+
+  .text-login-google{
+    color: white;
+    font-size: 15px;
+    font-weight: 80;
+  }
+
+  .text-login-google:hover{
+    color: white;
   }
 
   /* custom register */
   .custom-register{
     display: flex;
     flex-direction: row;
+    justify-content: center;
     width: 100%;
   }
 
   .custom-register-button{
-    margin-right: 10px;
+    width: 100%;
   }
 
   .custom-register-google{
-    height: 49px;
+    display: flex;
+    flex-direction: row;
   }
 
 
@@ -705,8 +747,8 @@
   }
 
   .custom-login-button{
-    height: 62px;
   }
+
 
    /* custom register */
    .custom-register{
