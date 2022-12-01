@@ -49,7 +49,7 @@
                             <h5>Catatan Order</h5>
                         </div>
                         <div class="form-group mb-30">
-                            <textarea rows="5" placeholder="Order notes" name="catatan"></textarea>
+                            <textarea rows="5" placeholder="Order notes" name="message"></textarea>
                         </div>
                     </div>
                     <div class="col-md-6">

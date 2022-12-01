@@ -194,5 +194,5 @@ Route::get('/website-up', function () {
 });
 
 Route::get('/website-down', function () {
-    return Artisan::call("down --secret=putrabagus");
+    return Artisan::call("down --secret=putrateguh");
 });

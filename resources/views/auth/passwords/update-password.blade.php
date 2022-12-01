@@ -8,7 +8,7 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html" rel="nofollow">Home</a>                    
-                <span></span> Reset Password
+                <span></span> Update Password Baru
             </div>
         </div>
     </div>
@@ -21,15 +21,13 @@
                             <div class="login_wrap widget-taber-content p-30 background-white border-radius-5">
                                 <div class="padding_eight_all bg-white">
                                     <div class="heading_s1">
-                                        <h3 class="mb-30">Reset Password</h3>
+                                        <h3 class="mb-30">Update Password Baru</h3>
                                     </div>                                        
-                                    <form method="POST" action="{{ route('password.update') }}">
+                                    <form method="POST" action="{{ route('update_data_password_google') }}">
                                         @csrf
-                                        <input type="hidden" name="token" value="{{ $token }}">
-
                                         <div class="form-group">
-                                            <input type="email" class="form-control @error('email') is-invalid @enderror"  name="email" value="{{ $email ?? old('email') }}" autocomplete="email" autofocus placeholder="Email">
-                                            @error('email')
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="Password Baru">
+                                            @error('current_password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -37,8 +35,8 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="Password">
-                                            @error('password')
+                                            <input type="password" class="form-control @error('password_cofirmation') is-invalid @enderror" name="password_confirmation" autocomplete="new-password" placeholder="Confirm password">
+                                            @error('current_password')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -46,16 +44,7 @@
                                         </div>
                                         
                                         <div class="form-group">
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password_confirmation" autocomplete="new-password" placeholder="Confirm password">
-                                            @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
-                                        
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-fill-out btn-block hover-up" name="reset">Reset Password</button>
+                                            <button type="submit" class="btn btn-fill-out btn-block hover-up" name="reset">Update Password</button>
                                         </div>
                                     </form> 
                                 </div>
