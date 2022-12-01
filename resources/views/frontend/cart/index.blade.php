@@ -208,9 +208,6 @@
                         Stok 0
                         @else
                         <input type="number" class="input-number text-center qty-input" name="quantity" value="{{ $item->prod_qty }}" min="1" max="10000">
-                        <div class="input-group-button">
-                            <a href="" class="btn-sm changeQuantity-mobile">Simpan</a>
-                        </div>
                         @endif
                         <p class="text-harga">
                             @if ($item->produks->selling_price == null)
@@ -220,8 +217,13 @@
                             @endif
                         </p>
                     </div>
-                    <div class="icon-cart-delete">
-                        <a href="{{ route('deletecart') }}" class="delete-cart-item-mobile"><i class="fi-rs-trash"></i></a> 
+                    <div class="cart-icon-gabung">
+                        <div class="icon-cart-delete mb-4">
+                            <a href="" class="changeQuantity-mobile delete-cart-item-mobile"><i class="fi-rs-disk"></i></a> 
+                        </div>
+                        <div class="icon-cart-delete">
+                            <a href="{{ route('deletecart') }}" class="delete-cart-item-mobile"><i class="fi-rs-trash"></i></a> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -276,26 +278,5 @@
 </span>
 
 </main>
-
-<script>
-    const plus = document.querySelector(".plus"), minus = document.querySelector(".minus"), num = document.querySelector(".num");
-
-    let a = 0;
-
-    plus.addEventListener("click", ()=>{
-        a++;
-        a = (a < 10) ? "0" + a : a;
-        num.innerText = a;
-    });
-
-    minus.addEventListener("click", ()=>{
-        if(a > 1){
-            a--;
-            a = (a < 10) ? "0" + a : a;
-            num.innerText = a;
-        }
-    });
-
-</script>
 
 @endsection
