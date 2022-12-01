@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\BannerPromosi;
 use App\Models\PromosiNavbar;
 use App\Models\TigaPromosi;
 use Illuminate\Http\Request;
@@ -167,5 +168,74 @@ class PromosiController extends Controller
 
 
     // --------------------------------------------------------- CONTROLLER BANNER PROMOSI ------------------------------------- //
+    public function banner_promosi()
+    {
+        $banner_promosi = BannerPromosi::first();
+        return view('backend.banner-promosi.index', compact('banner_promosi'));
+    }
 
+
+    public function banner_promosi_store(Request $request)
+    {
+        $request->validate([
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'status' => 'required',
+        ]);
+
+
+        $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
+        $image = $request->file('image')->storeAs('image-banner-promosi', $imageName);
+        BannerPromosi::create([
+            'title1' => $request->title1,
+            'title2' => $request->title2,
+            'title3' => $request->title3,
+            'link' => $request->link,
+            'image' => $image,
+            'button_text' => $request->button_text,
+            'status' => $request->status == TRUE ? '1' : '0',
+        ]);
+
+        toast('Banner Promosi Berhasil Ditambahkan', 'success');
+        return back();
+    }
+
+
+    public function banner_promosi_update(Request $request, $id)
+    {
+        $request->validate([
+            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'status' => 'required',
+        ]);
+
+        if (empty($request->file('image'))) {
+            $banner_promosi = BannerPromosi::findOrFail($id);
+            $banner_promosi->update([
+                'title1' => $request->title1,
+                'title2' => $request->title2,
+                'title3' => $request->title3,
+                'link' => $request->link,
+                'button_text' => $request->button_text,
+                'status' => $request->status  == TRUE ? '1' : '0',
+            ]);
+
+            toast('Banner Promosi Berhasil Diubah', 'success');
+            return redirect()->route('banner-promosi.index');
+        } else {
+            $banner_promosi = BannerPromosi::findOrFail($id);
+            $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
+            $image = $request->file('image')->storeAs('image-banner-promosi', $imageName);
+            Storage::delete($banner_promosi->image);
+            $banner_promosi->update([
+                'title1' => $request->title1,
+                'title2' => $request->title2,
+                'title3' => $request->title3,
+                'link' => $request->link,
+                'button_text' => $request->button_text,
+                'status' => $request->status  == TRUE ? '1' : '0',
+                'image' => $image,
+            ]);
+        }
+        toast('Banner Promosi Berhasil Diubah', 'success');
+        return redirect()->route('banner-promosi.index');
+    }
 }
