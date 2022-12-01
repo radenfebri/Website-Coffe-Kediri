@@ -82,10 +82,7 @@
                                         <div class="input-group-button">
                                             <a href="" class="btn-sm changeQuantity">Simpan</a>
                                         </div>
-                                        
-                                        
                                         @endif
-                                        
                                     </td>
                                     
                                     <td class="text-right" data-title="Cart">
@@ -279,5 +276,26 @@
 </span>
 
 </main>
+
+<script>
+    const plus = document.querySelector(".plus"), minus = document.querySelector(".minus"), num = document.querySelector(".num");
+
+    let a = 0;
+
+    plus.addEventListener("click", ()=>{
+        a++;
+        a = (a < 10) ? "0" + a : a;
+        num.innerText = a;
+    });
+
+    minus.addEventListener("click", ()=>{
+        if(a > 1){
+            a--;
+            a = (a < 10) ? "0" + a : a;
+            num.innerText = a;
+        }
+    });
+
+</script>
 
 @endsection

@@ -676,14 +676,16 @@
                     <div class="product-cart-wrap small hover-up produk_data">
                         <input type="hidden" value="{{ $item->id }}" class="prod_id">
                         <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
+                            <div class="product-img product-img-zoom produk-terbaru">
+                                <div class="">
                                 <a href="{{ route('detail.produk', $item->slug) }}">
                                     @if ($item->cover == null)
-                                    <img class="default-img produk-img" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" alt="{{ $item->name }}">
+                                    <img class="default-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" alt="{{ $item->name }}">
                                     @else
-                                    <img class="default-img produk-img" src="{{ asset('storage/'. $item->cover ) }}" alt="{{ $item->name }}">
+                                    <img class="default-img produk-img-terbaru" src="{{ asset('storage/'. $item->cover ) }}" alt="{{ $item->name }}">
                                     @endif
                                 </a>
+                                </div>
                             </div>
                             <div class="product-action-1">
                                 <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn hover-up" ><i class="fi-rs-eye"></i></a>
