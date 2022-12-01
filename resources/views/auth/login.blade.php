@@ -55,23 +55,23 @@
                                             @if (Route::has('password.request'))
                                             <a class="text-muted" href="{{ route('password.request') }}">Forgot password?</a>
                                             @endif
-                                            
                                         </div>
-                                        <div class="custom-login">
+                                        
+                                        <div class="custom-login" style="align-content: center">
                                             <div class="form-group custom-login-btn">
                                                 <button type="submit" class="btn btn-fill-out btn-block hover-up custom-login-button" name="login">Login</button>
                                             </div>
-                                        </form>
-                                            <div class="form-group custom-login-google">
-                                                <a href="{{ route('google.login') }}">
-                                                    <button class="btn btn-fill-out btn-block hover-up custom-button-google" name="login">Login with Google</button>
-                                                </a>
-                                            </div>
                                         </div>
+                                    </form>
+                                    <div class="form-group custom-login-google">
+                                        <a href="{{ route('google.login') }}">
+                                            <button class="btn btn-fill-out btn-block hover-up custom-button-google" name="login">Login with Google</button>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div class="col-lg-1"></div>
                         <div class="col-lg-6">
                             <img src="{{ asset('frontend') }}/imgs/login.png" loading="lazy" class="image-register">

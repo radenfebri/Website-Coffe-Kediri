@@ -22,7 +22,7 @@
         <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories" id="accordionExample">
             
-            @can ('halaman-dashboard')
+            @can ('#HALAMAN-DASHBOARD')
             <li class="menu {{ request()->is('dashboard') ? 'active' : ''}}">
                 <a href="{{ route('dashboard') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -32,12 +32,12 @@
                 </a>
             </li>
             @endcan
-            
+
+            @can ('#MANAJEMEN-PESANAN')
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>MANAJEMEN TOKO</span></div>
             </li>
             
-            @can ('halaman-pesanan')
             <li class="menu {{ request()->is('pesanan', 'pesanan/success', 'pesanan/*') ? 'active' : ''}}">
                 <a href="{{ route('pesanan.index') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -49,7 +49,7 @@
             </li>
             @endcan
             
-            @can ('halaman-rating')
+            @can ('#MANAJEMEN-RATING')
             <li class="menu {{ request()->is('rating', 'rating/*') ? 'active' : ''}}">
                 <a href="{{ route('rating.index') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">

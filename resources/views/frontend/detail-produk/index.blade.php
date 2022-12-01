@@ -373,9 +373,21 @@
                                             </div>
                                             <div class="product-content-wrap">
                                                 <h2><a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">{{ $item->name }}</a></h2>
-                                                <div class="rating-result" title="90%">
-                                                    <span>
-                                                    </span>
+                                                @if($item->ratings->count() > 0)
+                                                @php $item->ratings->count() @endphp
+                                                @php $bintang = $item->ratings->sum('stars_rated') / $item->ratings->count() @endphp
+                                                @else   
+                                                @php $bintang = 0 @endphp
+                                                @endif
+                                                
+                                                @php $rate_num = number_format($bintang) @endphp
+                                                <div class="rating">
+                                                    @for($i = 1; $i <= $rate_num; $i++)
+                                                    <i class="fas fa-star" style="color: #ffb300"></i>
+                                                    @endfor
+                                                    @for($j = $rate_num+1; $j <= 5; $j++)
+                                                    <i class="fas fa-star" style="color: #b4afaf"></i>
+                                                    @endfor
                                                 </div>
                                                 <div class="product-price">
                                                     @if ($item->selling_price == null)
@@ -431,8 +443,21 @@
                                 @else
                                 <p class="price mb-0 mt-5">Rp. {{ number_format($item->selling_price) }}</p>
                                 @endif
-                                <div class="product-rate">
-                                    <div class="product-rating" style="width:90%"></div>
+                                @if($item->ratings->count() > 0)
+                                @php $item->ratings->count() @endphp
+                                @php $bintang = $item->ratings->sum('stars_rated') / $item->ratings->count() @endphp
+                                @else   
+                                @php $bintang = 0 @endphp
+                                @endif
+                                
+                                @php $rate_num = number_format($bintang) @endphp
+                                <div class="rating">
+                                    @for($i = 1; $i <= $rate_num; $i++)
+                                    <i class="fas fa-star" style="color: #ffb300"></i>
+                                    @endfor
+                                    @for($j = $rate_num+1; $j <= 5; $j++)
+                                    <i class="fas fa-star" style="color: #b4afaf"></i>
+                                    @endfor
                                 </div>
                             </div>
                         </div>
