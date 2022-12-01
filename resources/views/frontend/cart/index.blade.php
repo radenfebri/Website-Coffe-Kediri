@@ -75,10 +75,15 @@
                                     <td class="text-center" data-title="Stock">
                                         @if ($item->produks->qty == 0)
                                         <span class="product-name">Produk Habis</span>
-                                        @else
-                                        <div class="product-extra-link2">
-                                            <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity" min="1" max="100" value="{{ $item->prod_qty }}">
+                                        @else                                        
+                                        <div class="input-group input-number-group">
+                                            <input type="number" class="input-number text-center qty-input" name="quantity" value="{{ $item->prod_qty }}" min="1" max="10000">
                                         </div>
+                                        <div class="input-group-button">
+                                            <a href="" class="btn-sm changeQuantity">Simpan</a>
+                                        </div>
+                                        
+                                        
                                         @endif
                                         
                                     </td>
@@ -115,127 +120,19 @@
                                 </h3>  
                                 @endif
                                 
-                                {{-- @if ($produk->count() > 0)
-                                    <td colspan="6" class="text-end">
-                                        <a href="#" class="text-muted"> <i class="fi-rs-cross-small"></i> Clear Cart</a>
-                                    </td>
-                                    @else
-                                    
-                                    @endif --}}
-                                    
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    @foreach ($produk as $item)
-                    @php $cek = $item->produks->qty @endphp
-                    @endforeach
-                    
-                    <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
-                    <div class="row mb-50">
-                        @if ($cek > 0)
-                        @if ($produk->count() > 0)
-                        <div class="col-lg-6 col-md-12">
-                            <div class="border p-md-4 p-30 border-radius cart-totals">
-                                <div class="heading_s1 mb-3">
-                                    <h4>Keranjang Total</h4>
-                                </div>
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <tbody>
-                                            <tr>
-                                                <td class="cart_total_label">Cart Subtotal</td>
-                                                <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">Rp. {{ number_format($total) }}</span></td>
-                                            </tr>
-                                            <tr>
-                                                <td class="cart_total_label">Shipping</td>
-                                                <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
-                                            </tr>
-                                            <tr>
-                                                <td class="cart_total_label">Total</td>
-                                                <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">Rp. {{ number_format($total) }}</span></strong></td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                
-                                
-                                <a href="{{ route('checkout') }}" class="btn btn-cart"> <i class="fi-rs-box-alt mr-10"></i> Proses Order Sekarang</a>       
-                                
-                            </div>
-                        </div>
-                        @else
-                        
-                        @endif
-                        
-                        @else
-                        
-                        @endif
-                        
-                    </div>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-        </div>
-    </section>
-    
-    
-    {{-- SECTION TAMPILAN MOBILE --}}
-    <span class="cartItem_mobile produk_mobile">
-        <section class="favorit-mobile">
-            <div class="container">   
-                @foreach ($produk as $item)
-                @if ($item->produks->qty == 0)
-                <center>
-                    <div class="alert alert-success" role="alert">
-                        <p style="color: red">Ada produk yang kosong, dimohon sebelum melakukan checkout, hapus terlebih dahulu!</p>
-                    </div>
-                </center>
-                @else
                 
-                @endif
-                @endforeach         
-                @if ($produk->count() > 0)
                 @foreach ($produk as $item)
-                <div class="layer-cart produk_data">
-                    <div class="favorit-fill">
-                        <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
-                        <div class="favorit-img"> 
-                            @if ($item->produks->cover == null)
-                            <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
-                            @else
-                            <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
-                            @endif
-                        </div>
-                        <div class="text-favorit">
-                            <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
-                            <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 3, '...') }}</p>
-                            @if ($item->produks->qty == 0)
-                            Stok 0
-                            @else
-                            <input type="number" name="quantity" class="qty-input text-center input-number changeQuantity-mobile" min="1" max="100" value="{{ $item->prod_qty }}">
-                            @endif
-                            <p class="text-harga">
-                                @if ($item->produks->selling_price == null)
-                                <span>Rp. {{ number_format($item->produks->original_price * $item->prod_qty) }}</span>
-                                @else
-                                <span>Rp. {{ number_format($item->produks->selling_price * $item->prod_qty) }}</span>
-                                @endif
-                            </p>
-                        </div>
-                        <div class="icon-cart-delete">
-                            <a href="{{ route('deletecart') }}" class="delete-cart-item-mobile"><i class="fi-rs-trash"></i></a> 
-                        </div>
-                    </div>
-                </div>
+                @php $cek = $item->produks->qty @endphp
                 @endforeach
-                @else
-                @endif
-                {{-- <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div> --}}
                 
-                @if ($cek > 0)
-                @if ($produk->count() > 0)
-                <div class="row">
+                <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
+                <div class="row mb-50">
+                    @if ($produk->count() > 0)
+                    @if ($cek > 0)
                     <div class="col-lg-6 col-md-12">
                         <div class="border p-md-4 p-30 border-radius cart-totals">
                             <div class="heading_s1 mb-3">
@@ -260,24 +157,127 @@
                                 </table>
                             </div>
                             
+                            
                             <a href="{{ route('checkout') }}" class="btn btn-cart"> <i class="fi-rs-box-alt mr-10"></i> Proses Order Sekarang</a>       
-                        </div>       
+                            
+                        </div>
+                    </div>
+                    @else
+                    
+                    @endif
+                    
+                    @else
+                    
+                    @endif
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{{-- SECTION TAMPILAN MOBILE --}}
+<span class="cartItem_mobile produk_mobile">
+    <section class="favorit-mobile">
+        <div class="container">   
+            @foreach ($produk as $item)
+            @if ($item->produks->qty == 0)
+            <center>
+                <div class="alert alert-success" role="alert">
+                    <p style="color: red">Ada produk yang kosong, dimohon sebelum melakukan checkout, hapus terlebih dahulu!</p>
+                </div>
+            </center>
+            @else
+            
+            @endif
+            @endforeach         
+            @if ($produk->count() > 0)
+            @foreach ($produk as $item)
+            <div class="layer-cart produk_data">
+                <div class="favorit-fill">
+                    <input type="hidden" class="prod_id" value="{{ $item->prod_id }}">
+                    <div class="favorit-img"> 
+                        @if ($item->produks->cover == null)
+                        <img src="{{ '/frontend/imgs/shop/product-1-2.jpg' }}" alt="{{ $item->produks->name }}">
+                        @else
+                        <img src="{{ asset('storage/'. $item->produks->cover ) }}" alt="{{ $item->produks->name }}">
+                        @endif
+                    </div>
+                    <div class="text-favorit">
+                        <a class="judul-favorit" href="{{ route('detail.produk', $item->produks->slug ) }}">{{ \Illuminate\Support\Str::words($item->produks->name, 1, '...') }}</a>
+                        <p class="font-xs">{{ \Illuminate\Support\Str::words($item->produks->small_description, 3, '...') }}</p>
+                        @if ($item->produks->qty == 0)
+                        Stok 0
+                        @else
+                        <input type="number" class="input-number text-center qty-input" name="quantity" value="{{ $item->prod_qty }}" min="1" max="10000">
+                        <div class="input-group-button">
+                            <a href="" class="btn-sm changeQuantity-mobile">Simpan</a>
+                        </div>
+                        @endif
+                        <p class="text-harga">
+                            @if ($item->produks->selling_price == null)
+                            <span>Rp. {{ number_format($item->produks->original_price * $item->prod_qty) }}</span>
+                            @else
+                            <span>Rp. {{ number_format($item->produks->selling_price * $item->prod_qty) }}</span>
+                            @endif
+                        </p>
+                    </div>
+                    <div class="icon-cart-delete">
+                        <a href="{{ route('deletecart') }}" class="delete-cart-item-mobile"><i class="fi-rs-trash"></i></a> 
                     </div>
                 </div>
-                @else
-                <h3 class="text-center page-kosong">
-                    Keranjang anda masih Kosong
-                </h3>   
-                @endif
-                @else
-                
-                @endif
-                
             </div>
+            @endforeach
+            @else
+            @endif
+            {{-- <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div> --}}
+            
+            @if ($produk->count() > 0)
+            @if ($cek > 0)
+            <div class="row">
+                <div class="col-lg-6 col-md-12">
+                    <div class="border p-md-4 p-30 border-radius cart-totals">
+                        <div class="heading_s1 mb-3">
+                            <h4>Keranjang Total</h4>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <td class="cart_total_label">Cart Subtotal</td>
+                                        <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">Rp. {{ number_format($total) }}</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cart_total_label">Shipping</td>
+                                        <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cart_total_label">Total</td>
+                                        <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">Rp. {{ number_format($total) }}</span></strong></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <a href="{{ route('checkout') }}" class="btn btn-cart"> <i class="fi-rs-box-alt mr-10"></i> Proses Order Sekarang</a>       
+                    </div>       
+                </div>
+            </div>
+            @else 
+            @endif
+            @else
+            <h3 class="text-center page-kosong">
+                Keranjang anda masih Kosong
+            </h3>  
+            @endif
             
         </div>
-    </section>
+        
+    </div>
+</section>
 </span>
 
 </main>
+
 @endsection

@@ -84,8 +84,8 @@ class CheckoutController extends Controller
             }
 
             // Remove Cart Items
-            // $keranjang = Keranjang::where('user_id', Auth::id())->get();
-            // Keranjang::destroy($keranjang);
+            $keranjang = Keranjang::where('user_id', Auth::id())->get();
+            Keranjang::destroy($keranjang);
 
             // Send Email
             $detail = Order::where('id', $order->id)->first();

@@ -3,7 +3,7 @@ $(document).ready(function () {
     // loadorder();
     loadwishlist();
     // loadpesanan();
-
+    
     function loadcart() {
         $.ajax({
             method: "GET",
@@ -14,7 +14,7 @@ $(document).ready(function () {
             },
         });
     }
-
+    
     function loadwishlist() {
         $.ajax({
             method: "GET",
@@ -25,7 +25,7 @@ $(document).ready(function () {
             },
         });
     }
-
+    
     // function loadorder() {
     //     $.ajax({
     //         method: "GET",
@@ -36,7 +36,7 @@ $(document).ready(function () {
     //         },
     //     });
     // }
-
+    
     // function loadpesanan() {
     //     $.ajax({
     //         method: "GET",
@@ -47,25 +47,28 @@ $(document).ready(function () {
     //         },
     //     });
     // }
-
+    
     $.ajaxSetup({
         headers: {
             "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
         },
     });
-
+    
     $(".addToCartBtn").click(function (e) {
         e.preventDefault();
-
+        
         var produk_id = $(this).closest(".produk_data").find(".prod_id").val();
-        var produk_qty = $(this).closest(".produk_data").find(".qty-input").val();
+        var produk_qty = $(this)
+        .closest(".produk_data")
+        .find(".qty-input")
+        .val();
         
         $.ajax({
             method: "POST",
             url: "/add-to-cart",
             data: {
-                'produk_id': produk_id,
-                'produk_qty': produk_qty,
+                produk_id: produk_id,
+                produk_qty: produk_qty,
             },
             success: function (response) {
                 if (response.status == "warning") {
@@ -108,17 +111,17 @@ $(document).ready(function () {
                         confirmButtonText: "Oke",
                     });
                 }
-
+                
                 loadcart();
             },
         });
     });
-
+    
     $(".addToWishlist").click(function (e) {
         e.preventDefault();
-
+        
         var produk_id = $(this).closest(".produk_data").find(".prod_id").val();
-
+        
         $.ajax({
             method: "POST",
             url: "/add-to-wishlist",
@@ -166,16 +169,16 @@ $(document).ready(function () {
                         confirmButtonText: "Oke",
                     });
                 }
-
+                
                 loadwishlist();
             },
         });
     });
-
+    
     // KONDISI UNTUK DESKTOP
     $(document).on("click", ".delete-cart-item", function (e) {
         e.preventDefault();
-
+        
         var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
         $.ajax({
             method: "POST",
@@ -225,19 +228,19 @@ $(document).ready(function () {
                         confirmButtonText: "Oke",
                     });
                 }
-
+                
                 // window.location.reload();
                 loadcart();
             },
         });
     });
-
+    
     // KONDISI UNTUK DESKTOP
     $(document).on("click", ".delete-favorit-item", function (e) {
         e.preventDefault();
-
+        
         var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
-
+        
         $.ajax({
             method: "POST",
             url: "/delete-favorit-item",
@@ -286,39 +289,38 @@ $(document).ready(function () {
                         confirmButtonText: "Oke",
                     });
                 }
-
+                
                 // window.location.reload();
                 loadwishlist();
             },
         });
     });
-
+    
     // KONDISI UNTUK DESKTOP
-    $(document).on('click','.changeQuantity', function (e) {
+    $(document).on("click", ".changeQuantity", function (e) {
         e.preventDefault();
-
-        var prod_id = $(this).closest('.produk_data').find('.prod_id').val();
-        var qty = $(this).closest('.produk_data').find('.qty-input').val();
+        
+        var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
+        var qty = $(this).closest(".produk_data").find(".qty-input").val();
         data = {
-            'prod_id': prod_id,
-            'prod_qty': qty,
-        }
+            prod_id: prod_id,
+            prod_qty: qty,
+        };
         $.ajax({
             method: "POST",
             url: "update-cart",
             data: data,
-            success: function(response) {
-                $('.cartItem').load(location.href + " .cartItem");
+            success: function (response) {
+                $(".cartItem").load(location.href + " .cartItem");
                 // swal("", response.status, "info");
-            }
+            },
         });
     });
-
-
+    
     // KONDISI UNTUK MOBILE
     $(document).on("click", ".delete-cart-item-mobile", function (e) {
         e.preventDefault();
-
+        
         var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
         $.ajax({
             method: "POST",
@@ -368,19 +370,19 @@ $(document).ready(function () {
                         confirmButtonText: "Oke",
                     });
                 }
-
+                
                 // window.location.reload();
                 loadcart();
             },
         });
     });
-
+    
     // KONDISI UNTUK MOBILE
     $(document).on("click", ".delete-favorit-item-mobile", function (e) {
         e.preventDefault();
-
+        
         var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
-
+        
         $.ajax({
             method: "POST",
             url: "/delete-favorit-item",
@@ -429,31 +431,84 @@ $(document).ready(function () {
                         confirmButtonText: "Oke",
                     });
                 }
-
+                
                 // window.location.reload();
                 loadwishlist();
             },
         });
     });
-
+    
     // KONDISI UNTUK MOBILE
-    $(document).on('click','.changeQuantity-mobile', function (e) {
+    $(document).on("click", ".changeQuantity-mobile", function (e) {
         e.preventDefault();
-
-        var prod_id = $(this).closest('.produk_data').find('.prod_id').val();
-        var qty = $(this).closest('.produk_data').find('.qty-input').val();
+        
+        var prod_id = $(this).closest(".produk_data").find(".prod_id").val();
+        var qty = $(this).closest(".produk_data").find(".qty-input").val();
         data = {
-            'prod_id': prod_id,
-            'prod_qty': qty,
-        }
+            prod_id: prod_id,
+            prod_qty: qty,
+        };
         $.ajax({
             method: "POST",
             url: "update-cart",
             data: data,
-            success: function(response) {
-                $('.cartItem_mobile').load(location.href + " .cartItem_mobile");
+            success: function (response) {
+                $(".cartItem_mobile").load(location.href + " .cartItem_mobile");
                 // swal("", response.status, "info");
-            }
+            },
         });
+    });
+    
+    // KONDISI UNTUK DESKTOP
+    $(document).on('click','.increment-btn', function (e) {
+        e.preventDefault();
+        
+        var inc_value = $(this).closest('.produk_data').find('.qty-input').val();
+        var value = parseInt(inc_value, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value < 10) {
+            value++;
+            $(this).closest('.produk_data').find('.qty-input').val(value);
+        }
+    });
+    
+    // KONDISI UNTUK DESKTOP
+    $(document).on('click','.decrement-btn', function (e) {
+        e.preventDefault();
+        
+        var dec_value = $(this).closest('.produk_data').find('.qty-input').val();
+        var value = parseInt(dec_value, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value > 1) {
+            value--;
+            $(this).closest('.produk_data').find('.qty-input').val(value);
+        }
+    });
+    
+    
+    // KONDISI UNTUK MOBILE
+    $(document).on('click','.increment-btn', function (e) {
+        e.preventDefault();
+        
+        var inc_value = $(this).closest('.produk_mobile').find('.qty-input').val();
+        var value = parseInt(inc_value, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value < 10) {
+            value++;
+            $(this).closest('.produk_mobile').find('.qty-input').val(value);
+        }
+    });
+    
+    // KONDISI UNTUK MOBILE
+    $(document).on('click','.decrement-btn', function (e) {
+        e.preventDefault();
+        
+        var dec_value = $(this).closest('.produk_mobile').find('.qty-input').val();
+        var value = parseInt(dec_value, 10);
+        value = isNaN(value) ? 0 : value;
+        if (value > 1) {
+            value--;
+            $(this).closest('.produk_mobile').find('.qty-input').val(value);
+        }
     });
 });
