@@ -59,8 +59,16 @@
 }
 
 /* kategori */
+.kategori-gambar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .kategori-img{
   height: 144px !important;
+  width: 144px !important;
   object-fit: contain;
 }
 
