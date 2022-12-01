@@ -396,6 +396,13 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 98%;
+}
+
+.custom-register-google{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   width: 100%;
 }
 
@@ -404,6 +411,14 @@
 }
 
 .custom-login-google img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+.custom-register-google img{
   display: flex;
   justify-content: center;
   align-items: center;
