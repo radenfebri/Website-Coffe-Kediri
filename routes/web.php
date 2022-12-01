@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\PesananController;
 use App\Http\Controllers\Backend\ProdukController;
 use App\Http\Controllers\Backend\RatingController as BackendRatingController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\SlideController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -73,30 +74,30 @@ Route::post('searchproduk', [HomeController::class, 'searchproduk'])->name('sear
 Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function () {
     // CART
     Route::get('cart', [CartController::class, 'index'])->name('cart');
-
+    
     // ROUTE FAVORIT LIST
     Route::get('favorit', [FavoritController::class, 'favoritview'])->name('favorit.view');
-
+    
     // CHECKOUT
     Route::get('checkout', [CheckoutController::class, 'index'])->name('checkout');
-
+    
     // ROUTE PLACE ORDER
     Route::post('place-order', [CheckoutController::class, 'placeorder'])->name('placeorder');
-
+    
     // CHANGE PASSWORD
     Route::get('change-password', [ChangePasswordController::class, 'index'])->name('changePassword');
     Route::post('update-password', [ChangePasswordController::class, 'updatepassword'])->name('updatepassword');
-
+    
     // SETTING DATA
     Route::get('setting', [SettingController::class, 'index'])->name('setting');
     Route::post('update-data', [SettingController::class, 'updatedata'])->name('updatedata');
-
+    
     // ORDER HISTORY
     Route::get('order-history', [OrderHistoryController::class, 'index'])->name('orderHistory');
-
+    
     // ROUTE ADD RATING
     Route::post('add-rating', [RatingController::class, 'addrating'])->name('rating');
-
+    
     // PEMBAYARAN
     Route::get('pembayaran/{id}', [PembayaranController::class, 'index'])->name('pembayaran');
     Route::get('packing/{id}', [PembayaranController::class, 'packing'])->name('packing');
@@ -116,14 +117,14 @@ Auth::routes(['verify' => true]);
 Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function () {
     // DASHBOARD
     Route::get('dashboard', [DashboardController::class, 'index'])->middleware('permission:halaman-dashboard')->name('dashboard');
-
+    
     // ROUTE KATEGORI PRODUK
     Route::get('kategori-produk',  [KategoriProdukController::class, 'index'])->middleware('permission:halaman-kategori')->name('kategori-produk.index');
     Route::post('kategori-produk',  [KategoriProdukController::class, 'store'])->middleware('permission:kategori-create')->name('kategori-produk.store');
     Route::get('kategori-produk/{id}/edit',  [KategoriProdukController::class, 'edit'])->middleware('permission:kategori-edit')->name('kategori-produk.edit');
     Route::put('kategori-produk/{id}/update',  [KategoriProdukController::class, 'update'])->name('kategori-produk.update');
     Route::get('kategori-produk/destroy/{id}',  [KategoriProdukController::class, 'destroy'])->middleware('permission:kategori-delete')->name('kategori-produk.destroy');
-
+    
     // ROUTE PRODUK
     Route::get('produk', [ProdukController::class, 'index'])->middleware('permission:halaman-produk')->name('produk.index');
     Route::get('produk/create', [ProdukController::class, 'create'])->middleware('permission:produk-create')->name('produk.create');
@@ -133,7 +134,7 @@ Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function 
     Route::put('produk/{id}/update',  [ProdukController::class, 'update'])->name('produk.update');
     Route::get('produk/{id}/delete-image', [ProdukController::class, 'deleteimage'])->name('images.delete');
     Route::get('produk/{id}/destroy',  [ProdukController::class, 'destroy'])->middleware('permission:produk-delete')->name('produk.destroy');
-
+    
     // ROUTE PESANAN
     Route::get('pesanan', [PesananController::class, 'index'])->middleware('permission:halaman-pesanan')->name('pesanan.index');
     Route::get('pesanan/packing', [PesananController::class, 'packing'])->middleware('permission:pesanan-packing')->name('pesanan.packing');
@@ -141,46 +142,53 @@ Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function 
     Route::get('pesanan/success', [PesananController::class, 'success'])->middleware('permission:pesanan-success')->name('pesanan.success');
     Route::get('pesanan/{id}/edit', [PesananController::class, 'edit'])->middleware('permission:pesanan-edit')->name('pesanan.edit');
     Route::put('pesanan/{id}/update', [PesananController::class, 'update'])->name('pesanan.update');
-
+    
     // ROUTE PAYMENT
     Route::get('payment', [PaymentController::class, 'index'])->middleware('permission:halaman-payment')->name('payment.index');
     Route::post('payment/store', [PaymentController::class, 'store'])->middleware('permission:payment-create')->name('payment.store');
     Route::get('payment/{id}/edit', [PaymentController::class, 'edit'])->middleware('permission:payment-edit')->name('payment.edit');
     Route::put('payment/{id}/update', [PaymentController::class, 'update'])->name('payment.update');
     Route::get('payment/destroy/{id}', [PaymentController::class, 'destroy'])->middleware('permission:payment-delete')->name('payment.destroy');
-
+    
+    // ROUTE SLIDER
+    Route::get('slider', [SlideController::class, 'index'])->name('slider.index');
+    Route::post('slider', [SlideController::class, 'store'])->name('slider.store');
+    Route::get('slider/{id}/edit', [SlideController::class, 'edit'])->name('slider.edit');
+    Route::put('slider/{id}/update', [SlideController::class, 'update'])->name('slider.update');
+    Route::get('slider/destroy/{id}', [SlideController::class, 'destroy'])->name('slider.destroy');
+    
     // ROUTE RATINGS
     Route::get('rating', [BackendRatingController::class, 'index'])->middleware('permission:halaman-rating')->name('rating.index');
     Route::get('rating/nonactive', [BackendRatingController::class, 'nonactive'])->middleware('permission:rating-nonactive')->name('rating.nonactive');
     Route::get('rating/{id}/edit', [BackendRatingController::class, 'edit'])->middleware('permission:rating-edit')->name('rating.edit');
     Route::put('rating/{id}/update', [BackendRatingController::class, 'update'])->name('rating.update');
-
+    
     // ROUTE ROLE
     Route::get('role',  [RoleController::class, 'index'])->middleware('permission:halaman-role')->name('role.index');
     Route::post('role',  [RoleController::class, 'store'])->middleware('permission:role-create')->name('role.store');
     Route::get('role/{role}/edit',  [RoleController::class, 'edit'])->middleware('permission:role-edit')->name('role.edit');
     Route::put('role/{role}/update',  [RoleController::class, 'update'])->name('role.update');
     Route::get('role/destroy/{id}',  [RoleController::class, 'destroy'])->middleware('permission:role-delete')->name('role.destroy');
-
+    
     // ROUTE PERMISSION
     Route::get('permission',  [PermissionController::class, 'index'])->middleware('permission:halaman-permission')->name('permission.index');
     Route::post('permission',  [PermissionController::class, 'store'])->middleware('permission:permission-create')->name('permission.store');
     Route::get('permission/{permission}/edit',  [PermissionController::class, 'edit'])->middleware('permission:permission-edit')->name('permission.edit');
     Route::put('permission/{permission}/update',  [PermissionController::class, 'update'])->name('permission.update');
     Route::get('permission/destroy/{id}',  [PermissionController::class, 'destroy'])->middleware('permission:permission-delete')->name('permission.destroy');
-
+    
     // ASSIGN PERMISSION TO ROLE
     Route::get('assignpermission', [AssignPermissionController::class, 'index'])->middleware('permission:halaman-assignpermission')->name('assignpermission.index');
     Route::post('assignpermission', [AssignPermissionController::class, 'store'])->middleware('permission:assignpermission-create')->name('assignpermission.store');
     Route::get('assignpermission/{role}/edit', [AssignPermissionController::class, 'edit'])->middleware('permission:assignpermission-edit')->name('assignpermission.edit');
     Route::put('assignpermission/{role}/update', [AssignPermissionController::class, 'update'])->name('assignpermission.update');
-
+    
     // ASSIGN ROLE TO USER
     Route::get('assignrole', [AssignRoleController::class, 'index'])->middleware('permission:halaman-assignrole')->name('assignrole.index');
     Route::post('assignrole', [AssignRoleController::class, 'store'])->middleware('permission:assignrole-create')->name('assignrole.store');
     Route::get('assignrole/{user}/edit', [AssignRoleController::class, 'edit'])->middleware('permission:assignrole-edit')->name('assignrole.edit');
     Route::put('assignrole/{user}/update', [AssignRoleController::class, 'update'])->name('assignrole.update');
-
+    
     // ROUTE MANAJEMEN USER
     Route::get('user', [ManajemenUsersController::class, 'index'])->middleware('permission:halaman-user')->name('user.index');
     Route::get('user/change-password/{id}/edit', [ManajemenUsersController::class, 'change_password'])->middleware('permission:user-edit-password')->name('change-password');

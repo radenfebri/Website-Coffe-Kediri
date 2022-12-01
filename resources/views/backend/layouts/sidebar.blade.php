@@ -90,7 +90,7 @@
             @endcan
             
             
-            {{-- <li class="menu {{ request()->is('slider', 'slider/*/edit') ? 'active' : ''}}">
+            <li class="menu {{ request()->is('slider', 'slider/*/edit') ? 'active' : ''}}">
                 <a href="#slide-promosi" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
                         
@@ -107,7 +107,7 @@
                         <a href="{{ route('slider.index') }}"> Slide </a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
             
             
             

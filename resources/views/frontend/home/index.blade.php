@@ -5,6 +5,37 @@
 @section('content')
 <main class="main">
     {{-- BANNER 1 --}}
+    
+    @if ($slide->count() > 0)
+    <section class="home-slider position-relative pt-50">
+        <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
+            @foreach ($slide as $item)
+            <div class="single-hero-slider single-animation-wrap">
+                <div class="container">
+                    <div class="row align-items-center slider-animated-1">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="hero-slider-content-2">
+                                <h4 class="animated">{{ $item->title1 }}</h4>
+                                <h2 class="animated fw-900">{{ $item->title2 }}</h2>
+                                <h1 class="animated fw-900 text-brand">{{ $item->title3 }}</h1>
+                                <p class="animated">{{ $item->deskripsi }}</p>
+                                <a class="animated btn btn-brush btn-brush-3" href="{{ $item->link }}"> {{ $item->button_text }} </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="single-slider-img single-slider-img-1">
+                                <img class="animated slider-1-1" src="{{ asset('storage/' . $item->image ) }}" loading="lazy" alt="{{ $item->title1 }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            @endforeach
+            
+        </div>
+        <div class="slider-arrow hero-slider-1-arrow"></div>
+    </section>
+    @else
     <section class="home-slider position-relative pt-50">
         <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
             <div class="single-hero-slider single-animation-wrap">
@@ -21,7 +52,7 @@
                         </div>
                         <div class="col-lg-7 col-md-6">
                             <div class="single-slider-img single-slider-img-1">
-                                <img class="animated slider-1-1" src="{{ '/frontend/imgs/slider/slider-1.png' }}" alt="">
+                                <img class="animated slider-1-1" src="{{ asset('frontend') }}/imgs/slider/slider-1.png" loading="lazy" alt="">
                             </div>
                         </div>
                     </div>
@@ -41,7 +72,7 @@
                         </div>
                         <div class="col-lg-7 col-md-6">
                             <div class="single-slider-img single-slider-img-1">
-                                <img class="animated slider-1-2" src="{{ '/frontend/imgs/slider/slider-2.png' }}" alt="">
+                                <img class="animated slider-1-2" src="{{ asset('frontend') }}/imgs/slider/slider-2.png" loading="lazy" alt="">
                             </div>
                         </div>
                     </div>
@@ -50,6 +81,7 @@
         </div>
         <div class="slider-arrow hero-slider-1-arrow"></div>
     </section>
+    @endif
     
     {{-- FEATURE --}}
     <section class="featured section-padding position-relative">
