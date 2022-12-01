@@ -610,7 +610,9 @@
                     @foreach ($kategoriproduk as $item)
                     <div class="card-1">
                         <figure class=" img-hover-scale overflow-hidden">
-                            <a href="{{ route('kategori', $item->slug) }}"> <img class="kategori-img" src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
+                            <div class="kategori-gambar">
+                                <a href="{{ route('kategori', $item->slug) }}"> <img class="kategori-img" src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
+                            </div>
                         </figure>
                         <h5><a href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></h5>
                     </div>
