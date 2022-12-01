@@ -1,9 +1,10 @@
+
 .main-menu{
-  margin-left: 250px;
+  margin-left: 300px;
 }
 
 .navbar-login{
-  margin-left: 180px;
+  margin-left: 240px;
 }
 
 /* setting page */
@@ -67,8 +68,8 @@
 }
 
 .kategori-img{
-  height: 144px !important;
-  width: 144px !important;
+  height: 150px !important;
+  width: 180px !important;
   object-fit: contain;
 }
 

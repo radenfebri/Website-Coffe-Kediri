@@ -19,7 +19,6 @@ use Illuminate\Support\Facades\Route;
 //FRONTEND
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\AboutController;
-use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\ShopController;
 use App\Http\Controllers\Frontend\KategoriController;
 use App\Http\Controllers\Frontend\SettingController;
@@ -40,7 +39,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
 Route::get('kategori/{slug}', [KategoriController::class, 'index'])->name('kategori');
 Route::get('about', [AboutController::class, 'index'])->name('about');
-Route::get('contact', [ContactController::class, 'index'])->name('contact');
 Route::get('privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
 Route::get('terms-conditions', [TermsConditionsController::class, 'index'])->name('terms-condition');
 Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('detail.produk');
