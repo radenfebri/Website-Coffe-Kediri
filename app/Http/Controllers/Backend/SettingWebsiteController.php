@@ -30,6 +30,9 @@ class SettingWebsiteController extends Controller
             'address' => 'required',
             'phone' => 'required',
             'email' => 'required',
+            'facebook' => 'required',
+            'instagram' => 'required',
+            'youtube' => 'required',
         ]);
 
         $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
@@ -52,10 +55,13 @@ class SettingWebsiteController extends Controller
     public function setting_info_website_update(Request $request, $id)
     {
         $request->validate([
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
             'address' => 'required',
             'phone' => 'required',
             'email' => 'required',
+            'facebook' => 'required',
+            'instagram' => 'required',
+            'youtube' => 'required',
         ]);
 
         if (empty($request->file('image'))) {

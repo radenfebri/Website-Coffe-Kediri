@@ -52,7 +52,7 @@
                             <div class="row mb-4">
                                 <div class="col-sm-12">
                                     <label>Email</label>
-                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" id="post-title" value="{{ old('email')  ?? $setting_web->email }}" placeholder="Email">
+                                    <input name="email" class="form-control @error('email') is-invalid @enderror" id="post-title" value="{{ old('email')  ?? $setting_web->email }}" placeholder="Email">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
