@@ -13,16 +13,16 @@ class SettingWebsiteController extends Controller
     {
         $this->middleware(['role_or_permission:Super Admin|Admin']);
     }
-    
-    
+
+
     public function setting_info_website()
     {
         $setting_web = SettingWebsite::first();
-        
+
         return view('backend.setting-website.index', compact('setting_web'));
     }
-    
-    
+
+
     public function setting_info_website_store(Request $request)
     {
         $request->validate([
@@ -35,7 +35,7 @@ class SettingWebsiteController extends Controller
             'instagram' => 'required',
             'youtube' => 'required',
         ]);
-        
+
         $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
         $imageFavicon = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('favicon')->getClientOriginalName();
         $image = $request->file('image')->storeAs('image-setting-website', $imageName);
@@ -50,12 +50,12 @@ class SettingWebsiteController extends Controller
             'image' => $image,
             'favicon' => $favicon,
         ]);
-        
+
         toast('Setting Website Berhasil Ditambahkan', 'success');
         return back();
     }
-    
-    
+
+
     public function setting_info_website_update(Request $request, $id)
     {
         $request->validate([
@@ -68,8 +68,8 @@ class SettingWebsiteController extends Controller
             'instagram' => 'required',
             'youtube' => 'required',
         ]);
-        
-        if (empty($request->file(['image', 'favicon']))) {
+
+        if (empty($request->file('image'))) {
             $setting_website = SettingWebsite::findOrFail($id);
             $setting_website->update([
                 'address' => $request->address,
@@ -79,10 +79,9 @@ class SettingWebsiteController extends Controller
                 'instagram' => $request->instagram,
                 'youtube' => $request->youtube,
             ]);
-            
+
             toast('Setting Website Berhasil Diubah', 'success');
             return back();
-
         } else {
             $setting_website = SettingWebsite::findOrFail($id);
             $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
@@ -101,8 +100,9 @@ class SettingWebsiteController extends Controller
                 'image' => $image,
                 'favicon' => $favicon,
             ]);
+
+            toast('Setting Website Berhasil Diubah', 'success');
+            return back();
         }
-        toast('Setting Website Berhasil Diubah', 'success');
-        return back();
     }
 }

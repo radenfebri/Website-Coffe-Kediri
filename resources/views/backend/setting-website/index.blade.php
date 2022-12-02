@@ -106,17 +106,17 @@
                             <div class="row">
 
                                 <div class="col-xxl-12 col-md-12 mb-4">
-                                    <label for="product-images">Image<span class="text-danger">*</span></label>
+                                    <label for="product-images">Logo<span class="text-danger">*</span></label>
                                     <div class="multiple-file-upload">
                                         <input class="form-control @error('iamge') is-invalid @enderror file-upload-input" name="image" type="file">
                                     </div>
                                     <br>
-                                    <label for="product-images">Cover Saat ini:</label>
+                                    <label for="product-images">Logo Saat ini:</label>
                                     <div class="multiple-file-upload"> 
                                         @if ($setting_web->image)
                                         <img src="{{ asset('storage/'. $setting_web->image) }}" loading="lazy" class="rounded" width="245px" height="245px" alt="">
                                         @else
-                                        Cover Masih Kosong
+                                        Logo Masih Kosong
                                         @endif
                                     </div>
                                     @error('image')
@@ -245,7 +245,7 @@
                         <div class="widget-content widget-content-area blog-create-section">
                             <div class="row">
                                 <div class="col-xxl-12 col-md-12 mb-4">
-                                    <label for="product-images">Image<span class="text-danger">*</span></label>
+                                    <label for="product-images">Logo<span class="text-danger">*</span></label>
                                     <div class="multiple-file-upload">
                                         <input class="form-control @error('favicon') is-invalid @enderror file-upload-input" name="image" type="file">
                                     </div>
