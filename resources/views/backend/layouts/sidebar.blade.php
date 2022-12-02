@@ -223,10 +223,43 @@
                         <a href="{{ route('privacy-policy-admin.index') }}"> Privacy Policy </a>
                     </li>
                 </ul>
-
+                
                 <ul class="collapse submenu list-unstyled" id="kebijakan-privacy" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('terms-conditions-admin') ? 'active' : ''}}">
                         <a href="{{ route('terms-conditions-admin.index') }}"> Terms Conditions </a>
+                    </li>
+                </ul>
+                
+            </li>
+            @endcan
+            
+            @can('kebijakan')
+            <li class="menu {{ request()->is('about-company', 'setting-info-website') ? 'active' : ''}}">
+                <a href="#setting-website" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tool"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                        <span>Setting Website</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                
+                <ul class="collapse submenu list-unstyled" id="setting-website" data-bs-parent="#accordionExample">
+                    <li class="menu {{ request()->is('about-company') ? 'active' : ''}}">
+                        <a href="{{ route('about-company.index') }}"> About Company </a>
+                    </li>
+                </ul>
+                
+                <ul class="collapse submenu list-unstyled" id="setting-website" data-bs-parent="#accordionExample">
+                    <li class="menu {{ request()->is('terms-conditions-admin') ? 'active' : ''}}">
+                        <a href="{{ route('terms-conditions-admin.index') }}"> Contact Masuk </a>
+                    </li>
+                </ul>
+
+                <ul class="collapse submenu list-unstyled" id="setting-website" data-bs-parent="#accordionExample">
+                    <li class="menu {{ request()->is('setting-info-website') ? 'active' : ''}}">
+                        <a href="{{ route('setting-info-website.index') }}"> Setting Info Web</a>
                     </li>
                 </ul>
                 

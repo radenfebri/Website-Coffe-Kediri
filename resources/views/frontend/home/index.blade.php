@@ -326,7 +326,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Music</a>
+                                        <a href="{{ route('shop') }}">Music</a>
                                     </div>
                                     <h2><a href="product-details.html">Donec ut nisl rutrum</a></h2>
                                     <div class="rating-result" title="90%">
@@ -364,7 +364,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Music</a>
+                                        <a href="{{ route('shop') }}">Music</a>
                                     </div>
                                     <h2><a href="product-details.html">Nullam dapibus pharetra</a></h2>
                                     <div class="rating-result" title="90%">
@@ -402,7 +402,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Watch</a>
+                                        <a href="{{ route('shop') }}">Watch</a>
                                     </div>
                                     <h2><a href="product-details.html">Morbi dictum finibus</a></h2>
                                     <div class="rating-result" title="90%">
@@ -440,7 +440,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Music</a>
+                                        <a href="{{ route('shop') }}">Music</a>
                                     </div>
                                     <h2><a href="product-details.html">Nunc volutpat massa</a></h2>
                                     <div class="rating-result" title="90%">
@@ -478,7 +478,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Speaker</a>
+                                        <a href="{{ route('shop') }}">Speaker</a>
                                     </div>
                                     <h2><a href="product-details.html">Nullam ultricies luctus</a></h2>
                                     <div class="rating-result" title="90%">
@@ -516,7 +516,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Camera</a>
+                                        <a href="{{ route('shop') }}">Camera</a>
                                     </div>
                                     <h2><a href="product-details.html">Nullam mattis enim</a></h2>
                                     <div class="rating-result" title="90%">
@@ -554,7 +554,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Phone</a>
+                                        <a href="{{ route('shop') }}">Phone</a>
                                     </div>
                                     <h2><a href="product-details.html">Vivamus sollicitudin</a></h2>
                                     <div class="rating-result" title="90%">
@@ -588,7 +588,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Accessories </a>
+                                        <a href="{{ route('shop') }}">Accessories </a>
                                     </div>
                                     <h2><a href="product-details.html"> Donec ut nisl rutrum</a></h2>
                                     <div class="rating-result" title="90%">
@@ -638,7 +638,7 @@
                 <div class="banner-text d-md-block d-none">
                     <h4 class="mb-15 mt-40 text-brand">Repair Services</h4>
                     <h1 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h1>
-                    <a href="shop.html" class="btn">Learn More <i class="fi-rs-arrow-right"></i></a>
+                    <a href="{{ route('shop') }}" class="btn">Learn More <i class="fi-rs-arrow-right"></i></a>
                 </div>
             </div>
         </div>
@@ -701,7 +701,7 @@
                         <div class="banner-text">
                             <span>Smart Offer</span>
                             <h4>Save 20% on <br>Woman Bag</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="{{ route('shop') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -711,7 +711,7 @@
                         <div class="banner-text">
                             <span>Sale off</span>
                             <h4>Great Summer <br>Collection</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="{{ route('shop') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
@@ -721,7 +721,7 @@
                         <div class="banner-text">
                             <span>New Arrivals</span>
                             <h4>Shop Today’s <br>Deals & Offers</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="{{ route('shop') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
