@@ -84,14 +84,27 @@
                                 <div class="social-icons single-share">
                                     <ul class="text-grey-5 d-inline-block">
                                         <li><strong class="mr-10">Share this:</strong></li>
-                                        <li class="social-facebook"><a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-facebook.svg" loading="lazy" alt="{{ $produk->name }}"></a></li>
-                                        <li class="social-twitter"> <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-twitter.svg" loading="lazy" alt="{{ $produk->name }}"></a></li>
-                                        <li class="social-instagram"><a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-instagram.svg" loading="lazy" alt="{{ $produk->name }}"></a></li>
-                                        <li class="social-linkedin"><a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-pinterest.svg" loading="lazy" alt="{{ $produk->name }}"></a></li>
-                                        {{-- {!! $shareComponent=\Share::page('https://warung.putrateguh.com/','Share Link',)->facebook(); !!} --}}
+                                        {{-- ICON AMPLOP GANTI --}}
+                                        <a href="#" target="_blank" class="social-icon" id="email-btn">
+                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-email.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
+                                        </a>
+                                        <a href="#" target="_blank" class="social-icon" id="facebook-btn">
+                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-facebook.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
+                                        </a>
+                                        <a href="#" target="_blank" class="social-icon" id="twitter-btn">
+                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-twitter.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
+                                        </a>
 
-                                        {{ Share::currentPage()->facebook(); }}
-                                    
+                                        {{-- ICON GOOGLE, LINKEDIN, WA --}}
+                                        <a href="#" target="_blank" class="social-icon" id="google-btn">
+                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
+                                        </a>
+                                        <a href="#" target="_blank" class="social-icon" id="linkedin-btn">
+                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
+                                        </a>
+                                        <a href="#" target="_blank" class="social-icon" id="whatsapp-btn">
+                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
+                                        </a>
                                     </ul>
                                 </div>
                             </div>
@@ -473,6 +486,27 @@
     </div>
 </section>
 </main>
+
+<script>
+    // Social share link
+    const emailBtn = document.getElementById("email-btn");
+    const facebookBtn = document.getElementById("facebook-btn");
+    const twitterBtn = document.getElementById("twitter-btn");
+    const linkedinBtn = document.getElementById("linkedin-btn");
+    const googleBtn = document.getElementById("google-btn");
+    const whatsappBtn = document.getElementById("whatsapp-btn");
+    
+    // Post share link
+    let postUrl = encodeURI(window.location.href);
+    let postTitle = encodeURI(document.title);
+    
+    emailBtn.setAttribute("href", `https://mail.google.com/mail/?view=cm&su=${postTitle}&body=${postUrl}`);
+    facebookBtn.setAttribute("href", ` https://www.facebook.com/sharer/sharer.php?u=${postUrl}`);
+    twitterBtn.setAttribute("href", `https://twitter.com/share?url=${postUrl}&text=${postTitle}`);
+    linkedinBtn.setAttribute("href", `https://www.linkedin.com/shareArticle?url=${postUrl}&title=${postTitle}`);
+    googleBtn.setAttribute("href", `https://plus.google.com/share?url=${postUrl}`);
+    whatsappBtn.setAttribute("href", `https://wa.me/?text=${postTitle} ${postUrl}`);
+</script>
 
 @endsection
 
