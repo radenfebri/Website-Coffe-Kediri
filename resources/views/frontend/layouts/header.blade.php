@@ -106,50 +106,48 @@
                         </div>
                         
                     </div>
-                    @guest                    
+                    @guest
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
-                        <nav>
-                            <ul>
-                                <li><a class="{{ request()->is('/', 'home') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
-                                <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
-                                <li><a class="{{ request()->is('shop', 'shop/*', 'cart', 'favorit', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
-                                <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="{{ route('contact') }}">Contact</a></li>
-                                @guest
-                                
-                                @else
-                                <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
-                                    <ul class="sub-menu">
-                                        @guest
-                                        
-                                        @else
-                                        @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
-                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                        @else
-                                        
-                                        @endif
-                                        @endguest
-                                        <li><a href="{{ route('orderHistory') }}">Order History</a></li>
-                                        <li><a href="{{ route('setting') }}">Setting</a></li>
-                                        <li><a href="{{ route('changePassword') }}">Change Password</a> </li>   
-                                        <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>    
-                                    </ul>
-                                </li>
-                                @endguest
-                            </ul>
-                        </nav>
-                    </div>
+                            <nav>
+                                <ul>
+                                    <li><a class="{{ request()->is('/', 'home') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
+                                    <li><a class="{{ request()->is('shop', 'shop/*', 'cart', 'favorit', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
+                                    <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
+                                    @guest
+                                    
+                                    @else
+                                    <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
+                                        <ul class="sub-menu">
+                                            @guest
+                                            
+                                            @else
+                                            @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                            @else
+                                            
+                                            @endif
+                                            @endguest
+                                            <li><a href="{{ route('orderHistory') }}">Order History</a></li>
+                                            <li><a href="{{ route('setting') }}">Setting</a></li>
+                                            <li><a href="{{ route('changePassword') }}">Change Password</a> </li>   
+                                            <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                                @csrf
+                                            </form>    
+                                        </ul>
+                                    </li>
+                                    @endguest
+                                </ul>
+                            </nav>
+                    </div>                    
                     
                     @else
                     <div class="main-menu navbar-login main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
                         <nav>
                             <ul>
                                 <li><a class="{{ request()->is('/', '') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
-                                <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
                                 <li><a class="{{ request()->is('shop', 'shop/*', 'detail-produk/*', 'checkout', 'favorit', 'cart') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
-                                <li><a class="{{ request()->is('contact', 'contact/*') ? 'active' : ''}}" href="{{ route('contact') }}">Contact</a></li>
+                                <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
                                 <li><a class="{{ request()->is('order-history', 'setting', 'change-password') ? 'active' : ''}}" href="#">My Account<i class="fi-rs-angle-down"></i></a>
                                     <ul class="sub-menu">
                                         @guest
@@ -253,9 +251,8 @@
                 <nav>
                     <ul class="mobile-menu">
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('home') }}">Home</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('about') }}">About</a></li>
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('shop') }}">shop</a></li>
-                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('contact') }}">Contact</a></li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('about') }}">About</a></li>
                         @guest
                         @else
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">My Account</a>

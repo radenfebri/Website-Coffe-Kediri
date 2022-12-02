@@ -34,7 +34,7 @@
                         <li><a href="#">Delivery Information</a></li>
                         <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
                         <li><a href="{{ route('terms-condition') }}">Terms &amp; Conditions</a></li>
-                        <li><a href="{{ route('contact') }}">Contact Us</a></li>                            
+                        <li><a href="{{ route('about') }}">Contact Us</a></li>                            
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-3">

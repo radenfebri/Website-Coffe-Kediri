@@ -63,6 +63,7 @@
                                             </div>
                                         </div>
                                     </form>
+                                    
                                     <div class="form-group custom-login-google btn btn-fill-out btn-block hover-up">
                                         <div class="img-custom-google-logo">
                                             <img src="{{ asset('frontend') }}/imgs/logo/logo-google.png" alt="">

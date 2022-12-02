@@ -1,9 +1,10 @@
+
 .main-menu{
-  margin-left: 250px;
+  margin-left: 300px;
 }
 
 .navbar-login{
-  margin-left: 180px;
+  margin-left: 240px;
 }
 
 /* setting page */
@@ -52,10 +53,33 @@
   font-size: 15px;
 }
 
+
+
 /* produk */
 .produk-img{
   height: 280px !important;
   object-fit: contain;
+}
+
+.produk-img-terbaru{
+  object-fit: obtain;
+
+}
+
+.produk-terbaru{
+  display: flex;
+  height: 170px;
+  width: 170px;
+  justify-content: center;
+  align-items: center;
+}
+
+.produk-terbaru-full{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-item: center;
 }
 
 /* kategori */
@@ -67,8 +91,8 @@
 }
 
 .kategori-img{
-  height: 144px !important;
-  width: 144px !important;
+  height: 150px !important;
+  width: 180px !important;
   object-fit: contain;
 }
 
@@ -395,6 +419,13 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  width: 98%;
+}
+
+.custom-register-google{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   width: 100%;
 }
 
@@ -403,6 +434,14 @@
 }
 
 .custom-login-google img{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+}
+
+.custom-register-google img{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -664,6 +703,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+  }
+
+  .cart-icon-gabung{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    justify-content: center;
+    align-items: center;
   }
   
   /* pembayaran */
