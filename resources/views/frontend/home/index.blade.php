@@ -744,7 +744,7 @@
                     @foreach ($produks as $item)
                     <div class="product-cart-wrap small hover-up produk_data">
                         <input type="hidden" value="{{ $item->id }}" class="prod_id">
-                        <div class="product-img-action-wrap produk-terbaru-full">
+                        <div class="product-img-action-wrap">
                                 <div class="product-img product-img-zoom produk-terbaru">
                                     <a href="{{ route('detail.produk', $item->slug) }}">
                                         @if ($item->cover == null)
