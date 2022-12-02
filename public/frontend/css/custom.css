@@ -481,6 +481,11 @@
   flex-direction: row;
 }
 
+/* custom icon */
+.social-icon{
+  margin-right: 10px;
+}
+
 
 @media (max-width: 980px) {
   .form-setting input{
