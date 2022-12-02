@@ -18,9 +18,9 @@ class SendUpdatePesanan extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($order)
     {
-        //
+        $this->order = $order;
     }
 
     /**
@@ -31,7 +31,7 @@ class SendUpdatePesanan extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Send Update Pesanan',
+            subject: 'IFO UPDATE PESANAN ANDA SAAT INI',
         );
     }
 
@@ -43,7 +43,10 @@ class SendUpdatePesanan extends Mailable
     public function content()
     {
         return new Content(
-            view: 'view.name',
+            markdown: 'emails.update-pesanan',
+            with: [
+                'order' => $this->order,
+            ],
         );
     }
 

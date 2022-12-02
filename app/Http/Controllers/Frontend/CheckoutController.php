@@ -31,7 +31,7 @@ class CheckoutController extends Controller
             return redirect()->route('setting')->with('error', 'Silahkan lengkapi data diri anda terlebih dahulu');
         } else {
             if ($cart_check > 0) {
-                return view('frontend.checkout.index', compact('produk', 'setting_website','kategoriproduk_nav', 'payment', 'promosi_navbar'));
+                return view('frontend.checkout.index', compact('produk', 'setting_website', 'kategoriproduk_nav', 'payment', 'promosi_navbar'));
             } else {
                 return redirect()->route('cart')->with('error', 'Keranjang masih kosong');
             }
@@ -94,13 +94,18 @@ class CheckoutController extends Controller
             // Send Email
             $detail = Order::where('id', $order->id)->first();
             $to = $request->input('email');
-            $admin = 'febriye12@gmail.com';
+            $admin = SettingWebsite::first();
+            if ($admin->email == null) {
+                $admin->email = 'febriye12@gmail.com';
+            } else {
+                $admin;
+            }
+
             dispatch(new JobPesananBaru($detail, $to));
-            dispatch(new JobPesananBaruToAdmin($detail, $admin));
+            dispatch(new JobPesananBaruToAdmin($detail, $admin->email));
 
             return redirect()->route('orderHistory')->with('status', 'Pesanan berhasil dibuat, silahkan cek email anda untuk melihat detail pesanan.');
         } else {
-
             return back()->with('error', 'Keranjang masih kosong');
         }
     }

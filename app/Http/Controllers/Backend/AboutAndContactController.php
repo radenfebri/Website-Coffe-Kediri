@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -72,6 +73,33 @@ class AboutAndContactController extends Controller
             ]);
         }
         toast('About Berhasil Diubah', 'success');
+        return back();
+    }
+
+    // --------------------------------------------------------- CONTROLLER CONTACT COMPANY ------------------------------------- //
+
+    public function contact_company()
+    {
+        $contact = Contact::latest()->get();
+
+        return view('backend.contact.index', compact('contact'));
+    }
+
+
+    public function contact_company_show($id)
+    {
+        $contact = Contact::find(decrypt($id));
+
+        return view('backend.contact.show', compact('contact'));
+    }
+
+
+    public function contact_company_destroy($id)
+    {
+        $contact = Contact::findOrFail(decrypt($id));
+        $contact->delete();
+
+        toast('Contact Berhasil Dihapus', 'success');
         return back();
     }
 }

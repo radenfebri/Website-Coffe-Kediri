@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\JobUpdatePesanan;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -55,8 +56,8 @@ class PesananController extends Controller
         $order->update($request->all());
 
         // dd($order);
-        // $to = $order->email;
-        // dispatch(new JobPesananDiterima($order, $to));
+        $to = $order->email;
+        dispatch(new JobUpdatePesanan($order, $to));
 
         toast('Pesanan berhasil diupdate', 'success');
         return redirect()->route('pesanan.index');
