@@ -69,7 +69,46 @@ class SettingWebsiteController extends Controller
             'youtube' => 'required',
         ]);
 
-        if (empty($request->file('image'))) {
+
+        if ($request->file('image')) {
+            if ($request->file('image')) {
+                $setting_website = SettingWebsite::findOrFail($id);
+                $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
+                $image = $request->file('image')->storeAs('image-setting-website', $imageName);
+                Storage::delete($setting_website->image);
+                $setting_website->update([
+                    'address' => $request->address,
+                    'phone' => $request->phone,
+                    'email' => $request->email,
+                    'facebook' => $request->facebook,
+                    'instagram' => $request->instagram,
+                    'youtube' => $request->youtube,
+                    'image' => $image,
+                ]);
+
+                toast('Setting Website Berhasil Diubah', 'success');
+                return back();
+            }
+        } elseif ($request->file('favicon')) {
+            if ($request->file('favicon')) {
+                $setting_website = SettingWebsite::findOrFail($id);
+                $imageFavicon = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('favicon')->getClientOriginalName();
+                $favicon = $request->file('favicon')->storeAs('image-setting-website', $imageFavicon);
+                Storage::delete($setting_website->favicon);
+                $setting_website->update([
+                    'address' => $request->address,
+                    'phone' => $request->phone,
+                    'email' => $request->email,
+                    'facebook' => $request->facebook,
+                    'instagram' => $request->instagram,
+                    'youtube' => $request->youtube,
+                    'favicon' => $favicon,
+                ]);
+
+                toast('Setting Website Berhasil Diubah', 'success');
+                return back();
+            }
+        } elseif (empty($request->file('image'))) {
             $setting_website = SettingWebsite::findOrFail($id);
             $setting_website->update([
                 'address' => $request->address,
@@ -82,7 +121,20 @@ class SettingWebsiteController extends Controller
 
             toast('Setting Website Berhasil Diubah', 'success');
             return back();
-        } else {
+        } elseif (empty($request->file('favicon'))) {
+            $setting_website = SettingWebsite::findOrFail($id);
+            $setting_website->update([
+                'address' => $request->address,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'facebook' => $request->facebook,
+                'instagram' => $request->instagram,
+                'youtube' => $request->youtube,
+            ]);
+
+            toast('Setting Website Berhasil Diubah', 'success');
+            return back();
+        } elseif ($request->all()) {
             $setting_website = SettingWebsite::findOrFail($id);
             $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
             $imageFavicon = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('favicon')->getClientOriginalName();
