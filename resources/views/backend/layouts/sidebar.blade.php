@@ -32,7 +32,7 @@
                 </a>
             </li>
             @endcan
-
+            
             @can ('#MANAJEMEN-PESANAN')
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>MANAJEMEN TOKO</span></div>
@@ -43,7 +43,7 @@
                     <div class="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                         <span>Manajemen Pesanan</span>
-                            {{-- <span class="badge badge-primary sidebar-label pesanan-count">0</span> --}}
+                        {{-- <span class="badge badge-primary sidebar-label pesanan-count">0</span> --}}
                     </div>
                 </a>
             </li>
@@ -75,11 +75,11 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="store" data-bs-parent="#accordionExample">
                     @can('halaman-kategori')
-                        <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit') ? 'active' : ''}}">
-                            <a href="{{ route('kategori-produk.index') }}"> Kategori Produk </a>
-                        </li>
+                    <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit') ? 'active' : ''}}">
+                        <a href="{{ route('kategori-produk.index') }}"> Kategori Produk </a>
+                    </li>
                     @endcan
-
+                    
                     @can ('halaman-produk')
                     <li class="menu {{ request()->is('produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
                         <a href="{{ route('produk.index') }}"> Semua Produk </a>
@@ -107,19 +107,19 @@
                         <a href="{{ route('slider.index') }}"> Slide </a>
                     </li>
                 </ul>
-
+                
                 <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('promosi-navbar', 'promosi-navbar/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('promosi-navbar.index') }}"> Navbar Promosi </a>
                     </li>
                 </ul>
-
+                
                 <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('banner-promosi', 'banner-promosi/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('banner-promosi.index') }}"> Banner Promosi </a>
                     </li>
                 </ul>
-
+                
                 <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('tiga-promosi', 'tiga-promosi/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('tiga-promosi.index') }}">Tiga Promosi</a>
@@ -161,19 +161,19 @@
                         <a href="{{ route('role.index') }}"> Role </a>
                     </li>
                     @endcan
-
+                    
                     @can ('halaman-permission')
                     <li class="menu {{ request()->is('permission','permission/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('permission.index') }}"> Permission </a>
                     </li>
                     @endcan
-
+                    
                     @can ('halaman-assignpermission')
                     <li class="menu {{ request()->is('assignpermission','assignpermission/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('assignpermission.index') }}">Permission to Role </a>
                     </li>
                     @endcan
-
+                    
                     @can('halaman-assignrole')
                     <li class="menu {{ request()->is('assignrole','assignrole/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('assignrole.index') }}">Role to User </a>
@@ -194,7 +194,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
-
+                
                 @can('halaman-user')
                 <ul class="collapse submenu list-unstyled" id="user-manajemen" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('user', 'user/*') ? 'active' : ''}}">
@@ -202,7 +202,34 @@
                     </li>
                 </ul>
                 @endcan
+                
+            </li>
+            @endcan
+            
+            @can('kebijakan')
+            <li class="menu {{ request()->is('privacy-policy-admin','terms-conditions-admin') ? 'active' : ''}}">
+                <a href="#kebijakan-privacy" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
+                    <div class="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-octagon"><polygon points="7.86 2 16.14 2 22 7.86 22 16.14 16.14 22 7.86 22 2 16.14 2 7.86 7.86 2"></polygon><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        <span>Kebijakan/Privacy</span>
+                    </div>
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                    </div>
+                </a>
+                
+                <ul class="collapse submenu list-unstyled" id="kebijakan-privacy" data-bs-parent="#accordionExample">
+                    <li class="menu {{ request()->is('privacy-policy-admin') ? 'active' : ''}}">
+                        <a href="{{ route('privacy-policy-admin.index') }}"> Privacy Policy </a>
+                    </li>
+                </ul>
 
+                <ul class="collapse submenu list-unstyled" id="kebijakan-privacy" data-bs-parent="#accordionExample">
+                    <li class="menu {{ request()->is('terms-conditions-admin') ? 'active' : ''}}">
+                        <a href="{{ route('terms-conditions-admin.index') }}"> Terms Conditions </a>
+                    </li>
+                </ul>
+                
             </li>
             @endcan
             
