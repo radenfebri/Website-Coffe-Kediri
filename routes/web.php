@@ -11,8 +11,10 @@ use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\PesananController;
 use App\Http\Controllers\Backend\ProdukController;
+use App\Http\Controllers\Backend\PromosiController;
 use App\Http\Controllers\Backend\RatingController as BackendRatingController;
 use App\Http\Controllers\Backend\RoleController;
+use App\Http\Controllers\Backend\SlideController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -146,6 +148,32 @@ Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function 
     Route::get('payment/{id}/edit', [PaymentController::class, 'edit'])->middleware('permission:payment-edit')->name('payment.edit');
     Route::put('payment/{id}/update', [PaymentController::class, 'update'])->name('payment.update');
     Route::get('payment/destroy/{id}', [PaymentController::class, 'destroy'])->middleware('permission:payment-delete')->name('payment.destroy');
+
+    // ROUTE SLIDER
+    Route::get('slider', [SlideController::class, 'index'])->name('slider.index');
+    Route::post('slider', [SlideController::class, 'store'])->name('slider.store');
+    Route::get('slider/{id}/edit', [SlideController::class, 'edit'])->name('slider.edit');
+    Route::put('slider/{id}/update', [SlideController::class, 'update'])->name('slider.update');
+    Route::get('slider/destroy/{id}', [SlideController::class, 'destroy'])->name('slider.destroy');
+
+    // ROUTE PROMOSI NAVBAR
+    Route::get('promosi-navbar', [PromosiController::class, 'promosi_navbar'])->name('promosi-navbar.index');
+    Route::post('promosi-navbar', [PromosiController::class, 'promosi_navbar_store'])->name('promosi-navbar.store');
+    Route::get('promosi-navbar/{id}/edit', [PromosiController::class, 'promosi_navbar_edit'])->name('promosi-navbar.edit');
+    Route::put('promosi-navbar/{id}/update', [PromosiController::class, 'promosi_navbar_update'])->name('promosi-navbar.update');
+    Route::get('promosi-navbar/destroy/{id}', [PromosiController::class, 'promosi_navbar_destroy'])->name('promosi-navbar.destroy');
+
+    // ROUTE TIGA PROMOSI
+    Route::get('tiga-promosi', [PromosiController::class, 'tiga_promosi'])->name('tiga-promosi.index');
+    Route::post('tiga-promosi', [PromosiController::class, 'tiga_promosi_store'])->name('tiga-promosi.store');
+    Route::get('tiga-promosi/{id}/edit', [PromosiController::class, 'tiga_promosi_edit'])->name('tiga-promosi.edit');
+    Route::put('tiga-promosi/{id}/update', [PromosiController::class, 'tiga_promosi_update'])->name('tiga-promosi.update');
+    Route::get('tiga-promosi/destroy/{id}', [PromosiController::class, 'tiga_promosi_destroy'])->name('tiga-promosi.destroy');
+
+    // ROUTE BANNER PROMOSI
+    Route::get('banner-promosi', [PromosiController::class, 'banner_promosi'])->name('banner-promosi.index');
+    Route::post('banner-promosi', [PromosiController::class, 'banner_promosi_store'])->name('banner-promosi.store');
+    Route::put('banner-promosi/{id}/update', [PromosiController::class, 'banner_promosi_update'])->name('banner-promosi.update');
 
     // ROUTE RATINGS
     Route::get('rating', [BackendRatingController::class, 'index'])->middleware('permission:halaman-rating')->name('rating.index');

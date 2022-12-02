@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\KategoriProduk;
+use App\Models\PromosiNavbar;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
@@ -53,9 +54,10 @@ class GoogleController extends Controller
     
     public function update_password_google()
     {
+        $promosi_navbar = PromosiNavbar::where('status', 1)->get();
         $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
         
-        return view('auth.passwords.update-password', compact('kategoriproduk_nav'));
+        return view('auth.passwords.update-password', compact('kategoriproduk_nav', 'promosi_navbar'));
     }
     
     

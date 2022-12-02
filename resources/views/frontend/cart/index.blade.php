@@ -219,7 +219,7 @@
                     </div>
                     <div class="cart-icon-gabung">
                         <div class="icon-cart-delete mb-4">
-                            <a href="" class="changeQuantity-mobile delete-cart-item-mobile"><i class="fi-rs-disk"></i></a> 
+                            <a href="" class="changeQuantity-mobile"><i class="fi-rs-disk"></i></a> 
                         </div>
                         <div class="icon-cart-delete">
                             <a href="{{ route('deletecart') }}" class="delete-cart-item-mobile"><i class="fi-rs-trash"></i></a> 

@@ -8,9 +8,13 @@
                     <div class="text-center">
                         <div id="news-flash" class="d-inline-block">
                             <ul>
-                                <li>Get great devices up to 50% off <a href="{{ route('shop') }}">View details</a></li>
-                                <li>Supper Value Deals - Save more with coupons</li>
-                                <li>Trendy 25silver jewelry, save up 35% off today <a href="{{ route('shop') }}">Shop now</a></li>
+                                @if ($promosi_navbar->count() > 0)
+                                    @foreach ($promosi_navbar as $item)
+                                        <li>{{ $item->title }} <a href="{{ $item->link }}">{{ $item->button_text }}</a></li>                                
+                                    @endforeach
+                                @else
+
+                                @endif
                             </ul>
                         </div>
                     </div>

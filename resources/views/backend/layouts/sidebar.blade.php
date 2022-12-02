@@ -90,7 +90,7 @@
             @endcan
             
             
-            {{-- <li class="menu {{ request()->is('slider', 'slider/*/edit') ? 'active' : ''}}">
+            <li class="menu {{ request()->is('slider', 'slider/*/edit', 'promosi-navbar', 'promosi-navbar/*/edit', 'tiga-promosi', 'tiga-promosi/*/edit', 'banner-promosi') ? 'active' : ''}}">
                 <a href="#slide-promosi" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
                         
@@ -107,7 +107,25 @@
                         <a href="{{ route('slider.index') }}"> Slide </a>
                     </li>
                 </ul>
-            </li> --}}
+
+                <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
+                    <li class="menu {{ request()->is('promosi-navbar', 'promosi-navbar/*/edit') ? 'active' : ''}}">
+                        <a href="{{ route('promosi-navbar.index') }}"> Navbar Promosi </a>
+                    </li>
+                </ul>
+
+                <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
+                    <li class="menu {{ request()->is('banner-promosi', 'banner-promosi/*/edit') ? 'active' : ''}}">
+                        <a href="{{ route('banner-promosi.index') }}"> Banner Promosi </a>
+                    </li>
+                </ul>
+
+                <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
+                    <li class="menu {{ request()->is('tiga-promosi', 'tiga-promosi/*/edit') ? 'active' : ''}}">
+                        <a href="{{ route('tiga-promosi.index') }}">Tiga Promosi</a>
+                    </li>
+                </ul>
+            </li>
             
             
             
