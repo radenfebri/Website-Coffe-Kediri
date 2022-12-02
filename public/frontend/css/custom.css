@@ -68,10 +68,11 @@
 
 .produk-terbaru{
   display: flex;
+  width: 100%;
   height: 170px;
-  width: 170px;
   justify-content: center;
   align-items: center;
+  background-color: red;
 }
 
 .produk-terbaru-full{
@@ -91,8 +92,8 @@
 }
 
 .kategori-img{
-  height: 150px !important;
-  width: 180px !important;
+  height: 144px !important;
+  width: 100% !important;
   object-fit: contain;
 }
 
@@ -480,8 +481,6 @@
   display: flex;
   flex-direction: row;
 }
-
-
 
 
 @media (max-width: 980px) {
