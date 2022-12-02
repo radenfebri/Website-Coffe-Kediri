@@ -78,7 +78,7 @@
             </div>
             <div class="col-lg-6">
                 <p class="text-lg-end text-start font-sm text-muted mb-0">
-                    &copy; <strong class="text-brand">SurfsideMedia</strong> All rights reserved
+                    &copy; <strong class="text-brand">PutraTeguh</strong> All rights reserved
                 </p>
             </div>
         </div>

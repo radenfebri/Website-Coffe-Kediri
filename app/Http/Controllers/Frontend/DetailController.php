@@ -7,6 +7,7 @@ use App\Models\KategoriProduk;
 use App\Models\MultiImage;
 use App\Models\Order;
 use App\Models\Produk;
+use App\Models\PromosiNavbar;
 use App\Models\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,7 @@ class DetailController extends Controller
     {
         if (Produk::where('slug', $slug)->where('is_active', 1)->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
+            $promosi_navbar = PromosiNavbar::where('status', 1)->get();
             $produk = Produk::where('slug', $slug)->first();
             $images = MultiImage::where('prod_id', $produk->id)->get();
             $kategori = KategoriProduk::where('is_active', 1)->limit(8)->get();
@@ -46,7 +48,8 @@ class DetailController extends Controller
                 'rating_sum',
                 'user_rating',
                 'cek_user',
-                'rating_avg'
+                'rating_avg',
+                'promosi_navbar'
             ));
         } else {
             return redirect()->route('shop')->with('error', 'Produk tidak ditemukan / sudah tidak aktif');

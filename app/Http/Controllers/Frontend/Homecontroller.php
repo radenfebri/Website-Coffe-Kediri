@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\BannerPromosi;
 use App\Models\KategoriProduk;
 use App\Models\Produk;
+use App\Models\PromosiNavbar;
 use App\Models\Rating;
 use App\Models\Slide;
+use App\Models\TigaPromosi;
 use Illuminate\Http\Request;
 
 class Homecontroller extends Controller
@@ -18,10 +21,13 @@ class Homecontroller extends Controller
         $slide = Slide::where('status', 1)->latest()->get();
         $produk_populer = Produk::latest()->where('popular', 1)->get();
         $produks = Produk::latest()->where('is_active', 1)->limit(8)->get();
+        $banner_promosi = BannerPromosi::where('status', 1)->first();
+        $tiga_promosi = TigaPromosi::where('status', 1)->latest()->limit(3)->get();
+        $promosi_navbar = PromosiNavbar::where('status', 1)->get();
         $ratings = Rating::all();
 
 
-        return view('frontend.home.index', compact('kategoriproduk_nav', 'produks', 'produk_populer', 'kategoriproduk', 'ratings', 'slide'));
+        return view('frontend.home.index', compact('kategoriproduk_nav', 'promosi_navbar', 'tiga_promosi', 'produks', 'produk_populer', 'kategoriproduk', 'ratings', 'slide', 'banner_promosi'));
     }
 
 
