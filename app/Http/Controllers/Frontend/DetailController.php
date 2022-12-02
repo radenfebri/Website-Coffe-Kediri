@@ -30,15 +30,15 @@ class DetailController extends Controller
             $user_rating = Rating::where('prod_id', $produk->id)->where('user_id', Auth::id())->first();
             $setting_website = SettingWebsite::first();
             $cek_user = Order::where('orders.user_id', Auth::id())->where('orders.status', '3')
-            ->join('order_items', 'orders.id', 'order_items.order_id')
-            ->where('order_items.prod_id', $produk->id)->get();
-            
+                ->join('order_items', 'orders.id', 'order_items.order_id')
+                ->where('order_items.prod_id', $produk->id)->get();
+
             if ($ratings->count() > 0) {
                 $rating_avg = $rating_sum / $ratings->count();
             } else {
                 $rating_avg = 0;
             }
-            
+
             return view('frontend.detail-produk.index', compact(
                 'produk',
                 'images',
@@ -52,7 +52,8 @@ class DetailController extends Controller
                 'cek_user',
                 'rating_avg',
                 'promosi_navbar',
-                'setting_website'
+                'setting_website',
+                // 'shareComponent'
             ));
         } else {
             return redirect()->route('shop')->with('error', 'Produk tidak ditemukan / sudah tidak aktif');

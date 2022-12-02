@@ -88,6 +88,10 @@
                                         <li class="social-twitter"> <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-twitter.svg" loading="lazy" alt="{{ $produk->name }}"></a></li>
                                         <li class="social-instagram"><a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-instagram.svg" loading="lazy" alt="{{ $produk->name }}"></a></li>
                                         <li class="social-linkedin"><a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-pinterest.svg" loading="lazy" alt="{{ $produk->name }}"></a></li>
+                                        {{-- {!! $shareComponent=\Share::page('https://warung.putrateguh.com/','Share Link',)->facebook(); !!} --}}
+
+                                        {{ Share::currentPage()->facebook(); }}
+                                    
                                     </ul>
                                 </div>
                             </div>

@@ -5,13 +5,14 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="widget-about font-md mb-md-5 mb-lg-0">
                         <div class="logo logo-width-1 wow fadeIn animated">
-                            @if ($setting_website->image)
+                            @if ($setting_website)
                             <a href="{{ route('home') }}"><img src="{{ asset('storage/' . $setting_website->image ) }}" alt="logo" loading="lazy"></a>
                             @else
                             
                             @endif
                         </div>
                         <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
+                        @if ($setting_website)
                         <p class="wow fadeIn animated">
                             <strong>Address: </strong>{{ $setting_website->address }}
                         </p>
@@ -21,11 +22,18 @@
                         <p class="wow fadeIn animated">
                             <strong>Email: </strong>{{ $setting_website->email }}
                         </p>
+                        @else
+                                
+                        @endif
                         <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
+                            @if ($setting_website)
                             <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}" loading="lazy"></a>
                             <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}" loading="lazy"></a>
                             <a href="{{ $setting_website->youtube }}" target="_blank"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-youtube.svg" alt="{{ $setting_website->youtube }}" loading="lazy"></a>
+                            @else
+                                
+                            @endif
                         </div>
                     </div>
                 </div>

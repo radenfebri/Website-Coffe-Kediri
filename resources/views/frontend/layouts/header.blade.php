@@ -182,7 +182,11 @@
                     @endguest
                 </div>
                 <div class="hotline d-none d-lg-block">
-                    <p><i class="fi-rs-smartphone"></i><span>Customer Service</span> {{ $setting_website->phone }} </p>
+                    @if ($setting_website)
+                        <p><i class="fi-rs-smartphone"></i><span>Customer Service</span> {{ $setting_website->phone }} </p>
+                    @else
+                        
+                    @endif
                 </div>
                 <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
                 <div class="header-action-right d-block d-lg-none">
@@ -227,7 +231,7 @@
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                @if ($setting_website->image)
+                @if ($setting_website)
                 <a href="{{ route('home') }}"><img src="{{ asset("storage/" . $setting_website->image )}}" alt="logo"></a>
                 @else
                 
@@ -309,14 +313,22 @@
                 </div>
                 @endguest
                 <div class="single-mobile-header-info">
-                    <a href="https://wa.me/{{ $setting_website->phone }}/"> {{ $setting_website->phone }}</a>
+                    @if ($setting_website)
+                        <a href="https://wa.me/{{ $setting_website->phone }}/"> {{ $setting_website->phone }}</a>
+                    @else
+                        
+                    @endif
                 </div>
             </div>
             <div class="mobile-social-icon">
                 <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}"></a>
-                <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}"></a>
-                <a href="{{ $setting_website->youtube }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-youtube.svg" alt="{{ $setting_website->youtube }}"></a>
+                @if ($setting_website)
+                    <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}"></a>
+                    <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}"></a>
+                    <a href="{{ $setting_website->youtube }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-youtube.svg" alt="{{ $setting_website->youtube }}"></a>
+                @else
+                    
+                @endif
             </div>
         </div>
     </div>
