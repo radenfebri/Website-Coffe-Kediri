@@ -1,6 +1,6 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Keranjang')
+@section('title', 'Login | Putra Teguh')
 
 @section('content')
 <main class="main">

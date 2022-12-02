@@ -97,13 +97,13 @@
 
                                         {{-- ICON GOOGLE, LINKEDIN, WA --}}
                                         <a href="#" target="_blank" class="social-icon" id="google-btn">
-                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
+                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-google.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
                                         </a>
                                         <a href="#" target="_blank" class="social-icon" id="linkedin-btn">
-                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
+                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-linkedin.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
                                         </a>
                                         <a href="#" target="_blank" class="social-icon" id="whatsapp-btn">
-                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-heart.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
+                                            <img src="{{ asset('frontend') }}/imgs/theme/icons/icon-whatsapp.svg" loading="lazy" alt="{{ $produk->name }}" target="_blank">
                                         </a>
                                     </ul>
                                 </div>
@@ -365,13 +365,13 @@
                                     <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                         <div class="product-cart-wrap small hover-up">
                                             <div class="product-img-action-wrap">
-                                                <div class="product-img product-img-zoom">
+                                                <div class="product-img product-img-zoom produk-terbaru">
                                                     <a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">
                                                         @if ($item->cover == null)
-                                                        <img class="default-img" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" loading="lazy" alt="{{ $produk->name }}">
-                                                        <img class="hover-img" src="{{ asset('frontend') }}/imgs/shop/product-2-2.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                                        <img class="default-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                                        <img class="hover-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-2.jpg" loading="lazy" alt="{{ $produk->name }}">
                                                         @else
-                                                        <img class="default-img" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                                        <img class="default-img produk-img-terbaru" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
                                                         @endif
                                                         
                                                     </a>
