@@ -22,6 +22,7 @@ return new class extends Migration
             $table->text('instagram')->nullable();
             $table->text('youtube')->nullable();
             $table->string('image')->nullable();
+            $table->string('favicon')->nullable();
             $table->timestamps();
         });
     }

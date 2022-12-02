@@ -104,8 +104,8 @@
                     <div class="col-xxl-3 col-xl-12 col-lg-12 col-md-12 col-sm-12 mt-xxl-0 mt-4">
                         <div class="widget-content widget-content-area blog-create-section">
                             <div class="row">
+
                                 <div class="col-xxl-12 col-md-12 mb-4">
-                                    
                                     <label for="product-images">Image<span class="text-danger">*</span></label>
                                     <div class="multiple-file-upload">
                                         <input class="form-control @error('iamge') is-invalid @enderror file-upload-input" name="image" type="file">
@@ -125,6 +125,27 @@
                                     </span>
                                     @enderror
                                 </div>
+
+                                <div class="col-xxl-12 col-md-12 mb-4">
+                                    <label for="product-images">Favicon<span class="text-danger">*</span></label>
+                                    <div class="multiple-file-upload">
+                                        <input class="form-control @error('favicon') is-invalid @enderror file-upload-input" name="favicon" type="file">
+                                    </div>
+                                    <br>
+                                    <label for="product-images">Favicon Saat ini:</label>
+                                    <div class="multiple-file-upload"> 
+                                        @if ($setting_web->favicon)
+                                        <img src="{{ asset('storage/'. $setting_web->favicon) }}" loading="lazy" class="rounded" width="245px" height="245px" alt="">
+                                        @else
+                                        Favicon Masih Kosong
+                                        @endif
+                                    </div>
+                                    @error('favicon')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
                                 
                                 <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
                                     <button class="btn btn-success w-100" type="submit">Submit Data</button>
@@ -133,6 +154,7 @@
                             </div>
                         </div>
                     </div>
+
                 </form>
             </div>
             @else
@@ -223,12 +245,23 @@
                         <div class="widget-content widget-content-area blog-create-section">
                             <div class="row">
                                 <div class="col-xxl-12 col-md-12 mb-4">
-                                    
                                     <label for="product-images">Image<span class="text-danger">*</span></label>
                                     <div class="multiple-file-upload">
-                                        <input class="form-control @error('iamge') is-invalid @enderror file-upload-input" name="image" type="file">
+                                        <input class="form-control @error('favicon') is-invalid @enderror file-upload-input" name="image" type="file">
                                     </div>
                                     @error('image')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+
+                                <div class="col-xxl-12 col-md-12 mb-4">
+                                    <label for="product-images">Favicon<span class="text-danger">*</span></label>
+                                    <div class="multiple-file-upload">
+                                        <input class="form-control @error('favicon') is-invalid @enderror file-upload-input" name="favicon" type="file">
+                                    </div>
+                                    @error('favicon')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

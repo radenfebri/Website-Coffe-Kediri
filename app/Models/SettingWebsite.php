@@ -19,5 +19,6 @@ class SettingWebsite extends Model
         'instagram',
         'youtube',
         'image',
+        'favicon'
     ];
 }

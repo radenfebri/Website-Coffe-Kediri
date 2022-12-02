@@ -1,6 +1,6 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Detail Produk')
+@section('title', "Detail Produk $produk->name")
 
 @section('content')
 
