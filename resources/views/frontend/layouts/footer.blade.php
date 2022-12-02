@@ -5,23 +5,27 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="widget-about font-md mb-md-5 mb-lg-0">
                         <div class="logo logo-width-1 wow fadeIn animated">
-                            <a href="index.html"><img src="{{ asset('frontend') }}/imgs/logo/logo.png" alt="logo" loading="lazy"></a>
+                            @if ($setting_website->image)
+                            <a href="{{ route('home') }}"><img src="{{ asset('storage/' . $setting_website->image ) }}" alt="logo" loading="lazy"></a>
+                            @else
+                            
+                            @endif
                         </div>
                         <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                         <p class="wow fadeIn animated">
-                            <strong>Address: </strong>562 Wellington Road
+                            <strong>Address: </strong>{{ $setting_website->address }}
                         </p>
                         <p class="wow fadeIn animated">
-                            <strong>Phone: </strong>+1 0000-000-000
+                            <strong>Phone: </strong>{{ $setting_website->phone }}
                         </p>
                         <p class="wow fadeIn animated">
-                            <strong>Email: </strong>contact@surfsidemedia.in
+                            <strong>Email: </strong>{{ $setting_website->email }}
                         </p>
                         <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
-                            <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-facebook.svg" alt="" loading="lazy"></a>
-                            <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-instagram.svg" alt="" loading="lazy"></a>
-                            <a href="#"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-youtube.svg" alt="" loading="lazy"></a>
+                            <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}" loading="lazy"></a>
+                            <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}" loading="lazy"></a>
+                            <a href="{{ $setting_website->youtube }}" target="_blank"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-youtube.svg" alt="{{ $setting_website->youtube }}" loading="lazy"></a>
                         </div>
                     </div>
                 </div>
@@ -38,11 +42,11 @@
                 <div class="col-lg-2  col-md-3">
                     <h5 class="widget-title wow fadeIn animated">My Account</h5>
                     <ul class="footer-list wow fadeIn animated">
-                        <li><a href="my-account.html">My Account</a></li>
-                        <li><a href="#">View Cart</a></li>
-                        <li><a href="#">My Wishlist</a></li>
-                        <li><a href="#">Track My Order</a></li>                            
-                        <li><a href="#">Order</a></li>
+                        <li><a href="{{ route('setting') }}">My Account</a></li>
+                        <li><a href="{{ route('cart') }}">View Cart</a></li>
+                        <li><a href="{{ route('favorit.view') }}">My Wishlist</a></li>
+                        <li><a href="{{ route('orderHistory') }}">Track My Order</a></li>                            
+                        <li><a href="{{ route('shop') }}">Order</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-4 mob-center">
@@ -51,8 +55,8 @@
                         <div class="col-md-8 col-lg-12">
                             <p class="wow fadeIn animated">From App Store or Google Play</p>
                             <div class="download-app wow fadeIn animated mob-app">
-                                <a href="#" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="{{ asset('frontend') }}/imgs/theme/app-store.jpg" alt="" loading='lazy'></a>
-                                <a href="#" class="hover-up"><img src="{{ asset('frontend') }}/imgs/theme/google-play.jpg" alt=""></a>
+                                <a href="{{ route('home') }}" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="{{ asset('frontend') }}/imgs/theme/app-store.jpg" alt="" loading='lazy'></a>
+                                <a href="{{ route('home') }}" class="hover-up"><img src="{{ asset('frontend') }}/imgs/theme/google-play.jpg" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">

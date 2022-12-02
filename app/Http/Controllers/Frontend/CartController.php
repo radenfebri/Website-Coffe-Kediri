@@ -7,6 +7,7 @@ use App\Models\KategoriProduk;
 use App\Models\Keranjang;
 use App\Models\Produk;
 use App\Models\PromosiNavbar;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,8 +18,9 @@ class CartController extends Controller
         $produk = Keranjang::where('user_id', Auth::id())->get();
         $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
         $promosi_navbar = PromosiNavbar::where('status', 1)->get();
+        $setting_website = SettingWebsite::first();
 
-        return view('frontend.cart.index', compact('produk', 'kategoriproduk_nav', 'promosi_navbar'));
+        return view('frontend.cart.index', compact('produk', 'setting_website','kategoriproduk_nav', 'promosi_navbar'));
     }
 
 

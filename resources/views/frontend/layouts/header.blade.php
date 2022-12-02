@@ -9,11 +9,11 @@
                         <div id="news-flash" class="d-inline-block">
                             <ul>
                                 @if ($promosi_navbar->count() > 0)
-                                    @foreach ($promosi_navbar as $item)
-                                        <li>{{ $item->title }} <a href="{{ $item->link }}">{{ $item->button_text }}</a></li>                                
-                                    @endforeach
+                                @foreach ($promosi_navbar as $item)
+                                <li>{{ $item->title }} <a href="{{ $item->link }}">{{ $item->button_text }}</a></li>                                
+                                @endforeach
                                 @else
-
+                                
                                 @endif
                             </ul>
                         </div>
@@ -47,7 +47,11 @@
         <div class="container">
             <div class="header-wrap">
                 <div class="logo logo-width-1">
-                    <a href="{{ route('home') }}"><img src="{{ asset("frontend")}}/imgs/logo/logo.png" alt="logo"></a>
+                    @if ($setting_website)
+                    <a href="{{ route('home') }}"><img src="{{ asset('storage/' . $setting_website->image )}}" alt="logo"></a>
+                    @else
+                    
+                    @endif
                 </div>
                 <div class="header-right">
                     <div class="search-style-1">
@@ -89,7 +93,11 @@
         <div class="container">
             <div class="header-wrap header-space-between position-relative">
                 <div class="logo logo-width-1 d-block d-lg-none">
-                    <a href="{{ route('home') }}"><img src="{{ asset("frontend")}}/imgs/logo/logo.png" alt="logo"></a>
+                    @if ($setting_website)
+                    <a href="{{ route('home') }}"><img src="{{ asset('storage/' . $setting_website->image )}}" alt="logo"></a>
+                    @else
+                    
+                    @endif
                 </div>
                 <div class="header-nav d-none d-lg-flex">
                     <div class="main-categori-wrap d-none d-lg-block">
@@ -108,37 +116,37 @@
                     </div>
                     @guest
                     <div class="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block">
-                            <nav>
-                                <ul>
-                                    <li><a class="{{ request()->is('/', 'home') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
-                                    <li><a class="{{ request()->is('shop', 'shop/*', 'cart', 'favorit', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
-                                    <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
-                                    @guest
-                                    
-                                    @else
-                                    <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
-                                        <ul class="sub-menu">
-                                            @guest
-                                            
-                                            @else
-                                            @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
-                                            <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                            @else
-                                            
-                                            @endif
-                                            @endguest
-                                            <li><a href="{{ route('orderHistory') }}">Order History</a></li>
-                                            <li><a href="{{ route('setting') }}">Setting</a></li>
-                                            <li><a href="{{ route('changePassword') }}">Change Password</a> </li>   
-                                            <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>    
-                                        </ul>
-                                    </li>
-                                    @endguest
-                                </ul>
-                            </nav>
+                        <nav>
+                            <ul>
+                                <li><a class="{{ request()->is('/', 'home') ? 'active' : ''}}" href="{{ route('home') }}">Home </a></li>
+                                <li><a class="{{ request()->is('shop', 'shop/*', 'cart', 'favorit', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Shop</a></li>
+                                <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">About</a></li>
+                                @guest
+                                
+                                @else
+                                <li><a href="#">My Account<i class="fi-rs-angle-down"></i></a>
+                                    <ul class="sub-menu">
+                                        @guest
+                                        
+                                        @else
+                                        @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        @else
+                                        
+                                        @endif
+                                        @endguest
+                                        <li><a href="{{ route('orderHistory') }}">Order History</a></li>
+                                        <li><a href="{{ route('setting') }}">Setting</a></li>
+                                        <li><a href="{{ route('changePassword') }}">Change Password</a> </li>   
+                                        <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>    
+                                    </ul>
+                                </li>
+                                @endguest
+                            </ul>
+                        </nav>
                     </div>                    
                     
                     @else
@@ -174,7 +182,7 @@
                     @endguest
                 </div>
                 <div class="hotline d-none d-lg-block">
-                    <p><i class="fi-rs-smartphone"></i><span>Toll Free</span> (+1) 0000-000-000 </p>
+                    <p><i class="fi-rs-smartphone"></i><span>Customer Service</span> {{ $setting_website->phone }} </p>
                 </div>
                 <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
                 <div class="header-action-right d-block d-lg-none">
@@ -212,11 +220,18 @@
         </div>
     </div>
 </header>
+
+
+
 <div class="mobile-header-active mobile-header-wrapper-style">
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
             <div class="mobile-header-logo">
-                <a href="/"><img src="{{ asset("frontend")}}/imgs/logo/logo.png" alt="logo"></a>
+                @if ($setting_website->image)
+                <a href="{{ route('home') }}"><img src="{{ asset("storage/" . $setting_website->image )}}" alt="logo"></a>
+                @else
+                
+                @endif
             </div>
             <div class="mobile-menu-close close-style-wrap close-style-position-inherit">
                 <button class="close-style search-close">
@@ -294,16 +309,14 @@
                 </div>
                 @endguest
                 <div class="single-mobile-header-info">
-                    <a href="#">(+1) 0000-000-000 </a>
+                    <a href="https://wa.me/{{ $setting_website->phone }}/"> {{ $setting_website->phone }}</a>
                 </div>
             </div>
             <div class="mobile-social-icon">
                 <h5 class="mb-15 text-grey-4">Follow Us</h5>
-                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt=""></a>
-                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-twitter.svg" alt=""></a>
-                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt=""></a>
-                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-pinterest.svg" alt=""></a>
-                <a href="#"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-youtube.svg" alt=""></a>
+                <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}"></a>
+                <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}"></a>
+                <a href="{{ $setting_website->youtube }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-youtube.svg" alt="{{ $setting_website->youtube }}"></a>
             </div>
         </div>
     </div>

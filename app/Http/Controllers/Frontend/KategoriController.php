@@ -7,6 +7,7 @@ use App\Models\KategoriProduk;
 use App\Models\Produk;
 use App\Models\PromosiNavbar;
 use App\Models\Rating;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 
 class KategoriController extends Controller
@@ -18,9 +19,10 @@ class KategoriController extends Controller
             $kategoriproduk = KategoriProduk::where('slug', $slug)->first();
             $produks = Produk::where('kategori_id', $kategoriproduk->id)->where('is_active', 1)->latest()->paginate(12);
             $promosi_navbar = PromosiNavbar::where('status', 1)->get();
+            $setting_website = SettingWebsite::first();
             $ratings = Rating::all();
-
-            return view('frontend.kategori.index', compact('kategoriproduk_nav', 'produks', 'kategoriproduk', 'ratings', 'promosi_navbar'));
+            
+            return view('frontend.kategori.index', compact('kategoriproduk_nav', 'setting_website','produks', 'kategoriproduk', 'ratings', 'promosi_navbar'));
         } else {
             return redirect()->route('shop')->with('error', 'Kategori tidak ditemukan / sudah tidak aktif');
         }

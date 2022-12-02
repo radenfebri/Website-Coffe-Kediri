@@ -44,6 +44,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('shop', [ShopController::class, 'index'])->name('shop');
 Route::get('kategori/{slug}', [KategoriController::class, 'index'])->name('kategori');
 Route::get('about', [AboutController::class, 'index'])->name('about');
+Route::post('contact-store', [AboutController::class, 'contact_store'])->name('contact-store');
 Route::get('privacy-policy', [PrivacyPolicyController::class, 'index'])->name('privacy-policy');
 Route::get('terms-conditions', [TermsConditionsController::class, 'index'])->name('terms-condition');
 Route::get('detail-produk/{slug}', [DetailController::class, 'index'])->name('detail.produk');

@@ -8,6 +8,7 @@ use App\Models\KategoriProduk;
 use App\Models\Produk;
 use App\Models\PromosiNavbar;
 use App\Models\Rating;
+use App\Models\SettingWebsite;
 use App\Models\Slide;
 use App\Models\TigaPromosi;
 use Illuminate\Http\Request;
@@ -24,10 +25,11 @@ class Homecontroller extends Controller
         $banner_promosi = BannerPromosi::where('status', 1)->first();
         $tiga_promosi = TigaPromosi::where('status', 1)->latest()->limit(3)->get();
         $promosi_navbar = PromosiNavbar::where('status', 1)->get();
+        $setting_website = SettingWebsite::first();
         $ratings = Rating::all();
 
 
-        return view('frontend.home.index', compact('kategoriproduk_nav', 'promosi_navbar', 'tiga_promosi', 'produks', 'produk_populer', 'kategoriproduk', 'ratings', 'slide', 'banner_promosi'));
+        return view('frontend.home.index', compact('kategoriproduk_nav', 'setting_website', 'promosi_navbar', 'tiga_promosi', 'produks', 'produk_populer', 'kategoriproduk', 'ratings', 'slide', 'banner_promosi'));
     }
 
 

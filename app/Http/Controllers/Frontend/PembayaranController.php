@@ -7,6 +7,7 @@ use App\Models\KategoriProduk;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Models\PromosiNavbar;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,14 +19,12 @@ class PembayaranController extends Controller
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
             $metode = Payment::where('nama_bank', $orders->metode)->first();
+            $setting_website = SettingWebsite::first();
             $promosi_navbar = PromosiNavbar::where('status', 1)->get();
-
-
-            // dd($metode);
             
             // BELUM BAYAR
             if ($orders->status == 0) {
-                return view('frontend.pembayaran.index', compact('orders', 'kategoriproduk_nav', 'metode', 'promosi_navbar'));
+                return view('frontend.pembayaran.index', compact('orders', 'setting_website','kategoriproduk_nav', 'metode', 'promosi_navbar'));
             } else {
                 return redirect()->route('orderHistory');
             }

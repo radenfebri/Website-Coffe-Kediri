@@ -12,6 +12,7 @@ use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Models\Produk;
 use App\Models\PromosiNavbar;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,13 +24,14 @@ class CheckoutController extends Controller
         $cart_check = Keranjang::where('user_id', Auth::id())->count();
         $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
         $promosi_navbar = PromosiNavbar::where('status', 1)->get();
+        $setting_website = SettingWebsite::first();
         $payment = Payment::all();
 
         if (Auth::user()->no_hp == null) {
             return redirect()->route('setting')->with('error', 'Silahkan lengkapi data diri anda terlebih dahulu');
         } else {
             if ($cart_check > 0) {
-                return view('frontend.checkout.index', compact('produk', 'kategoriproduk_nav', 'payment', 'promosi_navbar'));
+                return view('frontend.checkout.index', compact('produk', 'setting_website','kategoriproduk_nav', 'payment', 'promosi_navbar'));
             } else {
                 return redirect()->route('cart')->with('error', 'Keranjang masih kosong');
             }
