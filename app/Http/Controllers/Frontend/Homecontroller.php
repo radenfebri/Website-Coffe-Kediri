@@ -13,7 +13,7 @@ use App\Models\Slide;
 use App\Models\TigaPromosi;
 use Illuminate\Http\Request;
 
-class Homecontroller extends Controller
+class HomeController extends Controller
 {
     public function index()
     {

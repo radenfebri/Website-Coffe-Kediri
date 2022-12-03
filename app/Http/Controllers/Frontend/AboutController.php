@@ -31,6 +31,12 @@ class AboutController extends Controller
             'phone' => 'required',
             'subject' => 'required',
             'deskripsi' => 'required',
+        ],[
+            'name.required' => 'Nama Tidak Boleh Kosong',
+            'email.required' => 'Email Tidak Boleh Kosong',
+            'phone.required' => 'Nomer HP Tidak Boleh Kosong',
+            'subject.required' => 'Subject Tidak Boleh Kosong',
+            'deskripsi.required' => 'Deskripsi Tidak Boleh Kosong',
         ]);
 
         Contact::create(request()->all());
