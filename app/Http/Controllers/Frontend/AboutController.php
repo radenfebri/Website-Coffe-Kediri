@@ -9,6 +9,7 @@ use App\Models\KategoriProduk;
 use App\Models\PromosiNavbar;
 use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller
 {
@@ -26,11 +27,11 @@ class AboutController extends Controller
     public function contact_store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|min:2|max:5',
             'email' => 'required|email',
             'phone' => 'required',
             'subject' => 'required',
-            'deskripsi' => 'required',
+            'deskripsi' => 'required|max:500',
         ]);
 
         Contact::create(request()->all());
