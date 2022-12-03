@@ -92,7 +92,7 @@
                                 <h5>Total Order</h4>
                                 </div>
                                 <div class="total-produk-pembayaran-total">
-                                    <h5>Rp. {{ number_format($orders->total_price) }}</h4>
+                                    <h5>Rp. {{ number_format($total) }}</h5>
                                     </div>
                                     <div class="nilai-produk-pembayaran">
                                     </div>
@@ -110,21 +110,24 @@
                                     <p>{{ date('d F Y',strtotime($orders->created_at)) }}</p>
                                 </div>
                             </div>
-                            <a class="btn btn-pembayaran">Bukti Pembayaran</a>
+                            <a href="https://wa.me/{{ $setting_website->phone }}" target="_blank" class="btn btn-pembayaran">Complain</a>
                         </div>
                     </div>
-                    {{-- metode pembayaran --}}
-                    <div class="metode-pembayaran">
-                        {{-- metode pembayaran rekening --}}
-                        <div class="kirim-pembayaran">
-                            <div class="informasi-produk">
-                                <h4>Informasi Produk</h4>
-                                <div class="pesan-produk">
-                                    <p>Setelah Melakukan Pemmbayaran Di Harapkan Screenshot/foto dan kirim kan pada konfirmasi pan</p>
+                    @if ($orders->message_admin == null)
+                                
+                    @else
+                        <div class="metode-pembayaran">
+                            {{-- metode pembayaran rekening --}}
+                            <div class="kirim-pembayaran">
+                                <div class="informasi-produk">
+                                    <h4>Catatan dari Admin</h4>
+                                    <div class="pesan-produk">
+                                        <p>{{ $orders->message_admin }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
             </div>
         </section>

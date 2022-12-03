@@ -101,7 +101,7 @@
                         </div>
                         <p><h5>Total yang dibayarkan harus sesuai dengan kode unik, 3 digit angka di belakang koma adalah kode unik transaksi anda.</h5></p>
                     </div>
-                    <a href="#" class="btn btn-pembayaran">Konfirmasi Pembayaran</a>
+                    <a href="https://api.whatsapp.com/send?phone={{ $setting_website->phone }}&text=Hallo%20kak%20%2APutra%20Teguh%2A%2C%20saya%20mau%20Konfirmasi%20sudah%20melakukan%20pembayaran%20dengan%20data%20berikut%3A%0D%0A%0D%0ANama%20%3A%20%2A{{ $orders->name }}%2A%0D%0AEmail%20%3A%20%2A{{ $orders->email }}%2A%0D%0ANo%20Pesanan%20%3A%20%2A%23{{ $orders->tracking_no }}%2A%0D%0ASudah%20Membayar%20%3A%20%2ARp.%20{{ number_format($orders->total_price) }}%2A%0D%0ATanggal%20Pesanan%20dibuat%20%3A%20%2A{{ date('d F Y h:i:s',strtotime($orders->created_at)) }}%2A%0D%0ACatatan%20%3A%20%2A{{ $orders->message }}%2A%0D%0A%0D%0ATolong%20Segera%20di%20Proses%20ya%20kak%21%21%21%0D%0ASaya%20Ucapkan%20%2ATerima%20kasih%2A" class="btn btn-pembayaran" target="_blank">Konfirmasi Pembayaran</a>
                 </div>
             </div>
             

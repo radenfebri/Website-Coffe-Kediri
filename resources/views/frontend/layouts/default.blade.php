@@ -15,7 +15,6 @@
         
     @endif
     
-    @vite([])
 </head>
 <body>
     @include('frontend.layouts.header')
