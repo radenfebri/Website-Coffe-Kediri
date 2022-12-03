@@ -21,10 +21,10 @@ class PembayaranController extends Controller
             $metode = Payment::where('nama_bank', $orders->metode)->first();
             $setting_website = SettingWebsite::first();
             $promosi_navbar = PromosiNavbar::where('status', 1)->get();
-            
+
             // BELUM BAYAR
             if ($orders->status == 0) {
-                return view('frontend.pembayaran.index', compact('orders', 'setting_website','kategoriproduk_nav', 'metode', 'promosi_navbar'));
+                return view('frontend.pembayaran.index', compact('orders', 'setting_website', 'kategoriproduk_nav', 'metode', 'promosi_navbar'));
             } else {
                 return redirect()->route('orderHistory');
             }
@@ -32,18 +32,20 @@ class PembayaranController extends Controller
             return back();
         }
     }
-    
-    
+
+
     public function packing($id)
     {
         if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
-            // $metode = Payment::where('kategori', $orders->metode)->first();
-            
+            $metode = Payment::where('kategori', $orders->metode)->first();
+            $setting_website = SettingWebsite::first();
+            $promosi_navbar = PromosiNavbar::where('status', 1)->get();
+
             // BELUM BAYAR
             if ($orders->status == 1) {
-                return view('frontend.pembayaran.packing', compact('orders', 'kategoriproduk_nav'));
+                return view('frontend.pembayaran.packing', compact('orders', 'kategoriproduk_nav', 'metode', 'setting_website', 'promosi_navbar'));
             } else {
                 return redirect()->route('orderHistory');
             }
@@ -51,18 +53,20 @@ class PembayaranController extends Controller
             return back();
         }
     }
-    
-    
+
+
     public function kirim($id)
     {
         if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
-            // $metode = Payment::where('kategori', $orders->metode)->first();
-            
+            $metode = Payment::where('kategori', $orders->metode)->first();
+            $setting_website = SettingWebsite::first();
+            $promosi_navbar = PromosiNavbar::where('status', 1)->get();
+
             // BELUM BAYAR
             if ($orders->status == 2) {
-                return view('frontend.pembayaran.kirim', compact('orders', 'kategoriproduk_nav'));
+                return view('frontend.pembayaran.kirim', compact('orders', 'kategoriproduk_nav', 'metode', 'setting_website', 'promosi_navbar'));
             } else {
                 return redirect()->route('orderHistory');
             }
@@ -70,18 +74,21 @@ class PembayaranController extends Controller
             return back();
         }
     }
-    
-    
+
+
     public function selesai($id)
     {
         if (Order::where('id', decrypt($id))->where('user_id', Auth::id())->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $orders = Order::where('id', decrypt($id))->where('user_id', Auth::id())->first();
-            // $metode = Payment::where('kategori', $orders->metode)->first();
-            
+            $metode = Payment::where('kategori', $orders->metode)->first();
+            $setting_website = SettingWebsite::first();
+            $promosi_navbar = PromosiNavbar::where('status', 1)->get();
+
+
             // BELUM BAYAR
             if ($orders->status == 3) {
-                return view('frontend.pembayaran.selesai', compact('orders', 'kategoriproduk_nav'));
+                return view('frontend.pembayaran.selesai', compact('orders', 'kategoriproduk_nav', 'setting_website', 'promosi_navbar', 'metode'));
             } else {
                 return redirect()->route('orderHistory');
             }

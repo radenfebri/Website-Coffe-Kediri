@@ -99,22 +99,27 @@
                         <div class="pembayaran-text">
                             <p>{{ date('d F Y',strtotime($orders->created_at)) }}</p>
                         </div>
-                        <p><h5>Total yang dibayarkan harus sesuai dengan kode unik, 3 digit angka di belakang koma adalah kode unik transaksi anda.</h5></p>
+                        {{-- <p><h5>Total yang dibayarkan harus sesuai dengan kode unik, 3 digit angka di belakang koma adalah kode unik transaksi anda.</h5></p> --}}
                     </div>
-                    <a href="#" class="btn btn-pembayaran">Konfirmasi Pembayaran</a>
+                    {{-- <a href="#" class="btn btn-pembayaran">Konfirmasi Pembayaran</a> --}}
                 </div>
             </div>
-            <div class="metode-pembayaran">
-                {{-- metode pembayaran rekening --}}
-                <div class="kirim-pembayaran">
-                    <div class="informasi-produk">
-                        <h4>Informasi Produk</h4>
-                        <div class="pesan-produk">
-                            <p>Setelah Melakukan Pemmbayaran Di Harapkan Screenshot/foto dan kirim kan pada konfirmasi pan</p>
+            
+            @if ($orders->message_admin == null)
+                                
+            @else
+                <div class="metode-pembayaran">
+                    {{-- metode pembayaran rekening --}}
+                    <div class="kirim-pembayaran">
+                        <div class="informasi-produk">
+                            <h4>Catatan dari Admin</h4>
+                            <div class="pesan-produk">
+                                <p>{{ $orders->message_admin }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </section>
