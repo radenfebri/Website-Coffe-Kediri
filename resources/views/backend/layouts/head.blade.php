@@ -3,7 +3,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Halaman Admin</title>
+    <title>Halaman Admin Putra Teguh</title>
     <link rel="icon" type="image/x-icon" href="{{ asset('backend') }}/src/assets/img/favicon.ico"/>
     <link href="{{ asset('backend') }}/layouts/vertical-light-menu/css/light/loader.css" rel="stylesheet" type="text/css" />
     <link href="{{ asset('backend') }}/layouts/vertical-light-menu/css/dark/loader.css" rel="stylesheet" type="text/css" />

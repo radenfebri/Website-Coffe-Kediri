@@ -9,7 +9,11 @@
     
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="shortcut icon" href="{{ asset('storage/' . $setting_website->favicon) }}">
+    @if ($setting_website)
+        <link rel="shortcut icon" href="{{ asset('storage/' . $setting_website->favicon) }}">
+    @else
+        
+    @endif
     
     @vite([])
 </head>

@@ -59,7 +59,7 @@
             </li>
             @endcan
             
-            @canany('Kategori Produk', 'Semua Produk')
+            @canany(['Kategori Produk', 'Semua Produk'])
             <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit','produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
                 <a href="#store" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -88,7 +88,7 @@
             @endcanany
             
             
-            @canany('Slide', 'Navbar Promosi', 'Banner Promosi', 'Tiga Promosi')
+            @canany(['Slide', 'Navbar Promosi', 'Banner Promosi', 'Tiga Promosi'])
             <li class="menu {{ request()->is('slider', 'slider/*/edit', 'promosi-navbar', 'promosi-navbar/*/edit', 'tiga-promosi', 'tiga-promosi/*/edit', 'banner-promosi') ? 'active' : ''}}">
                 <a href="#slide-promosi" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -150,7 +150,7 @@
             </li>
             @endcan
             
-            @canany('Role', 'Permission', 'Permission to Role', 'Role to User')
+            @canany(['Role', 'Permission', 'Permission to Role', 'Role to User'])
             <li class="menu {{ request()->is('role', 'role/*/edit','permission', 'permission/*/edit', 'assignpermission', 'assignpermission/*/edit', 'assignrole','assignrole/*/edit') ? 'active' : ''}}">
                 <a href="#pengaturan" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -212,7 +212,7 @@
             </li>
             @endcan
             
-            @canany('Privacy Policy', 'Terms Conditions')
+            @canany(['Privacy Policy', 'Terms Conditions'])
             <li class="menu {{ request()->is('privacy-policy-admin','terms-conditions-admin') ? 'active' : ''}}">
                 <a href="#kebijakan-privacy" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -242,7 +242,7 @@
             </li>
             @endcanany
             
-            @canany('About Company', 'Contact Masuk', 'Setting Info Web')
+            @canany(['About Company', 'Contact Masuk', 'Setting Info Web'])
             <li class="menu {{ request()->is('about-company', 'setting-info-website', 'contact-company', 'contact-company/*/show') ? 'active' : ''}}">
                 <a href="#setting-website" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">

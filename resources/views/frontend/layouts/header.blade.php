@@ -277,11 +277,12 @@
                         <li class="menu-item-has-children"><span class="menu-expand"></span><a href="#">My Account</a>
                             <ul class="dropdown">
                                 @guest
-                                @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
-                                <li><a href="#">Dashboard</a></li>
-                                @else
-                                @endif
+                                
                                 @endguest
+                                    @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                    @else
+                                    @endif
                                 <li><a href="{{ route('orderHistory') }}">History Order</a></li>
                                 <li><a href="{{ route('setting') }}">Setting</a></li>
                                 <li><a href="{{ route('changePassword') }}">Change Password</a></li>
