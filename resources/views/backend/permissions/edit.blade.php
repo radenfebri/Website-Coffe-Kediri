@@ -51,9 +51,11 @@
                                         @enderror
                                     </div>
                                 </div>
+                                @can ('Permission Update')
                                 <div>
                                     <button type="submit" class="btn btn-primary">update</button>
                                 </div>
+                                @endcan
                             </form>
                             
                         </div>

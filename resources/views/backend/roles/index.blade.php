@@ -51,7 +51,7 @@
                                     </div>
                                 </div>
 
-                                @can ('role-create')
+                                @can ('Role Store')
                                 <div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
@@ -90,7 +90,7 @@
                                                 @if ($item->name == 'Super Admin')
                                                 @else
 
-                                                @can ('role-edit')
+                                                @can ('Role Edit')
                                                 <li>
                                                     <a href="{{ route('role.edit', encrypt($item->id) ) }}"  class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 p-1 br-8 mb-1">
@@ -100,7 +100,7 @@
                                                 </li>
                                                 @endcan
 
-                                                @can ('role-delete')
+                                                @can ('Role Delete')
                                                 <li>
                                                     <a href="{{ route('role.destroy', encrypt($item->id)) }}" onclick="return confirm('Yakin anda akan menghapus role {{ $item->name }}?')" class="bs-tooltip destroy-form" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-original-title="Delete">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash p-1 br-8 mb-1">

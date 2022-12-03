@@ -80,7 +80,7 @@
                                     @enderror
                                 </div>
                                 
-                                @can ('kategori-create')
+                                @can ('Kategori Store')
                                 <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
                                     <button class="btn btn-success w-100" type="submit">Submit Kategori</button>
                                 </div>
@@ -139,7 +139,7 @@
                                         
                                         <td class="text-center">
                                             <ul class="table-controls">
-                                                @can ('kategori-edit')
+                                                @can ('Kategori Edit')
                                                 <li>
                                                     <a href="{{ route('kategori-produk.edit', encrypt($item->id)) }}" class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 p-1 br-8 mb-1">
@@ -149,7 +149,7 @@
                                                 </li>
                                                 @endcan
                                                 
-                                                @can ('kategori-delete')
+                                                @can ('Kategori Delete')
                                                 <li>
                                                     <a href="{{ route('kategori-produk.destroy', encrypt($item->id)) }}" onclick="return confirm('Yakin anda akan menghapus kategori {{ $item->name }}?')" class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-original-title="Delete">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash p-1 br-8 mb-1">

@@ -70,13 +70,15 @@
                                         @if ($images->count() > 0)
                                         @foreach ($images as $item)
                                         <div>
-                                        <a href="{{ route('images.delete', encrypt($item->id)) }}" onclick="return confirm('Yakin anda akan menghapus gambar ini ?')" class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-original-title="Delete">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash p-1 br-8 mb-1">
-                                                <polyline points="3 6 5 6 21 6"></polyline>
-                                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
-                                            </svg>
-                                        </a>
-                                        <img src="{{ asset('storage/images-produk/'. $item->image) }}" loading="lazy" class="rounded mr-5" width="150px" height="150px" alt="{{ $produks->name }}">
+                                            @can ('Produk Delete Image')
+                                            <a href="{{ route('images.delete', encrypt($item->id)) }}" onclick="return confirm('Yakin anda akan menghapus gambar ini ?')" class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" data-original-title="Delete">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash p-1 br-8 mb-1">
+                                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                </svg>
+                                            </a>
+                                            @endcan
+                                            <img src="{{ asset('storage/images-produk/'. $item->image) }}" loading="lazy" class="rounded mr-5" width="150px" height="150px" alt="{{ $produks->name }}">
                                         </div>
                                         @endforeach
                                         @else
@@ -133,7 +135,7 @@
                                         @enderror
                                     </div>
                                 </div>
-
+                                
                                 <div class="col-xxl-12 mb-4">
                                     <div class="">
                                         <label class="switch-label" for="enableComment">Jumlah Barang<span class="text-danger">*</span></label>
@@ -191,9 +193,11 @@
                                     @enderror
                                 </div>
                                 
+                                @can('Produk Update')
                                 <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
                                     <button class="btn btn-success w-100" type="submit">Update Produk</button>
                                 </div>
+                                @endcan
                                 
                             </div>
                         </div>

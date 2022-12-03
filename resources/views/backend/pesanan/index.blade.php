@@ -24,13 +24,13 @@
                         <div class="widget-content widget-content-area">
                             <div class="manajemen-pesanan-layout">
                                 <div>
-                                    @can ('halaman-pesanan')
+                                    @can ('Manajemen Pesanan')
                                     <a href="{{ route('pesanan.index') }}" class="text-primary mr-2 mb-2" >
                                         <button class="btn btn-danger btn-sm button-manajemen-pesanan">Pesanan Unpaid</button>
                                     </a>
                                     @endcan
                                     
-                                    @can ('pesanan-packing')
+                                    @can ('Pesanan Packing')
                                     <a href="{{ route('pesanan.packing') }}" class="text-info mr-2 mb-2" >
                                         <button class="btn btn-info btn-sm button-manajemen-pesanan">Pesanan Packing</button>
                                     </a>
@@ -38,13 +38,13 @@
                                 </div>
                                 
                                 <div>
-                                    @can ('pesanan-kirim')
+                                    @can ('Pesanan Kirim')
                                     <a href="{{ route('pesanan.kirim') }}" class="text-warning mr-2 mb-2" >
                                         <button class="btn btn-warning btn-sm button-manajemen-pesanan">Pesanan Kirim</button>
                                     </a>
                                     @endcan
                                     
-                                    @can ('pesanan-success')
+                                    @can ('Pesanan Success')
                                     <a href="{{ route('pesanan.success') }}" class="text-success mr-2 mb-2" >
                                         <button class="btn btn-success btn-sm button-manajemen-pesanan">Pesanan Selesai</button>
                                     </a>
@@ -82,7 +82,7 @@
                                         <td class="text-center"><span class="shadow-none badge badge-success">Selesai</span></td>
                                         @endif
                                         
-                                        @can ('pesanan-edit')
+                                        @can ('Pesanan Edit')
                                         <td class="text-center">
                                             <a href="{{ route('pesanan.edit', encrypt($item->id) ) }}"  class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>

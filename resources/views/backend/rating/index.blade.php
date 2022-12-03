@@ -24,13 +24,13 @@
                         <div class="widget-content widget-content-area">
                             <div>
                                 <div>
-                                    @can ('halaman-rating')
+                                    @can ('Manajemen Rating')
                                     <a href="{{ route('rating.index') }}" class="text-primary mr-2 mb-2" >
                                         <button class="btn btn-success btn-sm button-manajemen-pesanan">Rating Active</button>
                                     </a>
                                     @endcan
 
-                                    @can ('rating-nonactive')
+                                    @can ('Manajemen Rating NonActive')
                                     <a href="{{ route('rating.nonactive') }}" class="text-info mr-2 mb-2" >
                                         <button class="btn btn-danger btn-sm button-manajemen-pesanan">Rating Non-Active</button>
                                     </a>
@@ -60,7 +60,7 @@
                                         <td class="text-center">{{ $item->produk->name }}</td>
                                         <td class="text-center">{{ \Illuminate\Support\Str::words($item->user_review, 5, '...') }}</td>
                                         
-                                        @can ('rating-edit')
+                                        @can ('Manajemen Rating Edit')
                                         <td class="text-center">
                                             <a href="{{ route('rating.edit', encrypt($item->id) ) }}"  class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-eye"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>

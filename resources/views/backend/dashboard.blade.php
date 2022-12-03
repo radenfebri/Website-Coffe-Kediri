@@ -43,6 +43,7 @@
                 <div class="col-xl-8 col-lg-12 col-md-12 col-sm-12 col-12">
                     <div class="row widget-statistic">
 
+                        @can('Semua User')
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
                             <a href="{{ route('user.index') }}">
                                 <div class="widget widget-one_hybrid widget-followers">
@@ -65,7 +66,9 @@
                                 </div>
                             </a>
                         </div>
+                        @endcan
 
+                        @can('Manajemen Pesanan')
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
                             <a href="{{ route('pesanan.index') }}">
                                 <div class="widget widget-one_hybrid widget-referral">
@@ -89,7 +92,9 @@
                                 </div>
                             </a>
                         </div>
+                        @endcan
 
+                        @can('Pesanan Success')
                         <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-12 layout-spacing">
                             <a href="{{ route('pesanan.success') }}">
                                 <div class="widget widget-one_hybrid widget-engagement">
@@ -112,6 +117,7 @@
                                 </div>
                             </a>
                         </div>
+                        @endcan
                         
                     </div>
                 </div>

@@ -119,9 +119,11 @@
                                         @enderror
                                     </div>
                                     
+                                    @can ('Banner Promosi Update')
                                     <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
-                                        <button class="btn btn-success w-100" type="submit">Update Slide</button>
+                                        <button class="btn btn-success w-100" type="submit">Update Banner</button>
                                     </div>
+                                    @endcan
                                     
                                 </div>
                             </div>
@@ -221,9 +223,11 @@
                                         @enderror
                                     </div>
                                     
+                                    @can ('Banner Promosi Store')
                                     <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
-                                        <button class="btn btn-success w-100" type="submit">Update Slide</button>
+                                        <button class="btn btn-success w-100" type="submit">Submit Banner</button>
                                     </div>
+                                    @endcan
                                     
                                 </div>
                             </div>

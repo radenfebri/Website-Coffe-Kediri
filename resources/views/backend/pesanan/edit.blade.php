@@ -310,11 +310,14 @@
 
                                         <div class="invoice-action-btn">
 
+                                            @can('Pesanan Update')
                                             <div class="row text-center">
                                                 <div class="col-xl-12 col-md-4">
                                                     <button type="submit" class="btn btn-success btn-xl">Update</button>
                                                 </div>
                                             </div>
+                                            @endcan
+
                                         </div>
                                         
                                     </div>

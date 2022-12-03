@@ -56,7 +56,7 @@
                                             @elseif($item->email == '')
 
                                             @else
-                                            @can ('user-login-akun')
+                                            @can ('Semua User Login')
                                                 @env('local')
                                                 <span class="shadow-none badge badge-primary">
                                                     <x-login-link :user-attributes="['role' => '{{ implode(', ', $item->getRoleNames()->toArray() ) }}']" email="{{ $item->email }}" target="_blank" label="Login as {{ $item->name }}"/>
@@ -77,11 +77,11 @@
                                                     </a>
                                                     
                                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                        @can ('user-edit-password')
+                                                        @can ('Semua User Change Password')
                                                         <a class="dropdown-item" href="{{ route('change-password', encrypt($item->id) ) }}">Change Password</a>
                                                         @endcan
 
-                                                        @can ('user-edit-status')
+                                                        @can ('Semua User Update Status')
                                                         @if ($item->status == 1)
                                                             <a class="dropdown-item" value="0" href="{{ route('status-akun', encrypt($item->id)) }}">Disable User</a>
                                                         @else

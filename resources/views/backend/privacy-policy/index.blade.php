@@ -46,9 +46,11 @@
                             <div class="widget-content widget-content-area blog-create-section">
                                 <div class="row">
                                     
+                                    @can('Privacy Policy Update')
                                     <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
                                         <button class="btn btn-success w-100" type="submit">Update Data</button>
                                     </div>
+                                    @endcan
                                     
                                 </div>
                             </div>
@@ -84,9 +86,11 @@
                             <div class="widget-content widget-content-area blog-create-section">
                                 <div class="row">
                                     
+                                    @can('Privacy Policy Store')
                                     <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
                                         <button class="btn btn-success w-100" type="submit">Submit Data</button>
                                     </div>
+                                    @endcan
                                     
                                 </div>
                             </div>

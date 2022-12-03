@@ -22,7 +22,7 @@
         <div class="shadow-bottom"></div>
         <ul class="list-unstyled menu-categories" id="accordionExample">
             
-            @can ('#HALAMAN-DASHBOARD')
+            @can ('Dashboard')
             <li class="menu {{ request()->is('dashboard') ? 'active' : ''}}">
                 <a href="{{ route('dashboard') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -33,11 +33,10 @@
             </li>
             @endcan
             
-            @can ('#MANAJEMEN-PESANAN')
+            @can ('Manajemen Pesanan')
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>MANAJEMEN TOKO</span></div>
             </li>
-            
             <li class="menu {{ request()->is('pesanan', 'pesanan/success', 'pesanan/*') ? 'active' : ''}}">
                 <a href="{{ route('pesanan.index') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -49,11 +48,10 @@
             </li>
             @endcan
             
-            @can ('#MANAJEMEN-RATING')
+            @can ('Manajemen Rating')
             <li class="menu {{ request()->is('rating', 'rating/*') ? 'active' : ''}}">
                 <a href="{{ route('rating.index') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-star"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
                         <span>Manajemen Rating</span>
                     </div>
@@ -61,7 +59,7 @@
             </li>
             @endcan
             
-            @can('manajemen-kategori-produk')
+            @canany('Kategori Produk', 'Semua Produk')
             <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit','produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
                 <a href="#store" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -74,22 +72,23 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="store" data-bs-parent="#accordionExample">
-                    @can('halaman-kategori')
+                    @can('Kategori Produk')
                     <li class="menu {{ request()->is('kategori-produk', 'kategori-produk/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('kategori-produk.index') }}"> Kategori Produk </a>
                     </li>
                     @endcan
                     
-                    @can ('halaman-produk')
+                    @can ('Semua Produk')
                     <li class="menu {{ request()->is('produk', 'produk/*/edit', 'produk/show/*', 'produk/create') ? 'active' : ''}}">
                         <a href="{{ route('produk.index') }}"> Semua Produk </a>
                     </li>
                     @endcan
                 </ul>
             </li>
-            @endcan
+            @endcanany
             
             
+            @canany('Slide', 'Navbar Promosi', 'Banner Promosi', 'Tiga Promosi')
             <li class="menu {{ request()->is('slider', 'slider/*/edit', 'promosi-navbar', 'promosi-navbar/*/edit', 'tiga-promosi', 'tiga-promosi/*/edit', 'banner-promosi') ? 'active' : ''}}">
                 <a href="#slide-promosi" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -102,38 +101,45 @@
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"></polyline></svg>
                     </div>
                 </a>
+                @can('Slide')
                 <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('slider', 'slider/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('slider.index') }}"> Slide </a>
                     </li>
                 </ul>
+                @endcan
                 
+                @can ('Navbar Promosi')
                 <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('promosi-navbar', 'promosi-navbar/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('promosi-navbar.index') }}"> Navbar Promosi </a>
                     </li>
                 </ul>
+                @endcan
                 
+                @can ('Banner Promosi')
                 <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('banner-promosi', 'banner-promosi/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('banner-promosi.index') }}"> Banner Promosi </a>
                     </li>
                 </ul>
+                @endcan
                 
+                @can ('Tiga Promosi')
                 <ul class="collapse submenu list-unstyled" id="slide-promosi" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('tiga-promosi', 'tiga-promosi/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('tiga-promosi.index') }}">Tiga Promosi</a>
                     </li>
                 </ul>
+                @endcan
             </li>
+            @endcanany
             
             
-            
+            @can ('Metode Pembayaran')
             <li class="menu menu-heading">
                 <div class="heading"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg><span>PENGATURAN</span></div>
             </li> 
-            
-            @can ('halaman-payment')
             <li class="menu {{ request()->is('payment', 'payment/*') ? 'active' : ''}}">
                 <a href="{{ route('payment.index') }}" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
@@ -144,7 +150,7 @@
             </li>
             @endcan
             
-            @can('manajemen-role-permission')
+            @canany('Role', 'Permission', 'Permission to Role', 'Role to User')
             <li class="menu {{ request()->is('role', 'role/*/edit','permission', 'permission/*/edit', 'assignpermission', 'assignpermission/*/edit', 'assignrole','assignrole/*/edit') ? 'active' : ''}}">
                 <a href="#pengaturan" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -156,34 +162,34 @@
                     </div>
                 </a>
                 <ul class="collapse submenu list-unstyled" id="pengaturan" data-bs-parent="#accordionExample">
-                    @can('halaman-role')
+                    @can('Role')
                     <li class="menu {{ request()->is('role', 'role/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('role.index') }}"> Role </a>
                     </li>
                     @endcan
                     
-                    @can ('halaman-permission')
+                    @can ('Permission')
                     <li class="menu {{ request()->is('permission','permission/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('permission.index') }}"> Permission </a>
                     </li>
                     @endcan
                     
-                    @can ('halaman-assignpermission')
+                    @can ('Permission to Role')
                     <li class="menu {{ request()->is('assignpermission','assignpermission/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('assignpermission.index') }}">Permission to Role </a>
                     </li>
                     @endcan
                     
-                    @can('halaman-assignrole')
+                    @can('Role to User')
                     <li class="menu {{ request()->is('assignrole','assignrole/*/edit') ? 'active' : ''}}">
                         <a href="{{ route('assignrole.index') }}">Role to User </a>
                     </li>
                     @endcan
                 </ul>
             </li>
-            @endcan
+            @endcanany
             
-            @can('manajemen-user')
+            @can('Semua User')
             <li class="menu {{ request()->is('user', 'user/*' ,'change-password') ? 'active' : ''}}">
                 <a href="#user-manajemen" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -195,7 +201,7 @@
                     </div>
                 </a>
                 
-                @can('halaman-user')
+                @can('Semua User')
                 <ul class="collapse submenu list-unstyled" id="user-manajemen" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('user', 'user/*') ? 'active' : ''}}">
                         <a href="{{ route('user.index') }}"> Semua User </a>
@@ -206,7 +212,7 @@
             </li>
             @endcan
             
-            @can('kebijakan')
+            @canany('Privacy Policy', 'Terms Conditions')
             <li class="menu {{ request()->is('privacy-policy-admin','terms-conditions-admin') ? 'active' : ''}}">
                 <a href="#kebijakan-privacy" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -218,22 +224,25 @@
                     </div>
                 </a>
                 
+                @can('Privacy Policy')
                 <ul class="collapse submenu list-unstyled" id="kebijakan-privacy" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('privacy-policy-admin') ? 'active' : ''}}">
                         <a href="{{ route('privacy-policy-admin.index') }}"> Privacy Policy </a>
                     </li>
                 </ul>
+                @endcan
                 
+                @can('Terms Conditions')
                 <ul class="collapse submenu list-unstyled" id="kebijakan-privacy" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('terms-conditions-admin') ? 'active' : ''}}">
                         <a href="{{ route('terms-conditions-admin.index') }}"> Terms Conditions </a>
                     </li>
                 </ul>
-                
+                @endcan
             </li>
-            @endcan
+            @endcanany
             
-            @can('kebijakan')
+            @canany('About Company', 'Contact Masuk', 'Setting Info Web')
             <li class="menu {{ request()->is('about-company', 'setting-info-website', 'contact-company', 'contact-company/*/show') ? 'active' : ''}}">
                 <a href="#setting-website" data-bs-toggle="collapse" aria-expanded="" class="dropdown-toggle">
                     <div class="">
@@ -245,26 +254,32 @@
                     </div>
                 </a>
                 
+                @can ('About Company')
                 <ul class="collapse submenu list-unstyled" id="setting-website" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('about-company') ? 'active' : ''}}">
                         <a href="{{ route('about-company.index') }}"> About Company </a>
                     </li>
                 </ul>
+                @endcan
                 
+                @can ('Contact Masuk')
                 <ul class="collapse submenu list-unstyled" id="setting-website" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('contact-company') ? 'active' : ''}}">
                         <a href="{{ route('contact-company.index') }}"> Contact Masuk </a>
                     </li>
                 </ul>
-
+                @endcan
+                
+                @can ('Setting Info Web')
                 <ul class="collapse submenu list-unstyled" id="setting-website" data-bs-parent="#accordionExample">
                     <li class="menu {{ request()->is('setting-info-website') ? 'active' : ''}}">
                         <a href="{{ route('setting-info-website.index') }}"> Setting Info Web</a>
                     </li>
                 </ul>
+                @endcan
                 
             </li>
-            @endcan
+            @endcanany
             
         </ul>
         

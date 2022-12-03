@@ -1,6 +1,6 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Kategori')
+@section('title', "Kategori $kategoriproduk->name")
 
 @section('content')
 <main class="main">

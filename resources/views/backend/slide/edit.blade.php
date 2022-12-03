@@ -131,9 +131,11 @@
                                     @enderror
                                 </div>
                                 
+                                @can('Slide Update')
                                 <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
                                     <button class="btn btn-success w-100" type="submit">Update Slide</button>
                                 </div>
+                                @endcan
                                 
                             </div>
                         </div>

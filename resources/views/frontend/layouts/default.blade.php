@@ -8,6 +8,8 @@
     @include('frontend.layouts.includes.style')
     
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <link rel="shortcut icon" href="{{ asset('storage/' . $setting_website->favicon) }}">
     
     @vite([])
 </head>

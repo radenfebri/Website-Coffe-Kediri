@@ -147,8 +147,9 @@
                                     @enderror
                                 </div>
                                 
+                                @can('Setting Info Website Update')
                                 <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
-                                    <button class="btn btn-success w-100" type="submit">Submit Data</button>
+                                    <button class="btn btn-success w-100" type="submit">Update Data</button>
                                 </div>
                                 
                             </div>
@@ -268,9 +269,11 @@
                                     @enderror
                                 </div>
                                 
+                                @can('Setting Info Website Store')
                                 <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
                                     <button class="btn btn-success w-100" type="submit">Submit Data</button>
                                 </div>
+                                @endcan
                                 
                             </div>
                         </div>
