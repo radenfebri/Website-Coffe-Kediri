@@ -92,9 +92,11 @@
                                     @enderror
                                 </div>
                                 
+                                @can ('Kategori Update')
                                 <div class="col-xxl-12 col-sm-4 col-12 mx-auto">
                                     <button class="btn btn-success w-100" type="submit">Update Kategori</button>
                                 </div>
+                                @endcan
                                 
                             </div>
                         </div>

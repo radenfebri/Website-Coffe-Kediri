@@ -41,7 +41,7 @@ class KategoriProdukController extends Controller
                 'popular' => $request->popular  == TRUE ? '1' : '0',
             ]);
 
-            // toast('Kategori Produk Berhasil Ditambahkan', 'success');
+            toast('Kategori Produk Berhasil Ditambahkan', 'success');
             return back();
         } else {
             $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
@@ -55,7 +55,7 @@ class KategoriProdukController extends Controller
                 'image' => $image,
             ]);
 
-            // toast('Kategori Produk Berhasil Ditambahkan', 'success');
+            toast('Kategori Produk Berhasil Ditambahkan', 'success');
             return back();
         }
     }
@@ -87,7 +87,7 @@ class KategoriProdukController extends Controller
                 'popular' => $request->popular  == TRUE ? '1' : '0',
             ]);
 
-            // toast('Kategori Produk Berhasil Diupdate', 'success');
+            toast('Kategori Produk Berhasil Diupdate', 'success');
             return redirect()->route('kategori-produk.index');
         } else {
             $kategoriproduk = KategoriProduk::findOrFail($id);
@@ -103,7 +103,7 @@ class KategoriProdukController extends Controller
                 'image' => $image,
             ]);
 
-            // toast('Kategori Produk Berhasil Diupdate', 'success');
+            toast('Kategori Produk Berhasil Diupdate', 'success');
             return redirect()->route('kategori-produk.index');
         }
     }
@@ -115,7 +115,7 @@ class KategoriProdukController extends Controller
         Storage::delete($kategoriproduk->image);
         $kategoriproduk->delete();
 
-        // toast('Kategori Produk Berhasil Dihapus', 'success');
+        toast('Kategori Produk Berhasil Dihapus', 'success');
         return back();
     }
 }

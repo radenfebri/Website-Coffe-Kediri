@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\KategoriProduk;
 use App\Models\Keranjang;
 use App\Models\Produk;
+use App\Models\PromosiNavbar;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,8 +16,11 @@ class CartController extends Controller
     public function index()
     {
         $produk = Keranjang::where('user_id', Auth::id())->get();
+        $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
+        $promosi_navbar = PromosiNavbar::where('status', 1)->get();
+        $setting_website = SettingWebsite::first();
 
-        return view('frontend.cart.index', compact('produk'));
+        return view('frontend.cart.index', compact('produk', 'setting_website','kategoriproduk_nav', 'promosi_navbar'));
     }
 
 
@@ -63,19 +69,16 @@ class CartController extends Controller
     public function deleteproduk(Request $request)
     {
 
-        // dd($request);
         if (Auth::check()) {
             $prod_id = $request->input('prod_id');
             if (Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()) {
                 $keranjang = Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $keranjang->delete();
 
-                // return response()->json(['status' => 'success', 'message' => "Produk berhasil dihapus dari keranjang"]);
-                return back();
+                return response()->json(['status' => 'success', 'message' => "Produk berhasil dihapus dari keranjang"]);
             }
         } else {
-            // return response()->json(['status' => 'success', 'message' => "Login terlebih dahulu"]);
-            return back();
+            return response()->json(['status' => 'success', 'message' => "Login terlebih dahulu"]);
         }
     }
 
@@ -92,8 +95,8 @@ class CartController extends Controller
                 $keranjang = Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $keranjang->prod_qty = $produk_qty;
                 $keranjang->update();
-                // return response()->json(['status' => "Quantity Update"]);
-                return back();
+                return response()->json(['status' => "Quantity Update"]);
+                // return back();
             }
         }
     }

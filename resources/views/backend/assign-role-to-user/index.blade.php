@@ -35,14 +35,14 @@
                                         <div class="form-group">
                                             <h6>Select Email</h6>
                                             <fieldset class="form-group">
-                                                <select class="form-select @error('email') is-invalid @enderror" name="email" id="email" required>
+                                                <select class="form-select @error('email') is-invalid @enderror selectEmail" name="email" id="selectEmail" required>
                                                     <option disabled selected>--Pilih Email--</option>
                                                     @foreach ($usersall as $item)
-                                                        @if ($item->email == 'febriye12@gmail.com')
-                                                        
-                                                        @else
-                                                        <option value="{{ $item->email }}">{{ $item->email }}</option>
-                                                        @endif
+                                                    @if ($item->email == 'febriye12@gmail.com')
+                                                    
+                                                    @else
+                                                    <option value="{{ $item->email }}">{{ $item->email }}</option>
+                                                    @endif
                                                     @endforeach
                                                 </select>
                                                 @error('email')
@@ -57,10 +57,10 @@
                                 <div class="row mb-4">
                                     <div class="col-sm-12">
                                         <div class="form-group mt-4">
-                                            <h6>Select Permission</h6>
+                                            <h6>Select Role</h6>
                                             <div class="form-group">
-                                                <select id="roles" name="roles[]" class="form-control @error('roles') is-invalid @enderror" multiple="multiple">
-                                                    <optgroup label="--Pilih Permission--">
+                                                <select id="roles" name="roles[]" class="form-control roles @error('roles') is-invalid @enderror">
+                                                    <optgroup label="--Pilih Role--">
                                                         @foreach ($roles as $item)
                                                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                                                         @endforeach
@@ -75,9 +75,11 @@
                                         </div>
                                     </div>
                                 </div>
+                                @can ('Role to User Store')
                                 <div>
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
+                                @endcan
                             </form>
                             
                         </div>
@@ -110,8 +112,10 @@
                                         <td>{{ implode(', ', $item->getRoleNames()->toArray() ) }}</td>
                                         <td class="text-center">
                                             <ul class="table-controls">
-                                                @if ($item->name == 'Super Admin')
+                                                @if ($item->email == 'febriye12@gmail.com')
+                                                @elseif($item->email == '')
                                                 @else
+                                                @can ('Role to User Edit')
                                                 <li>
                                                     <a href="{{ route('assignrole.edit', encrypt($item->id) ) }}"  class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" data-original-title="Edit">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 p-1 br-8 mb-1">
@@ -119,6 +123,7 @@
                                                         </svg>
                                                     </a>
                                                 </li>
+                                                @endcan
                                                 @endif
                                             </ul>
                                         </td>
@@ -139,9 +144,6 @@
         
     </div>
 </div>    
-
-
-
 
 
 @endsection

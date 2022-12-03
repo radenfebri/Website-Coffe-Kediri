@@ -51,7 +51,7 @@
                                         <div class="form-group mt-4">
                                             <h6>Select Permission</h6>
                                             <div class="form-group">
-                                                <select id="roles" name="roles[]" class="form-control @error('roles') is-invalid @enderror" multiple="multiple">
+                                                <select id="roles" name="roles[]" class="form-control @error('roles') is-invalid @enderror">
                                                     <optgroup label="--Pilih Permission--">
                                                         @foreach ($roles as $item)
                                                         <option {{ $user->roles()->find($item->id) ? 'selected' : '' }} value="{{ $item->id }}">{{ $item->name }}</option>
@@ -68,7 +68,9 @@
                                     </div>
                                 </div>
                                 <div>
+                                    @can ('Role to User Update')
                                     <button type="submit" class="btn btn-primary">Update</button>
+                                    @endcan
                                 </div>
                             </form>
                             

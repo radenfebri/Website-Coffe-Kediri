@@ -1,10 +1,40 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Home')
+@section('title', 'Putra Bagus - Website Jual Beli Kopi')
 
 @section('content')
 <main class="main">
     {{-- BANNER 1 --}}
+    @if ($slide->count() > 0)
+    <section class="home-slider position-relative pt-50">
+        <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
+            @foreach ($slide as $item)
+            <div class="single-hero-slider single-animation-wrap">
+                <div class="container">
+                    <div class="row align-items-center slider-animated-1">
+                        <div class="col-lg-5 col-md-6">
+                            <div class="hero-slider-content-2">
+                                <h4 class="animated">{{ $item->title1 }}</h4>
+                                <h2 class="animated fw-900">{{ $item->title2 }}</h2>
+                                <h1 class="animated fw-900 text-brand">{{ $item->title3 }}</h1>
+                                <p class="animated">{{ $item->deskripsi }}</p>
+                                <a class="animated btn btn-brush btn-brush-3" href="{{ $item->link }}"> {{ $item->button_text }} </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 col-md-6">
+                            <div class="single-slider-img single-slider-img-1">
+                                <img class="animated slider-1-1" src="{{ asset('storage/' . $item->image ) }}" loading="lazy" alt="{{ $item->title1 }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+            @endforeach
+            
+        </div>
+        <div class="slider-arrow hero-slider-1-arrow"></div>
+    </section>
+    @else
     <section class="home-slider position-relative pt-50">
         <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
             <div class="single-hero-slider single-animation-wrap">
@@ -21,7 +51,7 @@
                         </div>
                         <div class="col-lg-7 col-md-6">
                             <div class="single-slider-img single-slider-img-1">
-                                <img class="animated slider-1-1" src="{{ '/frontend/imgs/slider/slider-1.png' }}" alt="">
+                                <img class="animated slider-1-1" src="{{ asset('frontend') }}/imgs/slider/slider-1.png" loading="lazy" alt="">
                             </div>
                         </div>
                     </div>
@@ -41,7 +71,7 @@
                         </div>
                         <div class="col-lg-7 col-md-6">
                             <div class="single-slider-img single-slider-img-1">
-                                <img class="animated slider-1-2" src="{{ '/frontend/imgs/slider/slider-2.png' }}" alt="">
+                                <img class="animated slider-1-2" src="{{ asset('frontend') }}/imgs/slider/slider-2.png" loading="lazy" alt="">
                             </div>
                         </div>
                     </div>
@@ -50,6 +80,7 @@
         </div>
         <div class="slider-arrow hero-slider-1-arrow"></div>
     </section>
+    @endif
     
     {{-- FEATURE --}}
     <section class="featured section-padding position-relative">
@@ -57,37 +88,37 @@
             <div class="row">
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="{{ '/frontend/imgs/theme/icons/feature-1.png' }}" alt="">
+                        <img src="{{ '/frontend/imgs/theme/icons/feature-1.png' }}" loading="lazy" alt="">
                         <h4 class="bg-1">Free Shipping</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="{{ '/frontend/imgs/theme/icons/feature-2.png' }}" alt="">
+                        <img src="{{ '/frontend/imgs/theme/icons/feature-2.png' }}" loading="lazy" alt="">
                         <h4 class="bg-3">Online Order</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="{{ '/frontend/imgs/theme/icons/feature-3.png' }}" alt="">
+                        <img src="{{ '/frontend/imgs/theme/icons/feature-3.png' }}" loading="lazy" alt="">
                         <h4 class="bg-2">Save Money</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="{{ '/frontend/imgs/theme/icons/feature-4.png' }}" alt="">
+                        <img src="{{ '/frontend/imgs/theme/icons/feature-4.png' }}" loading="lazy" alt="">
                         <h4 class="bg-4">Promotions</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="{{ '/frontend/imgs/theme/icons/feature-5.png' }}" alt="">
+                        <img src="{{ '/frontend/imgs/theme/icons/feature-5.png' }}" loading="lazy" alt="">
                         <h4 class="bg-5">Happy Sell</h4>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-4 mb-md-3 mb-lg-0">
                     <div class="banner-features wow fadeIn animated hover-up">
-                        <img src="{{ '/frontend/imgs/theme/icons/feature-6.png' }}" alt="">
+                        <img src="{{ '/frontend/imgs/theme/icons/feature-6.png' }}" loading="lazy" alt="">
                         <h4 class="bg-6">24/7 Support</h4>
                     </div>
                 </div>
@@ -123,9 +154,9 @@
                                     <div class="product-img product-img-zoom">
                                         <a href="{{ route('detail.produk', $item->slug ) }}">
                                             @if ($item->cover == null)
-                                            <img class="default-img" src="{{ '/frontend/imgs/shop/product-1-1.jpg' }}" loading="lazy" alt="{{ $item->name }}">                                                
+                                            <img class="default-img produk-img" src="{{ '/frontend/imgs/shop/product-1-1.jpg' }}" loading="lazy" alt="{{ $item->name }}">                                                
                                             @else
-                                            <img class="default-img" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                            <img class="default-img produk-img" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
                                             @endif
                                         </a>
                                     </div>
@@ -148,11 +179,28 @@
                                         @if ($item->kategoriproduk == null)
                                         
                                         @else
-                                        <a href="#">{{ $item->kategoriproduk->name }}</a>
+                                        <a href="{{ route('kategori', $item->kategoriproduk->slug) }}">{{ $item->kategoriproduk->name }}</a>
                                         @endif
                                     </div>
                                     <h2><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h2>
-                                    <div class="rating-result" title="90%"></div>
+                                    
+                                    @if($item->ratings->count() > 0)
+                                    @php $item->ratings->count() @endphp
+                                    @php $bintang = $item->ratings->sum('stars_rated') / $item->ratings->count() @endphp
+                                    @else   
+                                    @php $bintang = 0 @endphp
+                                    @endif
+                                    
+                                    @php $rate_num = number_format($bintang) @endphp
+                                    <div class="rating">
+                                        @for($i = 1; $i <= $rate_num; $i++)
+                                        <i class="fas fa-star" style="color: #ffb300"></i>
+                                        @endfor
+                                        @for($j = $rate_num+1; $j <= 5; $j++)
+                                        <i class="fas fa-star" style="color: #b4afaf"></i>
+                                        @endfor
+                                    </div>
+                                    
                                     <div class="product-price">
                                         @if ($item->selling_price == null)
                                         <span>Rp.{{ number_format($item->original_price) }}</span>
@@ -198,7 +246,7 @@
                                     </div>
                                     <div class="product-action-1">
                                         <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn hover-up" ><i class="fi-rs-eye"></i></a>
-                                        <a href="#" aria-label="Tambah ke Favorit" class="action-btn hover-up"><i class="fi-rs-heart"></i></a>
+                                        <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn hover-up addToWishlist"><i class="fi-rs-heart"></i></a>
                                     </div>
                                     <div class="product-badges product-badges-position product-badges-mrg">
                                         @if ($item->popular == null)
@@ -213,11 +261,26 @@
                                         @if ($item->kategoriproduk == null)
                                         
                                         @else
-                                        <a href="#">{{ $item->kategoriproduk->name }}</a>
+                                        <a href="{{ route('kategori', $item->kategoriproduk->slug) }}">{{ $item->kategoriproduk->name }}</a>
                                         @endif
                                     </div>
                                     <h2><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h2>
-                                    <div class="rating-result" title="90%"></div>
+                                    @if($item->ratings->count() > 0)
+                                    @php $item->ratings->count() @endphp
+                                    @php $bintang = $item->ratings->sum('stars_rated') / $item->ratings->count() @endphp
+                                    @else   
+                                    @php $bintang = 0 @endphp
+                                    @endif
+                                    
+                                    @php $rate_num = number_format($bintang) @endphp
+                                    <div class="rating">
+                                        @for($i = 1; $i <= $rate_num; $i++)
+                                        <i class="fas fa-star" style="color: #ffb300"></i>
+                                        @endfor
+                                        @for($j = $rate_num+1; $j <= 5; $j++)
+                                        <i class="fas fa-star" style="color: #b4afaf"></i>
+                                        @endfor
+                                    </div>
                                     <div class="product-price">
                                         @if ($item->selling_price == null)
                                         <span>Rp.{{ number_format($item->original_price) }}</span>
@@ -263,7 +326,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Music</a>
+                                        <a href="{{ route('shop') }}">Music</a>
                                     </div>
                                     <h2><a href="product-details.html">Donec ut nisl rutrum</a></h2>
                                     <div class="rating-result" title="90%">
@@ -301,7 +364,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Music</a>
+                                        <a href="{{ route('shop') }}">Music</a>
                                     </div>
                                     <h2><a href="product-details.html">Nullam dapibus pharetra</a></h2>
                                     <div class="rating-result" title="90%">
@@ -339,7 +402,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Watch</a>
+                                        <a href="{{ route('shop') }}">Watch</a>
                                     </div>
                                     <h2><a href="product-details.html">Morbi dictum finibus</a></h2>
                                     <div class="rating-result" title="90%">
@@ -377,7 +440,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Music</a>
+                                        <a href="{{ route('shop') }}">Music</a>
                                     </div>
                                     <h2><a href="product-details.html">Nunc volutpat massa</a></h2>
                                     <div class="rating-result" title="90%">
@@ -415,7 +478,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Speaker</a>
+                                        <a href="{{ route('shop') }}">Speaker</a>
                                     </div>
                                     <h2><a href="product-details.html">Nullam ultricies luctus</a></h2>
                                     <div class="rating-result" title="90%">
@@ -453,7 +516,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Camera</a>
+                                        <a href="{{ route('shop') }}">Camera</a>
                                     </div>
                                     <h2><a href="product-details.html">Nullam mattis enim</a></h2>
                                     <div class="rating-result" title="90%">
@@ -491,7 +554,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Phone</a>
+                                        <a href="{{ route('shop') }}">Phone</a>
                                     </div>
                                     <h2><a href="product-details.html">Vivamus sollicitudin</a></h2>
                                     <div class="rating-result" title="90%">
@@ -525,7 +588,7 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="shop.html">Accessories </a>
+                                        <a href="{{ route('shop') }}">Accessories </a>
                                     </div>
                                     <h2><a href="product-details.html"> Donec ut nisl rutrum</a></h2>
                                     <div class="rating-result" title="90%">
@@ -554,18 +617,34 @@
     </section>
     
     {{-- BANNER 2 --}}
+    @if ($banner_promosi)
     <section class="banner-2 section-padding pb-0">
         <div class="container">
             <div class="banner-img banner-big wow fadeIn animated f-none">
-                <img src="{{ '/frontend/imgs/banner/banner-4.png' }}" alt="">
+                <img src="{{ asset('storage/' . $banner_promosi->image ) }}" loading="lazy" alt="{{ $banner_promosi->title1 }}">
                 <div class="banner-text d-md-block d-none">
-                    <h4 class="mb-15 mt-40 text-brand">Repair Services</h4>
-                    <h1 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h1>
-                    <a href="shop.html" class="btn">Learn More <i class="fi-rs-arrow-right"></i></a>
+                    <h4 class="mb-15 mt-40 text-brand">{{ $banner_promosi->title1 }}</h4>
+                    <h1 class="fw-600 mb-20">{{ $banner_promosi->title2 }} <br>{{ $banner_promosi->title3 }}</h1>
+                    <a href="{{ $banner_promosi->link }}" class="btn">{{ $banner_promosi->button_text }} <i class="fi-rs-arrow-right"></i></a>
                 </div>
             </div>
         </div>
     </section>
+    @else
+    <section class="banner-2 section-padding pb-0">
+        <div class="container">
+            <div class="banner-img banner-big wow fadeIn animated f-none">
+                <img src="{{ asset('frontend') }}/imgs/banner/banner-4.png" alt="">
+                <div class="banner-text d-md-block d-none">
+                    <h4 class="mb-15 mt-40 text-brand">Repair Services</h4>
+                    <h1 class="fw-600 mb-20">We're an Apple <br>Authorised Service Provider</h1>
+                    <a href="{{ route('shop') }}" class="btn">Learn More <i class="fi-rs-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
+    
     
     {{-- KATEGORI POPULER --}}
     <section class="popular-categories section-padding mt-15 mb-25">
@@ -574,58 +653,82 @@
             <div class="carausel-6-columns-cover position-relative">
                 <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-arrows"></div>
                 <div class="carausel-6-columns" id="carausel-6-columns">
-
+                    
                     @foreach ($kategoriproduk as $item)
-                        <div class="card-1">
-                            <figure class=" img-hover-scale overflow-hidden">
-                                <a href=""> <img src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
-                            </figure>
-                            <h5><a href="">{{ $item->name }}</a></h5>
-                        </div>
+                    <div class="card-1">
+                        <figure class=" img-hover-scale overflow-hidden">
+                            <div class="kategori-gambar">
+                                <a href="{{ route('kategori', $item->slug) }}"> <img class="kategori-img" src="{{ asset('storage/' . $item->image )}}" alt="{{ $item->name }}"></a>
+                            </div>
+                        </figure>
+                        <h5><a href="{{ route('kategori', $item->slug) }}">{{ $item->name }}</a></h5>
+                    </div>
                     @endforeach
-
+                    
                 </div>
             </div>
         </div>
     </section>
     
     {{-- BANNER 3 --}}
+    @if ($tiga_promosi->count() > 0)
+    <section class="banners mb-15">
+        <div class="container">
+            <div class="row">
+                @foreach ($tiga_promosi as $item)
+                <div class="col-lg-4 col-md-6">
+                    <div class="banner-img wow fadeIn animated">
+                        <img src="{{ asset('storage/' . $item->image ) }}" loading="lazy" alt="{{ $item->title1 }}">
+                        <div class="banner-text">
+                            <span>{{ $item->title1 }}</span>
+                            <h4>{{ $item->title1 }}</h4>
+                            <a href="{{ $item->link }}">{{ $item->button_text }} <i class="fi-rs-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+
+            </div>
+        </div>
+    </section>
+    @else
     <section class="banners mb-15">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
                     <div class="banner-img wow fadeIn animated">
-                        <img src="{{ '/frontend/imgs/banner/banner-1.png' }}" alt="">
+                        <img src="{{ asset('frontend') }}/imgs/banner/banner-1.png" alt="">
                         <div class="banner-text">
                             <span>Smart Offer</span>
                             <h4>Save 20% on <br>Woman Bag</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="{{ route('shop') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
                     <div class="banner-img wow fadeIn animated">
-                        <img src="{{ '/frontend/imgs/banner/banner-2.png' }}" alt="">
+                        <img src="{{ asset('frontend') }}/imgs/banner/banner-2.png" alt="">
                         <div class="banner-text">
                             <span>Sale off</span>
                             <h4>Great Summer <br>Collection</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="{{ route('shop') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 d-md-none d-lg-flex">
                     <div class="banner-img wow fadeIn animated  mb-sm-0">
-                        <img src="{{ '/frontend/imgs/banner/banner-3.png' }}" alt="">
+                        <img src="{{ asset('frontend') }}/imgs/banner/banner-3.png" alt="">
                         <div class="banner-text">
                             <span>New Arrivals</span>
                             <h4>Shop Today’s <br>Deals & Offers</h4>
-                            <a href="shop.html">Shop Now <i class="fi-rs-arrow-right"></i></a>
+                            <a href="{{ route('shop') }}">Shop Now <i class="fi-rs-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    @endif
     
     {{-- PRODUK TERBARU --}}
     <section class="section-padding">
@@ -639,21 +742,21 @@
                     Data Produk Masih Kosong
                     @else
                     @foreach ($produks as $item)
-                    <div class="product-cart-wrap small hover-up">
-                        <input type="hidden" value="{{ $item->id }}" class="prod_id" id="">
+                    <div class="product-cart-wrap small hover-up produk_data">
+                        <input type="hidden" value="{{ $item->id }}" class="prod_id">
                         <div class="product-img-action-wrap">
-                            <div class="product-img product-img-zoom">
-                                <a href="{{ route('detail.produk', $item->slug) }}">
-                                    @if ($item->cover == null)
-                                    <img class="default-img" src="{{ '/frontend/imgs/shop/product-2-1.jpg' }}" alt="{{ $item->name }}">
-                                    @else
-                                    <img class="default-img" src="{{ asset('storage/'. $item->cover ) }}" alt="{{ $item->name }}">
-                                    @endif
-                                </a>
+                                <div class="product-img product-img-zoom produk-terbaru">
+                                    <a href="{{ route('detail.produk', $item->slug) }}">
+                                        @if ($item->cover == null)
+                                        <img class="default-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" alt="{{ $item->name }}">
+                                        @else
+                                        <img class="default-img produk-img-terbaru" src="{{ asset('storage/'. $item->cover ) }}" alt="{{ $item->name }}">
+                                        @endif
+                                    </a>
                             </div>
                             <div class="product-action-1">
                                 <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn hover-up" ><i class="fi-rs-eye"></i></a>
-                                <a href="#" aria-label="Tambah ke Favorit" class="action-btn hover-up"><i class="fi-rs-heart"></i></a>
+                                <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn hover-up addToWishlist"><i class="fi-rs-heart"></i></a>
                             </div>
                             <div class="product-badges product-badges-position product-badges-mrg">
                                 @if ($item->popular == null)
@@ -665,10 +768,23 @@
                         </div>
                         <div class="product-content-wrap">
                             <h2><a href="{{ route('detail.produk', $item->slug) }}">{{ $item->name }}</a></h2>
-                            <div class="rating-result" title="90%">
-                                <span>
-                                </span>
+                            @if($item->ratings->count() > 0)
+                            @php $item->ratings->count() @endphp
+                            @php $bintang = $item->ratings->sum('stars_rated') / $item->ratings->count() @endphp
+                            @else   
+                            @php $bintang = 0 @endphp
+                            @endif
+                            
+                            @php $rate_num = number_format($bintang) @endphp
+                            <div class="rating">
+                                @for($i = 1; $i <= $rate_num; $i++)
+                                <i class="fas fa-star" style="color: #ffb300"></i>
+                                @endfor
+                                @for($j = $rate_num+1; $j <= 5; $j++)
+                                <i class="fas fa-star" style="color: #b4afaf"></i>
+                                @endfor
                             </div>
+                            
                             <div class="product-price">
                                 @if ($item->selling_price == null)
                                 <span>Rp.{{ number_format($item->original_price) }}</span>
@@ -682,39 +798,6 @@
                     @endforeach
                     @endif
                     
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    {{-- BRAND --}}
-    <section class="section-padding">
-        <div class="container">
-            <h3 class="section-title mb-20 wow fadeIn animated"><span>Featured</span> Brands</h3>
-            <div class="carausel-6-columns-cover position-relative wow fadeIn animated">
-                <div class="slider-arrow slider-arrow-2 carausel-6-columns-arrow" id="carausel-6-columns-3-arrows"></div>
-                <div class="carausel-6-columns text-center" id="carausel-6-columns-3">
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="{{ '/frontend/imgs/banner/brand-1.png' }}" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="{{ '/frontend/imgs/banner/brand-2.png' }}" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="{{ '/frontend/imgs/banner/brand-3.png' }}" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="{{ '/frontend/imgs/banner/brand-4.png' }}" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="{{ '/frontend/imgs/banner/brand-5.png' }}" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="{{ '/frontend/imgs/banner/brand-6.png' }}" alt="">
-                    </div>
-                    <div class="brand-logo">
-                        <img class="img-grey-hover" src="{{ '/frontend/imgs/banner/brand-3.png' }}" alt="">
-                    </div>
                 </div>
             </div>
         </div>

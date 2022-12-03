@@ -43,9 +43,9 @@ class LoginController extends Controller
             'email' => 'required|email|min:4|max:50',
             'password' => 'required'
         ]);
-    
+
         $remember_me = $request->has('remember_me') ? true : false;
-    
+
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')], $remember_me)) {
             if ($user->hasRole(['Super Admin', 'Admin'])) {
                 return redirect()->route('dashboard');

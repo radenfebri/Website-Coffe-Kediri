@@ -72,7 +72,9 @@
                                     </div>
                                 </div>
                                 <div>
+                                    @can('Permission to Role Update')
                                     <button type="submit" class="btn btn-primary">Update</button>
+                                    @endcan
                                 </div>
                             </form>
                             

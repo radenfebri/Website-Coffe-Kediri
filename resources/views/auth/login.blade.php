@@ -1,100 +1,91 @@
-@extends('auth.layouts.master')
+@extends('frontend.layouts.default')
 
-@section('title', "Login | Putra Teguh ")
+@section('title', 'Login | Putra Teguh')
 
 @section('content')
-
-<div class="row">
-    <div class="col-md-12 mb-3">
-        
-        <h2>Sign In</h2>
-        <p>Enter your email and password to login</p>
-        
+<main class="main">
+    <div class="page-header breadcrumb-wrap">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="{{ route('home') }}" rel="nofollow">Home</a>                    
+                <span></span> Login
+            </div>
+        </div>
     </div>
-    
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-        
-        <div class="col-md-12">
-            <div class="mb-3">
-                <label class="form-label">Email</label>
-                <input type="email" class="form-control @error('email') is-invalid @enderror"  name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
-                @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="mb-4">
-                <label class="form-label">Password</label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
-                @error('password')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-            </div>
-        </div>
-        <div class="col-12">
-            <div class="mb-3">
-                <div class="form-check form-check-primary form-check-inline">
-                    <input class="form-check-input me-3" value="remember_me" id="remember_me" name="remember_me" type="checkbox" id="form-check-default">
-                    <label class="form-check-label" for="form-check-default">
-                        Remember me
-                    </label>
+    <section class="pt-150 pb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 m-auto">
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <div class="login_wrap widget-taber-content p-30 background-white border-radius-10 mb-md-5 mb-lg-0 mb-sm-5">
+                                <div class="padding_eight_all bg-white">
+                                    <div class="heading_s1">
+                                        <h3 class="mb-30">Login</h3>
+                                    </div>
+                                    <form method="POST" action="{{ route('login') }}">
+                                        @csrf
+                                        <div class="form-group">
+                                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Your Email">
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password" autocomplete="current-password">
+                                            @error('password')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                        
+                                        <div class="login_footer form-group">
+                                            <div class="chek-form">
+                                                <div class="chek-form">
+                                                    <div class="custome-checkbox">
+                                                        <input class="form-check-input" type="checkbox" name="remember_me" id="exampleCheckbox1" value="remember_me" >
+                                                        <label class="form-check-label" for="exampleCheckbox1"><span>Remember me</span></label>
+                                                    </div>
+                                                </div>
+                                            </div>  
+                                            @if (Route::has('password.request'))
+                                            <a class="text-muted" href="{{ route('password.request') }}">Forgot password?</a>
+                                            @endif
+                                        </div>
+                                        
+                                        <div class="custom-login" style="align-content: center">
+                                            <div class="form-group custom-login-btn">
+                                                <button type="submit" class="btn btn-fill-out btn-block hover-up custom-login-button" name="login">Login</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    
+                                    <div class="form-group custom-login-google btn btn-fill-out btn-block hover-up">
+                                        <div class="img-custom-google-logo">
+                                            <img src="{{ asset('frontend') }}/imgs/logo/logo-google.png" alt="">
+                                        </div>
+                                        <div>
+                                            <a href="{{ route('google.login') }}" class="text-login-google" name="login">
+                                                Login with Google
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-1"></div>
+                        <div class="col-lg-6">
+                            <img src="{{ asset('frontend') }}/imgs/login.png" loading="lazy" class="image-register">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        
-        <div class="col-12">
-            <div class="mb-4">
-                <button type="submit" class="btn btn-primary w-100">SIGN IN</button>
-            </div>
-        </div>
-        
-    </form>
-    
-    
-    
-    <div class="col-12 mb-4">
-        <div class="">
-            <div class="seperator">
-                <hr>
-                <div class="seperator-text"> <span>Or continue with</span></div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="d-flex justify-content-center">
-        <div class="mb-4">
-            <a href="{{ route('google.login') }}">
-                <button class="btn  btn-social-login w-100 ">
-                    <img src="{{ asset('backend') }}/src/assets/img/google-gmail.svg" alt="" class="img-fluid">
-                    <span class="btn-text-inner">Google</span>
-                </button>
-            </a>
-        </div>
-    </div>
-    
-    <div class="col-12">
-        <div class="text-center">
-            <p class="mb-0">Dont't have an account ? <a href="{{ route('register') }}" class="text-warning">Sign Up</a></p>
-        </div>
-    </div>
-    
-    <div class="col-12">
-        <div class="text-center">
-            @if (Route::has('password.request'))
-            <a class="mb-0 text-warning" href="{{ route('password.request') }}">
-                Forgot Your Password?
-            </a>
-            @endif
-        </div>
-    </div>
-    
-    
-</div>
-
+    </section>
+</main>
 @endsection

@@ -8,7 +8,7 @@
 
 <body class="layout-boxed">
 
-    {{-- @include('sweetalert::alert') --}}
+    @include('sweetalert::alert')
     
     <!-- BEGIN LOADER -->
     <div id="load_screen"> <div class="loader"> <div class="loader-content">

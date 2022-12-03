@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Favorit;
+use App\Models\KategoriProduk;
 use App\Models\Produk;
+use App\Models\PromosiNavbar;
+use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,11 +16,15 @@ class FavoritController extends Controller
     public function favoritview()
     {
         $favorit = Favorit::where('user_id', Auth::id())->latest()->paginate(10);
-        return view('frontend.favorit.index', compact('favorit'));
-    }
- 
-    
+        $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
+        $promosi_navbar = PromosiNavbar::where('status', 1)->get();
+        $setting_website = SettingWebsite::first();
         
+        return view('frontend.favorit.index', compact('favorit', 'setting_website','kategoriproduk_nav', 'promosi_navbar'));
+    }
+    
+    
+    
     public function addFavorit(Request $request)
     {
         $produk_id = $request->input('produk_id');

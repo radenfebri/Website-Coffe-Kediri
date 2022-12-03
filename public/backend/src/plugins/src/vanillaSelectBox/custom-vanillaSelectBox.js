@@ -1,4 +1,4 @@
-selectBox = new vanillaSelectBox("#selectProgrammingLanguage", {
+selectBox = new vanillaSelectBox("#selectEmail", {
     "keepInlineStyles":true,
     "maxHeight": 200,
     "minWidth":210,

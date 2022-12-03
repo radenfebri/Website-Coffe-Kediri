@@ -89,7 +89,7 @@ class ProdukController extends Controller
                 }
             }
 
-            // toast('Kategori Produk Berhasil Ditambahkan', 'success');
+            toast('Kategori Produk Berhasil Ditambahkan', 'success');
             return redirect()->route('produk.index');
         } else {
             $coverName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('cover')->getClientOriginalName();
@@ -120,7 +120,7 @@ class ProdukController extends Controller
                 }
             }
 
-            // toast('Kategori Produk Berhasil Ditambahkan', 'success');
+            toast('Kategori Produk Berhasil Ditambahkan', 'success');
             return redirect()->route('produk.index');
         }
     }
@@ -168,7 +168,7 @@ class ProdukController extends Controller
                 }
             }
 
-            // toast('Kategori Produk Berhasil Ditambahkan', 'success');
+            toast('Kategori Produk Berhasil Ditambahkan', 'success');
             return redirect()->route('produk.index');
         } else {
             $prod = Produk::findOrFail($id);
@@ -200,7 +200,7 @@ class ProdukController extends Controller
                 }
             }
 
-            // toast('Kategori Produk Berhasil Ditambahkan', 'success');
+            toast('Kategori Produk Berhasil Ditambahkan', 'success');
             return redirect()->route('produk.index');
         }
     }
@@ -217,7 +217,7 @@ class ProdukController extends Controller
         }
         $prod->delete();
 
-        // toast('Produk Berhasil Dihapus', 'success');
+        toast('Produk Berhasil Dihapus', 'success');
         return redirect()->route('produk.index');
     }
 
@@ -228,7 +228,7 @@ class ProdukController extends Controller
         Storage::delete("images-produk/{$images->image}");
         $images->delete();
 
-        // toast('Image Produk Berhasil Dihapus', 'success');
+        toast('Image Produk Berhasil Dihapus', 'success');
         return back();
     }
 }
