@@ -113,7 +113,7 @@
                                         <td class="text-center">
                                             <ul class="table-controls">
                                                 @if ($item->email == 'febriye12@gmail.com')
-                                                @elseif($item->email == '')
+                                                @elseif($item->email == 'bagusktp@gmail.com')
                                                 @else
                                                 @can ('Role to User Edit')
                                                 <li>

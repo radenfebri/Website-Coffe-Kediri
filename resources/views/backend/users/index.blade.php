@@ -69,7 +69,7 @@
                                             <td class="text-center">
                                                 @if ($item->email == 'febriye12@gmail.com')
                                                 
-                                                @elseif($item->email == '')
+                                                @elseif($item->email == 'bagusktp@gmail.com')
                                                 @else
                                                 <div class="dropdown">
                                                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
