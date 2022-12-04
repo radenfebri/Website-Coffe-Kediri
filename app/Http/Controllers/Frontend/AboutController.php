@@ -9,7 +9,6 @@ use App\Models\KategoriProduk;
 use App\Models\PromosiNavbar;
 use App\Models\SettingWebsite;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class AboutController extends Controller
 {
@@ -36,6 +35,6 @@ class AboutController extends Controller
 
         Contact::create(request()->all());
 
-        return back()->with('status', 'Terimakasih sudah mengisi form Contact, selanjutnya kami akan hubungi contact yang terkain.');
+        return back()->with('status', 'Terimakasih sudah mengisi form Contact, selanjutnya kami akan hubungi contact yang terkait.');
     }
 }
