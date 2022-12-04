@@ -26,21 +26,15 @@ class AboutController extends Controller
     public function contact_store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|string|min:2|max:5',
             'email' => 'required|email',
             'phone' => 'required',
             'subject' => 'required',
-            'deskripsi' => 'required',
-        ],[
-            'name.required' => 'Nama Tidak Boleh Kosong',
-            'email.required' => 'Email Tidak Boleh Kosong',
-            'phone.required' => 'Nomer HP Tidak Boleh Kosong',
-            'subject.required' => 'Subject Tidak Boleh Kosong',
-            'deskripsi.required' => 'Deskripsi Tidak Boleh Kosong',
+            'deskripsi' => 'required|max:500',
         ]);
 
         Contact::create(request()->all());
 
-        return back()->with('status', 'Terimakasih sudah mengisi form Contact, selanjutnya kami akan hubungi contact yang terkain.');
+        return back()->with('status', 'Terimakasih sudah mengisi form Contact, selanjutnya kami akan hubungi contact yang terkait.');
     }
 }

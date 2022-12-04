@@ -28,7 +28,7 @@ class KategoriProdukController extends Controller
         $request->validate([
             'name' => 'required|unique:kategori_produks,name|min:3|max:50',
             'description' => 'required|min:3|max:500',
-            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
 
@@ -73,7 +73,7 @@ class KategoriProdukController extends Controller
         $request->validate([
             'name' => 'required|min:3|max:50|unique:kategori_produks,name,' . $id,
             'description' => 'required|min:3|max:500',
-            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
 
