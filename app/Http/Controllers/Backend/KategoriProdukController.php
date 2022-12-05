@@ -73,7 +73,7 @@ class KategoriProdukController extends Controller
         $request->validate([
             'name' => 'required|min:3|max:50|unique:kategori_produks,name,' . $id,
             'description' => 'required|min:3|max:500',
-            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
 

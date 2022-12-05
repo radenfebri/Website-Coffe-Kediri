@@ -25,7 +25,7 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'atas_nama' => 'required',
             'kategori' => 'required',
         ]);
@@ -69,11 +69,10 @@ class PaymentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'atas_nama' => 'required',
             'kategori' => 'required',
         ]);
-
 
         if (empty($request->file('image'))) {
             $payment = Payment::findOrFail($id);
@@ -83,6 +82,14 @@ class PaymentController extends Controller
                 'kategori' => $request->kategori,
                 'nama_bank' => $request->nama_bank,
             ]);
+
+            if ($request->hasFile('image')) {
+                $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
+                $image = $request->file('image')->storeAs('image-payment', $imageName);
+                Payment::create([
+                    'image' => $image,
+                ]);
+            }
 
             toast('Nomor Rekening Berhasil Diubah', 'success');
             return redirect()->route('payment.index');
@@ -98,9 +105,10 @@ class PaymentController extends Controller
                 'nama_bank' => $request->nama_bank,
                 'image' => $image,
             ]);
+
+            toast('Nomor Rekening Berhasil Diubah', 'success');
+            return redirect()->route('payment.index');
         }
-        toast('Nomor Rekening Berhasil Diubah', 'success');
-        return redirect()->route('payment.index');
     }
 
 
@@ -108,9 +116,15 @@ class PaymentController extends Controller
     public function destroy($id)
     {
         $payment = Payment::findOrFail(decrypt($id));
-        Storage::delete($payment->image);
-        $payment->delete();
-        toast('Nomor Rekening Berhasil Dihapus', 'success');
-        return back();
+        if ($payment->image == null) {
+            $payment->delete();
+            toast('Nomor Rekening Berhasil Dihapus', 'success');
+            return back();
+        } else {
+            Storage::delete($payment->image);
+            $payment->delete();
+            toast('Nomor Rekening Berhasil Dihapus', 'success');
+            return back();
+        }
     }
 }
