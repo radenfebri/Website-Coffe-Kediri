@@ -111,7 +111,6 @@ Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function 
 // SINGLE SIGN ON GOOGLE
 Route::get('auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
-Route::post('auth/google/onetap', [GoogleController::class, 'OneTap']);
 Route::get('auth/google/update-password', [GoogleController::class, 'update_password_google'])->name('google.update-password');
 Route::post('auth/google/update-password', [GoogleController::class, 'update_data_password_google'])->name('update_data_password_google');
 
