@@ -5,9 +5,9 @@
                 <div class="col-xl-3 col-lg-4">
                 </div>
                 <div class="col-xl-6 col-lg-4">
-                    <div class="text-center">
+                    <div class="promosi-navbar-head">
                         <div id="news-flash" class="d-inline-block">
-                            <ul>
+                            <ul class="promosi-navbar">
                                 @if ($promosi_navbar->count() > 0)
                                 @foreach ($promosi_navbar as $item)
                                 <li>{{ $item->title }} <a href="{{ $item->link }}">{{ $item->button_text }}</a></li>                                

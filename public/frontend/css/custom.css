@@ -7,6 +7,21 @@
   margin-left: 240px;
 }
 
+.promosi-navbar-head{
+  display: flex;
+  width: 100%;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.promosi-navbar{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
 /* setting page */
 .form-setting{
   margin-top: 50px;
