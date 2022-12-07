@@ -58,7 +58,7 @@
                                             @else
                                             @can ('Semua User Login')
                                                 @env('local')
-                                                <span class="shadow-none badge badge-primary">
+                                                <span class="">
                                                     <x-login-link :user-attributes="['role' => '{{ implode(', ', $item->getRoleNames()->toArray() ) }}']" email="{{ $item->email }}" target="_blank" label="Login as {{ $item->name }}"/>
                                                 </span>
                                                 @endenv

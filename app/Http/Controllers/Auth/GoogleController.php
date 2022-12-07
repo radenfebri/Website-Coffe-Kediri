@@ -53,6 +53,39 @@ class GoogleController extends Controller
     }
 
 
+
+    public function OneTap(Request $request)
+    {
+
+        try {
+            $user = Socialite::driver('google')->user();
+
+            $finduser = User::where('google_id', $user->id)->first();
+
+            if ($finduser) {
+
+                Auth::login($finduser);
+
+                return redirect()->intended('/');
+            } else {
+                $newUser = User::create([
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'google_id' => $user->id,
+                    'password' => encrypt('default123')
+                ]);
+                $newUser->assignRole('User');
+
+                Auth::login($newUser);
+
+                return redirect()->route('google.update-password');
+            }
+        } catch (Exception $e) {
+            return redirect()->route('login')->with('error', 'Akun anda login tidak menggunakan gmail');
+        }
+    }
+
+
     public function update_password_google()
     {
         $promosi_navbar = PromosiNavbar::where('status', 1)->get();
@@ -61,8 +94,6 @@ class GoogleController extends Controller
 
         return view('auth.passwords.update-password', compact('kategoriproduk_nav', 'setting_website', 'promosi_navbar'));
     }
-
-
 
 
     public function update_data_password_google(Request $request)

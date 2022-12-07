@@ -1,3 +1,3 @@
-<button class="{{ $attributes->has('class') ? $attributes->get('class') : 'underline' }}" type="submit">
+<button class="{{ $attributes->has('class') ? $attributes->get('class') : 'underline' }} badge badge-success" type="submit">
     {{ $label }}
 </button>

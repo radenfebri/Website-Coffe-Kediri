@@ -10,7 +10,7 @@
             <div class="breadcrumb">
                 <a href="{{ route('home') }}" rel="nofollow">Home</a>
                 <span></span>
-                <a href="#" rel="nofollow">{{ $produk->kategoriproduk->name }}</a>
+                <a href="{{ route('kategori', $produk->kategoriproduk->slug) }}" rel="nofollow">{{ $produk->kategoriproduk->name }}</a>
                 <span></span> {{ $produk->name }}
             </div>
         </div>

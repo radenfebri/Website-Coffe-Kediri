@@ -39,7 +39,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div>                
             </div>
         </div>
     </div>
@@ -183,9 +183,9 @@
                 </div>
                 <div class="hotline d-none d-lg-block">
                     @if ($setting_website)
-                        <p><i class="fi-rs-smartphone"></i><span>Customer Service</span> {{ $setting_website->phone }} </p>
+                    <p><i class="fi-rs-smartphone"></i><span>Customer Service</span> {{ $setting_website->phone }} </p>
                     @else
-                        
+                    
                     @endif
                 </div>
                 <p class="mobile-promotion">Happy <span class="text-brand">Mother's Day</span>. Big Sale Up to 40%</p>
@@ -224,9 +224,6 @@
         </div>
     </div>
 </header>
-
-
-
 <div class="mobile-header-active mobile-header-wrapper-style">
     <div class="mobile-header-wrapper-inner">
         <div class="mobile-header-top">
@@ -279,10 +276,10 @@
                                 @guest
                                 
                                 @endguest
-                                    @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
-                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    @else
-                                    @endif
+                                @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                @else
+                                @endif
                                 <li><a href="{{ route('orderHistory') }}">History Order</a></li>
                                 <li><a href="{{ route('setting') }}">Setting</a></li>
                                 <li><a href="{{ route('changePassword') }}">Change Password</a></li>
@@ -315,20 +312,20 @@
                 @endguest
                 <div class="single-mobile-header-info">
                     @if ($setting_website)
-                        <a href="https://wa.me/{{ $setting_website->phone }}/"> {{ $setting_website->phone }}</a>
+                    <a href="https://wa.me/{{ $setting_website->phone }}/"> {{ $setting_website->phone }}</a>
                     @else
-                        
+                    
                     @endif
                 </div>
             </div>
             <div class="mobile-social-icon">
                 <h5 class="mb-15 text-grey-4">Follow Us</h5>
                 @if ($setting_website)
-                    <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}"></a>
-                    <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}"></a>
-                    <a href="{{ $setting_website->youtube }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-youtube.svg" alt="{{ $setting_website->youtube }}"></a>
+                <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}"></a>
+                <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}"></a>
+                <a href="{{ $setting_website->youtube }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-youtube.svg" alt="{{ $setting_website->youtube }}"></a>
                 @else
-                    
+                
                 @endif
             </div>
         </div>

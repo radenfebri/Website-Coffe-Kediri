@@ -23,7 +23,7 @@ class DetailController extends Controller
             $produk = Produk::where('slug', $slug)->first();
             $images = MultiImage::where('prod_id', $produk->id)->get();
             $kategori = KategoriProduk::where('is_active', 1)->limit(8)->get();
-            $kategoriproduk = Produk::where('kategori_id', $produk->id)->latest()->limit(4)->get();
+            $kategoriproduk = Produk::where('kategori_id', $produk->id)->latest()->where('is_active', 1)->limit(4)->get();
             $newproduk = Produk::where('is_active', 1)->latest()->limit(3)->get();
             $ratings = Rating::where('prod_id', $produk->id)->where('status', 1)->get();
             $rating_sum = Rating::where('prod_id', $produk->id)->sum('stars_rated');
