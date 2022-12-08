@@ -21,20 +21,17 @@ jobs:
           name: dist
           path: dist
   deploy:
-    name: Deploy 🚀
-    needs: build
+    name: 🎉 Deploy
     runs-on: ubuntu-latest
-    steps: 
-      - name: Checkout repository
-        uses: actions/checkout@main
-      - name: Download artifact
-        uses: actions/download-artifact@main
-        with: 
-          name: dist
-          path: dist
-      - name: Sync files to hosting
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
-        with: 
-          server: ${{ secrets.FTP_SERVER }}
-          username:  ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v2
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@4.3.2
+      with:
+        server: ${{ secrets.FTP_SERVER }}
+        username:  ${{ secrets.FTP_USER }}
+        password: ${{ secrets.FTP_PASS }}
+        protocol: ftps
+        port: ${{ secrets.FTP_PORT }}
