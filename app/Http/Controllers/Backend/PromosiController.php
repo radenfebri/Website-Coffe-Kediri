@@ -27,6 +27,9 @@ class PromosiController extends Controller
     public function promosi_navbar_store(Request $request)
     {
         $request->validate([
+            'title' => 'required',
+            'link' => 'required',
+            'button_text' => 'required',
             'status' => 'required',
         ]);
 
@@ -92,6 +95,10 @@ class PromosiController extends Controller
         $request->validate([
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
+            'title1' => 'required',
+            'title2' => 'required',
+            'link' => 'required',
+            'button_text' => 'required',
         ]);
 
 
@@ -180,6 +187,11 @@ class PromosiController extends Controller
         $request->validate([
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
+            'title1' => 'required',
+            'title2' => 'required',
+            'title3' => 'required',
+            'link' => 'required',
+            'button_text' => 'required',
         ]);
 
 

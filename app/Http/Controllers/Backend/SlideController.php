@@ -27,6 +27,12 @@ class SlideController extends Controller
         $request->validate([
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'status' => 'required',
+            'title1' => 'required',
+            'title2' => 'required',
+            'title3' => 'required',
+            'link' => 'required',
+            'deskripsi' => 'required',
+            'button_text' => 'required',
         ]);
 
 

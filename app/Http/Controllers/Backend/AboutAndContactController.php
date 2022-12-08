@@ -28,6 +28,8 @@ class AboutAndContactController extends Controller
         $request->validate([
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'deskripsi' => 'required',
+            'title1' => 'required',
+            'title2' => 'required',
         ]);
 
         $imageName = date(now()->format('d-m-Y-H-i-s')) . '_' . $request->file('image')->getClientOriginalName();
