@@ -1,7 +1,49 @@
-
-.main-menu{
-  margin-left: 300px;
+.header-bawah{
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
+
+.header-tengah{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.logo-header{
+  height: 53px;
+  widht: 220px;
+}
+
+.logo-header-mobile{
+  display: flex;
+  height: 53px;
+  widht: 220px;
+}
+
+.header-dropdown{
+  width: 170px;
+  height: 270px;
+}
+
+.logo-header a img{
+  height: 53px;
+  widht: 220px;
+  object-fit: contain;
+}
+.logo-header-mobile a img{
+  height: 53px;
+  widht: 220px;
+  object-fit: contain;
+}
+
+/* .main-menu{
+  /* margin-left: 300px; */
+
+  /*
+} */
+
+
 
 .navbar-login{
   margin-left: 240px;
