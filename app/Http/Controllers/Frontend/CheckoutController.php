@@ -67,7 +67,7 @@ class CheckoutController extends Controller
                 }
             }
 
-            $order->total_price = $total + rand(100, 900);
+            $order->total_price = $total + rand(11, 99);
 
             $order->tracking_no = 'PUTEKDR' . rand(111111, 999999);
 

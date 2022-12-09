@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\KategoriProduk;
 use App\Models\Keranjang;
+use App\Models\Ongkir;
 use App\Models\Produk;
 use App\Models\PromosiNavbar;
 use App\Models\SettingWebsite;
+use App\Models\User;
+use Google\Service\CloudSearch\Id;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,8 +22,9 @@ class CartController extends Controller
         $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
         $promosi_navbar = PromosiNavbar::where('status', 1)->get();
         $setting_website = SettingWebsite::first();
+        $user = User::where('ongkir_id', Auth::user()->ongkir_id)->get();
 
-        return view('frontend.cart.index', compact('produk', 'setting_website','kategoriproduk_nav', 'promosi_navbar'));
+        return view('frontend.cart.index', compact('produk', 'setting_website', 'kategoriproduk_nav', 'promosi_navbar', 'user'));
     }
 
 
@@ -88,10 +92,8 @@ class CartController extends Controller
         $prod_id = $request->input('prod_id');
         $produk_qty = $request->input('prod_qty');
 
-        if(Auth::check())
-        {
-            if(Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists())
-            {
+        if (Auth::check()) {
+            if (Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->exists()) {
                 $keranjang = Keranjang::where('prod_id', $prod_id)->where('user_id', Auth::id())->first();
                 $keranjang->prod_qty = $produk_qty;
                 $keranjang->update();

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('no_hp')->nullable();
+            $table->bigInteger('ongkir_id')->nullable();
             $table->longText('alamat')->nullable();
             $table->string('email')->unique();
             $table->string('status')->nullable()->default('1');
