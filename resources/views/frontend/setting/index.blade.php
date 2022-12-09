@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="form-setting">
+        <div class="form-setting">
         <div class="container">
             <form action="{{ route('updatedata') }}" method="POST">
                 @csrf
