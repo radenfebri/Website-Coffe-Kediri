@@ -71,7 +71,7 @@
                 
                 
                 <div class="mb-3">
-                    <label class="form-label">Alamat <span style="color: red">*</span></label>
+                    <label class="form-label">Alamat Lengkap<span style="color: red">*</span></label>
                     <div class="form-group mb-30">
                         <textarea rows="5" placeholder="Alamat" name="alamat">{{ old('alamat') ?? Auth::user()->alamat }}</textarea>
                         @error('alamat')

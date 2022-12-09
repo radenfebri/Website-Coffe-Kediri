@@ -23,6 +23,10 @@
             <form action="{{ route('placeorder') }}" method="POST">
                 @csrf
                 
+                @foreach ($user as $data)
+                    @php $kirim = $data->ongkir->harga @endphp
+                @endforeach
+                
                 <div class="row">
                     <div class="col-md-6">
                         <div class="mb-25">
@@ -37,9 +41,12 @@
                         <div class="form-group">
                             <input value="{{ Auth::user()->no_hp }}" type="text" name="no_hp" placeholder="No WA" readonly>
                         </div>
+                        <div class="form-group">
+                            <input value="{{ Auth::user()->ongkir->kecamatan }}" type="text" name="ongkir_id" placeholder="Kecamatan" readonly>
+                        </div>
                         
                         <div class="mb-20">
-                            <h5>Alamat</h5>
+                            <h5>Alamat Lengkap</h5>
                         </div>
                         <div class="form-group mb-30">
                             <textarea rows="1" placeholder="Alamat" name="alamat" readonly>{{ Auth::user()->alamat }}</textarea>
@@ -67,7 +74,7 @@
                                     </div>
                                 </div>
                                 @php $total = 0; @endphp
-                                        
+                                
                                 @foreach ($produk as $item)
                                 <div class="isi-produk-pembayaran">     
                                     <div class="img-produk-pembayaran">
@@ -88,25 +95,33 @@
                                     </div>
                                 </div>
                                 @if ($item->produks->selling_price == null)
-                                        @php $total += $item->produks->original_price * $item->prod_qty; @endphp
-                                        @else
-                                        @php $total += $item->produks->selling_price * $item->prod_qty; @endphp
-                                        @endif
-                                        @endforeach
-                                   <div class="judul-produk-pembayaran">
+                                @php $total += $item->produks->original_price * $item->prod_qty; @endphp
+                                @else
+                                @php $total += $item->produks->selling_price * $item->prod_qty; @endphp
+                                @endif
+                                @endforeach
+                                <div class="judul-produk-pembayaran">
                                     <div class="produk-pembayaran">
-                                         <h5>Ongkir</h5>
+                                        <h5>Sub Total</h5>
                                     </div>
                                     <div class="total-produk-pembayaran">
-                                        <h5>Free Ongkir</h5>
+                                        <h5>Rp. {{ number_format($total) }}</h5>
                                     </div>
                                 </div>
                                 <div class="judul-produk-pembayaran">
                                     <div class="produk-pembayaran">
-                                        <h5>Total Order</h5>
+                                        <h5>Ongkos Kirim</h5>
                                     </div>
                                     <div class="total-produk-pembayaran">
-                                        <h5>Rp. {{ number_format($total) }}</h5>
+                                        <h5>Rp. {{ number_format($kirim) }}</h5>
+                                    </div>
+                                </div>
+                                <div class="judul-produk-pembayaran">
+                                    <div class="produk-pembayaran">
+                                        <h5>Total Keseluruhan</h5>
+                                    </div>
+                                    <div class="total-produk-pembayaran">
+                                        <h5>Rp. {{ number_format($total + $kirim) }}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +134,7 @@
                                     <div class="custome-radio">
                                         <select class="form-control @error('metode') is-invalid @enderror" name="metode">
                                             @foreach ($payment as $item)
-                                                <option value="{{ $item->nama_bank }}">{{ $item->nama_bank }}</option>
+                                            <option value="{{ $item->nama_bank }}">{{ $item->nama_bank }}</option>
                                             @endforeach
                                         </select>
                                         @error('metode')

@@ -13,6 +13,7 @@ use App\Models\Payment;
 use App\Models\Produk;
 use App\Models\PromosiNavbar;
 use App\Models\SettingWebsite;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,12 +27,14 @@ class CheckoutController extends Controller
         $promosi_navbar = PromosiNavbar::where('status', 1)->get();
         $setting_website = SettingWebsite::first();
         $payment = Payment::all();
+        $user = User::where('ongkir_id', Auth::user()->ongkir_id)->get();
+
 
         if (Auth::user()->no_hp == null) {
             return redirect()->route('setting')->with('error', 'Silahkan lengkapi data diri anda terlebih dahulu');
         } else {
             if ($cart_check > 0) {
-                return view('frontend.checkout.index', compact('produk', 'setting_website', 'kategoriproduk_nav', 'payment', 'promosi_navbar'));
+                return view('frontend.checkout.index', compact('produk', 'setting_website', 'kategoriproduk_nav', 'payment', 'promosi_navbar', 'user'));
             } else {
                 return redirect()->route('cart')->with('error', 'Keranjang masih kosong');
             }
@@ -41,6 +44,11 @@ class CheckoutController extends Controller
 
     public function placeorder(Request $request)
     {
+        $user = User::where('ongkir_id', Auth::user()->ongkir_id)->get();
+        foreach ($user as $data) {
+            $kirim = $data->ongkir->harga;
+        }
+
         $cart_check = Keranjang::where('user_id', Auth::id())->count();
         if ($cart_check > 0) {
             $request->validate([
@@ -61,9 +69,9 @@ class CheckoutController extends Controller
             $cartitems_total = Keranjang::where('user_id', Auth::id())->get();
             foreach ($cartitems_total as $prod) {
                 if ($prod->produks->selling_price == null) {
-                    $total += ($prod->produks->original_price * $prod->prod_qty);
+                    $total += ($prod->produks->original_price * $prod->prod_qty + $kirim);
                 } else {
-                    $total += ($prod->produks->selling_price * $prod->prod_qty);
+                    $total += ($prod->produks->selling_price * $prod->prod_qty + $kirim);
                 }
             }
 
