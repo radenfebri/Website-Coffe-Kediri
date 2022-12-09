@@ -93,6 +93,14 @@
                                         @php $total += $item->produks->selling_price * $item->prod_qty; @endphp
                                         @endif
                                         @endforeach
+                                   <div class="judul-produk-pembayaran">
+                                    <div class="produk-pembayaran">
+                                         <h5>Ongkir</h5>
+                                    </div>
+                                    <div class="total-produk-pembayaran">
+                                        <h5>Free Ongkir</h5>
+                                    </div>
+                                </div>
                                 <div class="judul-produk-pembayaran">
                                     <div class="produk-pembayaran">
                                         <h5>Total Order</h5>

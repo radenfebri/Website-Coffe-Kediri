@@ -29,7 +29,7 @@
                         <div class="pembayaran-text">
                             <p>Status</p>
                             @if ($orders->status == 0)
-                            <p style="color: rgb(255, 0, 0)">Belum Bayar</p>
+                            <p style="color: rgb(255, 0, 0)">Bayar Sekarang</p>
                             @elseif($orders->status == 1)
                             <p style="color: rgb(8, 3, 249)">Proses Packing</p>
                             @elseif($orders->status == 2)
@@ -101,7 +101,7 @@
                         </div>
                         {{-- <p><h5>Total yang dibayarkan harus sesuai dengan kode unik, 3 digit angka di belakang koma adalah kode unik transaksi anda.</h5></p> --}}
                     </div>
-                    {{-- <a href="#" class="btn btn-pembayaran">Konfirmasi Pembayaran</a> --}}
+                    <a href="#" class="btn btn-pembayaran">Pesanan Diterima</a>
                 </div>
             </div>
             

@@ -16,34 +16,47 @@
         <div class="container">
             <form action="{{ route('updatedata') }}" method="POST">
                 @csrf
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Nama <span style="color: red">*</span></label>
-                    <input type="text" placeholder="Nama" class="form-control  @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? Auth::user()->name }}">
-                    @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                <div class="seting-layout">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Nama <span style="color: red">*</span></label>
+                        <input type="text" placeholder="Nama" class="form-control  @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? Auth::user()->name }}">
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+    
+                    <div class="mb-3">
+                        <label class="form-label">No WhatsApp <span style="color: red">*</span></label>
+                        <input type="number" placeholder="No Hp" class="form-control  @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') ?? Auth::user()->no_hp }}">
+                        @error('no_hp')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
-
-                <div class="mb-3">
-                    <label class="form-label">No WhatsApp <span style="color: red">*</span></label>
-                    <input type="number" placeholder="No Hp" class="form-control  @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') ?? Auth::user()->no_hp }}">
-                    @error('no_hp')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Email <span style="color: red">*</span></label>
-                    <input type="email" placeholder="Email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? Auth::user()->email }}">
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                <div class="seting-layout">
+                    <div class="mb-3">
+                        <label class="form-label">Email <span style="color: red">*</span></label>
+                        <input type="email" placeholder="Email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? Auth::user()->email }}">
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Kecamatan <span style="color: red">*</span></label>
+                        <input type="text" placeholder="Nama" class="form-control  @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? Auth::user()->name }}">
+                        @error('name')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                 </div>
                 
                 <div class="mb-3">

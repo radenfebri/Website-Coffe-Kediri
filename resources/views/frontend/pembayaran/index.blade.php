@@ -29,7 +29,7 @@
                         <div class="pembayaran-text">
                             <p>Status</p>
                             @if ($orders->status == 0)
-                            <p style="color: rgb(255, 0, 0)">Belum Bayar</p>
+                            <p style="color: rgb(255, 0, 0)">Bayar Sekarang</p>
                             @elseif($orders->status == 1)
                             <p style="color: rgb(8, 3, 249)">Proses Packing</p>
                             @elseif($orders->status == 2)

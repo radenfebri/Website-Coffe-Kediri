@@ -82,7 +82,10 @@
                                     <span class="pro-count blue cart-count">0</span>
                                     @endguest
                                 </a>
-                            </div>                    
+                            </div> 
+                            @guest
+                             
+                            @else
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="cart.html">
                                     <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-user.svg">
@@ -108,6 +111,7 @@
                                     </ul>
                                 </div>
                             </div>
+                            @endguest                   
                         </div>
                     </div>
                 </div>

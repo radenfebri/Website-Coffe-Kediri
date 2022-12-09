@@ -82,7 +82,7 @@
                                         </td>
                                         <td class="text-right" data-title="Cart">
                                             @if ($item->status == 0)
-                                            <a href="{{ route('pembayaran', encrypt($item->id) ) }}" class="order-history-link"><span style="color: rgb(255, 0, 0)">Belum Bayar</span></a>
+                                            <a href="{{ route('pembayaran', encrypt($item->id) ) }}" class="order-history-link"><span style="color: rgb(255, 0, 0)">Bayar Sekarang</span></a>
                                             @elseif($item->status == 1)
                                             <a href="{{ route('packing', encrypt($item->id) ) }}" class="order-history-link"><span style="color: rgb(8, 3, 249)">Proses Packing</span></a>
                                             @elseif($item->status == 2)
@@ -171,7 +171,7 @@
                                 <p>Status</p>
                                 <p>
                                     @if ($item->status == 0)
-                                    <span style="color: rgb(255, 0, 0)">Belum Bayar</span>
+                                    <span style="color: rgb(255, 0, 0)">Bayar Sekarang</span>
                                     @elseif($item->status == 1)
                                     <span style="color: rgb(8, 3, 249)">Proses Packing</span>
                                     @elseif($item->status == 2)
@@ -238,7 +238,7 @@
                                 <p>Status</p>
                                 <p>
                                     @if ($item->status == 0)
-                                    <span style="color: rgb(255, 0, 0)">Belum Bayar</span>
+                                    <span style="color: rgb(255, 0, 0)">Bayar Sekarang</span>
                                     @elseif($item->status == 1)
                                     <span style="color: rgb(8, 3, 249)">Proses Packing</span>
                                     @elseif($item->status == 2)
@@ -305,7 +305,7 @@
                                 <p>Status</p>
                                 <p>
                                     @if ($item->status == 0)
-                                    <span style="color: rgb(255, 0, 0)">Belum Bayar</span>
+                                    <span style="color: rgb(255, 0, 0)">Bayar Sekarang</span>
                                     @elseif($item->status == 1)
                                     <span style="color: rgb(8, 3, 249)">Proses Packing</span>
                                     @elseif($item->status == 2)
@@ -372,7 +372,7 @@
                                 <p>Status</p>
                                 <p>
                                     @if ($item->status == 0)
-                                    <span style="color: rgb(255, 0, 0)">Belum Bayar</span>
+                                    <span style="color: rgb(255, 0, 0)">Bayar Sekarang</span>
                                     @elseif($item->status == 1)
                                     <span style="color: rgb(8, 3, 249)">Proses Packing</span>
                                     @elseif($item->status == 2)

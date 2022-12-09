@@ -28,7 +28,7 @@
                                     
                                     <!-- MAIN SLIDES -->
                                     @if ($images->count() > 0)
-                                    <div class="product-image-slider">
+                                    <div class="product-image-slider produk-img-detail">
                                         @foreach ($images as $key => $item)
                                         <figure class="border-radius-10">
                                             <img src="{{ asset('storage/images-produk/'. $item->image) }}" loading="lazy" alt="{{ $produk->name }}">
@@ -66,7 +66,7 @@
                                     <div class="slider-nav-thumbnails pl-15 pr-15">
                                         @if ($images->count() > 0)
                                         @foreach ($images as $item)
-                                        <div><img src="{{ asset('storage/images-produk/'. $item->image) }}" loading="lazy" alt="{{ $produk->name }}"></div>
+                                        <div><img src="{{ asset('storage/images-produk/'. $item->image) }}" class="produk-img-detail-kecil" loading="lazy" alt="{{ $produk->name }}"></div>
                                         @endforeach
                                         @else
                                         <div><img src="{{ asset('frontend') }}/imgs/shop/thumbnail-4.jpg" loading="lazy" alt="{{ $produk->name }}"></div>
