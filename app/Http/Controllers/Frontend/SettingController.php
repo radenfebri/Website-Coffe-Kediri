@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\KategoriProduk;
+use App\Models\Ongkir;
 use App\Models\PromosiNavbar;
 use App\Models\SettingWebsite;
 use App\Models\User;
@@ -16,8 +17,9 @@ class SettingController extends Controller
         $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
         $promosi_navbar = PromosiNavbar::where('status', 1)->get();
         $setting_website = SettingWebsite::first();
+        $ongkir = Ongkir::latest()->get();
 
-        return view('frontend.setting.index', compact('kategoriproduk_nav', 'setting_website','promosi_navbar'));
+        return view('frontend.setting.index', compact('kategoriproduk_nav', 'setting_website', 'promosi_navbar', 'ongkir'));
     }
 
     public function updatedata(Request $request)
@@ -27,6 +29,7 @@ class SettingController extends Controller
             'name' => 'required|min:3|max:191|string',
             'no_hp' => 'required|min:10|max:30|string',
             'alamat' => 'required',
+            'ongkir_id' => 'required',
         ]);
 
         if ($request->email != auth()->user()->email) {
@@ -35,6 +38,7 @@ class SettingController extends Controller
                 'email' => $request->email,
                 'no_hp' => $request->no_hp,
                 'alamat' => $request->alamat,
+                'ongkir_id' => $request->ongkir_id,
                 $request->email == auth()->user()->email ? '' : 'email_verified_at' => null,
             ]);
         } else {
@@ -43,6 +47,7 @@ class SettingController extends Controller
                 'email' => $request->email,
                 'no_hp' => $request->no_hp,
                 'alamat' => $request->alamat,
+                'ongkir_id' => $request->ongkir_id,
             ]);
         }
 

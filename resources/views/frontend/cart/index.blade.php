@@ -36,6 +36,10 @@
                             
                             @endif
                             @php $total = 0; @endphp
+                                
+                            @foreach ($user as $data)
+                                @php $kirim = $data->ongkir->harga @endphp
+                            @endforeach
                             
                             @if ($produk->count() > 0)
                             
@@ -104,10 +108,12 @@
                                         <a href="{{ route('deletecart') }}" class="delete-cart-item"><i class="fi-rs-trash"></i></a>
                                     </td>
                                 </tr>
+                        
+                                
                                 @if ($item->produks->selling_price == null)
-                                @php $total += $item->produks->original_price * $item->prod_qty; @endphp
+                                    @php $total += $item->produks->original_price * $item->prod_qty; @endphp
                                 @else
-                                @php $total += $item->produks->selling_price * $item->prod_qty; @endphp
+                                    @php $total += $item->produks->selling_price * $item->prod_qty; @endphp
                                 @endif
                                 @endforeach
                                 
@@ -126,6 +132,8 @@
                 @php $cek = $item->produks->qty @endphp
                 @endforeach
                 
+                {{-- {{ $ongkir }} --}}
+                
                 <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div>
                 <div class="row mb-50">
                     @if ($produk->count() > 0)
@@ -139,16 +147,16 @@
                                 <table class="table">
                                     <tbody>
                                         <tr>
-                                            <td class="cart_total_label">Cart Subtotal</td>
+                                            <td class="cart_total_label">Sub Subtotal</td>
                                             <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">Rp. {{ number_format($total) }}</span></td>
                                         </tr>
                                         <tr>
-                                            <td class="cart_total_label">Shipping</td>
-                                            <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
+                                            <td class="cart_total_label">Ongkos Kirim</td>
+                                            <td class="cart_total_amount"> <span class="font-lg fw-900 text-brand">Rp. {{ number_format($kirim) }}</span></td>
                                         </tr>
                                         <tr>
-                                            <td class="cart_total_label">Total</td>
-                                            <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">Rp. {{ number_format($total) }}</span></strong></td>
+                                            <td class="cart_total_label">Total Keseluruahan</td>
+                                            <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">Rp. {{ number_format($total + $kirim) }}</span></strong></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -244,16 +252,16 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <td class="cart_total_label">Cart Subtotal</td>
+                                        <td class="cart_total_label">Sub Subtotal</td>
                                         <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">Rp. {{ number_format($total) }}</span></td>
                                     </tr>
                                     <tr>
-                                        <td class="cart_total_label">Shipping</td>
-                                        <td class="cart_total_amount"> <i class="ti-gift mr-5"></i> Free Shipping</td>
+                                        <td class="cart_total_label">Ongkos Kirim</td>
+                                        <td class="cart_total_amount"><span class="font-lg fw-900 text-brand">Rp. {{ number_format($kirim) }}</span></td>
                                     </tr>
                                     <tr>
-                                        <td class="cart_total_label">Total</td>
-                                        <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">Rp. {{ number_format($total) }}</span></strong></td>
+                                        <td class="cart_total_label">Total Keseluruhan</td>
+                                        <td class="cart_total_amount"><strong><span class="font-xl fw-900 text-brand">Rp. {{ number_format($total + $kirim) }}</span></strong></td>
                                     </tr>
                                 </tbody>
                             </table>

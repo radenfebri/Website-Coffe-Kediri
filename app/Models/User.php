@@ -25,7 +25,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'status',
         'password',
         'no_hp',
-        'google_id'
+        'google_id',
+        'ongkir_id'
     ];
 
     /**
@@ -50,4 +51,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function ongkir()
+    {
+        return $this->belongsTo(Ongkir::class, 'ongkir_id', 'id');
+    }
 }

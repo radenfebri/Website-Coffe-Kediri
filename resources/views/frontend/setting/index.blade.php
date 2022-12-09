@@ -25,7 +25,7 @@
                     </span>
                     @enderror
                 </div>
-
+                
                 <div class="mb-3">
                     <label class="form-label">No WhatsApp <span style="color: red">*</span></label>
                     <input type="number" placeholder="No Hp" class="form-control  @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') ?? Auth::user()->no_hp }}">
@@ -35,11 +35,30 @@
                     </span>
                     @enderror
                 </div>
-
+                
                 <div class="mb-3">
                     <label class="form-label">Email <span style="color: red">*</span></label>
                     <input type="email" placeholder="Email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? Auth::user()->email }}">
                     @error('email')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                
+                <div class="mb-3">
+                    <label class="form-label">Kecamatan <span style="color: red">*</span></label>
+                    <select type="text" class="form-control  @error('ongkir_id') is-invalid @enderror" name="ongkir_id" value="{{ old('ongkir_id') ?? Auth::user()->ongkir_id }}">
+                        <option disabled selected>--Pilih Kecamatan--</option>
+                        @foreach ($ongkir as $item)
+                            @if ($item->id == Auth::user()->ongkir_id)
+                                <option value="{{ $item->id }}" selected>{{ $item->kecamatan }}</option>
+                            @else
+                                <option value="{{ $item->id }}">{{ $item->kecamatan }}</option>
+                            @endif
+                        @endforeach
+                    </select>
+                    @error('ongkir_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -57,7 +76,7 @@
                         @enderror
                     </div>
                 </div>
-
+                
                 <button type="submit" name="submit" class="btn-default">Update</button>
             </form>
         </div>
