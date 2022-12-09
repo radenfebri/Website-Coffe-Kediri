@@ -51,7 +51,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Kecamatan <span style="color: red">*</span></label>
-                        <select type="text" class="form-control  @error('ongkir_id') is-invalid @enderror" name="ongkir_id" value="{{ old('ongkir_id') ?? Auth::user()->ongkir_id }}">
+                        <select type="text" class="form-control kecamatan-setting  @error('ongkir_id') is-invalid @enderror" name="ongkir_id" value="{{ old('ongkir_id') ?? Auth::user()->ongkir_id }}">
                             <option disabled selected>--Pilih Kecamatan--</option>
                                 @foreach ($ongkir as $item)
                                     @if ($item->id == Auth::user()->ongkir_id)

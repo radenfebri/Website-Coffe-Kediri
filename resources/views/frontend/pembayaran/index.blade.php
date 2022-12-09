@@ -26,6 +26,25 @@
                             <p>Metode Bayar</p>
                             <p>{{ $orders->metode }}</p>
                         </div>
+
+                        {{-- qris --}}
+                        {{-- <div class="kirim-pembayaran-qris">
+                            <h3>Kalian bisa scan barcode di bawah ini</h3>
+                            <p>{{ $metode->atas_nama }}</p>
+                            <img src="{{ asset('frontend')}}/imgs/shop/product-1-1.jpg" alt="" loading="lazy">
+                            <a href="#" class="btn">Download</a>
+                        </div> --}}
+                        <div class="pembayaran-text">
+                            <p>Atas Nama</p>
+                            <input type="text" class="form-control pembayaran-nama" value="{{ $metode->atas_nama }}">
+                        </div>
+                        <div class="pembayaran-text">
+                            <p>No Rekening</p>
+                            <div class="copy-text">
+                                <input type="text" class="form-control pembayaran-rekening" value="{{ $metode->no_rek }}">
+                                <button class="btn-pembayaran"><i class="fa fa-clone"></i></button>
+                            </div>
+                        </div>
                         <div class="pembayaran-text">
                             <p>Status</p>
                             @if ($orders->status == 0)
@@ -78,7 +97,22 @@
                         @php $total += $item->produks->selling_price * $item->qty; @endphp
                         @endif
                         @endforeach
-                        
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Sub Total</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Rp. {{ number_format($total) }}</h5>
+                            </div>
+                        </div>
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Ongkos Kirim</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Free Ongkir</h5>
+                            </div>
+                        </div>
                         <div class="judul-produk-pembayaran">
                             <div class="produk-pembayaran">
                                 <h5>Total Order</h5>
@@ -99,65 +133,10 @@
                         <div class="pembayaran-text">
                             <p>{{ date('d F Y',strtotime($orders->created_at)) }}</p>
                         </div>
-                        <p><h5>Total yang dibayarkan harus sesuai dengan kode unik, 3 digit angka di belakang koma adalah kode unik transaksi anda.</h5></p>
+                        <p><h5>Total yang dibayarkan harus sesuai dengan kode unik, 3 digit angka di belakang koma adalah kode unik transaksi anda, dan setelah melakukan pemmbayaran diharapkan Screenshot/foto dan kirim kan pada konfirmasi pembayaran</h5></p>
                     </div>
                     <a href="https://api.whatsapp.com/send?phone={{ $setting_website->phone }}&text=Hallo%20kak%20%2APutra%20Teguh%2A%2C%20saya%20mau%20Konfirmasi%20sudah%20melakukan%20pembayaran%20dengan%20data%20berikut%3A%0D%0A%0D%0ANama%20%3A%20%2A{{ $orders->name }}%2A%0D%0AEmail%20%3A%20%2A{{ $orders->email }}%2A%0D%0ANo%20Pesanan%20%3A%20%2A%23{{ $orders->tracking_no }}%2A%0D%0ASudah%20Membayar%20%3A%20%2ARp.%20{{ number_format($orders->total_price) }}%2A%0D%0ATanggal%20Pesanan%20dibuat%20%3A%20%2A{{ date('d F Y h:i:s',strtotime($orders->created_at)) }}%2A%0D%0ACatatan%20%3A%20%2A{{ $orders->message }}%2A%0D%0A%0D%0ATolong%20Segera%20di%20Proses%20ya%20kak%21%21%21%0D%0ASaya%20Ucapkan%20%2ATerima%20kasih%2A" class="btn btn-pembayaran" target="_blank">Konfirmasi Pembayaran</a>
                 </div>
-            </div>
-            
-            {{-- metode pembayaran --}}
-            <div class="metode-pembayaran">
-                <div class="pilihan-pembayaran">
-                    <h4>METODE BAYAR: <span>{{ $orders->metode }}</span></h4>
-                </div>
-                
-                @if ($metode->kategori == 1)
-                {{-- metode pembayaran rekening --}}
-                <div class="kirim-pembayaran">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label class="form-label">Atas Nama</label>
-                            <input type="text" class="form-control" value="{{ $metode->atas_nama }}">
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="form-label">No Rekening</label>
-                            <div class="copy-text">
-                                <input type="text" class="form-control" value="{{ $metode->no_rek }}">
-                                <button class="btn"><i class="fa fa-clone"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Setelah melakukan pemmbayaran diharapkan Screenshot/foto dan kirim kan pada konfirmasi pembayaran </p>
-                </div>
-                @elseif($metode->image == null)
-                {{-- metode pembayaran E-Wallet --}}
-                <div class="kirim-pembayaran">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <label class="form-label">Atas Nama</label>
-                            <input type="text" class="form-control" value="{{ $metode->atas_nama }}">
-                        </div>
-                        <div class="col-lg-6">
-                            <label class="form-label">No Rekening</label>
-                            <div class="copy-text">
-                                <input type="text" class="form-control" value="{{ $metode->no_rek }}">
-                                <button class="btn"><i class="fa fa-clone"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <p>Setelah melakukan pemmbayaran diharapkan Screenshot/foto dan kirim kan pada konfirmasi pembayaran </p>
-                </div>
-                @elseif($metode->kategori == 2)
-                {{-- metode pembayaran qris --}}
-                <div class="kirim-pembayaran-qris">
-                    <h3>Kalian bisa scan barcode di bawah ini</h3>
-                    <p>{{ $metode->atas_nama }}</p>
-                    <img src="{{ asset('frontend')}}/imgs/shop/product-1-1.jpg" alt="" loading="lazy">
-                    <a href="#" class="btn">Download</a>
-                </div>
-                @endif
-                
-                
             </div>
         </div>
     </section>
