@@ -84,7 +84,7 @@
                                 </a>
                             </div> 
                             @guest
-                             
+                            
                             @else
                             <div class="header-action-icon-2">
                                 <a class="mini-cart-icon" href="cart.html">
@@ -151,7 +151,7 @@
                                 <li><a class="{{ request()->is('shop', 'shop/*', 'cart', 'favorit', 'detail-produk/*') ? 'active' : ''}}" href="{{ route('shop') }}">Produk</a></li>
                                 <li><a class="{{ request()->is('about', 'about/*') ? 'active' : ''}}" href="{{ route('about') }}">Tentang Kami</a></li>
                                 @guest
-
+                                
                                 @else
                                 <li><a class="{{ request()->is('order-history', 'order-history/*') ? 'active' : ''}}" href="{{ route('orderHistory') }}">Riwayat Pesanan</a></li>
                                 @endguest
@@ -160,7 +160,7 @@
                     </div>                            
                     <div class="hotline d-none d-lg-block">
                         @if ($setting_website)
-                        <p><a href="https://wa.me/{{ $setting_website->phone }}" target="_blank"><i class="fi-rs-smartphone"></i><span></span>Customer Service</a></p>
+                        <p><a href="https://wa.me/{{ $setting_website->phone }}" target="_blank"><i class="fi-rs-smartphone"></i>Customer Service</a></p>
                         @else
                         
                         @endif
