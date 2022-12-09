@@ -20,8 +20,8 @@ class HomeController extends Controller
         $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
         $kategoriproduk = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
         $slide = Slide::where('status', 1)->latest()->get();
-        $produk_populer = Produk::latest()->where('popular', 1)->get();
-        $produks = Produk::latest()->where('is_active', 1)->limit(8)->get();
+        $produk_populer = Produk::latest()->where('popular', 1)->where('qty','>=',1)->get();
+        $produks = Produk::latest()->where('is_active', 1)->where('qty','>=',1)->limit(8)->get();
         $banner_promosi = BannerPromosi::where('status', 1)->first();
         $tiga_promosi = TigaPromosi::where('status', 1)->latest()->limit(3)->get();
         $promosi_navbar = PromosiNavbar::where('status', 1)->get();
@@ -35,7 +35,7 @@ class HomeController extends Controller
 
     public function search()
     {
-        $produk = Produk::select('name')->where('is_active', 1)->get();
+        $produk = Produk::select('name')->where('is_active', 1)->where('qty','>=',1)->get();
         $data = [];
 
         foreach ($produk as $item) {

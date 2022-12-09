@@ -20,11 +20,11 @@ class DetailController extends Controller
         if (Produk::where('slug', $slug)->where('is_active', 1)->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $promosi_navbar = PromosiNavbar::where('status', 1)->get();
-            $produk = Produk::where('slug', $slug)->first();
+            $produk = Produk::where('slug', $slug)->where('qty','>=',1)->first();
             $images = MultiImage::where('prod_id', $produk->id)->get();
             $kategori = KategoriProduk::where('is_active', 1)->limit(8)->get();
             $kategoriproduk = Produk::where('kategori_id', $produk->id)->latest()->where('is_active', 1)->limit(4)->get();
-            $newproduk = Produk::where('is_active', 1)->latest()->limit(3)->get();
+            $newproduk = Produk::where('is_active', 1)->where('qty','>=',1)->latest()->limit(3)->get();
             $ratings = Rating::where('prod_id', $produk->id)->where('status', 1)->get();
             $rating_sum = Rating::where('prod_id', $produk->id)->sum('stars_rated');
             $user_rating = Rating::where('prod_id', $produk->id)->where('user_id', Auth::id())->first();

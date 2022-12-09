@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Models\KategoriProduk;
+use App\Models\KategoriProduk;  
 use App\Models\Produk;
 use App\Models\PromosiNavbar;
 use App\Models\Rating;
@@ -17,7 +17,7 @@ class KategoriController extends Controller
         if (KategoriProduk::where('slug', $slug)->where('is_active', 1)->exists()) {
             $kategoriproduk_nav = KategoriProduk::latest()->where('popular', 1)->where('is_active', 1)->get();
             $kategoriproduk = KategoriProduk::where('slug', $slug)->first();
-            $produks = Produk::where('kategori_id', $kategoriproduk->id)->where('is_active', 1)->latest()->paginate(12);
+            $produks = Produk::where('kategori_id', $kategoriproduk->id)->where('is_active', 1)->where('qty','>=',1)->latest()->paginate(12);
             $promosi_navbar = PromosiNavbar::where('status', 1)->get();
             $setting_website = SettingWebsite::first();
             $ratings = Rating::all();

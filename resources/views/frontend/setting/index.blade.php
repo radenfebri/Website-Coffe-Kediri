@@ -29,7 +29,7 @@
     
                     <div class="mb-3">
                         <label class="form-label">No WhatsApp <span style="color: red">*</span></label>
-                        <input type="number" placeholder="No Hp" class="form-control  @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') ?? Auth::user()->no_hp }}">
+                        <input type="number" placeholder="62821473345432" class="form-control  @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') ?? Auth::user()->no_hp }}">
                         @error('no_hp')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -37,7 +37,7 @@
                         @enderror
                     </div>
                 </div>
-<<<<<<< HEAD
+                
                 <div class="seting-layout">
                     <div class="mb-3">
                         <label class="form-label">Email <span style="color: red">*</span></label>
@@ -48,57 +48,27 @@
                         </span>
                         @enderror
                     </div>
-    
+
                     <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Kecamatan <span style="color: red">*</span></label>
-                        <input type="text" placeholder="Nama" class="form-control  @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? Auth::user()->name }}">
-                        @error('name')
+                        <label class="form-label">Kecamatan <span style="color: red">*</span></label>
+                        <select type="text" class="form-control  @error('ongkir_id') is-invalid @enderror" name="ongkir_id" value="{{ old('ongkir_id') ?? Auth::user()->ongkir_id }}">
+                            <option disabled selected>--Pilih Kecamatan--</option>
+                                @foreach ($ongkir as $item)
+                                    @if ($item->id == Auth::user()->ongkir_id)
+                                        <option value="{{ $item->id }}" selected>{{ $item->kecamatan }}</option>
+                                    @else
+                                        <option value="{{ $item->id }}">{{ $item->kecamatan }}</option>
+                                    @endif
+                                @endforeach
+                        </select>
+                        @error('ongkir_id')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
                     </div>
-=======
-                
-                <div class="mb-3">
-                    <label class="form-label">No WhatsApp <span style="color: red">*</span></label>
-                    <input type="number" placeholder="No Hp" class="form-control  @error('no_hp') is-invalid @enderror" name="no_hp" value="{{ old('no_hp') ?? Auth::user()->no_hp }}">
-                    @error('no_hp')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
                 </div>
                 
-                <div class="mb-3">
-                    <label class="form-label">Email <span style="color: red">*</span></label>
-                    <input type="email" placeholder="Email" class="form-control  @error('email') is-invalid @enderror" name="email" value="{{ old('email') ?? Auth::user()->email }}">
-                    @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
->>>>>>> bda65a71a66085418de00593828b342fa877c04f
-                </div>
-                
-                <div class="mb-3">
-                    <label class="form-label">Kecamatan <span style="color: red">*</span></label>
-                    <select type="text" class="form-control  @error('ongkir_id') is-invalid @enderror" name="ongkir_id" value="{{ old('ongkir_id') ?? Auth::user()->ongkir_id }}">
-                        <option disabled selected>--Pilih Kecamatan--</option>
-                        @foreach ($ongkir as $item)
-                            @if ($item->id == Auth::user()->ongkir_id)
-                                <option value="{{ $item->id }}" selected>{{ $item->kecamatan }}</option>
-                            @else
-                                <option value="{{ $item->id }}">{{ $item->kecamatan }}</option>
-                            @endif
-                        @endforeach
-                    </select>
-                    @error('ongkir_id')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
                 
                 <div class="mb-3">
                     <label class="form-label">Alamat <span style="color: red">*</span></label>

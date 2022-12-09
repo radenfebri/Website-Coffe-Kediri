@@ -160,7 +160,7 @@
                     </div>                            
                     <div class="hotline d-none d-lg-block">
                         @if ($setting_website)
-                        <p><a href="#"><i class="fi-rs-smartphone"></i><span>Customer Service</span> {{ $setting_website->phone }} </a></p>
+                        <p><a href="https://wa.me/{{ $setting_website->phone }}" target="_blank"><i class="fi-rs-smartphone"></i><span></span>Customer Service</a></p>
                         @else
                         
                         @endif

@@ -6,80 +6,80 @@
 <main class="main">
     {{-- BANNER 1 --}}
     @if ($slide->count() > 0)
-    <section class="home-slider position-relative pt-50">
-        <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
-            @foreach ($slide as $item)
-            <div class="single-hero-slider single-animation-wrap">
-                <div class="container">
-                    <div class="row align-items-center slider-animated-1">
-                        <div class="col-lg-5 col-md-6">
-                            <div class="hero-slider-content-2">
-                                <h4 class="animated">{{ $item->title1 }}</h4>
-                                <h2 class="animated fw-900">{{ $item->title2 }}</h2>
-                                <h1 class="animated fw-900 text-brand">{{ $item->title3 }}</h1>
-                                <p class="animated">{{ $item->deskripsi }}</p>
-                                <a class="animated btn btn-brush btn-brush-3" href="{{ $item->link }}"> {{ $item->button_text }} </a>
+        <section class="home-slider position-relative pt-50">
+            <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
+                @foreach ($slide as $item)
+                <div class="single-hero-slider single-animation-wrap">
+                    <div class="container">
+                        <div class="row align-items-center slider-animated-1">
+                            <div class="col-lg-5 col-md-6">
+                                <div class="hero-slider-content-2">
+                                    <h4 class="animated">{{ $item->title1 }}</h4>
+                                    <h2 class="animated fw-900">{{ $item->title2 }}</h2>
+                                    <h1 class="animated fw-900 text-brand">{{ $item->title3 }}</h1>
+                                    <p class="animated">{{ $item->deskripsi }}</p>
+                                    <a class="animated btn btn-brush btn-brush-3" href="{{ $item->link }}"> {{ $item->button_text }} </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-7 col-md-6">
-                            <div class="single-slider-img single-slider-img-1">
-                                <img class="animated slider-1-1" src="{{ asset('storage/' . $item->image ) }}" loading="lazy" alt="{{ $item->title1 }}">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>    
-            @endforeach
-            
-        </div>
-        <div class="slider-arrow hero-slider-1-arrow"></div>
-    </section>
-    @else
-    <section class="home-slider position-relative pt-50">
-        <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
-            <div class="single-hero-slider single-animation-wrap">
-                <div class="container">
-                    <div class="row align-items-center slider-animated-1">
-                        <div class="col-lg-5 col-md-6">
-                            <div class="hero-slider-content-2">
-                                <h4 class="animated">Trade-in offer</h4>
-                                <h2 class="animated fw-900">Supper value deals</h2>
-                                <h1 class="animated fw-900 text-brand">On all products</h1>
-                                <p class="animated">Save more with coupons & up to 70% off</p>
-                                <a class="animated btn btn-brush btn-brush-3" href="product-details.html"> Shop Now </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-7 col-md-6">
-                            <div class="single-slider-img single-slider-img-1">
-                                <img class="animated slider-1-1" src="{{ asset('frontend') }}/imgs/slider/slider-1.png" loading="lazy" alt="">
+                            <div class="col-lg-7 col-md-6">
+                                <div class="single-slider-img single-slider-img-1">
+                                    <img class="animated slider-1-1" src="{{ asset('storage/' . $item->image ) }}" loading="lazy" alt="{{ $item->title1 }}">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>    
+                @endforeach
+                
             </div>
-            <div class="single-hero-slider single-animation-wrap">
-                <div class="container">
-                    <div class="row align-items-center slider-animated-1">
-                        <div class="col-lg-5 col-md-6">
-                            <div class="hero-slider-content-2">
-                                <h4 class="animated">Hot promotions</h4>
-                                <h2 class="animated fw-900">Fashion Trending</h2>
-                                <h1 class="animated fw-900 text-7">Great Collection</h1>
-                                <p class="animated">Save more with coupons & up to 20% off</p>
-                                <a class="animated btn btn-brush btn-brush-2" href="product-details.html"> Discover Now </a>
+            <div class="slider-arrow hero-slider-1-arrow"></div>
+        </section>
+    @else
+        <section class="home-slider position-relative pt-50">
+            <div class="hero-slider-1 dot-style-1 dot-style-1-position-1">
+                <div class="single-hero-slider single-animation-wrap">
+                    <div class="container">
+                        <div class="row align-items-center slider-animated-1">
+                            <div class="col-lg-5 col-md-6">
+                                <div class="hero-slider-content-2">
+                                    <h4 class="animated">Trade-in offer</h4>
+                                    <h2 class="animated fw-900">Supper value deals</h2>
+                                    <h1 class="animated fw-900 text-brand">On all products</h1>
+                                    <p class="animated">Save more with coupons & up to 70% off</p>
+                                    <a class="animated btn btn-brush btn-brush-3" href="product-details.html"> Shop Now </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-7 col-md-6">
-                            <div class="single-slider-img single-slider-img-1">
-                                <img class="animated slider-1-2" src="{{ asset('frontend') }}/imgs/slider/slider-2.png" loading="lazy" alt="">
+                            <div class="col-lg-7 col-md-6">
+                                <div class="single-slider-img single-slider-img-1">
+                                    <img class="animated slider-1-1" src="{{ asset('frontend') }}/imgs/slider/slider-1.png" loading="lazy" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>                
-        </div>
-        <div class="slider-arrow hero-slider-1-arrow"></div>
-    </section>
+                <div class="single-hero-slider single-animation-wrap">
+                    <div class="container">
+                        <div class="row align-items-center slider-animated-1">
+                            <div class="col-lg-5 col-md-6">
+                                <div class="hero-slider-content-2">
+                                    <h4 class="animated">Hot promotions</h4>
+                                    <h2 class="animated fw-900">Fashion Trending</h2>
+                                    <h1 class="animated fw-900 text-7">Great Collection</h1>
+                                    <p class="animated">Save more with coupons & up to 20% off</p>
+                                    <a class="animated btn btn-brush btn-brush-2" href="product-details.html"> Discover Now </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-7 col-md-6">
+                                <div class="single-slider-img single-slider-img-1">
+                                    <img class="animated slider-1-2" src="{{ asset('frontend') }}/imgs/slider/slider-2.png" loading="lazy" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <div class="slider-arrow hero-slider-1-arrow"></div>
+        </section>
     @endif
     
     {{-- FEATURE --}}
@@ -148,76 +148,76 @@
                         
                         @if ($produks->count() > 0)
                         @foreach ($produks as $item)                            
-                        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6 produk_data">
-                            <div class="product-cart-wrap mb-30">
-                                <div class="product-img-action-wrap">
-                                    <div class="product-img product-img-zoom">
-                                        <a href="{{ route('detail.produk', $item->slug ) }}">
-                                            @if ($item->cover == null)
-                                            <img class="default-img produk-img" src="{{ '/frontend/imgs/shop/product-1-1.jpg' }}" loading="lazy" alt="{{ $item->name }}">                                                
+                            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-6 col-6 produk_data">
+                                <div class="product-cart-wrap mb-30">
+                                    <div class="product-img-action-wrap">
+                                        <div class="product-img product-img-zoom">
+                                            <a href="{{ route('detail.produk', $item->slug ) }}">
+                                                @if ($item->cover == null)
+                                                <img class="default-img produk-img" src="{{ '/frontend/imgs/shop/product-1-1.jpg' }}" loading="lazy" alt="{{ $item->name }}">                                                
+                                                @else
+                                                <img class="default-img produk-img" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                                @endif
+                                            </a>
+                                        </div>
+                                        <div class="product-action-1">
+                                            <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn hover-up" ><i class="fi-rs-eye"></i></a>
+                                            <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn hover-up addToWishlist"><i class="fi-rs-heart"></i></a>
+                                        </div>
+                                        <div class="product-badges product-badges-position product-badges-mrg">
+                                            @if ($item->popular == null)
+                                            
                                             @else
-                                            <img class="default-img produk-img" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                            <span class="hot">Populer</span>
                                             @endif
-                                        </a>
+                                        </div>
                                     </div>
-                                    <div class="product-action-1">
-                                        <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn hover-up" ><i class="fi-rs-eye"></i></a>
-                                        <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn hover-up addToWishlist"><i class="fi-rs-heart"></i></a>
-                                    </div>
-                                    <div class="product-badges product-badges-position product-badges-mrg">
-                                        @if ($item->popular == null)
+                                    <div class="product-content-wrap">
+                                        <input type="hidden" value="{{ $item->id }}" class="prod_id">
+                                        <input type="hidden" class="form-control qty-input" value="1">
+                                        <div class="product-category">
+                                            @if ($item->kategoriproduk == null)
+                                            
+                                            @else
+                                            <a href="{{ route('kategori', $item->kategoriproduk->slug) }}">{{ $item->kategoriproduk->name }}</a>
+                                            @endif
+                                        </div>
+                                        <h2><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h2>
                                         
-                                        @else
-                                        <span class="hot">Populer</span>
+                                        @if($item->ratings->count() > 0)
+                                        @php $item->ratings->count() @endphp
+                                        @php $bintang = $item->ratings->sum('stars_rated') / $item->ratings->count() @endphp
+                                        @else   
+                                        @php $bintang = 0 @endphp
                                         @endif
-                                    </div>
-                                </div>
-                                <div class="product-content-wrap">
-                                    <input type="hidden" value="{{ $item->id }}" class="prod_id">
-                                    <input type="hidden" class="form-control qty-input" value="1">
-                                    <div class="product-category">
-                                        @if ($item->kategoriproduk == null)
                                         
-                                        @else
-                                        <a href="{{ route('kategori', $item->kategoriproduk->slug) }}">{{ $item->kategoriproduk->name }}</a>
-                                        @endif
-                                    </div>
-                                    <h2><a href="{{ route('detail.produk', $item->slug ) }}">{{ $item->name }}</a></h2>
-                                    
-                                    @if($item->ratings->count() > 0)
-                                    @php $item->ratings->count() @endphp
-                                    @php $bintang = $item->ratings->sum('stars_rated') / $item->ratings->count() @endphp
-                                    @else   
-                                    @php $bintang = 0 @endphp
-                                    @endif
-                                    
-                                    @php $rate_num = number_format($bintang) @endphp
-                                    <div class="rating">
-                                        @for($i = 1; $i <= $rate_num; $i++)
-                                        <i class="fas fa-star" style="color: #ffb300"></i>
-                                        @endfor
-                                        @for($j = $rate_num+1; $j <= 5; $j++)
-                                        <i class="fas fa-star" style="color: #b4afaf"></i>
-                                        @endfor
-                                    </div>
-                                    
-                                    <div class="product-price">
-                                        @if ($item->selling_price == null)
-                                        <span>Rp.{{ number_format($item->original_price) }}</span>
-                                        @elseif($item->selling_price != null)
-                                        <span>Rp.{{ number_format($item->selling_price) }}</span>
-                                        <span class="old-price">Rp.{{ number_format($item->original_price) }}</span>
-                                        @endif
-                                    </div>
-                                    <div class="product-action-1 show">
-                                        <a href="{{ route('addcart') }}" aria-label="Add to Cart" class="action-btn hover-up addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        @php $rate_num = number_format($bintang) @endphp
+                                        <div class="rating">
+                                            @for($i = 1; $i <= $rate_num; $i++)
+                                            <i class="fas fa-star" style="color: #ffb300"></i>
+                                            @endfor
+                                            @for($j = $rate_num+1; $j <= 5; $j++)
+                                            <i class="fas fa-star" style="color: #b4afaf"></i>
+                                            @endfor
+                                        </div>
+                                        
+                                        <div class="product-price">
+                                            @if ($item->selling_price == null)
+                                            <span>Rp.{{ number_format($item->original_price) }}</span>
+                                            @elseif($item->selling_price != null)
+                                            <span>Rp.{{ number_format($item->selling_price) }}</span>
+                                            <span class="old-price">Rp.{{ number_format($item->original_price) }}</span>
+                                            @endif
+                                        </div>
+                                        <div class="product-action-1 show">
+                                            <a href="{{ route('addcart') }}" aria-label="Add to Cart" class="action-btn hover-up addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                         @endforeach
                         @else
-                        <div>Data Produk Kosong</div>
+                            <div>Data Produk Kosong</div>
                         @endif
                         
                         
