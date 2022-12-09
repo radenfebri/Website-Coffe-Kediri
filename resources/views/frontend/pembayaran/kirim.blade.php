@@ -81,10 +81,26 @@
                         
                         <div class="judul-produk-pembayaran">
                             <div class="produk-pembayaran">
-                                <h5>Total Order</h5>
+                                <h5>Sub Total</h5>
                             </div>
                             <div class="total-produk-pembayaran">
                                 <h5>Rp. {{ number_format($total) }}</h5>
+                            </div>
+                        </div>
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Ongkos Kirim</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Rp. {{ number_format($kirim) }}</h5>
+                            </div>
+                        </div>
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Total Keseluruhan</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Rp. {{ number_format($total + $kirim) }}</h5>
                             </div>
                         </div>
                     </div>
@@ -101,7 +117,12 @@
                         </div>
                         {{-- <p><h5>Total yang dibayarkan harus sesuai dengan kode unik, 3 digit angka di belakang koma adalah kode unik transaksi anda.</h5></p> --}}
                     </div>
-                    <a href="#" class="btn btn-pembayaran">Pesanan Diterima</a>
+                    <form action="{{ route('pesanan-diterima', $orders->id) }}" method="POST">
+                        <input type="hidden" name="status" value="3">
+                        @csrf
+                        @method('PUT')
+                        <button type="submit" class="btn btn-pembayaran">Pesanan Diterima</button>
+                    </form>
                 </div>
             </div>
             

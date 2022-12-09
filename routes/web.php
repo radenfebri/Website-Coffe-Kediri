@@ -106,6 +106,7 @@ Route::middleware(['has.role'])->middleware('auth', 'verified')->group(function 
     Route::get('pembayaran/{id}', [PembayaranController::class, 'index'])->name('pembayaran');
     Route::get('packing/{id}', [PembayaranController::class, 'packing'])->name('packing');
     Route::get('kirim/{id}', [PembayaranController::class, 'kirim'])->name('kirim');
+    Route::put('pesanan-diterima/{id}/update', [PembayaranController::class, 'pesanan_diterima'])->name('pesanan-diterima');
     Route::get('selesai/{id}', [PembayaranController::class, 'selesai'])->name('selesai');
 });
 

@@ -87,7 +87,7 @@
                             
                             @else
                             <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="#">
+                                <a class="mini-cart-icon profile-icon">
                                     <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-user.svg">
                                 </a>
                                 <div class="cart-dropdown-wrap cart-dropdown-hm2 header-dropdown">
@@ -101,7 +101,6 @@
                                         
                                         @endif
                                         @endguest
-                                        <li><a href="{{ route('orderHistory') }}">Order History</a></li>
                                         <li><a href="{{ route('setting') }}">Setting</a></li>
                                         <li><a href="{{ route('changePassword') }}">Change Password</a> </li>   
                                         <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      

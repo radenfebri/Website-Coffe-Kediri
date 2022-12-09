@@ -81,10 +81,26 @@
                         
                         <div class="judul-produk-pembayaran">
                             <div class="produk-pembayaran">
-                                <h5>Total Order</h5>
+                                <h5>Sub Total</h5>
                             </div>
                             <div class="total-produk-pembayaran">
                                 <h5>Rp. {{ number_format($total) }}</h5>
+                            </div>
+                        </div>
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Ongkos Kirim</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Rp. {{ number_format($kirim) }}</h5>
+                            </div>
+                        </div>
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Total Keseluruhan</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Rp. {{ number_format($total + $kirim) }}</h5>
                             </div>
                         </div>
                     </div>

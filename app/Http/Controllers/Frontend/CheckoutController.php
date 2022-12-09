@@ -28,13 +28,16 @@ class CheckoutController extends Controller
         $setting_website = SettingWebsite::first();
         $payment = Payment::all();
         $user = User::where('ongkir_id', Auth::user()->ongkir_id)->get();
+        foreach ($user as $data) {
+            $kirim = $data->ongkir->harga;
+        }
 
 
         if (Auth::user()->no_hp == null) {
             return redirect()->route('setting')->with('error', 'Silahkan lengkapi data diri anda terlebih dahulu');
         } else {
             if ($cart_check > 0) {
-                return view('frontend.checkout.index', compact('produk', 'setting_website', 'kategoriproduk_nav', 'payment', 'promosi_navbar', 'user'));
+                return view('frontend.checkout.index', compact('produk', 'setting_website', 'kategoriproduk_nav', 'payment', 'promosi_navbar', 'kirim'));
             } else {
                 return redirect()->route('cart')->with('error', 'Keranjang masih kosong');
             }

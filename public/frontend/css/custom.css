@@ -23,7 +23,11 @@
 
 .header-dropdown{
   width: 170px;
-  height: 270px;
+  height: 210px;
+}
+
+.profile-icon{
+  pointer: none;
 }
 
 .logo-header a img{
@@ -75,6 +79,11 @@
 .form-setting{
   margin-top: 50px;
   margin-bottom: 50px;
+}
+
+.kecamatan-setting{
+  width: 650px;
+  margin-right: 10px;
 }
 
 .form-setting input{
@@ -219,8 +228,26 @@
   margin-bottom: 5px;
 }
 
+.pembayaran-text .pembayaran-nama{
+  width: 300px;
+  text-align: right;
+}
+
 .detail-pembayaran h3 {
   margin-bottom: 30px;
+}
+
+.pembayaran-text .pembayaran-rekening{
+  width: 250px;
+  text-align: right;
+}
+
+.pembayaran-text .btn-pembayaran{
+  width: 50px;
+  height: 100%;
+  border: none;
+  background-color: #f15412;
+  color: white;
 }
 
 .layer button{
@@ -301,8 +328,13 @@
 }
 
 .copy-text input{
-  width: 90%;
+  width: 225px;
 }
+
+/* .copy-text button{
+  width: 5px;
+  height: 20px;
+} */
 
 .detail-produk-pembayaran{
   width: 95%;
@@ -888,6 +920,22 @@
   
   .nilai-produk-pembayaran{
     font-size: 12px;
+  }
+  
+  .pembayaran-text .pembayaran-nama{
+    width: 180px;
+  }
+
+  .pembayaran-text .pembayaran-rekening{
+    width: 130px;
+  }
+
+  .pembayaran-text .btn-pembayaran{
+    width: 50px;
+    height: 100%;
+    border: none;
+    background-color: #f15412;
+    color: white;
   }
   
   /* login */

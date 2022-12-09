@@ -87,16 +87,28 @@
                         @endif
                         @endforeach
                         
-                        <div class="judul-produk-pembayaran-total">
-                            <div class="produk-pembayaran-total">
-                                <h5>Total Order</h4>
-                                </div>
-                                <div class="total-produk-pembayaran-total">
-                                    <h5>Rp. {{ number_format($total) }}</h5>
-                                    </div>
-                                    <div class="nilai-produk-pembayaran">
-                                    </div>
-                                </div>
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Sub Total</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Rp. {{ number_format($total) }}</h5>
+                            </div>
+                        </div>
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Ongkos Kirim</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Rp. {{ number_format($kirim) }}</h5>
+                            </div>
+                        </div>
+                        <div class="judul-produk-pembayaran">
+                            <div class="produk-pembayaran">
+                                <h5>Total Keseluruhan</h5>
+                            </div>
+                            <div class="total-produk-pembayaran">
+                                <h5>Rp. {{ number_format($total + $kirim) }}</h5>
                             </div>
                         </div>
                         <div class="layer2">

@@ -37,9 +37,9 @@
                             @endif
                             @php $total = 0; @endphp
                                 
-                            @foreach ($user as $data)
+                            {{-- @foreach ($user as $data)
                                 @php $kirim = $data->ongkir->harga @endphp
-                            @endforeach
+                            @endforeach --}}
                             
                             @if ($produk->count() > 0)
                             

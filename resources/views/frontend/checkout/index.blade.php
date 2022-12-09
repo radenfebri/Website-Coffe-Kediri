@@ -23,9 +23,9 @@
             <form action="{{ route('placeorder') }}" method="POST">
                 @csrf
                 
-                @foreach ($user as $data)
+                {{-- @foreach ($user as $data)
                     @php $kirim = $data->ongkir->harga @endphp
-                @endforeach
+                @endforeach --}}
                 
                 <div class="row">
                     <div class="col-md-6">

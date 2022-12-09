@@ -23,11 +23,15 @@ class CartController extends Controller
         $promosi_navbar = PromosiNavbar::where('status', 1)->get();
         $setting_website = SettingWebsite::first();
         $user = User::where('ongkir_id', Auth::user()->ongkir_id)->get();
+        foreach ($user as $data) {
+            $kirim = $data->ongkir->harga;
+        }
+
 
         if (Auth::user()->ongkir_id == null) {
             return redirect()->route('setting')->with('error', 'Silahkan lengkapi data diri anda terlebih dahulu');
         } else {
-            return view('frontend.cart.index', compact('produk', 'setting_website', 'kategoriproduk_nav', 'promosi_navbar', 'user'));
+            return view('frontend.cart.index', compact('produk', 'setting_website', 'kategoriproduk_nav', 'promosi_navbar', 'kirim'));
         }
     }
 
