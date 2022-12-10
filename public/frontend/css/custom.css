@@ -189,6 +189,14 @@
   align-items: center;
 }
 
+.produk-detail-kategori{
+  display: flex;
+  width: 224px;
+  height: 224px;
+  justify-content: center;
+  align-items: center;
+}
+
 .produk-terbaru-full{
   display: flex;
   width: 100%;
@@ -811,6 +819,13 @@
   .produk-img{
     height: 144px !important;
     object-fit: contain;
+  }
+
+  /* detail produk */
+  .produk-detail-kategori-cover{
+    display: flex;
+    width: 100%;
+    justify-content: center;
   }
   
   /* cart */

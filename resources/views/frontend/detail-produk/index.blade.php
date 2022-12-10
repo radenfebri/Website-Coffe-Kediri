@@ -364,28 +364,30 @@
                                     <input type="hidden" value="{{ $produk->id }}" class="prod_id">
                                     <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                         <div class="product-cart-wrap small hover-up">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img product-img-zoom produk-terbaru">
-                                                    <a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">
-                                                        @if ($item->cover == null)
-                                                        <img class="default-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" loading="lazy" alt="{{ $produk->name }}">
-                                                        <img class="hover-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-2.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                            <div class="produk-detail-kategori-cover">
+                                                <div class="product-img-action-wrap">
+                                                    <div class="product-img product-img-zoom produk-detail-kategori">
+                                                        <a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">
+                                                            @if ($item->cover == null)
+                                                            <img class="default-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                                            <img class="hover-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-2.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                                            @else
+                                                            <img class="default-img produk-img-terbaru" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                                            @endif
+                                                            
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-action-1">
+                                                        <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn small hover-up"><i class="fi-rs-eye"></i></a>
+                                                        <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn small hover-up addToWishlist" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                    </div>
+                                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                                        @if ($item->popular == 1)
+                                                        <span class="hot">Popular</span>
                                                         @else
-                                                        <img class="default-img produk-img-terbaru" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
-                                                        @endif
                                                         
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn small hover-up"><i class="fi-rs-eye"></i></a>
-                                                    <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn small hover-up addToWishlist" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    @if ($item->popular == 1)
-                                                    <span class="hot">Popular</span>
-                                                    @else
-                                                    
-                                                    @endif
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="product-content-wrap">
