@@ -8,7 +8,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>
                 <span></span>
                 <a href="{{ route('kategori', $produk->kategoriproduk->slug) }}" rel="nofollow">{{ $produk->kategoriproduk->name }}</a>
                 <span></span> {{ $produk->name }}
@@ -157,9 +157,9 @@
                                     </div>
                                     <div class="product_sort_info font-xs mb-30">
                                         <ul>
-                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand Warranty</li>
-                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy</li>
-                                            <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
+                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i>Tanpa Bahan Pengawet</li>
+                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Pengembalian barang ketika barang tidak sesuai</li>
+                                            <li><i class="fi-rs-credit-card mr-5"></i>Pembayaran melalui bank transfer dan Qris</li>
                                         </ul>
                                     </div>
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
@@ -212,7 +212,7 @@
                                     <div class="comments-area">
                                         <div class="row">
                                             <div class="col-lg-8">
-                                                <h4 class="mb-30">Customer Ratings Produk</h4>
+                                                <h4 class="mb-30">Rating dari pembeli</h4>
                                                 
                                                 <div class="comment-list">
                                                     @forelse ($ratings as $item) 
@@ -335,7 +335,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <button type="submit" class="button button-contactForm">Update Review</button>
+                                                            <button type="submit" class="button button-contactForm">Perbarui Review</button>
                                                         </div>
                                                     </form>
                                                 </div>

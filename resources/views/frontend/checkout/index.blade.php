@@ -7,8 +7,8 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>
-                <span></span> Shop
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>
+                <span></span> Produk
                 <span></span> Checkout
             </div>
         </div>

@@ -26,11 +26,11 @@
                                 @guest
                                 <i class="fi-rs-key"></i>
                                 @if (Route::has('login'))
-                                <a href="{{ route('login') }}">Log In </a>  
+                                <a href="{{ route('login') }}">Masuk</a>  
                                 @endif
                                 / 
                                 @if (Route::has('register'))
-                                <a href="{{ route('register') }}">Sign Up</a>
+                                <a href="{{ route('register') }}">Daftar</a>
                                 @endif
                                 @else
                                 {{ Auth::user()->name }}
@@ -103,8 +103,8 @@
                                     @endif
                                     @endguest
                                     <li><a href="{{ route('setting') }}">Setting</a></li>
-                                    <li><a href="{{ route('changePassword') }}">Change Password</a> </li>   
-                                    <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
+                                    <li><a href="{{ route('changePassword') }}">Ganti Password</a> </li>   
+                                    <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a></li>      
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>    
@@ -179,32 +179,27 @@
                             </a>
                         </div>
                         <div class="header-action-icon-2">
-                            <a class="mini-cart-icon" href="">
+                            <a class="mini-cart-icon" href="#">
                                 <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-user.svg">
                             </a>
-                            <div class="header-action-icon-2">
-                                <a class="mini-cart-icon profile-icon">
-                                    <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-user.svg">
-                                </a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2 header-dropdown">
-                                    <ul>
-                                        @guest
-                                        
-                                        @else
-                                        @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
-                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                        @else
-                                        
-                                        @endif
-                                        @endguest
-                                        <li><a href="{{ route('setting') }}">Setting</a></li>
-                                        <li><a href="{{ route('changePassword') }}">Change Password</a> </li>   
-                                        <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>    
-                                    </ul>
-                                </div>
+                            <div class="cart-dropdown-wrap cart-dropdown-hm2 header-dropdown2">
+                                <ul>
+                                    @guest
+                                    
+                                    @else
+                                    @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                    @else
+                                    
+                                    @endif
+                                    @endguest
+                                    <li><a href="{{ route('setting') }}">Setting</a></li>
+                                    <li><a href="{{ route('changePassword') }}">Ganti Password</a> </li>   
+                                    <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a></li>      
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>    
+                                </ul>
                             </div>
                         </div>
                         <div class="header-action-icon-2 d-block d-lg-none">
@@ -275,17 +270,17 @@
             </div>
             <div class="mobile-header-info-wrap mobile-header-border">
                 <div class="single-mobile-header-info mt-30">
-                    <a href="#"> Our location </a>
+                    <a href="#">Lokasi Kami</a>
                 </div>
                 @guest
                 <div class="single-mobile-header-info">
                     @if (Route::has('login'))
-                    <a href="{{ route('login') }}">Log In </a>    
+                    <a href="{{ route('login') }}">Masuk</a>    
                     @endif                    
                 </div>
                 <div class="single-mobile-header-info">
                     @if (Route::has('register'))                        
-                    <a href="{{ route('register') }}">Sign Up</a>
+                    <a href="{{ route('register') }}">Daftar</a>
                     @endif
                 </div>
                 @endguest
@@ -298,7 +293,7 @@
                 </div>
             </div>
             <div class="mobile-social-icon">
-                <h5 class="mb-15 text-grey-4">Follow Us</h5>
+                <h5 class="mb-15 text-grey-4">Ikuti Kami</h5>
                 @if ($setting_website)
                 <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}"></a>
                 <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}"></a>

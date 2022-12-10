@@ -282,9 +282,9 @@
                                 </div>
                                 <div class="product-content-wrap">
                                     <div class="product-category">
-                                        <a href="{{ route('shop') }}">Music</a>
+                                        <a href="{{ route('shop') }}">Musik</a>
                                     </div>
-                                    <h2><a href="product-details.html">Donec ut nisl rutrum</a></h2>
+                                    <h2><a href="{{ route('shop') }}">Donec ut nisl rutrum</a></h2>
                                     <div class="rating-result" title="90%">
                                         <span>
                                             <span>90%</span>

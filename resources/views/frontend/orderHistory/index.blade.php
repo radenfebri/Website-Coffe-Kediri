@@ -1,14 +1,14 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Order History')
+@section('title', 'Riwayat Pesanan')
 
 @section('content')
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>
-                <span></span> Order History
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>
+                <span></span> Riwayat Pesanan
             </div>
         </div>
     </div>

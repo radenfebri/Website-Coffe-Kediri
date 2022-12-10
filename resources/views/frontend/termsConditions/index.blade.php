@@ -1,14 +1,14 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Terms Conditions')
+@section('title', 'Syarat dan Kondisi')
 
 @section('content')
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>                    
-                <span></span> Terms & Conditions
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>                    
+                <span></span> Syarat dan Kondisi
             </div>
         </div>
     </div>
@@ -18,7 +18,7 @@
                 <div class="col-lg-12">
                     <div class="single-page pr-30 mb-lg-0 mb-sm-5">
                         <div class="single-header style-2">
-                            <h2>Terms & Conditions</h2>                                
+                            <h2>Syarat dan Kondisi</h2>                                
                         </div>   
                         
                         @if ($terms_conditions)
