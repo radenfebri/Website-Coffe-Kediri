@@ -1,14 +1,14 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'Change Password')
+@section('title', 'Ganti Password')
 
 @section('content')
 <main class="main">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>
-                <span></span> Change Password
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>
+                <span></span> Ganti Password
             </div>
         </div>
     </div>
@@ -41,7 +41,7 @@
                     <input type="password" class="form-control @error('password_cofirmation') is-invalid @enderror"  name="password_confirmation" placeholder="Password Konfirmasi">
                 </div>
 
-                <button type="submit" class="btn-default">Update</button>
+                <button type="submit" class="btn-default">Perbarui</button>
             </form>
         </div>
     </div>

@@ -26,11 +26,11 @@
                                 @guest
                                 <i class="fi-rs-key"></i>
                                 @if (Route::has('login'))
-                                <a href="{{ route('login') }}">Log In </a>  
+                                <a href="{{ route('login') }}">Masuk</a>  
                                 @endif
                                 / 
                                 @if (Route::has('register'))
-                                <a href="{{ route('register') }}">Sign Up</a>
+                                <a href="{{ route('register') }}">Daftar</a>
                                 @endif
                                 @else
                                 {{ Auth::user()->name }}
@@ -53,65 +53,65 @@
                     
                     @endif
                 </div>
-                <div class="header-right">
-                    <div class="search-style-1">
+                <div class="header-right header-search">
+                    <div class="search-style-1 header-search1">
                         <form action="{{ route('searchproduk') }}" method="POST">
                             @csrf                                
-                            <input type="text" name="produk_name" id="search_produk" placeholder="Cari item Produk . . .">
+                            <input type="text" name="produk_name" id="search_produk" class="input-search" placeholder="Cari item Produk . . .">
                             <button type="submit" hidden></button>
                         </form>
                     </div>
-                    <div class="header-action-right">
-                        <div class="header-action-2">
-                            <div class="header-action-icon-2">
-                                <a href="{{ route('favorit.view') }}">
-                                    <img class="svgInject" alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-heart.svg">
-                                    @guest
-                                    
-                                    @else
-                                    <span class="pro-count blue wish-count">0</span>
-                                    @endguest
-                                </a>
-                            </div>
-                            <div class="header-action-icon-2">
-                                <a class="mini-cart-icon" href="{{ route('cart') }}">
-                                    <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-cart.svg">
-                                    @guest
-                                    
-                                    @else
-                                    <span class="pro-count blue cart-count">0</span>
-                                    @endguest
-                                </a>
-                            </div> 
-                            @guest
-                            
-                            @else
-                            <div class="header-action-icon-2">
-                                <a class="mini-cart-icon profile-icon">
-                                    <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-user.svg">
-                                </a>
-                                <div class="cart-dropdown-wrap cart-dropdown-hm2 header-dropdown">
-                                    <ul>
-                                        @guest
-                                        
-                                        @else
-                                        @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
-                                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                        @else
-                                        
-                                        @endif
-                                        @endguest
-                                        <li><a href="{{ route('setting') }}">Setting</a></li>
-                                        <li><a href="{{ route('changePassword') }}">Change Password</a> </li>   
-                                        <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>      
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>    
-                                    </ul>
-                                </div>
-                            </div>
-                            @endguest                   
+                </div>
+                <div class="header-action-right header-icon">
+                    <div class="header-action-2">
+                        <div class="header-action-icon-2">
+                            <a href="{{ route('favorit.view') }}">
+                                <img class="svgInject" alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-heart.svg">
+                                @guest
+                                
+                                @else
+                                <span class="pro-count blue wish-count">0</span>
+                                @endguest
+                            </a>
                         </div>
+                        <div class="header-action-icon-2">
+                            <a class="mini-cart-icon" href="{{ route('cart') }}">
+                                <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-cart.svg">
+                                @guest
+                                
+                                @else
+                                <span class="pro-count blue cart-count">0</span>
+                                @endguest
+                            </a>
+                        </div> 
+                        @guest
+                        
+                        @else
+                        <div class="header-action-icon-2">
+                            <a class="mini-cart-icon profile-icon">
+                                <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-user.svg">
+                            </a>
+                            <div class="cart-dropdown-wrap cart-dropdown-hm2 header-dropdown">
+                                <ul>
+                                    @guest
+                                    
+                                    @else
+                                    @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                    @else
+                                    
+                                    @endif
+                                    @endguest
+                                    <li><a href="{{ route('setting') }}">Setting</a></li>
+                                    <li><a href="{{ route('changePassword') }}">Ganti Password</a> </li>   
+                                    <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a></li>      
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>    
+                                </ul>
+                            </div>
+                        </div>
+                        @endguest                   
                     </div>
                 </div>
             </div>
@@ -179,17 +179,27 @@
                             </a>
                         </div>
                         <div class="header-action-icon-2">
-                            <a class="mini-cart-icon" href="">
+                            <a class="mini-cart-icon" href="#">
                                 <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-user.svg">
                             </a>
-                            <div class="cart-dropdown-wrap cart-dropdown-hm2">
-                                <div class="categori-dropdown-wrap categori-dropdown-active-large">
-                                    <ul>
-                                        @foreach ($kategoriproduk_nav as $item)
-                                        <li><a href="{{ route('kategori', $item->slug ) }}"><i class="surfsidemedia-font-home"></i>{{ $item->name }}</a></li>
-                                        @endforeach
-                                    </ul>
-                                </div>
+                            <div class="cart-dropdown-wrap cart-dropdown-hm2 header-dropdown2">
+                                <ul>
+                                    @guest
+                                    
+                                    @else
+                                    @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                    @else
+                                    
+                                    @endif
+                                    @endguest
+                                    <li><a href="{{ route('setting') }}">Setting</a></li>
+                                    <li><a href="{{ route('changePassword') }}">Ganti Password</a> </li>   
+                                    <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a></li>      
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>    
+                                </ul>
                             </div>
                         </div>
                         <div class="header-action-icon-2 d-block d-lg-none">
@@ -260,17 +270,17 @@
             </div>
             <div class="mobile-header-info-wrap mobile-header-border">
                 <div class="single-mobile-header-info mt-30">
-                    <a href="#"> Our location </a>
+                    <a href="#">Lokasi Kami</a>
                 </div>
                 @guest
                 <div class="single-mobile-header-info">
                     @if (Route::has('login'))
-                    <a href="{{ route('login') }}">Log In </a>    
+                    <a href="{{ route('login') }}">Masuk</a>    
                     @endif                    
                 </div>
                 <div class="single-mobile-header-info">
                     @if (Route::has('register'))                        
-                    <a href="{{ route('register') }}">Sign Up</a>
+                    <a href="{{ route('register') }}">Daftar</a>
                     @endif
                 </div>
                 @endguest
@@ -283,7 +293,7 @@
                 </div>
             </div>
             <div class="mobile-social-icon">
-                <h5 class="mb-15 text-grey-4">Follow Us</h5>
+                <h5 class="mb-15 text-grey-4">Ikuti Kami</h5>
                 @if ($setting_website)
                 <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}"></a>
                 <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}"></a>

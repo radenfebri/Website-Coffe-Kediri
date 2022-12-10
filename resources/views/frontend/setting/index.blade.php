@@ -7,7 +7,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>
                 <span></span> Setting
             </div>
         </div>
@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 
-                <button type="submit" name="submit" class="btn-default">Update</button>
+                <button type="submit" name="submit" class="btn-default">Perbarui</button>
             </form>
         </div>
     </div>

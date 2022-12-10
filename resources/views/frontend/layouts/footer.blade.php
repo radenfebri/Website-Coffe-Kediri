@@ -14,10 +14,10 @@
                         <h5 class="mt-20 mb-10 fw-600 text-grey-4 wow fadeIn animated">Contact</h5>
                         @if ($setting_website)
                         <p class="wow fadeIn animated">
-                            <strong>Address: </strong>{{ $setting_website->address }}
+                            <strong>Alamat: </strong>{{ $setting_website->address }}
                         </p>
                         <p class="wow fadeIn animated">
-                            <strong>Phone: </strong>{{ $setting_website->phone }}
+                            <strong>Telepon: </strong>{{ $setting_website->phone }}
                         </p>
                         <p class="wow fadeIn animated">
                             <strong>Email: </strong>{{ $setting_website->email }}
@@ -25,7 +25,7 @@
                         @else
                                 
                         @endif
-                        <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Follow Us</h5>
+                        <h5 class="mb-10 mt-30 fw-600 text-grey-4 wow fadeIn animated">Ikuti Kami</h5>
                         <div class="mobile-social-icon wow fadeIn animated mb-sm-5 mb-md-0">
                             @if ($setting_website)
                             <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset('frontend') }}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}" loading="lazy"></a>
@@ -38,22 +38,21 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3">
-                    <h5 class="widget-title wow fadeIn animated">About</h5>
+                    <h5 class="widget-title wow fadeIn animated">Tentang</h5>
                     <ul class="footer-list wow fadeIn animated mb-sm-5 mb-md-0">
-                        <li><a href="{{ route('about') }}">About Us</a></li>
-                        <li><a href="#">Delivery Information</a></li>
-                        <li><a href="{{ route('privacy-policy') }}">Privacy Policy</a></li>
-                        <li><a href="{{ route('terms-condition') }}">Terms &amp; Conditions</a></li>
-                        <li><a href="{{ route('about') }}">Contact Us</a></li>                            
+                        <li><a href="{{ route('about') }}">Tentang Kami</a></li>
+                        <li><a href="{{ route('privacy-policy') }}">Kebijakan</a></li>
+                        <li><a href="{{ route('terms-condition') }}">Syarat &amp; Kondisi</a></li>
+                        <li><a href="{{ route('about') }}">Kontak Kami</a></li>                            
                     </ul>
                 </div>
                 <div class="col-lg-2  col-md-3">
-                    <h5 class="widget-title wow fadeIn animated">My Account</h5>
+                    <h5 class="widget-title wow fadeIn animated">Akun</h5>
                     <ul class="footer-list wow fadeIn animated">
-                        <li><a href="{{ route('setting') }}">My Account</a></li>
-                        <li><a href="{{ route('cart') }}">View Cart</a></li>
-                        <li><a href="{{ route('favorit.view') }}">My Wishlist</a></li>
-                        <li><a href="{{ route('orderHistory') }}">Track My Order</a></li>                            
+                        <li><a href="{{ route('setting') }}">Setting</a></li>
+                        <li><a href="{{ route('cart') }}">Keranjang</a></li>
+                        <li><a href="{{ route('favorit.view') }}">Favorit</a></li>
+                        <li><a href="{{ route('orderHistory') }}">Riwayat Pesanan</a></li>                            
                         <li><a href="{{ route('shop') }}">Order</a></li>
                     </ul>
                 </div>
@@ -61,14 +60,14 @@
                     <h5 class="widget-title wow fadeIn animated">Install App</h5>
                     <div class="row">
                         <div class="col-md-8 col-lg-12">
-                            <p class="wow fadeIn animated">From App Store or Google Play</p>
+                            <p class="wow fadeIn animated">Dari App Store or Google Play</p>
                             <div class="download-app wow fadeIn animated mob-app">
                                 <a href="{{ route('home') }}" class="hover-up mb-sm-4 mb-lg-0"><img class="active" src="{{ asset('frontend') }}/imgs/theme/app-store.jpg" alt="" loading='lazy'></a>
                                 <a href="{{ route('home') }}" class="hover-up"><img src="{{ asset('frontend') }}/imgs/theme/google-play.jpg" alt=""></a>
                             </div>
                         </div>
                         <div class="col-md-4 col-lg-12 mt-md-3 mt-lg-0">
-                            <p class="mb-20 wow fadeIn animated">Secured Payment Gateways</p>
+                            <p class="mb-20 wow fadeIn animated">Pembayaran Kami</p>
                             <img class="wow fadeIn animated" src="{{ asset('frontend') }}/imgs/theme/payment-method.png" alt="" loading='lazy'>
                         </div>
                     </div>
@@ -83,7 +82,7 @@
             </div>
             <div class="col-lg-6">
                 <p class="float-md-left font-sm text-muted mb-0">
-                    <a href="{{ route('privacy-policy') }}">Privacy Policy</a> | <a href="{{ route('terms-condition') }}">Terms & Conditions</a>
+                    <a href="{{ route('privacy-policy') }}">Kebijakan</a> | <a href="{{ route('terms-condition') }}">Sayarat & Kondisi</a>
                 </p>
             </div>
             <div class="col-lg-6">

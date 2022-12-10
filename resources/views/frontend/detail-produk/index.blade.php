@@ -8,7 +8,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>
                 <span></span>
                 <a href="{{ route('kategori', $produk->kategoriproduk->slug) }}" rel="nofollow">{{ $produk->kategoriproduk->name }}</a>
                 <span></span> {{ $produk->name }}
@@ -157,9 +157,9 @@
                                     </div>
                                     <div class="product_sort_info font-xs mb-30">
                                         <ul>
-                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i> 1 Year AL Jazeera Brand Warranty</li>
-                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i> 30 Day Return Policy</li>
-                                            <li><i class="fi-rs-credit-card mr-5"></i> Cash on Delivery available</li>
+                                            <li class="mb-10"><i class="fi-rs-crown mr-5"></i>Tanpa Bahan Pengawet</li>
+                                            <li class="mb-10"><i class="fi-rs-refresh mr-5"></i>Pengembalian barang ketika barang tidak sesuai</li>
+                                            <li><i class="fi-rs-credit-card mr-5"></i>Pembayaran melalui bank transfer dan Qris</li>
                                         </ul>
                                     </div>
                                     <div class="bt-1 border-color-1 mt-30 mb-30"></div>
@@ -212,7 +212,7 @@
                                     <div class="comments-area">
                                         <div class="row">
                                             <div class="col-lg-8">
-                                                <h4 class="mb-30">Customer Ratings Produk</h4>
+                                                <h4 class="mb-30">Rating dari pembeli</h4>
                                                 
                                                 <div class="comment-list">
                                                     @forelse ($ratings as $item) 
@@ -335,7 +335,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
-                                                            <button type="submit" class="button button-contactForm">Update Review</button>
+                                                            <button type="submit" class="button button-contactForm">Perbarui Review</button>
                                                         </div>
                                                     </form>
                                                 </div>
@@ -364,28 +364,30 @@
                                     <input type="hidden" value="{{ $produk->id }}" class="prod_id">
                                     <div class="col-lg-3 col-md-4 col-12 col-sm-6">
                                         <div class="product-cart-wrap small hover-up">
-                                            <div class="product-img-action-wrap">
-                                                <div class="product-img product-img-zoom produk-terbaru">
-                                                    <a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">
-                                                        @if ($item->cover == null)
-                                                        <img class="default-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" loading="lazy" alt="{{ $produk->name }}">
-                                                        <img class="hover-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-2.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                            <div class="produk-detail-kategori-cover">
+                                                <div class="product-img-action-wrap">
+                                                    <div class="product-img product-img-zoom produk-detail-kategori">
+                                                        <a href="{{ route('detail.produk', $item->slug ) }}" tabindex="0">
+                                                            @if ($item->cover == null)
+                                                            <img class="default-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-1.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                                            <img class="hover-img produk-img-terbaru" src="{{ asset('frontend') }}/imgs/shop/product-2-2.jpg" loading="lazy" alt="{{ $produk->name }}">
+                                                            @else
+                                                            <img class="default-img produk-img-terbaru" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                                            @endif
+                                                            
+                                                        </a>
+                                                    </div>
+                                                    <div class="product-action-1">
+                                                        <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn small hover-up"><i class="fi-rs-eye"></i></a>
+                                                        <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn small hover-up addToWishlist" tabindex="0"><i class="fi-rs-heart"></i></a>
+                                                    </div>
+                                                    <div class="product-badges product-badges-position product-badges-mrg">
+                                                        @if ($item->popular == 1)
+                                                        <span class="hot">Popular</span>
                                                         @else
-                                                        <img class="default-img produk-img-terbaru" src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
-                                                        @endif
                                                         
-                                                    </a>
-                                                </div>
-                                                <div class="product-action-1">
-                                                    <a href="{{ route('detail.produk', $item->slug ) }}" aria-label="Lihat Detail" class="action-btn small hover-up"><i class="fi-rs-eye"></i></a>
-                                                    <a href="{{ route('addfavorit') }}" aria-label="Tambah ke Favorit" class="action-btn small hover-up addToWishlist" tabindex="0"><i class="fi-rs-heart"></i></a>
-                                                </div>
-                                                <div class="product-badges product-badges-position product-badges-mrg">
-                                                    @if ($item->popular == 1)
-                                                    <span class="hot">Popular</span>
-                                                    @else
-                                                    
-                                                    @endif
+                                                        @endif
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="product-content-wrap">

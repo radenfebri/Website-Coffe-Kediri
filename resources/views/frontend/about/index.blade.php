@@ -1,14 +1,14 @@
 @extends('frontend.layouts.default')
 
-@section('title', 'About | Putra Teguh')
+@section('title', 'Tentang Kami | Putra Teguh')
 
 @section('content')
 <main class="main single-page">
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>                    
-                <span></span> About us
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>                    
+                <span></span> Tentang Kami
             </div>
         </div>
     </div>
@@ -43,7 +43,7 @@
                 <div class="row">
                     <div class="col-xl-8 col-lg-10 m-auto">
                         <div class="contact-from-area padding-20-row-col wow FadeInUp">
-                            <h3 class="mb-10 text-center">Contact</h3>
+                            <h3 class="mb-10 text-center">Kontak</h3>
                             <p class="text-muted mb-30 text-center font-sm">Hubungi kami melalui form di bawah apabila ada kepentingan lain.</p>
                             <form class="contact-form-style text-center" id="contact-form" action="{{ route('contact-store') }}" method="POST">
                                 @csrf

@@ -7,7 +7,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>
                 <span></span> Kategori
             </div>
         </div>
@@ -24,7 +24,7 @@
                             <div class="sort-by-cover">
                                 <div class="sort-by-product-wrap">
                                     <div class="sort-by">
-                                        <span><i class="fi-rs-apps-sort"></i>Sort by:</span>
+                                        <span><i class="fi-rs-apps-sort"></i>Sort dengan:</span>
                                     </div>
                                     <div class="sort-by-dropdown-wrap">
                                         <span> Kategori <i class="fi-rs-angle-small-down"></i></span>

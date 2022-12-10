@@ -7,7 +7,7 @@
     <div class="page-header breadcrumb-wrap">
         <div class="container">
             <div class="breadcrumb">
-                <a href="{{ route('home') }}" rel="nofollow">Home</a>
+                <a href="{{ route('home') }}" rel="nofollow">Beranda</a>
                 <span></span> Pembayaran
             </div>
         </div>
@@ -136,6 +136,21 @@
                         <p><h5>Total yang dibayarkan harus sesuai dengan kode unik, 3 digit angka di belakang koma adalah kode unik transaksi anda, dan setelah melakukan pemmbayaran diharapkan Screenshot/foto dan kirim kan pada konfirmasi pembayaran</h5></p>
                     </div>
                     <a href="https://api.whatsapp.com/send?phone={{ $setting_website->phone }}&text=Hallo%20kak%20%2APutra%20Teguh%2A%2C%20saya%20mau%20Konfirmasi%20sudah%20melakukan%20pembayaran%20dengan%20data%20berikut%3A%0D%0A%0D%0ANama%20%3A%20%2A{{ $orders->name }}%2A%0D%0AEmail%20%3A%20%2A{{ $orders->email }}%2A%0D%0ANo%20Pesanan%20%3A%20%2A%23{{ $orders->tracking_no }}%2A%0D%0ASudah%20Membayar%20%3A%20%2ARp.%20{{ number_format($orders->total_price) }}%2A%0D%0ATanggal%20Pesanan%20dibuat%20%3A%20%2A{{ date('d F Y h:i:s',strtotime($orders->created_at)) }}%2A%0D%0ACatatan%20%3A%20%2A{{ $orders->message }}%2A%0D%0A%0D%0ATolong%20Segera%20di%20Proses%20ya%20kak%21%21%21%0D%0ASaya%20Ucapkan%20%2ATerima%20kasih%2A" class="btn btn-pembayaran" target="_blank">Konfirmasi Pembayaran</a>
+                    @if ($orders->message_admin == null)
+                                
+                    @else
+                        <div class="metode-pembayaran">
+                            {{-- metode pembayaran rekening --}}
+                            <div class="kirim-pembayaran">
+                                <div class="informasi-produk">
+                                    <h4>Catatan dari Admin</h4>
+                                    <div class="pesan-produk">
+                                        <p>{{ $orders->message_admin }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
