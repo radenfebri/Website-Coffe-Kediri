@@ -10,6 +10,23 @@
   width: 100%;
 }
 
+.header-search{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.header-search1{
+  display: flex;
+  justify-content: center;
+}
+.input-search{
+}
+
+.header-icon{
+  width: 20%;
+}
+
 .logo-header{
   height: 53px;
   widht: 220px;
@@ -274,7 +291,7 @@
 .metode-pembayaran{ 
   display: flex;
   flex-direction: column;
-  margin: 5% 0;
+  width: 100%;
 }
 
 .metode-pembayaran-selesai{ 
@@ -294,7 +311,7 @@
 
 .kirim-pembayaran{
   border: 3px solid #f4f6f9;
-  padding: 5% 20px;
+  padding: 10% 20px;
 }
 
 .kirim-pembayaran-qris{
@@ -862,7 +879,7 @@
   }
   
   .btn-pembayaran {
-    width: 80%;
+    width: 100%;
     border-radius: 10px;
     margin-bottom: 10px;
   }

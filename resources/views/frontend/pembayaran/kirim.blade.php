@@ -123,24 +123,23 @@
                         @method('PUT')
                         <button type="submit" class="btn btn-pembayaran">Pesanan Diterima</button>
                     </form>
-                </div>
-            </div>
-            
-            @if ($orders->message_admin == null)
+                    @if ($orders->message_admin == null)
                                 
-            @else
-                <div class="metode-pembayaran">
-                    {{-- metode pembayaran rekening --}}
-                    <div class="kirim-pembayaran">
-                        <div class="informasi-produk">
-                            <h4>Catatan dari Admin</h4>
-                            <div class="pesan-produk">
-                                <p>{{ $orders->message_admin }}</p>
+                    @else
+                        <div class="metode-pembayaran">
+                            {{-- metode pembayaran rekening --}}
+                            <div class="kirim-pembayaran">
+                                <div class="informasi-produk">
+                                    <h4>Catatan dari Admin</h4>
+                                    <div class="pesan-produk">
+                                        <p>{{ $orders->message_admin }}</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 </div>
-            @endif
+            </div>
         </div>
     </div>
 </section>
