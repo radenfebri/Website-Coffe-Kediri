@@ -448,9 +448,9 @@
                         <div class="single-post clearfix">
                             <div class="image">
                                 @if ($item->cover == null)
-                                <img src="{{ asset('frontend') }}/imgs/shop/thumbnail-3.jpg" loading="lazy" alt="{{ $item->name }}">
+                                <a href="{{ route('detail.produk', $item->slug ) }}"><img src="{{ asset('frontend') }}/imgs/shop/thumbnail-3.jpg" loading="lazy" alt="{{ $item->name }}"></a>
                                 @else
-                                <img src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}">
+                                <a href="{{ route('detail.produk', $item->slug ) }}"><img src="{{ asset('storage/'. $item->cover ) }}" loading="lazy" alt="{{ $item->name }}"></a>
                                 @endif
                             </div>
                             <div class="content pt-10">
