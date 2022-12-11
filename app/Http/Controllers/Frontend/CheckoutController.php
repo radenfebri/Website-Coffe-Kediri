@@ -72,13 +72,14 @@ class CheckoutController extends Controller
             $cartitems_total = Keranjang::where('user_id', Auth::id())->get();
             foreach ($cartitems_total as $prod) {
                 if ($prod->produks->selling_price == null) {
-                    $total += ($prod->produks->original_price * $prod->prod_qty + $kirim);
+                    $total += $prod->produks->original_price * $prod->prod_qty;
                 } else {
-                    $total += ($prod->produks->selling_price * $prod->prod_qty + $kirim);
+                    $total += $prod->produks->selling_price * $prod->prod_qty;
                 }
             }
+            $jumlah = $total + $kirim;
 
-            $order->total_price = $total + rand(11, 99);
+            $order->total_price = $jumlah + rand(11, 99);
 
             $order->tracking_no = 'PUTEKDR' . rand(111111, 999999);
 

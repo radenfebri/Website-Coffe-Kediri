@@ -121,7 +121,7 @@ class PembayaranController extends Controller
         $pesanan_diterima = Order::findOrFail($id);
         $pesanan_diterima->update([
             'status' => $request->status,
-            'message_admin' => 'Terimakasih sudah menekan tombol Sudah Diterima, untuk selanjutnya silahkan cek terlebih dahulu barang yang anda beli, apabila ada kesalahan dari kami silahkan langsung mengklik tombol Complain pada Pesanan Status Selesai.',
+            'message_admin' => 'Terimakasih sudah menekan tombol Pesanan Diterima, untuk selanjutnya silahkan cek terlebih dahulu barang yang sudah anda beli, apabila ada kesalahan dari kami silahkan langsung mengklik tombol Complain pada Pesanan Status Selesai.',
         ]);
 
         $to = $pesanan_diterima->email;
