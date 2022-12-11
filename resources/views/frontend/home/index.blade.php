@@ -166,7 +166,7 @@
                                             @endif
                                         </div>
                                         <div class="product-action-1 show">
-                                            <a href="{{ route('addcart') }}" aria-label="Add to Cart" class="action-btn hover-up addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
+                                            <a href="{{ route('addcart') }}" aria-label="Tambah" class="action-btn hover-up addToCartBtn"><i class="fi-rs-shopping-bag-add"></i></a>
                                         </div>
                                     </div>
                                 </div>
