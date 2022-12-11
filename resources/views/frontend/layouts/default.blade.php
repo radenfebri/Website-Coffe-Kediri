@@ -67,6 +67,14 @@
 @include('frontend.layouts.includes.script')
 
 <script>
+    let click = document.querySelector('.click');
+    let list = document.querySelector('.list');
+    click.addEventListener("click",()=>{
+        list.classList.toggle('newlist');
+    });
+</script>
+
+<script>
     var availableTags = [];
     $.ajax({
         method: "GET",

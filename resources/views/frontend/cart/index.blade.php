@@ -118,7 +118,7 @@
                                 @endforeach
                                 
                                 @else
-                                <h3 class="text-center">
+                                <h3 class="text-center halaman-cart">
                                     Keranjang anda masih Kosong
                                 </h3>  
                                 @endif
@@ -234,7 +234,6 @@
             @endforeach
             @else
             @endif
-            {{-- <div class="divider center_icon mt-50 mb-50"><i class="fi-rs-fingerprint"></i></div> --}}
             
             @if ($produk->count() > 0)
                 @if ($cek > 0)

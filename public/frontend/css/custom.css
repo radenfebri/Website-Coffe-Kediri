@@ -125,7 +125,10 @@
   display: none;
 }
 
-
+/* cart */
+.halaman-cart{
+  height: 70px;
+}
 
 /* favorit */
 .favorit-mobile{
@@ -710,6 +713,57 @@
 
 @media (max-width:450px)
 {
+  /* header */
+  .header-dropdown-hp{
+   display: flex;
+   position: relative; 
+  }
+
+  /* .click{
+    
+}
+
+.click,.links {
+    padding: 12px;
+    font-size: 1.2em;
+    font-family: futura Md BT;
+    border: none;
+    outline: none;
+    width:200px;
+    color:#fff;
+    transition: 0.3s;
+}
+*/
+.list {
+    display: block;
+    position: absolute;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: 0.3s;
+  }
+
+  .list ul{
+    display: block;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .newlist {
+    transform: scaleY(1);
+}
+
+/* .links {
+    background-color: #283c63;
+}
+
+.links:hover {
+    background-color: #01579B;
+    transform: scale(1.1);
+} */
+
+
+
+  /* end header */
   .product-grid-4 .col-12{
     width:50% !important;
   }

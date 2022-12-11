@@ -179,10 +179,10 @@
                             </a>
                         </div>
                         <div class="header-action-icon-2">
-                            <a class="mini-cart-icon" href="#">
+                            <a class="mini-cart-icon click" href="#">
                                 <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-user.svg">
                             </a>
-                            <div class="cart-dropdown-wrap cart-dropdown-hm2 header-dropdown2">
+                            <div class="list">
                                 <ul>
                                     @guest
                                     
