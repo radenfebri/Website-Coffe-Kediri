@@ -178,30 +178,15 @@
                                 @endguest
                             </a>
                         </div>
+                        @guest
+                        
+                        @else
                         <div class="header-action-icon-2">
-                            <a class="mini-cart-icon click" href="#">
+                            <a class="mini-cart-icon burger-icon-account" href="#">
                                 <img alt="Surfside Media" src="{{ asset("frontend")}}/imgs/theme/icons/icon-user.svg">
                             </a>
-                            <div class="list">
-                                <ul>
-                                    @guest
-                                    
-                                    @else
-                                    @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
-                                    <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    @else
-                                    
-                                    @endif
-                                    @endguest
-                                    <li><a href="{{ route('setting') }}">Setting</a></li>
-                                    <li><a href="{{ route('changePassword') }}">Ganti Password</a> </li>   
-                                    <li><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a></li>      
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>    
-                                </ul>
-                            </div>
                         </div>
+                        @endguest
                         <div class="header-action-icon-2 d-block d-lg-none">
                             <div class="burger-icon burger-icon-white">
                                 <span class="burger-icon-top"></span>
@@ -264,6 +249,84 @@
                         @else
                         <li><a class="{{ request()->is('order-history', 'order-history/*') ? 'active' : ''}}" href="{{ route('orderHistory') }}">Riwayat Pesanan</a></li>
                         @endguest
+                    </ul>
+                </nav>
+                <!-- mobile menu end -->
+            </div>
+            <div class="mobile-header-info-wrap mobile-header-border">
+                <div class="single-mobile-header-info mt-30">
+                    <a href="#">Lokasi Kami</a>
+                </div>
+                @guest
+                <div class="single-mobile-header-info">
+                    @if (Route::has('login'))
+                    <a href="{{ route('login') }}">Masuk</a>    
+                    @endif                    
+                </div>
+                <div class="single-mobile-header-info">
+                    @if (Route::has('register'))                        
+                    <a href="{{ route('register') }}">Daftar</a>
+                    @endif
+                </div>
+                @endguest
+                <div class="single-mobile-header-info">
+                    @if ($setting_website)
+                    <a href="https://wa.me/{{ $setting_website->phone }}/"> {{ $setting_website->phone }}</a>
+                    @else
+                    
+                    @endif
+                </div>
+            </div>
+            <div class="mobile-social-icon">
+                <h5 class="mb-15 text-grey-4">Ikuti Kami</h5>
+                @if ($setting_website)
+                <a href="{{ $setting_website->facebook }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-facebook.svg" alt="{{ $setting_website->facebook }}"></a>
+                <a href="{{ $setting_website->instagram }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-instagram.svg" alt="{{ $setting_website->instagram }}"></a>
+                <a href="{{ $setting_website->youtube }}" target="_blank"><img src="{{ asset("frontend")}}/imgs/theme/icons/icon-youtube.svg" alt="{{ $setting_website->youtube }}"></a>
+                @else
+                
+                @endif
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mobile-header-active-account mobile-header-wrapper-style">
+    <div class="mobile-header-wrapper-inner">
+        <div class="mobile-header-top">
+            <div class="mobile-header-logo">
+                @if ($setting_website)
+                <a href="{{ route('home') }}"><img src="{{ asset("storage/" . $setting_website->image )}}" alt="logo"></a>
+                @else
+                
+                @endif
+            </div>
+            <div class="mobile-menu-close-account close-style-wrap close-style-position-inherit">
+                <button class="close-style search-close">
+                    <i class="icon-top"></i>
+                    <i class="icon-bottom"></i>
+                </button>
+            </div>
+        </div>
+        <div class="mobile-header-content-area">
+            <div class="mobile-menu-wrap mobile-header-border">
+                <!-- mobile menu start -->
+                <nav>
+                    <ul class="mobile-menu">
+                        @guest
+                                    
+                        @else
+                        @if (Auth::user()->hasRole(['Super Admin', 'Admin']))
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        @else
+                   
+                        @endif
+                        @endguest
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('setting') }}">Setting</a></li>
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('changePassword') }}">Ganti Password</a> </li>   
+                        <li class="menu-item-has-children"><span class="menu-expand"></span><a href="{{ route('logout') }}"  onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Keluar</a></li>      
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">                            @csrf
+                        </form>
                     </ul>
                 </nav>
                 <!-- mobile menu end -->

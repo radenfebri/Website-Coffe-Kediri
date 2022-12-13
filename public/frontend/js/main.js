@@ -557,6 +557,33 @@
         });
     };
     mobileHeaderActive();
+
+    /*====== Sidebar menu Active account ======*/
+    function mobileHeaderActiveA() {
+        var navbarTriggerA = $('.burger-icon-account'),
+            endTriggerA = $('.mobile-menu-close-account'),
+            containerA = $('.mobile-header-active-account'),
+            wrapper4A = $('body');
+        
+        wrapper4A.prepend('<div class="body-overlay-1"></div>');
+        
+        navbarTriggerA.on('click', function(e) {
+            e.preventDefault();
+            containerA.addClass('sidebar-visible');
+            wrapper4A.addClass('mobile-menu-active');
+        });
+        
+        endTriggerA.on('click', function() {
+            containerA.removeClass('sidebar-visible');
+            wrapper4A.removeClass('mobile-menu-active');
+        });
+        
+        $('.body-overlay-1').on('click', function() {
+            containerA.removeClass('sidebar-visible');
+            wrapper4A.removeClass('mobile-menu-active');
+        });
+    };
+    mobileHeaderActiveA();
     
     
    /*---------------------
