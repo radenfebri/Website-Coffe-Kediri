@@ -22,7 +22,7 @@
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-6">
-                                <div class="single-slider-img single-slider-img-1">
+                                <div class="slider-home-layout">
                                     <img class="animated slider-1-1" src="{{ asset('storage/' . $item->image ) }}" loading="lazy" alt="{{ $item->title1 }}">
                                 </div>
                             </div>
