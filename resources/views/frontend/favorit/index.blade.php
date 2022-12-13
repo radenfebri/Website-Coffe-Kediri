@@ -78,7 +78,7 @@
                                 @endforeach
                                 
                                 @else
-                                <h3 class="text-center mb-50">
+                                <h3 class="text-center mb-50 halaman-cart">
                                     Favorit anda masih Kosong
                                 </h3>
                                 @endif
